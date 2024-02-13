@@ -1,24 +1,30 @@
-import 'package:eco_game/presentation/pages/splash/splash_google.dart';
+import 'package:eco_game/presentation/pages/game/game.dart';
+import 'package:eco_game/presentation/pages/overlay/OverlayButtons.dart';
+import 'package:flame/flame.dart';
+import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 void main() {
-  runApp(const MyApp());
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(statusBarIconBrightness: Brightness.light));
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.landscapeRight,
-    DeviceOrientation.landscapeLeft,
-  ]);
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
+  WidgetsFlutterBinding.ensureInitialized();
+  Flame.device.fullScreen();
+  Flame.device.setLandscape();
+  EcoGame game = EcoGame();
+  runApp(
+    MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashGoogle(),
-    );
-  }
+      home: Scaffold(
+        body: GameWidget(
+          game: game,
+          overlayBuilderMap: {
+            "OverlayButtons": (
+              BuildContext context,
+              EcoGame game,
+            ) {
+              return const OverlayButtons();
+            }
+          },
+        ),
+      ),
+    ),
+  );
 }

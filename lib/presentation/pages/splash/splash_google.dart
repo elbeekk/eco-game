@@ -43,7 +43,7 @@ class _SplashGoogleState extends State<SplashGoogle> {
               SizedBox(
                 width: MediaQuery.sizeOf(context).width * .3,
                 child: Image.asset(
-                  'assets/logo/google.png',
+                  'assets/images/png/google.png',
                 ),
               ),
               Text("Our Sponsor",style: GoogleFonts.albertSans(color: Colors.grey.shade500),)
