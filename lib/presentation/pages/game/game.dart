@@ -1,28 +1,17 @@
 import 'dart:async';
-
 import 'package:eco_game/presentation/pages/seasons/summer.dart';
-import 'package:flame/camera.dart';
-import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
-import 'package:flame/experimental.dart';
-import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
-import 'package:flame/input.dart';
+import 'package:flutter/cupertino.dart';
 
-class EcoGame extends FlameGame with DragCallbacks, ScaleDetector {
+class EcoGame extends FlameGame with DragCallbacks {
   late final CameraComponent cam;
-  final world = SummerMap();
+  final summerMap = SummerMap();
   double lastScale = 1;
+  SpriteComponent house = SpriteComponent();
 
-  @override
-  void onScaleUpdate(ScaleUpdateInfo info) {
-    print("scale ${info.scale.global}");
-    cam.viewfinder.zoom = info.raw.scale == 0 ? lastScale : info.raw.scale;
-    lastScale = cam.viewfinder.zoom;
-    super.onScaleUpdate(info);
-  }
-
+  /// change view
   @override
   void onDragUpdate(DragUpdateEvent event) {
     /// Vector2 sizes
@@ -52,13 +41,25 @@ class EcoGame extends FlameGame with DragCallbacks, ScaleDetector {
     super.onDragUpdate(event);
   }
 
+  /// load the game
   @override
-  FutureOr<void> onLoad() {
-    cam = CameraComponent.withFixedResolution(
-        world: world, width: 700, height: 360);
-
+  FutureOr<void> onLoad() async {
+    house
+      ..sprite = await loadSprite('Egg_item.png')
+      ..size = Vector2(100, 100)
+      ..x = 10
+      ..y = 10;
+    cam = CameraComponent(
+      world: summerMap,
+    );
     cam.viewfinder.anchor = Anchor.topLeft;
-    addAll([cam, world]);
+    await summerMap.addToParent(house);
+
+    addAll([cam]);
+
+    await add(summerMap);
+
+    // await add(house);
     overlays.add("OverlayButtons");
     return super.onLoad();
   }
