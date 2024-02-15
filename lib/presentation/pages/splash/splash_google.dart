@@ -1,6 +1,5 @@
 import 'dart:async';
-import 'dart:developer';
-
+import 'package:eco_game/presentation/pages/game/game_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -30,10 +29,9 @@ class _SplashGoogleState extends State<SplashGoogle> {
       body: Center(
         child: AnimatedOpacity(
           opacity: opacity,
-          onEnd: () {
-            Timer(const Duration(seconds: 2), () {
-            print('ended');
-
+          onEnd: () async {
+            Timer(const Duration(seconds: 1), () {
+            Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const GamePage(),), (route) => false);
             });
           },
           duration: const Duration(seconds: 3),

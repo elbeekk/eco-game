@@ -4,24 +4,44 @@ import 'dart:ui';
 import 'package:eco_game/presentation/pages/game/game.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
+import 'package:flame/sprite.dart';
 
-class Building extends SpriteComponent
+class Building extends SpriteAnimationComponent
     with HasGameRef<EcoGame>, KeyboardHandler, DragCallbacks {
-  late final Vector2 dimensions;
-Building({required this.dimensions, position}) : super(position: position);
-
-
-
-  late final String imagePath;
 
   @override
   FutureOr<void> onLoad()async {
-    await add(SpriteComponent(sprite: await Sprite.load('Egg_item.png'),position: position,size: dimensions),);
-    // add(
-    //   SpriteAnimationComponent.fromFrameData(
-    //    await game.images.load('Free Chicken Sprites.png'),SpriteAnimationData.sequenced(amount: 2, stepTime: 10, textureSize: Vector2.all(15),texturePosition: position)
-    //   ),
-    // );
+    final spriteSheet = SpriteSheet(
+      image: await gameRef.images.load('game_assets/character/spritesheets/Original/Without Outline/MiniHunter.png'),
+      srcSize: Vector2.all(40),
+      spacing: 5,
+    );
+    final spriteSize = Vector2.all(50);
+    print('${spriteSheet.rows} rows');
+    print('${spriteSheet.columns} columns');
+    print('${spriteSheet.srcSize} srcSize');
+
+    final animation = spriteSheet.createAnimation(row: 11, stepTime: 0.3,loop: false);
+    final component1 = SpriteAnimationComponent(
+      animation: animation,
+      removeOnFinish: false,
+      position: Vector2.all(100),
+      size: spriteSize,
+    );
+    add(
+        component1
+      // ..add(
+      // MoveEffect.to(
+      //   Vector2.all(200),
+      //   EffectController(
+      //     duration: 10,
+      //     reverseDuration: 10,
+      //     infinite: true,
+      //     curve: Curves.linear,
+      //   ),
+      // ),
+      // ),
+    );
     return super.onLoad();
   }
 }

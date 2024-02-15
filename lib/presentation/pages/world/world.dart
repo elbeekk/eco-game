@@ -20,16 +20,17 @@ class SummerMap extends World with HasGameRef<EcoGame> {
     // building = Building(dimensions: Vector2(100, 100),position: Vector2.all(100));
     await add(level);
 
+
     final spriteSheet = SpriteSheet(
-      image: await gameRef.images.load('Basic Charakter Actions.png'),
-      srcSize: Vector2.all(40),
+      image: await gameRef.images.load('game_assets/character/spritesheets/Original/Without Outline/MiniHunter.png'),
+      srcSize: Vector2.all(48),
       spacing: 5,
     );
     final spriteSize = Vector2.all(50);
     print('${spriteSheet.rows} rows');
     print('${spriteSheet.columns} columns');
     print('${spriteSheet.srcSize} srcSize');
-   
+
     final animation = spriteSheet.createAnimation(row: 11, stepTime: 0.3,loop: false);
     final component1 = SpriteAnimationComponent(
       animation: animation,

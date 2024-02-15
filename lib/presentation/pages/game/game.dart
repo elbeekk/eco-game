@@ -5,7 +5,8 @@ import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/cupertino.dart';
 
-class EcoGame extends FlameGame with DragCallbacks {
+class EcoGame extends FlameGame
+    with DragCallbacks {
   late final CameraComponent cam;
   late SummerMap summerMap;
   double lastScale = 1;
@@ -16,7 +17,7 @@ class EcoGame extends FlameGame with DragCallbacks {
   void onDragUpdate(DragUpdateEvent event) {
     /// Vector2 sizes
     Vector2 camPosition = cam.viewfinder.position;
-    Vector2 mapSize = Vector2(80 * 16, 60 * 16);
+    Vector2 mapSize = Vector2(100 * 16, 100 * 16);
     Vector2 screenSize = size;
     Vector2 change = Vector2(event.localDelta.x * -1, event.localDelta.y * -1);
 
@@ -41,20 +42,18 @@ class EcoGame extends FlameGame with DragCallbacks {
     super.onDragUpdate(event);
   }
 
+
+
   /// load the game
   @override
   FutureOr<void> onLoad() async {
     summerMap = SummerMap();
-    house
-      ..sprite = await loadSprite('Egg_item.png')
-      ..size = Vector2(100, 100)
-      ..x = 10
-      ..y = 10;
+
     cam = CameraComponent(
       world: summerMap,
     );
+
     cam.viewfinder.anchor = Anchor.topLeft;
-    await summerMap.addToParent(house);
 
     addAll([cam]);
 
