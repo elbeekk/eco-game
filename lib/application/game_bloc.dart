@@ -74,6 +74,14 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         ));
       }
     });
-    on((event, emit) {});
+    on<CloseAll>((event, emit) {
+      emit(state.copyWith(
+        ecoOpen: false,
+        energyOpen: false,
+        menuOpen: false,
+        moneyOpen: false,
+        shopOpen: false,
+      ));
+    });
   }
 }

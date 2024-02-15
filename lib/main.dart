@@ -1,12 +1,12 @@
-import 'package:eco_game/application/game_bloc.dart';
 import 'package:eco_game/presentation/pages/splash/splash_google.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flame/flame.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  Firebase.initializeApp();
   Flame.device.fullScreen();
   Flame.device.setLandscape();
   SystemChrome.setSystemUIOverlayStyle(

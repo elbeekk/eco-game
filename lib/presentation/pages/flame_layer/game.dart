@@ -1,13 +1,16 @@
 import 'dart:async';
+import 'package:eco_game/application/game_bloc.dart';
 import 'package:eco_game/presentation/pages/world/world.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
+import 'package:flame_bloc/flame_bloc.dart';
 import 'package:flutter/cupertino.dart';
 
-class EcoGame extends FlameGame
-    with DragCallbacks {
-  late final CameraComponent cam;
+class EcoGame extends FlameGame with DragCallbacks {
+  final GameBloc gameBloc;
+  EcoGame({required this.gameBloc});
+  late CameraComponent cam;
   late SummerMap summerMap;
   double lastScale = 1;
   SpriteComponent house = SpriteComponent();
@@ -43,24 +46,16 @@ class EcoGame extends FlameGame
   }
 
 
-
   /// load the game
   @override
   FutureOr<void> onLoad() async {
     summerMap = SummerMap();
-
     cam = CameraComponent(
       world: summerMap,
     );
-
     cam.viewfinder.anchor = Anchor.topLeft;
-
-    addAll([cam]);
-
-    await add(summerMap);
-
-    // await add(house);
-    overlays.add("OverlayButtons");
+    // addAll([cam,summerMap]);
+    add(FlameBlocProvider.value(value: gameBloc,children: [cam,summerMap]));
     return super.onLoad();
   }
 }

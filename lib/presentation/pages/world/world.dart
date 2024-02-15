@@ -1,19 +1,22 @@
 import 'dart:async';
-import 'dart:ui';
-
+import 'package:eco_game/application/game_bloc.dart';
 import 'package:eco_game/presentation/components/house.dart';
-import 'package:eco_game/presentation/pages/game/game.dart';
+import 'package:eco_game/presentation/pages/flame_layer/game.dart';
 import 'package:flame/camera.dart';
 import 'package:flame/components.dart';
-import 'package:flame/effects.dart';
+import 'package:flame/events.dart';
 import 'package:flame/sprite.dart';
 import 'package:flame_tiled/flame_tiled.dart';
-import 'package:flutter/animation.dart';
 
-class SummerMap extends World with HasGameRef<EcoGame> {
+class SummerMap extends World with HasGameRef<EcoGame>,TapCallbacks{
   late TiledComponent level;
   late Building building;
-
+  @override
+  void onTapUp(TapUpEvent event) {
+    print('elbekjon');
+    gameRef.gameBloc.add(const GameEvent.closeAll());
+    super.onTapUp(event);
+  }
   @override
   FutureOr<void> onLoad() async {
     level = await TiledComponent.load("summer.tmx", Vector2.all(16));

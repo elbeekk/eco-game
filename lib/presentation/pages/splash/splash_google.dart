@@ -1,7 +1,9 @@
 import 'dart:async';
-import 'package:eco_game/presentation/pages/game/game_widget.dart';
+import 'package:eco_game/presentation/pages/flame_layer/game_widget.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class SplashGoogle extends StatefulWidget {
   const SplashGoogle({super.key});
@@ -30,8 +32,14 @@ class _SplashGoogleState extends State<SplashGoogle> {
         child: AnimatedOpacity(
           opacity: opacity,
           onEnd: () async {
+            // googleSignIn();
             Timer(const Duration(seconds: 1), () {
-            Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const GamePage(),), (route) => false);
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const GamePage(),
+                  ),
+                  (route) => false);
             });
           },
           duration: const Duration(seconds: 3),
@@ -44,11 +52,32 @@ class _SplashGoogleState extends State<SplashGoogle> {
                   'assets/images/png/google.png',
                 ),
               ),
-              Text("Our Sponsor",style: GoogleFonts.albertSans(color: Colors.grey.shade500),)
+              Text(
+                "Our Sponsor",
+                style: GoogleFonts.albertSans(color: Colors.grey.shade500),
+              )
             ],
           ),
         ),
       ),
     );
+  }
+
+  void googleSignIn() async {
+    final GoogleSignIn _googleSignIn  = GoogleSignIn();
+
+    try{
+      final GoogleSignInAccount? googleSignInAccount = await _googleSignIn.signIn();
+      if(googleSignInAccount!=null){
+        final GoogleSignInAuthentication googleSignInAuthentication = await googleSignInAccount.authentication;
+        final AuthCredential credential = GoogleAuthProvider.credential(
+          idToken: googleSignInAuthentication.idToken,
+          accessToken: googleSignInAuthentication.accessToken
+        );
+        await FirebaseAuth.instance.signInWithCredential(credential);
+      }
+    }catch(e){
+      debugPrint(e.toString());
+    }
   }
 }

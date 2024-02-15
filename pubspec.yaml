@@ -42,6 +42,10 @@ dependencies:
   flutter_vector_icons: ^2.0.0
   games_services: ^4.0.1
   animated_text_kit: ^4.2.2
+  google_sign_in: ^6.2.1
+  firebase_auth: ^4.17.4
+  firebase_core: ^2.25.4
+  flame_bloc: ^1.10.10
 
 
 dev_dependencies:

@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "1041174152296",
+    "project_id": "eco-game-780c7",
+    "storage_bucket": "eco-game-780c7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1041174152296:android:05804c893d4a01dba7e7dd",
+        "android_client_info": {
+          "package_name": "com.hedev.eco_game"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1041174152296-jji6u717puen903en9j1t9bihr0eefv8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hedev.eco_game",
+            "certificate_hash": "e85ba78e5c6f737d219f859fbe27357756bed704"
+          }
+        },
+        {
+          "client_id": "1041174152296-hco3n6c0a4p20i8aasvgbmuo2chmqnfi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHm9oYvo0zfHYtVl2uf4-xjqiMDEQ1cS8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1041174152296-hco3n6c0a4p20i8aasvgbmuo2chmqnfi.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1041174152296-886m27ahs052q64uldmatc5appecsc1f.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.hedev.ecoGame"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
