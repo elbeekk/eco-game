@@ -9,24 +9,41 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   Flame.device.fullScreen();
   Flame.device.setLandscape();
-  EcoGame game = EcoGame();
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(systemNavigationBarColor: Colors.green.shade900));
   runApp(
-    MaterialApp(
+    const MyApp()
+  );
+}
+
+
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  EcoGame game = EcoGame();
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: GameWidget(
           game: game,
           overlayBuilderMap: {
             "OverlayButtons": (
-              BuildContext context,
-              EcoGame game,
-            ) {
+                BuildContext context,
+                EcoGame game,
+                ) {
               return const OverlayButtons();
             }
           },
         ),
       ),
-    ),
-  );
+    );
+  }
 }
+
