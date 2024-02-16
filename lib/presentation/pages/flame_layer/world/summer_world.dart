@@ -1,13 +1,13 @@
 import 'dart:async';
 import 'package:eco_game/application/game/game_bloc.dart';
 import 'package:eco_game/presentation/components/house.dart';
-import 'package:eco_game/presentation/pages/flame_layer/eco_game.dart';
+import 'package:eco_game/presentation/pages/flame_layer/game/eco_game.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/sprite.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 
-class SummerMap extends World with HasGameRef<EcoGame>,TapCallbacks{
+class SummerWorld extends World with HasGameRef<EcoGame>,TapCallbacks{
   late TiledComponent level;
   late Building building;
   @override

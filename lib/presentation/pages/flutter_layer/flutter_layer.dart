@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:pixelarticons/pixel.dart';
 
 class FlutterLayer extends StatefulWidget {
   const FlutterLayer({super.key});
@@ -37,7 +39,6 @@ class _FlutterLayerState extends State<FlutterLayer> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-
                                 /// Menu button
                                 IconButton(
                                     onPressed: () {
@@ -51,94 +52,81 @@ class _FlutterLayerState extends State<FlutterLayer> {
                                           : Icons.menu,
                                       color: Colors.orange,
                                     )),
-
+                                const Spacer(),
                                 if (!state.energyOpen &&
                                     !state.ecoOpen &&
                                     !state.energyOpen)
+
                                   /// Coin button
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.end,
-                                      children: [
-                                        GestureDetector(
-                                          onTap: () {
-                                            context
-                                                .read<GameBloc>()
-                                                .add(const GameEvent.showEco());
-                                          },
-                                          child: SizedBox(
-                                            width: MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.15,
-                                            child: Row(
-                                              children: [
-                                                SizedBox(
-                                                  height: 25,
-                                                  width: 25,
-                                                  child: Image.asset(
-                                                    'assets/images/png/eco.png',
-                                                  ),
-                                                ),
-                                                Expanded(
-                                                  child: Container(
-                                                    height: 20,
-                                                    margin:
-                                                        const EdgeInsets.all(3),
-                                                    decoration: BoxDecoration(
-                                                        color: Colors.green
-                                                            .withOpacity(.6),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10)),
-                                                  ),
-                                                ),
-                                              ],
+
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {
+                                          context
+                                              .read<GameBloc>()
+                                              .add(const GameEvent.showMoney());
+                                        },
+                                        child: Row(
+                                          children: [
+                                            Text(
+                                              "${state.money}",
+                                              style: GoogleFonts.vt323(
+                                                color: Colors.yellow,
+                                                fontSize:
+                                                    MediaQuery.sizeOf(context)
+                                                            .aspectRatio *
+                                                        12,
+                                              ),
                                             ),
-                                          ),
-                                        ),
-                                        const SizedBox(
-                                          height: 5,
-                                        ),
-                                        GestureDetector(
-                                          onTap: () {
-                                            context.read<GameBloc>().add(
-                                                const GameEvent.showEnergy());
-                                          },
-                                          child: SizedBox(
-                                            width: MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.15,
-                                            child: Row(
-                                              children: [
-                                                SizedBox(
-                                                  height: 25,
-                                                  width: 25,
-                                                  child: Image.asset(
-                                                    'assets/images/png/energy.png',
-                                                  ),
-                                                ),
-                                                Expanded(
-                                                  child: Container(
-                                                    height: 20,
-                                                    margin:
-                                                        const EdgeInsets.all(3),
-                                                    decoration: BoxDecoration(
-                                                        color: const Color(
-                                                                0xfff1d212)
-                                                            .withOpacity(.9),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10)),
-                                                  ),
-                                                ),
-                                              ],
+                                            const Icon(
+                                              Pixel.coin,
+                                              color: Colors.yellow,
                                             ),
-                                          ),
-                                        )
-                                      ],
-                                    ),
+                                          ],
+                                        ),
+                                      ),
+
+                                      // GestureDetector(
+                                      //   onTap: () {
+                                      //     context.read<GameBloc>().add(
+                                      //         const GameEvent.showEnergy());
+                                      //   },
+                                      //   child: SizedBox(
+                                      //     width: MediaQuery.sizeOf(context)
+                                      //             .width *
+                                      //         0.15,
+                                      //     child: Row(
+                                      //       children: [
+                                      //         SizedBox(
+                                      //           height: 25,
+                                      //           width: 25,
+                                      //           child: Image.asset(
+                                      //             'assets/images/png/energy.png',
+                                      //           ),
+                                      //         ),
+                                      //         Expanded(
+                                      //           child: Container(
+                                      //             height: 20,
+                                      //             margin:
+                                      //                 const EdgeInsets.all(3),
+                                      //             decoration: BoxDecoration(
+                                      //                 color: const Color(
+                                      //                         0xfff1d212)
+                                      //                     .withOpacity(.9),
+                                      //                 borderRadius:
+                                      //                     BorderRadius
+                                      //                         .circular(10)),
+                                      //           ),
+                                      //         ),
+                                      //       ],
+                                      //     ),
+                                      //   ),
+                                      // )
+                                    ],
                                   ),
+
                                 /// Coin
                                 const Coin(),
                               ],
@@ -147,6 +135,7 @@ class _FlutterLayerState extends State<FlutterLayer> {
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 if (!state.shopOpen)
+
                                   /// Shop button
                                   Padding(
                                     padding: const EdgeInsets.all(15),
@@ -171,6 +160,7 @@ class _FlutterLayerState extends State<FlutterLayer> {
                   ],
                 ),
               ),
+
               /// SHOP
               const Shop(),
             ],

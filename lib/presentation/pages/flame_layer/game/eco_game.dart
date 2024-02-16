@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:eco_game/application/game/game_bloc.dart';
-import 'package:eco_game/presentation/pages/flame_audio/audio.dart';
-import 'package:eco_game/presentation/pages/world/world.dart';
+import 'package:eco_game/presentation/pages/flame_layer/world/summer_world.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
@@ -9,9 +8,11 @@ import 'package:flame_bloc/flame_bloc.dart';
 
 class EcoGame extends FlameGame with DragCallbacks {
   final GameBloc gameBloc;
+
   EcoGame({required this.gameBloc});
+
   late CameraComponent cam;
-  late SummerMap summerMap;
+  late SummerWorld summerMap;
   double lastScale = 1;
   SpriteComponent house = SpriteComponent();
 
@@ -45,18 +46,17 @@ class EcoGame extends FlameGame with DragCallbacks {
     super.onDragUpdate(event);
   }
 
-
   /// load the game
   @override
   FutureOr<void> onLoad() async {
     // AudioService.loadBgm();
-    summerMap = SummerMap();
+    summerMap = SummerWorld();
     cam = CameraComponent(
       world: summerMap,
     );
     cam.viewfinder.anchor = Anchor.topLeft;
     // addAll([cam,summerMap]);
-    add(FlameBlocProvider.value(value: gameBloc,children: [cam,summerMap]));
+    add(FlameBlocProvider.value(value: gameBloc, children: [cam, summerMap]));
     return super.onLoad();
   }
 }

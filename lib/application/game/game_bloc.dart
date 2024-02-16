@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:eco_game/presentation/pages/flame_audio/audio.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'game_event.dart';
@@ -11,15 +12,16 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   GameBloc() : super(const GameState()) {
     on<ShowMenu>((event, emit) {
       if (state.menuOpen) {
-        emit(state.copyWith(menuOpen: false));
+        emit(state.copyWith(
+            menuOpen: false, isMusicPlaying: AudioService.isPlaying()));
       } else {
         emit(state.copyWith(
-          menuOpen: true,
-          ecoOpen: false,
-          energyOpen: false,
-          moneyOpen: false,
-          shopOpen: false,
-        ));
+            menuOpen: true,
+            ecoOpen: false,
+            energyOpen: false,
+            moneyOpen: false,
+            shopOpen: false,
+            isMusicPlaying: AudioService.isPlaying()));
       }
     });
     on<ShowEco>((event, emit) {
@@ -82,6 +84,10 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         moneyOpen: false,
         shopOpen: false,
       ));
+    });
+    on<MusicMuteUnmute>((event, emit) async {
+      await AudioService.muteUnmute();
+      emit(state.copyWith(isMusicPlaying: !state.isMusicPlaying));
     });
   }
 }

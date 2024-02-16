@@ -26,7 +26,7 @@ class Shop extends StatelessWidget {
                 ? MediaQuery.sizeOf(context).height * 0.45
                 : 0,
             // color: Colors.orange.withOpacity(.4),
-            constraints: const BoxConstraints(maxHeight: 350),
+            constraints: const BoxConstraints(maxHeight: 150),
             width: MediaQuery.sizeOf(context).width,
             child: gameState.shopOpen
                 ? Row(
@@ -77,22 +77,23 @@ class Shop extends StatelessWidget {
                                             Expanded(
                                                 child: Image.asset(
                                                     current.image ?? '')),
-                                            Row(
-                                              children: [
-                                                Icon(
-                                                  Pixel.coin,
-                                                  color: Colors
-                                                      .orangeAccent.shade200,
-                                                ),
-                                                Text(
-                                                  current.price.toString() ??
-                                                      '',
-                                                  style: GoogleFonts.vt323(
-                                                      color: Colors.orange,
-                                                      fontSize: 18),
-                                                )
-                                              ],
-                                            ),
+                                            if (gameState.shopOpen)
+                                              Row(
+                                                children: [
+                                                  Icon(
+                                                    Pixel.coin,
+                                                    color: Colors
+                                                        .orangeAccent.shade200,
+                                                  ),
+                                                  Text(
+                                                    current.price.toString() ??
+                                                        '',
+                                                    style: GoogleFonts.vt323(
+                                                        color: Colors.orange,
+                                                        fontSize: 18),
+                                                  )
+                                                ],
+                                              ),
                                           ],
                                         ),
                                       );

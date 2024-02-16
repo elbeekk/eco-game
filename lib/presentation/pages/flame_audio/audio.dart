@@ -5,13 +5,23 @@ class AudioService {
   AudioService._();
 
   static loadBgm() {
-    if (FlameAudio.bgm.isPlaying) {
+    if (isPlaying()) {
       FlameAudio.bgm.resume();
     } else {
       FlameAudio.bgm.play("loop.mp3");
     }
   }
 
+  static bool isPlaying() {
+    return FlameAudio.bgm.isPlaying;
+  }
+  static muteUnmute(){
+    if (isPlaying()) {
+      stopAll();
+    } else {
+      FlameAudio.bgm.play("loop.mp3");
+    }
+  }
   static stopAll() async {
     try {
       await FlameAudio.bgm.pause();
