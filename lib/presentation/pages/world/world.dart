@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:eco_game/application/game_bloc.dart';
+import 'package:eco_game/application/game/game_bloc.dart';
 import 'package:eco_game/presentation/components/house.dart';
 import 'package:eco_game/presentation/pages/flame_layer/eco_game.dart';
 import 'package:flame/components.dart';

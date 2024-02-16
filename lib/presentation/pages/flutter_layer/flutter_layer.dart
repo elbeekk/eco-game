@@ -1,11 +1,11 @@
-import 'dart:developer';
-
-import 'package:eco_game/application/game_bloc.dart';
-import 'package:flame/game.dart';
+import 'package:eco_game/application/game/game_bloc.dart';
+import 'package:eco_game/presentation/pages/flutter_layer/coin.dart';
+import 'package:eco_game/presentation/pages/flutter_layer/menu.dart';
+import 'package:eco_game/presentation/pages/flutter_layer/shop.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class FlutterLayer extends StatefulWidget {
   const FlutterLayer({super.key});
@@ -25,16 +25,8 @@ class _FlutterLayerState extends State<FlutterLayer> {
               Expanded(
                 child: Row(
                   children: [
-                    AnimatedContainer(
-                        duration: const Duration(
-                          milliseconds: 200,
-                        ),
-                        height: MediaQuery.sizeOf(context).height,
-                        color: Colors.redAccent,
-                        constraints: const BoxConstraints(maxWidth: 300),
-                        width: state.menuOpen
-                            ? MediaQuery.sizeOf(context).width * 0.25
-                            : 0),
+                    /// MENU
+                    const Menu(),
                     Expanded(
                       child: Padding(
                         padding: const EdgeInsets.all(10),
@@ -43,9 +35,10 @@ class _FlutterLayerState extends State<FlutterLayer> {
                           children: [
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
+
+                                /// Menu button
                                 IconButton(
                                     onPressed: () {
                                       context
@@ -58,9 +51,11 @@ class _FlutterLayerState extends State<FlutterLayer> {
                                           : Icons.menu,
                                       color: Colors.orange,
                                     )),
+
                                 if (!state.energyOpen &&
                                     !state.ecoOpen &&
                                     !state.energyOpen)
+                                  /// Coin button
                                   Expanded(
                                     child: Column(
                                       crossAxisAlignment:
@@ -68,8 +63,9 @@ class _FlutterLayerState extends State<FlutterLayer> {
                                       children: [
                                         GestureDetector(
                                           onTap: () {
-                                            context.read<GameBloc>().add(
-                                                const GameEvent.showEco());
+                                            context
+                                                .read<GameBloc>()
+                                                .add(const GameEvent.showEco());
                                           },
                                           child: SizedBox(
                                             width: MediaQuery.sizeOf(context)
@@ -88,15 +84,13 @@ class _FlutterLayerState extends State<FlutterLayer> {
                                                   child: Container(
                                                     height: 20,
                                                     margin:
-                                                        const EdgeInsets.all(
-                                                            3),
+                                                        const EdgeInsets.all(3),
                                                     decoration: BoxDecoration(
                                                         color: Colors.green
                                                             .withOpacity(.6),
                                                         borderRadius:
                                                             BorderRadius
-                                                                .circular(
-                                                                    10)),
+                                                                .circular(10)),
                                                   ),
                                                 ),
                                               ],
@@ -128,16 +122,14 @@ class _FlutterLayerState extends State<FlutterLayer> {
                                                   child: Container(
                                                     height: 20,
                                                     margin:
-                                                        const EdgeInsets.all(
-                                                            3),
+                                                        const EdgeInsets.all(3),
                                                     decoration: BoxDecoration(
                                                         color: const Color(
                                                                 0xfff1d212)
                                                             .withOpacity(.9),
                                                         borderRadius:
                                                             BorderRadius
-                                                                .circular(
-                                                                    10)),
+                                                                .circular(10)),
                                                   ),
                                                 ),
                                               ],
@@ -147,40 +139,22 @@ class _FlutterLayerState extends State<FlutterLayer> {
                                       ],
                                     ),
                                   ),
-                                AnimatedContainer(
-                                  duration: const Duration(milliseconds: 200),
-                                  constraints: const BoxConstraints(
-                                      maxHeight: 300, maxWidth: 450),
-                                  height: state.energyOpen ||
-                                          state.ecoOpen ||
-                                          state.energyOpen
-                                      ? MediaQuery.sizeOf(context).height *
-                                          0.3
-                                      : 0,
-                                  width: state.energyOpen ||
-                                          state.ecoOpen ||
-                                          state.energyOpen
-                                      ? MediaQuery.sizeOf(context).width * 0.3
-                                      : 0,
-                                  color: Colors.redAccent,
-                                  child: Text(
-                                    'Google',
-                                    style: GoogleFonts.vt323(fontSize: 45),
-                                  ),
-                                ),
+                                /// Coin
+                                const Coin(),
                               ],
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 if (!state.shopOpen)
+                                  /// Shop button
                                   Padding(
                                     padding: const EdgeInsets.all(15),
                                     child: IconButton(
                                         onPressed: () {
-                                          log('showshop');
-                                          context.read<GameBloc>().add(
-                                              const GameEvent.showShop());
+                                          context
+                                              .read<GameBloc>()
+                                              .add(const GameEvent.showShop());
                                         },
                                         icon: const Icon(
                                           Ionicons.ios_construct,
@@ -197,36 +171,8 @@ class _FlutterLayerState extends State<FlutterLayer> {
                   ],
                 ),
               ),
-              AnimatedContainer(
-                duration: const Duration(
-                  milliseconds: 200,
-                ),
-                height: state.shopOpen
-                    ? MediaQuery.sizeOf(context).height * 0.33
-                    : 0,
-                color: Colors.orange.withOpacity(.4),
-                constraints: const BoxConstraints(maxHeight: 350),
-                width: MediaQuery.sizeOf(context).width,
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        GestureDetector(
-                            onTap: () {
-                              context
-                                  .read<GameBloc>()
-                                  .add(const GameEvent.closeAll());
-                            },
-                            child: Image.asset(
-                              'assets/images/game_assets/button/images/UI_Flat_Cross_Large.png',
-                              scale: .7,
-                            ))
-                      ],
-                    )
-                  ],
-                ),
-              ),
+              /// SHOP
+              const Shop(),
             ],
           ),
         );

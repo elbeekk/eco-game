@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:eco_game/application/game_bloc.dart';
+import 'package:eco_game/application/game/game_bloc.dart';
 import 'package:eco_game/presentation/pages/flame_audio/audio.dart';
 import 'package:eco_game/presentation/pages/world/world.dart';
 import 'package:flame/components.dart';
@@ -49,7 +49,7 @@ class EcoGame extends FlameGame with DragCallbacks {
   /// load the game
   @override
   FutureOr<void> onLoad() async {
-    AudioService.loadBgm();
+    // AudioService.loadBgm();
     summerMap = SummerMap();
     cam = CameraComponent(
       world: summerMap,
