@@ -46,6 +46,9 @@ dependencies:
   firebase_auth: ^4.17.4
   firebase_core: ^2.25.4
   flame_bloc: ^1.10.10
+  flame_audio: ^2.1.8
+  flame_isolate: ^0.5.1
+  flutter_fgbg: ^0.3.0
 
 
 dev_dependencies:
@@ -75,6 +78,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/audio/
     - assets/images/
     - assets/images/png/
     - assets/images/jpg/

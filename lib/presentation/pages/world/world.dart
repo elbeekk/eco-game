@@ -1,8 +1,7 @@
 import 'dart:async';
 import 'package:eco_game/application/game_bloc.dart';
 import 'package:eco_game/presentation/components/house.dart';
-import 'package:eco_game/presentation/pages/flame_layer/game.dart';
-import 'package:flame/camera.dart';
+import 'package:eco_game/presentation/pages/flame_layer/eco_game.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/sprite.dart';
@@ -26,15 +25,16 @@ class SummerMap extends World with HasGameRef<EcoGame>,TapCallbacks{
 
     final spriteSheet = SpriteSheet(
       image: await gameRef.images.load('game_assets/character/spritesheets/Original/Without Outline/MiniHunter.png'),
-      srcSize: Vector2.all(48),
+      srcSize: Vector2.all(30),
+
       spacing: 5,
     );
-    final spriteSize = Vector2.all(50);
+    final spriteSize = Vector2.all(70);
     print('${spriteSheet.rows} rows');
     print('${spriteSheet.columns} columns');
     print('${spriteSheet.srcSize} srcSize');
 
-    final animation = spriteSheet.createAnimation(row: 11, stepTime: 0.3,loop: false);
+    final animation = spriteSheet.createAnimation(row: 0,to: 3, stepTime: 0.3,loop: true);
     final component1 = SpriteAnimationComponent(
       animation: animation,
       removeOnFinish: false,

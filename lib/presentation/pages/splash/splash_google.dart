@@ -1,18 +1,19 @@
 import 'dart:async';
-import 'package:eco_game/presentation/pages/flame_layer/game_widget.dart';
+import 'package:eco_game/presentation/pages/flame_layer/flame_layer.dart';
+import 'package:eco_game/presentation/pages/game/game.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-class SplashGoogle extends StatefulWidget {
-  const SplashGoogle({super.key});
+class SplashPage extends StatefulWidget {
+  const SplashPage({super.key});
 
   @override
-  State<SplashGoogle> createState() => _SplashGoogleState();
+  State<SplashPage> createState() => _SplashPageState();
 }
 
-class _SplashGoogleState extends State<SplashGoogle> {
+class _SplashPageState extends State<SplashPage> {
   double opacity = 0;
 
   change(double num) {

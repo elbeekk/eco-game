@@ -10,6 +10,12 @@
         "": {
             "scaleInDock": 4
         },
+        "#GRASS TILE - DAY": {
+            "scaleInDock": 1
+        },
+        "#WATER TILE - DAY": {
+            "scaleInDock": 1
+        },
         "GRASS TILE - DAY.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
@@ -22,6 +28,17 @@
                 "y": 710
             }
         },
+        "summer.tmx": {
+            "scale": 0.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 11,
+                "y": 439
+            }
+        },
+        "summer.tmx#BaseSet": {
+            "scaleInDock": 1
+        },
         "tilesets/GRASS DETAIL 3 - DAY.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
@@ -32,15 +49,18 @@
         }
     },
     "last.imagePath": "/Users/elbek/StudioProjects/eco_game/assets/images/game_assets/village/images",
+    "map.fixedSize": false,
     "map.height": 100,
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 16,
     "map.tileWidth": 16,
     "map.width": 100,
     "openFiles": [
+        "summer.tmx"
     ],
     "project": "eco_game.tiled-project",
     "recentFiles": [
+        "summer.tmx",
         "GRASS TILE - DAY.tsx",
         "tilesets/GRASS DETAIL 3 - DAY.tsx",
         "tilesets/GRASS TILE - DAY.tsx",
