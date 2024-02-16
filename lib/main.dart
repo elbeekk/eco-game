@@ -1,3 +1,4 @@
+import 'package:eco_game/infrastructure/services/local_storage.dart';
 import 'package:eco_game/presentation/pages/splash/splash_google.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flame/flame.dart';
@@ -11,6 +12,7 @@ void main() {
   Flame.device.fullScreen();
   Flame.device.setLandscape();
   FlameAudio.bgm.initialize();
+  LocalStorage.init();
   SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(systemNavigationBarColor: Colors.green.shade900));
   runApp(const MyApp());

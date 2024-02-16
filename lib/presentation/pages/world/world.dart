@@ -12,7 +12,6 @@ class SummerMap extends World with HasGameRef<EcoGame>,TapCallbacks{
   late Building building;
   @override
   void onTapUp(TapUpEvent event) {
-    print('elbekjon');
     gameRef.gameBloc.add(const GameEvent.closeAll());
     super.onTapUp(event);
   }

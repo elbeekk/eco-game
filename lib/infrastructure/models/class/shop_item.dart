@@ -6,6 +6,7 @@ class ShopItemModel {
   int? energy;
   int? price;
   String? image;
+  int? duration;
 
   ShopItemModel({
     this.name,
@@ -13,6 +14,7 @@ class ShopItemModel {
     this.energy,
     this.price,
     this.image,
+    this.duration,
   });
 
   ShopItemModel copyWith({
@@ -21,6 +23,7 @@ class ShopItemModel {
     int? energy,
     int? price,
     String? image,
+    int? duration,
   }) =>
       ShopItemModel(
         name: name ?? this.name,
@@ -28,6 +31,7 @@ class ShopItemModel {
         energy: energy ?? this.energy,
         price: price ?? this.price,
         image: image ?? this.image,
+        duration: duration ?? this.duration,
       );
 
   factory ShopItemModel.fromRawJson(String str) => ShopItemModel.fromJson(json.decode(str));
@@ -40,6 +44,7 @@ class ShopItemModel {
     energy: json["energy"],
     price: json["price"],
     image: json["image"],
+    duration: json["duration"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -48,5 +53,6 @@ class ShopItemModel {
     "energy": energy,
     "price": price,
     "image": image,
+    "duration": duration,
   };
 }
