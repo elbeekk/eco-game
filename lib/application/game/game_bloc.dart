@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:eco_game/presentation/pages/flame_audio/audio.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'game_event.dart';
@@ -9,11 +10,33 @@ part 'game_state.dart';
 part 'game_bloc.freezed.dart';
 
 class GameBloc extends Bloc<GameEvent, GameState> {
-  GameBloc() : super(const GameState()) {
+  GameBloc() : super(const GameState(flameScale: 2,flutterScale: 2)) {
+    on<Increment>((event, emit) {
+      if (event.isFlameScale && state.flameScale < 4) {
+        emit(state.copyWith(flameScale: state.flameScale + 1));
+      }
+      if (!event.isFlameScale && state.flutterScale < 4) {
+        emit(state.copyWith(flutterScale: state.flutterScale + 1));
+      }
+    });
+    on<Decrement>((event, emit) {
+      if (event.isFlameScale && state.flameScale > 1) {
+        emit(state.copyWith(flameScale: state.flameScale - 1));
+      }
+      if (!event.isFlameScale && state.flutterScale > 1) {
+        emit(state.copyWith(flutterScale: state.flutterScale - 1));
+      }
+    });
+    on<ShowSettings>((event, emit) {
+      emit(state.copyWith(settingsOpen: !state.settingsOpen));
+    });
+
     on<ShowMenu>((event, emit) {
       if (state.menuOpen) {
-        emit(state.copyWith(
-            menuOpen: false, isMusicPlaying: AudioService.isPlaying()));
+        emit(
+          state.copyWith(
+              menuOpen: false, isMusicPlaying: FlameAudio.bgm.isPlaying),
+        );
       } else {
         emit(state.copyWith(
             menuOpen: true,
@@ -21,7 +44,8 @@ class GameBloc extends Bloc<GameEvent, GameState> {
             energyOpen: false,
             moneyOpen: false,
             shopOpen: false,
-            isMusicPlaying: AudioService.isPlaying()));
+            settingsOpen: false,
+            isMusicPlaying: FlameAudio.bgm.isPlaying));
       }
     });
     on<ShowEco>((event, emit) {
@@ -85,9 +109,12 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         shopOpen: false,
       ));
     });
-    on<MusicMuteUnmute>((event, emit) async {
-      await AudioService.muteUnmute();
-      emit(state.copyWith(isMusicPlaying: !state.isMusicPlaying));
+    on<MusicMute>((event, emit) async {
+      await AudioService.stopBgm();
+      emit(state.copyWith(isMusicPlaying: false));
+    });on<MusicUnmute>((event, emit) async {
+      await AudioService.loadBgm();
+      emit(state.copyWith(isMusicPlaying: true));
     });
   }
 }

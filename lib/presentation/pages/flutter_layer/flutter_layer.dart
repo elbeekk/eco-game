@@ -3,7 +3,6 @@ import 'package:eco_game/presentation/pages/flutter_layer/coin.dart';
 import 'package:eco_game/presentation/pages/flutter_layer/menu.dart';
 import 'package:eco_game/presentation/pages/flutter_layer/shop.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -48,8 +47,8 @@ class _FlutterLayerState extends State<FlutterLayer> {
                                     },
                                     icon: Icon(
                                       state.menuOpen
-                                          ? Icons.menu_open_outlined
-                                          : Icons.menu,
+                                          ? Pixel.arrowleft
+                                          : Pixel.arrowright,
                                       color: Colors.orange,
                                     )),
                                 const Spacer(),
@@ -71,13 +70,12 @@ class _FlutterLayerState extends State<FlutterLayer> {
                                         child: Row(
                                           children: [
                                             Text(
-                                              "${state.money}",
+                                              "1230${state.money}",
                                               style: GoogleFonts.vt323(
                                                 color: Colors.yellow,
-                                                fontSize:
-                                                    MediaQuery.sizeOf(context)
-                                                            .aspectRatio *
-                                                        12,
+                                                fontSize: (24 +
+                                                        2 * state.flutterScale)
+                                                    .toDouble(),
                                               ),
                                             ),
                                             const Icon(
@@ -134,23 +132,29 @@ class _FlutterLayerState extends State<FlutterLayer> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                if (!state.shopOpen)
-
                                   /// Shop button
-                                  Padding(
-                                    padding: const EdgeInsets.all(15),
-                                    child: IconButton(
-                                        onPressed: () {
-                                          context
-                                              .read<GameBloc>()
-                                              .add(const GameEvent.showShop());
-                                        },
-                                        icon: const Icon(
-                                          Ionicons.ios_construct,
-                                          color: Colors.white,
-                                          size: 70,
-                                        )),
-                                  )
+                                  TweenAnimationBuilder(
+                                    tween: IntTween(
+                                        begin: state.shopOpen ? 70 : 0,
+                                        end: state.shopOpen ? 0 : 70),
+                                    duration: const Duration(milliseconds: 200),
+                                    builder: (context, value, child) {
+                                      return Padding(
+                                        padding: const EdgeInsets.all(15),
+                                        child: IconButton(
+                                          onPressed: () {
+                                            context.read<GameBloc>().add(
+                                                const GameEvent.showShop());
+                                          },
+                                          icon: Icon(
+                                            Ionicons.ios_construct,
+                                            color: Colors.white,
+                                            size: value.toDouble(),
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  ),
                               ],
                             )
                           ],

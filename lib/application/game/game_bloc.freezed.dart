@@ -22,10 +22,14 @@ mixin _$GameEvent {
     required TResult Function() showShop,
     required TResult Function() showEco,
     required TResult Function() showMoney,
+    required TResult Function() showSettings,
     required TResult Function() showEnergy,
     required TResult Function() closeAll,
-    required TResult Function() musicMuteUnmute,
+    required TResult Function() musicMute,
+    required TResult Function() musicUnmute,
     required TResult Function(int money) addMoney,
+    required TResult Function(bool isFlameScale) increment,
+    required TResult Function(bool isFlameScale) decrement,
     required TResult Function(int money) removeMoney,
   }) =>
       throw _privateConstructorUsedError;
@@ -35,10 +39,14 @@ mixin _$GameEvent {
     TResult? Function()? showShop,
     TResult? Function()? showEco,
     TResult? Function()? showMoney,
+    TResult? Function()? showSettings,
     TResult? Function()? showEnergy,
     TResult? Function()? closeAll,
-    TResult? Function()? musicMuteUnmute,
+    TResult? Function()? musicMute,
+    TResult? Function()? musicUnmute,
     TResult? Function(int money)? addMoney,
+    TResult? Function(bool isFlameScale)? increment,
+    TResult? Function(bool isFlameScale)? decrement,
     TResult? Function(int money)? removeMoney,
   }) =>
       throw _privateConstructorUsedError;
@@ -48,10 +56,14 @@ mixin _$GameEvent {
     TResult Function()? showShop,
     TResult Function()? showEco,
     TResult Function()? showMoney,
+    TResult Function()? showSettings,
     TResult Function()? showEnergy,
     TResult Function()? closeAll,
-    TResult Function()? musicMuteUnmute,
+    TResult Function()? musicMute,
+    TResult Function()? musicUnmute,
     TResult Function(int money)? addMoney,
+    TResult Function(bool isFlameScale)? increment,
+    TResult Function(bool isFlameScale)? decrement,
     TResult Function(int money)? removeMoney,
     required TResult orElse(),
   }) =>
@@ -62,10 +74,14 @@ mixin _$GameEvent {
     required TResult Function(ShowShop value) showShop,
     required TResult Function(ShowEco value) showEco,
     required TResult Function(ShowMoney value) showMoney,
+    required TResult Function(ShowSettings value) showSettings,
     required TResult Function(ShowEnergy value) showEnergy,
     required TResult Function(CloseAll value) closeAll,
-    required TResult Function(MusicMuteUnmute value) musicMuteUnmute,
+    required TResult Function(MusicMute value) musicMute,
+    required TResult Function(MusicUnmute value) musicUnmute,
     required TResult Function(AddMoney value) addMoney,
+    required TResult Function(Increment value) increment,
+    required TResult Function(Decrement value) decrement,
     required TResult Function(RemoveMoney value) removeMoney,
   }) =>
       throw _privateConstructorUsedError;
@@ -75,10 +91,14 @@ mixin _$GameEvent {
     TResult? Function(ShowShop value)? showShop,
     TResult? Function(ShowEco value)? showEco,
     TResult? Function(ShowMoney value)? showMoney,
+    TResult? Function(ShowSettings value)? showSettings,
     TResult? Function(ShowEnergy value)? showEnergy,
     TResult? Function(CloseAll value)? closeAll,
-    TResult? Function(MusicMuteUnmute value)? musicMuteUnmute,
+    TResult? Function(MusicMute value)? musicMute,
+    TResult? Function(MusicUnmute value)? musicUnmute,
     TResult? Function(AddMoney value)? addMoney,
+    TResult? Function(Increment value)? increment,
+    TResult? Function(Decrement value)? decrement,
     TResult? Function(RemoveMoney value)? removeMoney,
   }) =>
       throw _privateConstructorUsedError;
@@ -88,10 +108,14 @@ mixin _$GameEvent {
     TResult Function(ShowShop value)? showShop,
     TResult Function(ShowEco value)? showEco,
     TResult Function(ShowMoney value)? showMoney,
+    TResult Function(ShowSettings value)? showSettings,
     TResult Function(ShowEnergy value)? showEnergy,
     TResult Function(CloseAll value)? closeAll,
-    TResult Function(MusicMuteUnmute value)? musicMuteUnmute,
+    TResult Function(MusicMute value)? musicMute,
+    TResult Function(MusicUnmute value)? musicUnmute,
     TResult Function(AddMoney value)? addMoney,
+    TResult Function(Increment value)? increment,
+    TResult Function(Decrement value)? decrement,
     TResult Function(RemoveMoney value)? removeMoney,
     required TResult orElse(),
   }) =>
@@ -157,10 +181,14 @@ class _$ShowMenuImpl implements ShowMenu {
     required TResult Function() showShop,
     required TResult Function() showEco,
     required TResult Function() showMoney,
+    required TResult Function() showSettings,
     required TResult Function() showEnergy,
     required TResult Function() closeAll,
-    required TResult Function() musicMuteUnmute,
+    required TResult Function() musicMute,
+    required TResult Function() musicUnmute,
     required TResult Function(int money) addMoney,
+    required TResult Function(bool isFlameScale) increment,
+    required TResult Function(bool isFlameScale) decrement,
     required TResult Function(int money) removeMoney,
   }) {
     return showMenu();
@@ -173,10 +201,14 @@ class _$ShowMenuImpl implements ShowMenu {
     TResult? Function()? showShop,
     TResult? Function()? showEco,
     TResult? Function()? showMoney,
+    TResult? Function()? showSettings,
     TResult? Function()? showEnergy,
     TResult? Function()? closeAll,
-    TResult? Function()? musicMuteUnmute,
+    TResult? Function()? musicMute,
+    TResult? Function()? musicUnmute,
     TResult? Function(int money)? addMoney,
+    TResult? Function(bool isFlameScale)? increment,
+    TResult? Function(bool isFlameScale)? decrement,
     TResult? Function(int money)? removeMoney,
   }) {
     return showMenu?.call();
@@ -189,10 +221,14 @@ class _$ShowMenuImpl implements ShowMenu {
     TResult Function()? showShop,
     TResult Function()? showEco,
     TResult Function()? showMoney,
+    TResult Function()? showSettings,
     TResult Function()? showEnergy,
     TResult Function()? closeAll,
-    TResult Function()? musicMuteUnmute,
+    TResult Function()? musicMute,
+    TResult Function()? musicUnmute,
     TResult Function(int money)? addMoney,
+    TResult Function(bool isFlameScale)? increment,
+    TResult Function(bool isFlameScale)? decrement,
     TResult Function(int money)? removeMoney,
     required TResult orElse(),
   }) {
@@ -209,10 +245,14 @@ class _$ShowMenuImpl implements ShowMenu {
     required TResult Function(ShowShop value) showShop,
     required TResult Function(ShowEco value) showEco,
     required TResult Function(ShowMoney value) showMoney,
+    required TResult Function(ShowSettings value) showSettings,
     required TResult Function(ShowEnergy value) showEnergy,
     required TResult Function(CloseAll value) closeAll,
-    required TResult Function(MusicMuteUnmute value) musicMuteUnmute,
+    required TResult Function(MusicMute value) musicMute,
+    required TResult Function(MusicUnmute value) musicUnmute,
     required TResult Function(AddMoney value) addMoney,
+    required TResult Function(Increment value) increment,
+    required TResult Function(Decrement value) decrement,
     required TResult Function(RemoveMoney value) removeMoney,
   }) {
     return showMenu(this);
@@ -225,10 +265,14 @@ class _$ShowMenuImpl implements ShowMenu {
     TResult? Function(ShowShop value)? showShop,
     TResult? Function(ShowEco value)? showEco,
     TResult? Function(ShowMoney value)? showMoney,
+    TResult? Function(ShowSettings value)? showSettings,
     TResult? Function(ShowEnergy value)? showEnergy,
     TResult? Function(CloseAll value)? closeAll,
-    TResult? Function(MusicMuteUnmute value)? musicMuteUnmute,
+    TResult? Function(MusicMute value)? musicMute,
+    TResult? Function(MusicUnmute value)? musicUnmute,
     TResult? Function(AddMoney value)? addMoney,
+    TResult? Function(Increment value)? increment,
+    TResult? Function(Decrement value)? decrement,
     TResult? Function(RemoveMoney value)? removeMoney,
   }) {
     return showMenu?.call(this);
@@ -241,10 +285,14 @@ class _$ShowMenuImpl implements ShowMenu {
     TResult Function(ShowShop value)? showShop,
     TResult Function(ShowEco value)? showEco,
     TResult Function(ShowMoney value)? showMoney,
+    TResult Function(ShowSettings value)? showSettings,
     TResult Function(ShowEnergy value)? showEnergy,
     TResult Function(CloseAll value)? closeAll,
-    TResult Function(MusicMuteUnmute value)? musicMuteUnmute,
+    TResult Function(MusicMute value)? musicMute,
+    TResult Function(MusicUnmute value)? musicUnmute,
     TResult Function(AddMoney value)? addMoney,
+    TResult Function(Increment value)? increment,
+    TResult Function(Decrement value)? decrement,
     TResult Function(RemoveMoney value)? removeMoney,
     required TResult orElse(),
   }) {
@@ -301,10 +349,14 @@ class _$ShowShopImpl implements ShowShop {
     required TResult Function() showShop,
     required TResult Function() showEco,
     required TResult Function() showMoney,
+    required TResult Function() showSettings,
     required TResult Function() showEnergy,
     required TResult Function() closeAll,
-    required TResult Function() musicMuteUnmute,
+    required TResult Function() musicMute,
+    required TResult Function() musicUnmute,
     required TResult Function(int money) addMoney,
+    required TResult Function(bool isFlameScale) increment,
+    required TResult Function(bool isFlameScale) decrement,
     required TResult Function(int money) removeMoney,
   }) {
     return showShop();
@@ -317,10 +369,14 @@ class _$ShowShopImpl implements ShowShop {
     TResult? Function()? showShop,
     TResult? Function()? showEco,
     TResult? Function()? showMoney,
+    TResult? Function()? showSettings,
     TResult? Function()? showEnergy,
     TResult? Function()? closeAll,
-    TResult? Function()? musicMuteUnmute,
+    TResult? Function()? musicMute,
+    TResult? Function()? musicUnmute,
     TResult? Function(int money)? addMoney,
+    TResult? Function(bool isFlameScale)? increment,
+    TResult? Function(bool isFlameScale)? decrement,
     TResult? Function(int money)? removeMoney,
   }) {
     return showShop?.call();
@@ -333,10 +389,14 @@ class _$ShowShopImpl implements ShowShop {
     TResult Function()? showShop,
     TResult Function()? showEco,
     TResult Function()? showMoney,
+    TResult Function()? showSettings,
     TResult Function()? showEnergy,
     TResult Function()? closeAll,
-    TResult Function()? musicMuteUnmute,
+    TResult Function()? musicMute,
+    TResult Function()? musicUnmute,
     TResult Function(int money)? addMoney,
+    TResult Function(bool isFlameScale)? increment,
+    TResult Function(bool isFlameScale)? decrement,
     TResult Function(int money)? removeMoney,
     required TResult orElse(),
   }) {
@@ -353,10 +413,14 @@ class _$ShowShopImpl implements ShowShop {
     required TResult Function(ShowShop value) showShop,
     required TResult Function(ShowEco value) showEco,
     required TResult Function(ShowMoney value) showMoney,
+    required TResult Function(ShowSettings value) showSettings,
     required TResult Function(ShowEnergy value) showEnergy,
     required TResult Function(CloseAll value) closeAll,
-    required TResult Function(MusicMuteUnmute value) musicMuteUnmute,
+    required TResult Function(MusicMute value) musicMute,
+    required TResult Function(MusicUnmute value) musicUnmute,
     required TResult Function(AddMoney value) addMoney,
+    required TResult Function(Increment value) increment,
+    required TResult Function(Decrement value) decrement,
     required TResult Function(RemoveMoney value) removeMoney,
   }) {
     return showShop(this);
@@ -369,10 +433,14 @@ class _$ShowShopImpl implements ShowShop {
     TResult? Function(ShowShop value)? showShop,
     TResult? Function(ShowEco value)? showEco,
     TResult? Function(ShowMoney value)? showMoney,
+    TResult? Function(ShowSettings value)? showSettings,
     TResult? Function(ShowEnergy value)? showEnergy,
     TResult? Function(CloseAll value)? closeAll,
-    TResult? Function(MusicMuteUnmute value)? musicMuteUnmute,
+    TResult? Function(MusicMute value)? musicMute,
+    TResult? Function(MusicUnmute value)? musicUnmute,
     TResult? Function(AddMoney value)? addMoney,
+    TResult? Function(Increment value)? increment,
+    TResult? Function(Decrement value)? decrement,
     TResult? Function(RemoveMoney value)? removeMoney,
   }) {
     return showShop?.call(this);
@@ -385,10 +453,14 @@ class _$ShowShopImpl implements ShowShop {
     TResult Function(ShowShop value)? showShop,
     TResult Function(ShowEco value)? showEco,
     TResult Function(ShowMoney value)? showMoney,
+    TResult Function(ShowSettings value)? showSettings,
     TResult Function(ShowEnergy value)? showEnergy,
     TResult Function(CloseAll value)? closeAll,
-    TResult Function(MusicMuteUnmute value)? musicMuteUnmute,
+    TResult Function(MusicMute value)? musicMute,
+    TResult Function(MusicUnmute value)? musicUnmute,
     TResult Function(AddMoney value)? addMoney,
+    TResult Function(Increment value)? increment,
+    TResult Function(Decrement value)? decrement,
     TResult Function(RemoveMoney value)? removeMoney,
     required TResult orElse(),
   }) {
@@ -445,10 +517,14 @@ class _$ShowEcoImpl implements ShowEco {
     required TResult Function() showShop,
     required TResult Function() showEco,
     required TResult Function() showMoney,
+    required TResult Function() showSettings,
     required TResult Function() showEnergy,
     required TResult Function() closeAll,
-    required TResult Function() musicMuteUnmute,
+    required TResult Function() musicMute,
+    required TResult Function() musicUnmute,
     required TResult Function(int money) addMoney,
+    required TResult Function(bool isFlameScale) increment,
+    required TResult Function(bool isFlameScale) decrement,
     required TResult Function(int money) removeMoney,
   }) {
     return showEco();
@@ -461,10 +537,14 @@ class _$ShowEcoImpl implements ShowEco {
     TResult? Function()? showShop,
     TResult? Function()? showEco,
     TResult? Function()? showMoney,
+    TResult? Function()? showSettings,
     TResult? Function()? showEnergy,
     TResult? Function()? closeAll,
-    TResult? Function()? musicMuteUnmute,
+    TResult? Function()? musicMute,
+    TResult? Function()? musicUnmute,
     TResult? Function(int money)? addMoney,
+    TResult? Function(bool isFlameScale)? increment,
+    TResult? Function(bool isFlameScale)? decrement,
     TResult? Function(int money)? removeMoney,
   }) {
     return showEco?.call();
@@ -477,10 +557,14 @@ class _$ShowEcoImpl implements ShowEco {
     TResult Function()? showShop,
     TResult Function()? showEco,
     TResult Function()? showMoney,
+    TResult Function()? showSettings,
     TResult Function()? showEnergy,
     TResult Function()? closeAll,
-    TResult Function()? musicMuteUnmute,
+    TResult Function()? musicMute,
+    TResult Function()? musicUnmute,
     TResult Function(int money)? addMoney,
+    TResult Function(bool isFlameScale)? increment,
+    TResult Function(bool isFlameScale)? decrement,
     TResult Function(int money)? removeMoney,
     required TResult orElse(),
   }) {
@@ -497,10 +581,14 @@ class _$ShowEcoImpl implements ShowEco {
     required TResult Function(ShowShop value) showShop,
     required TResult Function(ShowEco value) showEco,
     required TResult Function(ShowMoney value) showMoney,
+    required TResult Function(ShowSettings value) showSettings,
     required TResult Function(ShowEnergy value) showEnergy,
     required TResult Function(CloseAll value) closeAll,
-    required TResult Function(MusicMuteUnmute value) musicMuteUnmute,
+    required TResult Function(MusicMute value) musicMute,
+    required TResult Function(MusicUnmute value) musicUnmute,
     required TResult Function(AddMoney value) addMoney,
+    required TResult Function(Increment value) increment,
+    required TResult Function(Decrement value) decrement,
     required TResult Function(RemoveMoney value) removeMoney,
   }) {
     return showEco(this);
@@ -513,10 +601,14 @@ class _$ShowEcoImpl implements ShowEco {
     TResult? Function(ShowShop value)? showShop,
     TResult? Function(ShowEco value)? showEco,
     TResult? Function(ShowMoney value)? showMoney,
+    TResult? Function(ShowSettings value)? showSettings,
     TResult? Function(ShowEnergy value)? showEnergy,
     TResult? Function(CloseAll value)? closeAll,
-    TResult? Function(MusicMuteUnmute value)? musicMuteUnmute,
+    TResult? Function(MusicMute value)? musicMute,
+    TResult? Function(MusicUnmute value)? musicUnmute,
     TResult? Function(AddMoney value)? addMoney,
+    TResult? Function(Increment value)? increment,
+    TResult? Function(Decrement value)? decrement,
     TResult? Function(RemoveMoney value)? removeMoney,
   }) {
     return showEco?.call(this);
@@ -529,10 +621,14 @@ class _$ShowEcoImpl implements ShowEco {
     TResult Function(ShowShop value)? showShop,
     TResult Function(ShowEco value)? showEco,
     TResult Function(ShowMoney value)? showMoney,
+    TResult Function(ShowSettings value)? showSettings,
     TResult Function(ShowEnergy value)? showEnergy,
     TResult Function(CloseAll value)? closeAll,
-    TResult Function(MusicMuteUnmute value)? musicMuteUnmute,
+    TResult Function(MusicMute value)? musicMute,
+    TResult Function(MusicUnmute value)? musicUnmute,
     TResult Function(AddMoney value)? addMoney,
+    TResult Function(Increment value)? increment,
+    TResult Function(Decrement value)? decrement,
     TResult Function(RemoveMoney value)? removeMoney,
     required TResult orElse(),
   }) {
@@ -589,10 +685,14 @@ class _$ShowMoneyImpl implements ShowMoney {
     required TResult Function() showShop,
     required TResult Function() showEco,
     required TResult Function() showMoney,
+    required TResult Function() showSettings,
     required TResult Function() showEnergy,
     required TResult Function() closeAll,
-    required TResult Function() musicMuteUnmute,
+    required TResult Function() musicMute,
+    required TResult Function() musicUnmute,
     required TResult Function(int money) addMoney,
+    required TResult Function(bool isFlameScale) increment,
+    required TResult Function(bool isFlameScale) decrement,
     required TResult Function(int money) removeMoney,
   }) {
     return showMoney();
@@ -605,10 +705,14 @@ class _$ShowMoneyImpl implements ShowMoney {
     TResult? Function()? showShop,
     TResult? Function()? showEco,
     TResult? Function()? showMoney,
+    TResult? Function()? showSettings,
     TResult? Function()? showEnergy,
     TResult? Function()? closeAll,
-    TResult? Function()? musicMuteUnmute,
+    TResult? Function()? musicMute,
+    TResult? Function()? musicUnmute,
     TResult? Function(int money)? addMoney,
+    TResult? Function(bool isFlameScale)? increment,
+    TResult? Function(bool isFlameScale)? decrement,
     TResult? Function(int money)? removeMoney,
   }) {
     return showMoney?.call();
@@ -621,10 +725,14 @@ class _$ShowMoneyImpl implements ShowMoney {
     TResult Function()? showShop,
     TResult Function()? showEco,
     TResult Function()? showMoney,
+    TResult Function()? showSettings,
     TResult Function()? showEnergy,
     TResult Function()? closeAll,
-    TResult Function()? musicMuteUnmute,
+    TResult Function()? musicMute,
+    TResult Function()? musicUnmute,
     TResult Function(int money)? addMoney,
+    TResult Function(bool isFlameScale)? increment,
+    TResult Function(bool isFlameScale)? decrement,
     TResult Function(int money)? removeMoney,
     required TResult orElse(),
   }) {
@@ -641,10 +749,14 @@ class _$ShowMoneyImpl implements ShowMoney {
     required TResult Function(ShowShop value) showShop,
     required TResult Function(ShowEco value) showEco,
     required TResult Function(ShowMoney value) showMoney,
+    required TResult Function(ShowSettings value) showSettings,
     required TResult Function(ShowEnergy value) showEnergy,
     required TResult Function(CloseAll value) closeAll,
-    required TResult Function(MusicMuteUnmute value) musicMuteUnmute,
+    required TResult Function(MusicMute value) musicMute,
+    required TResult Function(MusicUnmute value) musicUnmute,
     required TResult Function(AddMoney value) addMoney,
+    required TResult Function(Increment value) increment,
+    required TResult Function(Decrement value) decrement,
     required TResult Function(RemoveMoney value) removeMoney,
   }) {
     return showMoney(this);
@@ -657,10 +769,14 @@ class _$ShowMoneyImpl implements ShowMoney {
     TResult? Function(ShowShop value)? showShop,
     TResult? Function(ShowEco value)? showEco,
     TResult? Function(ShowMoney value)? showMoney,
+    TResult? Function(ShowSettings value)? showSettings,
     TResult? Function(ShowEnergy value)? showEnergy,
     TResult? Function(CloseAll value)? closeAll,
-    TResult? Function(MusicMuteUnmute value)? musicMuteUnmute,
+    TResult? Function(MusicMute value)? musicMute,
+    TResult? Function(MusicUnmute value)? musicUnmute,
     TResult? Function(AddMoney value)? addMoney,
+    TResult? Function(Increment value)? increment,
+    TResult? Function(Decrement value)? decrement,
     TResult? Function(RemoveMoney value)? removeMoney,
   }) {
     return showMoney?.call(this);
@@ -673,10 +789,14 @@ class _$ShowMoneyImpl implements ShowMoney {
     TResult Function(ShowShop value)? showShop,
     TResult Function(ShowEco value)? showEco,
     TResult Function(ShowMoney value)? showMoney,
+    TResult Function(ShowSettings value)? showSettings,
     TResult Function(ShowEnergy value)? showEnergy,
     TResult Function(CloseAll value)? closeAll,
-    TResult Function(MusicMuteUnmute value)? musicMuteUnmute,
+    TResult Function(MusicMute value)? musicMute,
+    TResult Function(MusicUnmute value)? musicUnmute,
     TResult Function(AddMoney value)? addMoney,
+    TResult Function(Increment value)? increment,
+    TResult Function(Decrement value)? decrement,
     TResult Function(RemoveMoney value)? removeMoney,
     required TResult orElse(),
   }) {
@@ -689,6 +809,174 @@ class _$ShowMoneyImpl implements ShowMoney {
 
 abstract class ShowMoney implements GameEvent {
   const factory ShowMoney() = _$ShowMoneyImpl;
+}
+
+/// @nodoc
+abstract class _$$ShowSettingsImplCopyWith<$Res> {
+  factory _$$ShowSettingsImplCopyWith(
+          _$ShowSettingsImpl value, $Res Function(_$ShowSettingsImpl) then) =
+      __$$ShowSettingsImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ShowSettingsImplCopyWithImpl<$Res>
+    extends _$GameEventCopyWithImpl<$Res, _$ShowSettingsImpl>
+    implements _$$ShowSettingsImplCopyWith<$Res> {
+  __$$ShowSettingsImplCopyWithImpl(
+      _$ShowSettingsImpl _value, $Res Function(_$ShowSettingsImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ShowSettingsImpl implements ShowSettings {
+  const _$ShowSettingsImpl();
+
+  @override
+  String toString() {
+    return 'GameEvent.showSettings()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ShowSettingsImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() showMenu,
+    required TResult Function() showShop,
+    required TResult Function() showEco,
+    required TResult Function() showMoney,
+    required TResult Function() showSettings,
+    required TResult Function() showEnergy,
+    required TResult Function() closeAll,
+    required TResult Function() musicMute,
+    required TResult Function() musicUnmute,
+    required TResult Function(int money) addMoney,
+    required TResult Function(bool isFlameScale) increment,
+    required TResult Function(bool isFlameScale) decrement,
+    required TResult Function(int money) removeMoney,
+  }) {
+    return showSettings();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? showMenu,
+    TResult? Function()? showShop,
+    TResult? Function()? showEco,
+    TResult? Function()? showMoney,
+    TResult? Function()? showSettings,
+    TResult? Function()? showEnergy,
+    TResult? Function()? closeAll,
+    TResult? Function()? musicMute,
+    TResult? Function()? musicUnmute,
+    TResult? Function(int money)? addMoney,
+    TResult? Function(bool isFlameScale)? increment,
+    TResult? Function(bool isFlameScale)? decrement,
+    TResult? Function(int money)? removeMoney,
+  }) {
+    return showSettings?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? showMenu,
+    TResult Function()? showShop,
+    TResult Function()? showEco,
+    TResult Function()? showMoney,
+    TResult Function()? showSettings,
+    TResult Function()? showEnergy,
+    TResult Function()? closeAll,
+    TResult Function()? musicMute,
+    TResult Function()? musicUnmute,
+    TResult Function(int money)? addMoney,
+    TResult Function(bool isFlameScale)? increment,
+    TResult Function(bool isFlameScale)? decrement,
+    TResult Function(int money)? removeMoney,
+    required TResult orElse(),
+  }) {
+    if (showSettings != null) {
+      return showSettings();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ShowMenu value) showMenu,
+    required TResult Function(ShowShop value) showShop,
+    required TResult Function(ShowEco value) showEco,
+    required TResult Function(ShowMoney value) showMoney,
+    required TResult Function(ShowSettings value) showSettings,
+    required TResult Function(ShowEnergy value) showEnergy,
+    required TResult Function(CloseAll value) closeAll,
+    required TResult Function(MusicMute value) musicMute,
+    required TResult Function(MusicUnmute value) musicUnmute,
+    required TResult Function(AddMoney value) addMoney,
+    required TResult Function(Increment value) increment,
+    required TResult Function(Decrement value) decrement,
+    required TResult Function(RemoveMoney value) removeMoney,
+  }) {
+    return showSettings(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ShowMenu value)? showMenu,
+    TResult? Function(ShowShop value)? showShop,
+    TResult? Function(ShowEco value)? showEco,
+    TResult? Function(ShowMoney value)? showMoney,
+    TResult? Function(ShowSettings value)? showSettings,
+    TResult? Function(ShowEnergy value)? showEnergy,
+    TResult? Function(CloseAll value)? closeAll,
+    TResult? Function(MusicMute value)? musicMute,
+    TResult? Function(MusicUnmute value)? musicUnmute,
+    TResult? Function(AddMoney value)? addMoney,
+    TResult? Function(Increment value)? increment,
+    TResult? Function(Decrement value)? decrement,
+    TResult? Function(RemoveMoney value)? removeMoney,
+  }) {
+    return showSettings?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ShowMenu value)? showMenu,
+    TResult Function(ShowShop value)? showShop,
+    TResult Function(ShowEco value)? showEco,
+    TResult Function(ShowMoney value)? showMoney,
+    TResult Function(ShowSettings value)? showSettings,
+    TResult Function(ShowEnergy value)? showEnergy,
+    TResult Function(CloseAll value)? closeAll,
+    TResult Function(MusicMute value)? musicMute,
+    TResult Function(MusicUnmute value)? musicUnmute,
+    TResult Function(AddMoney value)? addMoney,
+    TResult Function(Increment value)? increment,
+    TResult Function(Decrement value)? decrement,
+    TResult Function(RemoveMoney value)? removeMoney,
+    required TResult orElse(),
+  }) {
+    if (showSettings != null) {
+      return showSettings(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ShowSettings implements GameEvent {
+  const factory ShowSettings() = _$ShowSettingsImpl;
 }
 
 /// @nodoc
@@ -733,10 +1021,14 @@ class _$ShowEnergyImpl implements ShowEnergy {
     required TResult Function() showShop,
     required TResult Function() showEco,
     required TResult Function() showMoney,
+    required TResult Function() showSettings,
     required TResult Function() showEnergy,
     required TResult Function() closeAll,
-    required TResult Function() musicMuteUnmute,
+    required TResult Function() musicMute,
+    required TResult Function() musicUnmute,
     required TResult Function(int money) addMoney,
+    required TResult Function(bool isFlameScale) increment,
+    required TResult Function(bool isFlameScale) decrement,
     required TResult Function(int money) removeMoney,
   }) {
     return showEnergy();
@@ -749,10 +1041,14 @@ class _$ShowEnergyImpl implements ShowEnergy {
     TResult? Function()? showShop,
     TResult? Function()? showEco,
     TResult? Function()? showMoney,
+    TResult? Function()? showSettings,
     TResult? Function()? showEnergy,
     TResult? Function()? closeAll,
-    TResult? Function()? musicMuteUnmute,
+    TResult? Function()? musicMute,
+    TResult? Function()? musicUnmute,
     TResult? Function(int money)? addMoney,
+    TResult? Function(bool isFlameScale)? increment,
+    TResult? Function(bool isFlameScale)? decrement,
     TResult? Function(int money)? removeMoney,
   }) {
     return showEnergy?.call();
@@ -765,10 +1061,14 @@ class _$ShowEnergyImpl implements ShowEnergy {
     TResult Function()? showShop,
     TResult Function()? showEco,
     TResult Function()? showMoney,
+    TResult Function()? showSettings,
     TResult Function()? showEnergy,
     TResult Function()? closeAll,
-    TResult Function()? musicMuteUnmute,
+    TResult Function()? musicMute,
+    TResult Function()? musicUnmute,
     TResult Function(int money)? addMoney,
+    TResult Function(bool isFlameScale)? increment,
+    TResult Function(bool isFlameScale)? decrement,
     TResult Function(int money)? removeMoney,
     required TResult orElse(),
   }) {
@@ -785,10 +1085,14 @@ class _$ShowEnergyImpl implements ShowEnergy {
     required TResult Function(ShowShop value) showShop,
     required TResult Function(ShowEco value) showEco,
     required TResult Function(ShowMoney value) showMoney,
+    required TResult Function(ShowSettings value) showSettings,
     required TResult Function(ShowEnergy value) showEnergy,
     required TResult Function(CloseAll value) closeAll,
-    required TResult Function(MusicMuteUnmute value) musicMuteUnmute,
+    required TResult Function(MusicMute value) musicMute,
+    required TResult Function(MusicUnmute value) musicUnmute,
     required TResult Function(AddMoney value) addMoney,
+    required TResult Function(Increment value) increment,
+    required TResult Function(Decrement value) decrement,
     required TResult Function(RemoveMoney value) removeMoney,
   }) {
     return showEnergy(this);
@@ -801,10 +1105,14 @@ class _$ShowEnergyImpl implements ShowEnergy {
     TResult? Function(ShowShop value)? showShop,
     TResult? Function(ShowEco value)? showEco,
     TResult? Function(ShowMoney value)? showMoney,
+    TResult? Function(ShowSettings value)? showSettings,
     TResult? Function(ShowEnergy value)? showEnergy,
     TResult? Function(CloseAll value)? closeAll,
-    TResult? Function(MusicMuteUnmute value)? musicMuteUnmute,
+    TResult? Function(MusicMute value)? musicMute,
+    TResult? Function(MusicUnmute value)? musicUnmute,
     TResult? Function(AddMoney value)? addMoney,
+    TResult? Function(Increment value)? increment,
+    TResult? Function(Decrement value)? decrement,
     TResult? Function(RemoveMoney value)? removeMoney,
   }) {
     return showEnergy?.call(this);
@@ -817,10 +1125,14 @@ class _$ShowEnergyImpl implements ShowEnergy {
     TResult Function(ShowShop value)? showShop,
     TResult Function(ShowEco value)? showEco,
     TResult Function(ShowMoney value)? showMoney,
+    TResult Function(ShowSettings value)? showSettings,
     TResult Function(ShowEnergy value)? showEnergy,
     TResult Function(CloseAll value)? closeAll,
-    TResult Function(MusicMuteUnmute value)? musicMuteUnmute,
+    TResult Function(MusicMute value)? musicMute,
+    TResult Function(MusicUnmute value)? musicUnmute,
     TResult Function(AddMoney value)? addMoney,
+    TResult Function(Increment value)? increment,
+    TResult Function(Decrement value)? decrement,
     TResult Function(RemoveMoney value)? removeMoney,
     required TResult orElse(),
   }) {
@@ -877,10 +1189,14 @@ class _$CloseAllImpl implements CloseAll {
     required TResult Function() showShop,
     required TResult Function() showEco,
     required TResult Function() showMoney,
+    required TResult Function() showSettings,
     required TResult Function() showEnergy,
     required TResult Function() closeAll,
-    required TResult Function() musicMuteUnmute,
+    required TResult Function() musicMute,
+    required TResult Function() musicUnmute,
     required TResult Function(int money) addMoney,
+    required TResult Function(bool isFlameScale) increment,
+    required TResult Function(bool isFlameScale) decrement,
     required TResult Function(int money) removeMoney,
   }) {
     return closeAll();
@@ -893,10 +1209,14 @@ class _$CloseAllImpl implements CloseAll {
     TResult? Function()? showShop,
     TResult? Function()? showEco,
     TResult? Function()? showMoney,
+    TResult? Function()? showSettings,
     TResult? Function()? showEnergy,
     TResult? Function()? closeAll,
-    TResult? Function()? musicMuteUnmute,
+    TResult? Function()? musicMute,
+    TResult? Function()? musicUnmute,
     TResult? Function(int money)? addMoney,
+    TResult? Function(bool isFlameScale)? increment,
+    TResult? Function(bool isFlameScale)? decrement,
     TResult? Function(int money)? removeMoney,
   }) {
     return closeAll?.call();
@@ -909,10 +1229,14 @@ class _$CloseAllImpl implements CloseAll {
     TResult Function()? showShop,
     TResult Function()? showEco,
     TResult Function()? showMoney,
+    TResult Function()? showSettings,
     TResult Function()? showEnergy,
     TResult Function()? closeAll,
-    TResult Function()? musicMuteUnmute,
+    TResult Function()? musicMute,
+    TResult Function()? musicUnmute,
     TResult Function(int money)? addMoney,
+    TResult Function(bool isFlameScale)? increment,
+    TResult Function(bool isFlameScale)? decrement,
     TResult Function(int money)? removeMoney,
     required TResult orElse(),
   }) {
@@ -929,10 +1253,14 @@ class _$CloseAllImpl implements CloseAll {
     required TResult Function(ShowShop value) showShop,
     required TResult Function(ShowEco value) showEco,
     required TResult Function(ShowMoney value) showMoney,
+    required TResult Function(ShowSettings value) showSettings,
     required TResult Function(ShowEnergy value) showEnergy,
     required TResult Function(CloseAll value) closeAll,
-    required TResult Function(MusicMuteUnmute value) musicMuteUnmute,
+    required TResult Function(MusicMute value) musicMute,
+    required TResult Function(MusicUnmute value) musicUnmute,
     required TResult Function(AddMoney value) addMoney,
+    required TResult Function(Increment value) increment,
+    required TResult Function(Decrement value) decrement,
     required TResult Function(RemoveMoney value) removeMoney,
   }) {
     return closeAll(this);
@@ -945,10 +1273,14 @@ class _$CloseAllImpl implements CloseAll {
     TResult? Function(ShowShop value)? showShop,
     TResult? Function(ShowEco value)? showEco,
     TResult? Function(ShowMoney value)? showMoney,
+    TResult? Function(ShowSettings value)? showSettings,
     TResult? Function(ShowEnergy value)? showEnergy,
     TResult? Function(CloseAll value)? closeAll,
-    TResult? Function(MusicMuteUnmute value)? musicMuteUnmute,
+    TResult? Function(MusicMute value)? musicMute,
+    TResult? Function(MusicUnmute value)? musicUnmute,
     TResult? Function(AddMoney value)? addMoney,
+    TResult? Function(Increment value)? increment,
+    TResult? Function(Decrement value)? decrement,
     TResult? Function(RemoveMoney value)? removeMoney,
   }) {
     return closeAll?.call(this);
@@ -961,10 +1293,14 @@ class _$CloseAllImpl implements CloseAll {
     TResult Function(ShowShop value)? showShop,
     TResult Function(ShowEco value)? showEco,
     TResult Function(ShowMoney value)? showMoney,
+    TResult Function(ShowSettings value)? showSettings,
     TResult Function(ShowEnergy value)? showEnergy,
     TResult Function(CloseAll value)? closeAll,
-    TResult Function(MusicMuteUnmute value)? musicMuteUnmute,
+    TResult Function(MusicMute value)? musicMute,
+    TResult Function(MusicUnmute value)? musicUnmute,
     TResult Function(AddMoney value)? addMoney,
+    TResult Function(Increment value)? increment,
+    TResult Function(Decrement value)? decrement,
     TResult Function(RemoveMoney value)? removeMoney,
     required TResult orElse(),
   }) {
@@ -980,35 +1316,35 @@ abstract class CloseAll implements GameEvent {
 }
 
 /// @nodoc
-abstract class _$$MusicMuteUnmuteImplCopyWith<$Res> {
-  factory _$$MusicMuteUnmuteImplCopyWith(_$MusicMuteUnmuteImpl value,
-          $Res Function(_$MusicMuteUnmuteImpl) then) =
-      __$$MusicMuteUnmuteImplCopyWithImpl<$Res>;
+abstract class _$$MusicMuteImplCopyWith<$Res> {
+  factory _$$MusicMuteImplCopyWith(
+          _$MusicMuteImpl value, $Res Function(_$MusicMuteImpl) then) =
+      __$$MusicMuteImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$MusicMuteUnmuteImplCopyWithImpl<$Res>
-    extends _$GameEventCopyWithImpl<$Res, _$MusicMuteUnmuteImpl>
-    implements _$$MusicMuteUnmuteImplCopyWith<$Res> {
-  __$$MusicMuteUnmuteImplCopyWithImpl(
-      _$MusicMuteUnmuteImpl _value, $Res Function(_$MusicMuteUnmuteImpl) _then)
+class __$$MusicMuteImplCopyWithImpl<$Res>
+    extends _$GameEventCopyWithImpl<$Res, _$MusicMuteImpl>
+    implements _$$MusicMuteImplCopyWith<$Res> {
+  __$$MusicMuteImplCopyWithImpl(
+      _$MusicMuteImpl _value, $Res Function(_$MusicMuteImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$MusicMuteUnmuteImpl implements MusicMuteUnmute {
-  const _$MusicMuteUnmuteImpl();
+class _$MusicMuteImpl implements MusicMute {
+  const _$MusicMuteImpl();
 
   @override
   String toString() {
-    return 'GameEvent.musicMuteUnmute()';
+    return 'GameEvent.musicMute()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$MusicMuteUnmuteImpl);
+        (other.runtimeType == runtimeType && other is _$MusicMuteImpl);
   }
 
   @override
@@ -1021,13 +1357,17 @@ class _$MusicMuteUnmuteImpl implements MusicMuteUnmute {
     required TResult Function() showShop,
     required TResult Function() showEco,
     required TResult Function() showMoney,
+    required TResult Function() showSettings,
     required TResult Function() showEnergy,
     required TResult Function() closeAll,
-    required TResult Function() musicMuteUnmute,
+    required TResult Function() musicMute,
+    required TResult Function() musicUnmute,
     required TResult Function(int money) addMoney,
+    required TResult Function(bool isFlameScale) increment,
+    required TResult Function(bool isFlameScale) decrement,
     required TResult Function(int money) removeMoney,
   }) {
-    return musicMuteUnmute();
+    return musicMute();
   }
 
   @override
@@ -1037,13 +1377,17 @@ class _$MusicMuteUnmuteImpl implements MusicMuteUnmute {
     TResult? Function()? showShop,
     TResult? Function()? showEco,
     TResult? Function()? showMoney,
+    TResult? Function()? showSettings,
     TResult? Function()? showEnergy,
     TResult? Function()? closeAll,
-    TResult? Function()? musicMuteUnmute,
+    TResult? Function()? musicMute,
+    TResult? Function()? musicUnmute,
     TResult? Function(int money)? addMoney,
+    TResult? Function(bool isFlameScale)? increment,
+    TResult? Function(bool isFlameScale)? decrement,
     TResult? Function(int money)? removeMoney,
   }) {
-    return musicMuteUnmute?.call();
+    return musicMute?.call();
   }
 
   @override
@@ -1053,15 +1397,19 @@ class _$MusicMuteUnmuteImpl implements MusicMuteUnmute {
     TResult Function()? showShop,
     TResult Function()? showEco,
     TResult Function()? showMoney,
+    TResult Function()? showSettings,
     TResult Function()? showEnergy,
     TResult Function()? closeAll,
-    TResult Function()? musicMuteUnmute,
+    TResult Function()? musicMute,
+    TResult Function()? musicUnmute,
     TResult Function(int money)? addMoney,
+    TResult Function(bool isFlameScale)? increment,
+    TResult Function(bool isFlameScale)? decrement,
     TResult Function(int money)? removeMoney,
     required TResult orElse(),
   }) {
-    if (musicMuteUnmute != null) {
-      return musicMuteUnmute();
+    if (musicMute != null) {
+      return musicMute();
     }
     return orElse();
   }
@@ -1073,13 +1421,17 @@ class _$MusicMuteUnmuteImpl implements MusicMuteUnmute {
     required TResult Function(ShowShop value) showShop,
     required TResult Function(ShowEco value) showEco,
     required TResult Function(ShowMoney value) showMoney,
+    required TResult Function(ShowSettings value) showSettings,
     required TResult Function(ShowEnergy value) showEnergy,
     required TResult Function(CloseAll value) closeAll,
-    required TResult Function(MusicMuteUnmute value) musicMuteUnmute,
+    required TResult Function(MusicMute value) musicMute,
+    required TResult Function(MusicUnmute value) musicUnmute,
     required TResult Function(AddMoney value) addMoney,
+    required TResult Function(Increment value) increment,
+    required TResult Function(Decrement value) decrement,
     required TResult Function(RemoveMoney value) removeMoney,
   }) {
-    return musicMuteUnmute(this);
+    return musicMute(this);
   }
 
   @override
@@ -1089,13 +1441,17 @@ class _$MusicMuteUnmuteImpl implements MusicMuteUnmute {
     TResult? Function(ShowShop value)? showShop,
     TResult? Function(ShowEco value)? showEco,
     TResult? Function(ShowMoney value)? showMoney,
+    TResult? Function(ShowSettings value)? showSettings,
     TResult? Function(ShowEnergy value)? showEnergy,
     TResult? Function(CloseAll value)? closeAll,
-    TResult? Function(MusicMuteUnmute value)? musicMuteUnmute,
+    TResult? Function(MusicMute value)? musicMute,
+    TResult? Function(MusicUnmute value)? musicUnmute,
     TResult? Function(AddMoney value)? addMoney,
+    TResult? Function(Increment value)? increment,
+    TResult? Function(Decrement value)? decrement,
     TResult? Function(RemoveMoney value)? removeMoney,
   }) {
-    return musicMuteUnmute?.call(this);
+    return musicMute?.call(this);
   }
 
   @override
@@ -1105,22 +1461,194 @@ class _$MusicMuteUnmuteImpl implements MusicMuteUnmute {
     TResult Function(ShowShop value)? showShop,
     TResult Function(ShowEco value)? showEco,
     TResult Function(ShowMoney value)? showMoney,
+    TResult Function(ShowSettings value)? showSettings,
     TResult Function(ShowEnergy value)? showEnergy,
     TResult Function(CloseAll value)? closeAll,
-    TResult Function(MusicMuteUnmute value)? musicMuteUnmute,
+    TResult Function(MusicMute value)? musicMute,
+    TResult Function(MusicUnmute value)? musicUnmute,
     TResult Function(AddMoney value)? addMoney,
+    TResult Function(Increment value)? increment,
+    TResult Function(Decrement value)? decrement,
     TResult Function(RemoveMoney value)? removeMoney,
     required TResult orElse(),
   }) {
-    if (musicMuteUnmute != null) {
-      return musicMuteUnmute(this);
+    if (musicMute != null) {
+      return musicMute(this);
     }
     return orElse();
   }
 }
 
-abstract class MusicMuteUnmute implements GameEvent {
-  const factory MusicMuteUnmute() = _$MusicMuteUnmuteImpl;
+abstract class MusicMute implements GameEvent {
+  const factory MusicMute() = _$MusicMuteImpl;
+}
+
+/// @nodoc
+abstract class _$$MusicUnmuteImplCopyWith<$Res> {
+  factory _$$MusicUnmuteImplCopyWith(
+          _$MusicUnmuteImpl value, $Res Function(_$MusicUnmuteImpl) then) =
+      __$$MusicUnmuteImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$MusicUnmuteImplCopyWithImpl<$Res>
+    extends _$GameEventCopyWithImpl<$Res, _$MusicUnmuteImpl>
+    implements _$$MusicUnmuteImplCopyWith<$Res> {
+  __$$MusicUnmuteImplCopyWithImpl(
+      _$MusicUnmuteImpl _value, $Res Function(_$MusicUnmuteImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$MusicUnmuteImpl implements MusicUnmute {
+  const _$MusicUnmuteImpl();
+
+  @override
+  String toString() {
+    return 'GameEvent.musicUnmute()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$MusicUnmuteImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() showMenu,
+    required TResult Function() showShop,
+    required TResult Function() showEco,
+    required TResult Function() showMoney,
+    required TResult Function() showSettings,
+    required TResult Function() showEnergy,
+    required TResult Function() closeAll,
+    required TResult Function() musicMute,
+    required TResult Function() musicUnmute,
+    required TResult Function(int money) addMoney,
+    required TResult Function(bool isFlameScale) increment,
+    required TResult Function(bool isFlameScale) decrement,
+    required TResult Function(int money) removeMoney,
+  }) {
+    return musicUnmute();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? showMenu,
+    TResult? Function()? showShop,
+    TResult? Function()? showEco,
+    TResult? Function()? showMoney,
+    TResult? Function()? showSettings,
+    TResult? Function()? showEnergy,
+    TResult? Function()? closeAll,
+    TResult? Function()? musicMute,
+    TResult? Function()? musicUnmute,
+    TResult? Function(int money)? addMoney,
+    TResult? Function(bool isFlameScale)? increment,
+    TResult? Function(bool isFlameScale)? decrement,
+    TResult? Function(int money)? removeMoney,
+  }) {
+    return musicUnmute?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? showMenu,
+    TResult Function()? showShop,
+    TResult Function()? showEco,
+    TResult Function()? showMoney,
+    TResult Function()? showSettings,
+    TResult Function()? showEnergy,
+    TResult Function()? closeAll,
+    TResult Function()? musicMute,
+    TResult Function()? musicUnmute,
+    TResult Function(int money)? addMoney,
+    TResult Function(bool isFlameScale)? increment,
+    TResult Function(bool isFlameScale)? decrement,
+    TResult Function(int money)? removeMoney,
+    required TResult orElse(),
+  }) {
+    if (musicUnmute != null) {
+      return musicUnmute();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ShowMenu value) showMenu,
+    required TResult Function(ShowShop value) showShop,
+    required TResult Function(ShowEco value) showEco,
+    required TResult Function(ShowMoney value) showMoney,
+    required TResult Function(ShowSettings value) showSettings,
+    required TResult Function(ShowEnergy value) showEnergy,
+    required TResult Function(CloseAll value) closeAll,
+    required TResult Function(MusicMute value) musicMute,
+    required TResult Function(MusicUnmute value) musicUnmute,
+    required TResult Function(AddMoney value) addMoney,
+    required TResult Function(Increment value) increment,
+    required TResult Function(Decrement value) decrement,
+    required TResult Function(RemoveMoney value) removeMoney,
+  }) {
+    return musicUnmute(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ShowMenu value)? showMenu,
+    TResult? Function(ShowShop value)? showShop,
+    TResult? Function(ShowEco value)? showEco,
+    TResult? Function(ShowMoney value)? showMoney,
+    TResult? Function(ShowSettings value)? showSettings,
+    TResult? Function(ShowEnergy value)? showEnergy,
+    TResult? Function(CloseAll value)? closeAll,
+    TResult? Function(MusicMute value)? musicMute,
+    TResult? Function(MusicUnmute value)? musicUnmute,
+    TResult? Function(AddMoney value)? addMoney,
+    TResult? Function(Increment value)? increment,
+    TResult? Function(Decrement value)? decrement,
+    TResult? Function(RemoveMoney value)? removeMoney,
+  }) {
+    return musicUnmute?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ShowMenu value)? showMenu,
+    TResult Function(ShowShop value)? showShop,
+    TResult Function(ShowEco value)? showEco,
+    TResult Function(ShowMoney value)? showMoney,
+    TResult Function(ShowSettings value)? showSettings,
+    TResult Function(ShowEnergy value)? showEnergy,
+    TResult Function(CloseAll value)? closeAll,
+    TResult Function(MusicMute value)? musicMute,
+    TResult Function(MusicUnmute value)? musicUnmute,
+    TResult Function(AddMoney value)? addMoney,
+    TResult Function(Increment value)? increment,
+    TResult Function(Decrement value)? decrement,
+    TResult Function(RemoveMoney value)? removeMoney,
+    required TResult orElse(),
+  }) {
+    if (musicUnmute != null) {
+      return musicUnmute(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class MusicUnmute implements GameEvent {
+  const factory MusicUnmute() = _$MusicUnmuteImpl;
 }
 
 /// @nodoc
@@ -1191,10 +1719,14 @@ class _$AddMoneyImpl implements AddMoney {
     required TResult Function() showShop,
     required TResult Function() showEco,
     required TResult Function() showMoney,
+    required TResult Function() showSettings,
     required TResult Function() showEnergy,
     required TResult Function() closeAll,
-    required TResult Function() musicMuteUnmute,
+    required TResult Function() musicMute,
+    required TResult Function() musicUnmute,
     required TResult Function(int money) addMoney,
+    required TResult Function(bool isFlameScale) increment,
+    required TResult Function(bool isFlameScale) decrement,
     required TResult Function(int money) removeMoney,
   }) {
     return addMoney(money);
@@ -1207,10 +1739,14 @@ class _$AddMoneyImpl implements AddMoney {
     TResult? Function()? showShop,
     TResult? Function()? showEco,
     TResult? Function()? showMoney,
+    TResult? Function()? showSettings,
     TResult? Function()? showEnergy,
     TResult? Function()? closeAll,
-    TResult? Function()? musicMuteUnmute,
+    TResult? Function()? musicMute,
+    TResult? Function()? musicUnmute,
     TResult? Function(int money)? addMoney,
+    TResult? Function(bool isFlameScale)? increment,
+    TResult? Function(bool isFlameScale)? decrement,
     TResult? Function(int money)? removeMoney,
   }) {
     return addMoney?.call(money);
@@ -1223,10 +1759,14 @@ class _$AddMoneyImpl implements AddMoney {
     TResult Function()? showShop,
     TResult Function()? showEco,
     TResult Function()? showMoney,
+    TResult Function()? showSettings,
     TResult Function()? showEnergy,
     TResult Function()? closeAll,
-    TResult Function()? musicMuteUnmute,
+    TResult Function()? musicMute,
+    TResult Function()? musicUnmute,
     TResult Function(int money)? addMoney,
+    TResult Function(bool isFlameScale)? increment,
+    TResult Function(bool isFlameScale)? decrement,
     TResult Function(int money)? removeMoney,
     required TResult orElse(),
   }) {
@@ -1243,10 +1783,14 @@ class _$AddMoneyImpl implements AddMoney {
     required TResult Function(ShowShop value) showShop,
     required TResult Function(ShowEco value) showEco,
     required TResult Function(ShowMoney value) showMoney,
+    required TResult Function(ShowSettings value) showSettings,
     required TResult Function(ShowEnergy value) showEnergy,
     required TResult Function(CloseAll value) closeAll,
-    required TResult Function(MusicMuteUnmute value) musicMuteUnmute,
+    required TResult Function(MusicMute value) musicMute,
+    required TResult Function(MusicUnmute value) musicUnmute,
     required TResult Function(AddMoney value) addMoney,
+    required TResult Function(Increment value) increment,
+    required TResult Function(Decrement value) decrement,
     required TResult Function(RemoveMoney value) removeMoney,
   }) {
     return addMoney(this);
@@ -1259,10 +1803,14 @@ class _$AddMoneyImpl implements AddMoney {
     TResult? Function(ShowShop value)? showShop,
     TResult? Function(ShowEco value)? showEco,
     TResult? Function(ShowMoney value)? showMoney,
+    TResult? Function(ShowSettings value)? showSettings,
     TResult? Function(ShowEnergy value)? showEnergy,
     TResult? Function(CloseAll value)? closeAll,
-    TResult? Function(MusicMuteUnmute value)? musicMuteUnmute,
+    TResult? Function(MusicMute value)? musicMute,
+    TResult? Function(MusicUnmute value)? musicUnmute,
     TResult? Function(AddMoney value)? addMoney,
+    TResult? Function(Increment value)? increment,
+    TResult? Function(Decrement value)? decrement,
     TResult? Function(RemoveMoney value)? removeMoney,
   }) {
     return addMoney?.call(this);
@@ -1275,10 +1823,14 @@ class _$AddMoneyImpl implements AddMoney {
     TResult Function(ShowShop value)? showShop,
     TResult Function(ShowEco value)? showEco,
     TResult Function(ShowMoney value)? showMoney,
+    TResult Function(ShowSettings value)? showSettings,
     TResult Function(ShowEnergy value)? showEnergy,
     TResult Function(CloseAll value)? closeAll,
-    TResult Function(MusicMuteUnmute value)? musicMuteUnmute,
+    TResult Function(MusicMute value)? musicMute,
+    TResult Function(MusicUnmute value)? musicUnmute,
     TResult Function(AddMoney value)? addMoney,
+    TResult Function(Increment value)? increment,
+    TResult Function(Decrement value)? decrement,
     TResult Function(RemoveMoney value)? removeMoney,
     required TResult orElse(),
   }) {
@@ -1295,6 +1847,406 @@ abstract class AddMoney implements GameEvent {
   int get money;
   @JsonKey(ignore: true)
   _$$AddMoneyImplCopyWith<_$AddMoneyImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$IncrementImplCopyWith<$Res> {
+  factory _$$IncrementImplCopyWith(
+          _$IncrementImpl value, $Res Function(_$IncrementImpl) then) =
+      __$$IncrementImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isFlameScale});
+}
+
+/// @nodoc
+class __$$IncrementImplCopyWithImpl<$Res>
+    extends _$GameEventCopyWithImpl<$Res, _$IncrementImpl>
+    implements _$$IncrementImplCopyWith<$Res> {
+  __$$IncrementImplCopyWithImpl(
+      _$IncrementImpl _value, $Res Function(_$IncrementImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isFlameScale = null,
+  }) {
+    return _then(_$IncrementImpl(
+      null == isFlameScale
+          ? _value.isFlameScale
+          : isFlameScale // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$IncrementImpl implements Increment {
+  const _$IncrementImpl(this.isFlameScale);
+
+  @override
+  final bool isFlameScale;
+
+  @override
+  String toString() {
+    return 'GameEvent.increment(isFlameScale: $isFlameScale)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$IncrementImpl &&
+            (identical(other.isFlameScale, isFlameScale) ||
+                other.isFlameScale == isFlameScale));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, isFlameScale);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$IncrementImplCopyWith<_$IncrementImpl> get copyWith =>
+      __$$IncrementImplCopyWithImpl<_$IncrementImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() showMenu,
+    required TResult Function() showShop,
+    required TResult Function() showEco,
+    required TResult Function() showMoney,
+    required TResult Function() showSettings,
+    required TResult Function() showEnergy,
+    required TResult Function() closeAll,
+    required TResult Function() musicMute,
+    required TResult Function() musicUnmute,
+    required TResult Function(int money) addMoney,
+    required TResult Function(bool isFlameScale) increment,
+    required TResult Function(bool isFlameScale) decrement,
+    required TResult Function(int money) removeMoney,
+  }) {
+    return increment(isFlameScale);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? showMenu,
+    TResult? Function()? showShop,
+    TResult? Function()? showEco,
+    TResult? Function()? showMoney,
+    TResult? Function()? showSettings,
+    TResult? Function()? showEnergy,
+    TResult? Function()? closeAll,
+    TResult? Function()? musicMute,
+    TResult? Function()? musicUnmute,
+    TResult? Function(int money)? addMoney,
+    TResult? Function(bool isFlameScale)? increment,
+    TResult? Function(bool isFlameScale)? decrement,
+    TResult? Function(int money)? removeMoney,
+  }) {
+    return increment?.call(isFlameScale);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? showMenu,
+    TResult Function()? showShop,
+    TResult Function()? showEco,
+    TResult Function()? showMoney,
+    TResult Function()? showSettings,
+    TResult Function()? showEnergy,
+    TResult Function()? closeAll,
+    TResult Function()? musicMute,
+    TResult Function()? musicUnmute,
+    TResult Function(int money)? addMoney,
+    TResult Function(bool isFlameScale)? increment,
+    TResult Function(bool isFlameScale)? decrement,
+    TResult Function(int money)? removeMoney,
+    required TResult orElse(),
+  }) {
+    if (increment != null) {
+      return increment(isFlameScale);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ShowMenu value) showMenu,
+    required TResult Function(ShowShop value) showShop,
+    required TResult Function(ShowEco value) showEco,
+    required TResult Function(ShowMoney value) showMoney,
+    required TResult Function(ShowSettings value) showSettings,
+    required TResult Function(ShowEnergy value) showEnergy,
+    required TResult Function(CloseAll value) closeAll,
+    required TResult Function(MusicMute value) musicMute,
+    required TResult Function(MusicUnmute value) musicUnmute,
+    required TResult Function(AddMoney value) addMoney,
+    required TResult Function(Increment value) increment,
+    required TResult Function(Decrement value) decrement,
+    required TResult Function(RemoveMoney value) removeMoney,
+  }) {
+    return increment(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ShowMenu value)? showMenu,
+    TResult? Function(ShowShop value)? showShop,
+    TResult? Function(ShowEco value)? showEco,
+    TResult? Function(ShowMoney value)? showMoney,
+    TResult? Function(ShowSettings value)? showSettings,
+    TResult? Function(ShowEnergy value)? showEnergy,
+    TResult? Function(CloseAll value)? closeAll,
+    TResult? Function(MusicMute value)? musicMute,
+    TResult? Function(MusicUnmute value)? musicUnmute,
+    TResult? Function(AddMoney value)? addMoney,
+    TResult? Function(Increment value)? increment,
+    TResult? Function(Decrement value)? decrement,
+    TResult? Function(RemoveMoney value)? removeMoney,
+  }) {
+    return increment?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ShowMenu value)? showMenu,
+    TResult Function(ShowShop value)? showShop,
+    TResult Function(ShowEco value)? showEco,
+    TResult Function(ShowMoney value)? showMoney,
+    TResult Function(ShowSettings value)? showSettings,
+    TResult Function(ShowEnergy value)? showEnergy,
+    TResult Function(CloseAll value)? closeAll,
+    TResult Function(MusicMute value)? musicMute,
+    TResult Function(MusicUnmute value)? musicUnmute,
+    TResult Function(AddMoney value)? addMoney,
+    TResult Function(Increment value)? increment,
+    TResult Function(Decrement value)? decrement,
+    TResult Function(RemoveMoney value)? removeMoney,
+    required TResult orElse(),
+  }) {
+    if (increment != null) {
+      return increment(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Increment implements GameEvent {
+  const factory Increment(final bool isFlameScale) = _$IncrementImpl;
+
+  bool get isFlameScale;
+  @JsonKey(ignore: true)
+  _$$IncrementImplCopyWith<_$IncrementImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DecrementImplCopyWith<$Res> {
+  factory _$$DecrementImplCopyWith(
+          _$DecrementImpl value, $Res Function(_$DecrementImpl) then) =
+      __$$DecrementImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isFlameScale});
+}
+
+/// @nodoc
+class __$$DecrementImplCopyWithImpl<$Res>
+    extends _$GameEventCopyWithImpl<$Res, _$DecrementImpl>
+    implements _$$DecrementImplCopyWith<$Res> {
+  __$$DecrementImplCopyWithImpl(
+      _$DecrementImpl _value, $Res Function(_$DecrementImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isFlameScale = null,
+  }) {
+    return _then(_$DecrementImpl(
+      null == isFlameScale
+          ? _value.isFlameScale
+          : isFlameScale // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DecrementImpl implements Decrement {
+  const _$DecrementImpl(this.isFlameScale);
+
+  @override
+  final bool isFlameScale;
+
+  @override
+  String toString() {
+    return 'GameEvent.decrement(isFlameScale: $isFlameScale)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DecrementImpl &&
+            (identical(other.isFlameScale, isFlameScale) ||
+                other.isFlameScale == isFlameScale));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, isFlameScale);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DecrementImplCopyWith<_$DecrementImpl> get copyWith =>
+      __$$DecrementImplCopyWithImpl<_$DecrementImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() showMenu,
+    required TResult Function() showShop,
+    required TResult Function() showEco,
+    required TResult Function() showMoney,
+    required TResult Function() showSettings,
+    required TResult Function() showEnergy,
+    required TResult Function() closeAll,
+    required TResult Function() musicMute,
+    required TResult Function() musicUnmute,
+    required TResult Function(int money) addMoney,
+    required TResult Function(bool isFlameScale) increment,
+    required TResult Function(bool isFlameScale) decrement,
+    required TResult Function(int money) removeMoney,
+  }) {
+    return decrement(isFlameScale);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? showMenu,
+    TResult? Function()? showShop,
+    TResult? Function()? showEco,
+    TResult? Function()? showMoney,
+    TResult? Function()? showSettings,
+    TResult? Function()? showEnergy,
+    TResult? Function()? closeAll,
+    TResult? Function()? musicMute,
+    TResult? Function()? musicUnmute,
+    TResult? Function(int money)? addMoney,
+    TResult? Function(bool isFlameScale)? increment,
+    TResult? Function(bool isFlameScale)? decrement,
+    TResult? Function(int money)? removeMoney,
+  }) {
+    return decrement?.call(isFlameScale);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? showMenu,
+    TResult Function()? showShop,
+    TResult Function()? showEco,
+    TResult Function()? showMoney,
+    TResult Function()? showSettings,
+    TResult Function()? showEnergy,
+    TResult Function()? closeAll,
+    TResult Function()? musicMute,
+    TResult Function()? musicUnmute,
+    TResult Function(int money)? addMoney,
+    TResult Function(bool isFlameScale)? increment,
+    TResult Function(bool isFlameScale)? decrement,
+    TResult Function(int money)? removeMoney,
+    required TResult orElse(),
+  }) {
+    if (decrement != null) {
+      return decrement(isFlameScale);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ShowMenu value) showMenu,
+    required TResult Function(ShowShop value) showShop,
+    required TResult Function(ShowEco value) showEco,
+    required TResult Function(ShowMoney value) showMoney,
+    required TResult Function(ShowSettings value) showSettings,
+    required TResult Function(ShowEnergy value) showEnergy,
+    required TResult Function(CloseAll value) closeAll,
+    required TResult Function(MusicMute value) musicMute,
+    required TResult Function(MusicUnmute value) musicUnmute,
+    required TResult Function(AddMoney value) addMoney,
+    required TResult Function(Increment value) increment,
+    required TResult Function(Decrement value) decrement,
+    required TResult Function(RemoveMoney value) removeMoney,
+  }) {
+    return decrement(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ShowMenu value)? showMenu,
+    TResult? Function(ShowShop value)? showShop,
+    TResult? Function(ShowEco value)? showEco,
+    TResult? Function(ShowMoney value)? showMoney,
+    TResult? Function(ShowSettings value)? showSettings,
+    TResult? Function(ShowEnergy value)? showEnergy,
+    TResult? Function(CloseAll value)? closeAll,
+    TResult? Function(MusicMute value)? musicMute,
+    TResult? Function(MusicUnmute value)? musicUnmute,
+    TResult? Function(AddMoney value)? addMoney,
+    TResult? Function(Increment value)? increment,
+    TResult? Function(Decrement value)? decrement,
+    TResult? Function(RemoveMoney value)? removeMoney,
+  }) {
+    return decrement?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ShowMenu value)? showMenu,
+    TResult Function(ShowShop value)? showShop,
+    TResult Function(ShowEco value)? showEco,
+    TResult Function(ShowMoney value)? showMoney,
+    TResult Function(ShowSettings value)? showSettings,
+    TResult Function(ShowEnergy value)? showEnergy,
+    TResult Function(CloseAll value)? closeAll,
+    TResult Function(MusicMute value)? musicMute,
+    TResult Function(MusicUnmute value)? musicUnmute,
+    TResult Function(AddMoney value)? addMoney,
+    TResult Function(Increment value)? increment,
+    TResult Function(Decrement value)? decrement,
+    TResult Function(RemoveMoney value)? removeMoney,
+    required TResult orElse(),
+  }) {
+    if (decrement != null) {
+      return decrement(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Decrement implements GameEvent {
+  const factory Decrement(final bool isFlameScale) = _$DecrementImpl;
+
+  bool get isFlameScale;
+  @JsonKey(ignore: true)
+  _$$DecrementImplCopyWith<_$DecrementImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1366,10 +2318,14 @@ class _$RemoveMoneyImpl implements RemoveMoney {
     required TResult Function() showShop,
     required TResult Function() showEco,
     required TResult Function() showMoney,
+    required TResult Function() showSettings,
     required TResult Function() showEnergy,
     required TResult Function() closeAll,
-    required TResult Function() musicMuteUnmute,
+    required TResult Function() musicMute,
+    required TResult Function() musicUnmute,
     required TResult Function(int money) addMoney,
+    required TResult Function(bool isFlameScale) increment,
+    required TResult Function(bool isFlameScale) decrement,
     required TResult Function(int money) removeMoney,
   }) {
     return removeMoney(money);
@@ -1382,10 +2338,14 @@ class _$RemoveMoneyImpl implements RemoveMoney {
     TResult? Function()? showShop,
     TResult? Function()? showEco,
     TResult? Function()? showMoney,
+    TResult? Function()? showSettings,
     TResult? Function()? showEnergy,
     TResult? Function()? closeAll,
-    TResult? Function()? musicMuteUnmute,
+    TResult? Function()? musicMute,
+    TResult? Function()? musicUnmute,
     TResult? Function(int money)? addMoney,
+    TResult? Function(bool isFlameScale)? increment,
+    TResult? Function(bool isFlameScale)? decrement,
     TResult? Function(int money)? removeMoney,
   }) {
     return removeMoney?.call(money);
@@ -1398,10 +2358,14 @@ class _$RemoveMoneyImpl implements RemoveMoney {
     TResult Function()? showShop,
     TResult Function()? showEco,
     TResult Function()? showMoney,
+    TResult Function()? showSettings,
     TResult Function()? showEnergy,
     TResult Function()? closeAll,
-    TResult Function()? musicMuteUnmute,
+    TResult Function()? musicMute,
+    TResult Function()? musicUnmute,
     TResult Function(int money)? addMoney,
+    TResult Function(bool isFlameScale)? increment,
+    TResult Function(bool isFlameScale)? decrement,
     TResult Function(int money)? removeMoney,
     required TResult orElse(),
   }) {
@@ -1418,10 +2382,14 @@ class _$RemoveMoneyImpl implements RemoveMoney {
     required TResult Function(ShowShop value) showShop,
     required TResult Function(ShowEco value) showEco,
     required TResult Function(ShowMoney value) showMoney,
+    required TResult Function(ShowSettings value) showSettings,
     required TResult Function(ShowEnergy value) showEnergy,
     required TResult Function(CloseAll value) closeAll,
-    required TResult Function(MusicMuteUnmute value) musicMuteUnmute,
+    required TResult Function(MusicMute value) musicMute,
+    required TResult Function(MusicUnmute value) musicUnmute,
     required TResult Function(AddMoney value) addMoney,
+    required TResult Function(Increment value) increment,
+    required TResult Function(Decrement value) decrement,
     required TResult Function(RemoveMoney value) removeMoney,
   }) {
     return removeMoney(this);
@@ -1434,10 +2402,14 @@ class _$RemoveMoneyImpl implements RemoveMoney {
     TResult? Function(ShowShop value)? showShop,
     TResult? Function(ShowEco value)? showEco,
     TResult? Function(ShowMoney value)? showMoney,
+    TResult? Function(ShowSettings value)? showSettings,
     TResult? Function(ShowEnergy value)? showEnergy,
     TResult? Function(CloseAll value)? closeAll,
-    TResult? Function(MusicMuteUnmute value)? musicMuteUnmute,
+    TResult? Function(MusicMute value)? musicMute,
+    TResult? Function(MusicUnmute value)? musicUnmute,
     TResult? Function(AddMoney value)? addMoney,
+    TResult? Function(Increment value)? increment,
+    TResult? Function(Decrement value)? decrement,
     TResult? Function(RemoveMoney value)? removeMoney,
   }) {
     return removeMoney?.call(this);
@@ -1450,10 +2422,14 @@ class _$RemoveMoneyImpl implements RemoveMoney {
     TResult Function(ShowShop value)? showShop,
     TResult Function(ShowEco value)? showEco,
     TResult Function(ShowMoney value)? showMoney,
+    TResult Function(ShowSettings value)? showSettings,
     TResult Function(ShowEnergy value)? showEnergy,
     TResult Function(CloseAll value)? closeAll,
-    TResult Function(MusicMuteUnmute value)? musicMuteUnmute,
+    TResult Function(MusicMute value)? musicMute,
+    TResult Function(MusicUnmute value)? musicUnmute,
     TResult Function(AddMoney value)? addMoney,
+    TResult Function(Increment value)? increment,
+    TResult Function(Decrement value)? decrement,
     TResult Function(RemoveMoney value)? removeMoney,
     required TResult orElse(),
   }) {
@@ -1480,6 +2456,9 @@ mixin _$GameState {
   bool get moneyOpen => throw _privateConstructorUsedError;
   bool get ecoOpen => throw _privateConstructorUsedError;
   bool get energyOpen => throw _privateConstructorUsedError;
+  bool get settingsOpen => throw _privateConstructorUsedError;
+  int get flameScale => throw _privateConstructorUsedError;
+  int get flutterScale => throw _privateConstructorUsedError;
   int get money => throw _privateConstructorUsedError;
   bool get isMusicPlaying => throw _privateConstructorUsedError;
 
@@ -1499,6 +2478,9 @@ abstract class $GameStateCopyWith<$Res> {
       bool moneyOpen,
       bool ecoOpen,
       bool energyOpen,
+      bool settingsOpen,
+      int flameScale,
+      int flutterScale,
       int money,
       bool isMusicPlaying});
 }
@@ -1521,6 +2503,9 @@ class _$GameStateCopyWithImpl<$Res, $Val extends GameState>
     Object? moneyOpen = null,
     Object? ecoOpen = null,
     Object? energyOpen = null,
+    Object? settingsOpen = null,
+    Object? flameScale = null,
+    Object? flutterScale = null,
     Object? money = null,
     Object? isMusicPlaying = null,
   }) {
@@ -1545,6 +2530,18 @@ class _$GameStateCopyWithImpl<$Res, $Val extends GameState>
           ? _value.energyOpen
           : energyOpen // ignore: cast_nullable_to_non_nullable
               as bool,
+      settingsOpen: null == settingsOpen
+          ? _value.settingsOpen
+          : settingsOpen // ignore: cast_nullable_to_non_nullable
+              as bool,
+      flameScale: null == flameScale
+          ? _value.flameScale
+          : flameScale // ignore: cast_nullable_to_non_nullable
+              as int,
+      flutterScale: null == flutterScale
+          ? _value.flutterScale
+          : flutterScale // ignore: cast_nullable_to_non_nullable
+              as int,
       money: null == money
           ? _value.money
           : money // ignore: cast_nullable_to_non_nullable
@@ -1571,6 +2568,9 @@ abstract class _$$GameStateImplCopyWith<$Res>
       bool moneyOpen,
       bool ecoOpen,
       bool energyOpen,
+      bool settingsOpen,
+      int flameScale,
+      int flutterScale,
       int money,
       bool isMusicPlaying});
 }
@@ -1591,6 +2591,9 @@ class __$$GameStateImplCopyWithImpl<$Res>
     Object? moneyOpen = null,
     Object? ecoOpen = null,
     Object? energyOpen = null,
+    Object? settingsOpen = null,
+    Object? flameScale = null,
+    Object? flutterScale = null,
     Object? money = null,
     Object? isMusicPlaying = null,
   }) {
@@ -1615,6 +2618,18 @@ class __$$GameStateImplCopyWithImpl<$Res>
           ? _value.energyOpen
           : energyOpen // ignore: cast_nullable_to_non_nullable
               as bool,
+      settingsOpen: null == settingsOpen
+          ? _value.settingsOpen
+          : settingsOpen // ignore: cast_nullable_to_non_nullable
+              as bool,
+      flameScale: null == flameScale
+          ? _value.flameScale
+          : flameScale // ignore: cast_nullable_to_non_nullable
+              as int,
+      flutterScale: null == flutterScale
+          ? _value.flutterScale
+          : flutterScale // ignore: cast_nullable_to_non_nullable
+              as int,
       money: null == money
           ? _value.money
           : money // ignore: cast_nullable_to_non_nullable
@@ -1636,6 +2651,9 @@ class _$GameStateImpl implements _GameState {
       this.moneyOpen = false,
       this.ecoOpen = false,
       this.energyOpen = false,
+      this.settingsOpen = false,
+      required this.flameScale,
+      required this.flutterScale,
       this.money = 0,
       this.isMusicPlaying = false});
 
@@ -1656,6 +2674,13 @@ class _$GameStateImpl implements _GameState {
   final bool energyOpen;
   @override
   @JsonKey()
+  final bool settingsOpen;
+  @override
+  final int flameScale;
+  @override
+  final int flutterScale;
+  @override
+  @JsonKey()
   final int money;
   @override
   @JsonKey()
@@ -1663,7 +2688,7 @@ class _$GameStateImpl implements _GameState {
 
   @override
   String toString() {
-    return 'GameState(menuOpen: $menuOpen, shopOpen: $shopOpen, moneyOpen: $moneyOpen, ecoOpen: $ecoOpen, energyOpen: $energyOpen, money: $money, isMusicPlaying: $isMusicPlaying)';
+    return 'GameState(menuOpen: $menuOpen, shopOpen: $shopOpen, moneyOpen: $moneyOpen, ecoOpen: $ecoOpen, energyOpen: $energyOpen, settingsOpen: $settingsOpen, flameScale: $flameScale, flutterScale: $flutterScale, money: $money, isMusicPlaying: $isMusicPlaying)';
   }
 
   @override
@@ -1680,14 +2705,30 @@ class _$GameStateImpl implements _GameState {
             (identical(other.ecoOpen, ecoOpen) || other.ecoOpen == ecoOpen) &&
             (identical(other.energyOpen, energyOpen) ||
                 other.energyOpen == energyOpen) &&
+            (identical(other.settingsOpen, settingsOpen) ||
+                other.settingsOpen == settingsOpen) &&
+            (identical(other.flameScale, flameScale) ||
+                other.flameScale == flameScale) &&
+            (identical(other.flutterScale, flutterScale) ||
+                other.flutterScale == flutterScale) &&
             (identical(other.money, money) || other.money == money) &&
             (identical(other.isMusicPlaying, isMusicPlaying) ||
                 other.isMusicPlaying == isMusicPlaying));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, menuOpen, shopOpen, moneyOpen,
-      ecoOpen, energyOpen, money, isMusicPlaying);
+  int get hashCode => Object.hash(
+      runtimeType,
+      menuOpen,
+      shopOpen,
+      moneyOpen,
+      ecoOpen,
+      energyOpen,
+      settingsOpen,
+      flameScale,
+      flutterScale,
+      money,
+      isMusicPlaying);
 
   @JsonKey(ignore: true)
   @override
@@ -1703,6 +2744,9 @@ abstract class _GameState implements GameState {
       final bool moneyOpen,
       final bool ecoOpen,
       final bool energyOpen,
+      final bool settingsOpen,
+      required final int flameScale,
+      required final int flutterScale,
       final int money,
       final bool isMusicPlaying}) = _$GameStateImpl;
 
@@ -1716,6 +2760,12 @@ abstract class _GameState implements GameState {
   bool get ecoOpen;
   @override
   bool get energyOpen;
+  @override
+  bool get settingsOpen;
+  @override
+  int get flameScale;
+  @override
+  int get flutterScale;
   @override
   int get money;
   @override

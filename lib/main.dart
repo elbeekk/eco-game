@@ -13,8 +13,8 @@ void main() {
   Flame.device.setLandscape();
   FlameAudio.bgm.initialize();
   LocalStorage.init();
-  SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(systemNavigationBarColor: Colors.green.shade900));
+  // SystemChrome.setSystemUIOverlayStyle(
+  //     SystemUiOverlayStyle(systemNavigationBarColor: Colors.green.shade900));
   runApp(const MyApp());
 }
 

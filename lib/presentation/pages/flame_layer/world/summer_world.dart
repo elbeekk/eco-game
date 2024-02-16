@@ -5,11 +5,13 @@ import 'package:eco_game/presentation/pages/flame_layer/game/eco_game.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/sprite.dart';
+import 'package:flame_bloc/flame_bloc.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 
 class SummerWorld extends World with HasGameRef<EcoGame>,TapCallbacks{
   late TiledComponent level;
   late Building building;
+
   @override
   void onTapUp(TapUpEvent event) {
     gameRef.gameBloc.add(const GameEvent.closeAll());

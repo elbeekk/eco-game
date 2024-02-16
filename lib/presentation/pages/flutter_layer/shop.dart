@@ -23,13 +23,12 @@ class Shop extends StatelessWidget {
               milliseconds: 200,
             ),
             height: gameState.shopOpen
-                ? MediaQuery.sizeOf(context).height * 0.45
+                ? MediaQuery.sizeOf(context).height * 0.49
                 : 0,
             // color: Colors.orange.withOpacity(.4),
-            constraints: const BoxConstraints(maxHeight: 150),
+            constraints: const BoxConstraints(maxHeight: 190),
             width: MediaQuery.sizeOf(context).width,
-            child: gameState.shopOpen
-                ? Row(
+            child: Row(
                     children: [
                       Expanded(
                         child: BlocBuilder<ShopBloc, ShopState>(
@@ -77,23 +76,26 @@ class Shop extends StatelessWidget {
                                             Expanded(
                                                 child: Image.asset(
                                                     current.image ?? '')),
-                                            if (gameState.shopOpen)
-                                              Row(
-                                                children: [
-                                                  Icon(
-                                                    Pixel.coin,
-                                                    color: Colors
-                                                        .orangeAccent.shade200,
-                                                  ),
-                                                  Text(
-                                                    current.price.toString() ??
-                                                        '',
-                                                    style: GoogleFonts.vt323(
-                                                        color: Colors.orange,
-                                                        fontSize: 18),
-                                                  )
-                                                ],
-                                              ),
+                                            Row(
+                                              children: [
+                                                Icon(
+                                                  Pixel.coin,
+                                                  color: Colors
+                                                      .orangeAccent.shade200,
+                                                ),
+                                                Text(
+                                                  current.price.toString() ??
+                                                      '',
+                                                  style: GoogleFonts.vt323(
+                                                      color: Colors.orange,
+                                                      fontSize: (19 +
+                                                          2 *
+                                                              gameState
+                                                                  .flutterScale)
+                                                          .toDouble()),
+                                                )
+                                              ],
+                                            )
                                           ],
                                         ),
                                       );
@@ -125,7 +127,11 @@ class Shop extends StatelessWidget {
                                             Text(
                                               shopState.selected?.name ?? '',
                                               style: GoogleFonts.vt323(
-                                                  fontSize: 24,
+                                                  fontSize: (22 +
+                                                          2 *
+                                                              gameState
+                                                                  .flutterScale)
+                                                      .toDouble(),
                                                   color: Colors.white),
                                             ),
                                             Expanded(
@@ -170,8 +176,9 @@ class Shop extends StatelessWidget {
                                                                   style: GoogleFonts.vt323(
                                                                       color: Colors
                                                                           .blue,
-                                                                      fontSize:
-                                                                          20),
+                                                                      fontSize: (19 +
+                                                                              2 * gameState.flutterScale)
+                                                                          .toDouble()),
                                                                 ),
                                                               ],
                                                             ),
@@ -194,8 +201,9 @@ class Shop extends StatelessWidget {
                                                                             .green
                                                                         : Colors
                                                                             .red,
-                                                                    fontSize:
-                                                                        20),
+                                                                    fontSize: (19 +
+                                                                            2 * gameState.flutterScale)
+                                                                        .toDouble()),
                                                               ),
                                                             ],
                                                           ),
@@ -211,8 +219,9 @@ class Shop extends StatelessWidget {
                                                                 style: GoogleFonts.vt323(
                                                                     color: Colors
                                                                         .orange,
-                                                                    fontSize:
-                                                                        18),
+                                                                    fontSize: (19 +
+                                                                            2 * gameState.flutterScale)
+                                                                        .toDouble()),
                                                               )
                                                             ],
                                                           ),
@@ -223,54 +232,49 @@ class Shop extends StatelessWidget {
                                                 ),
                                               ),
                                             ),
+                                            const SizedBox(height: 4,),
                                             Expanded(
                                               flex: 2,
-                                              child: Padding(
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                        horizontal: 10,
-                                                        vertical: 5),
-                                                child: Row(
-                                                  children: [
-                                                    Expanded(
-                                                      child: ElevatedButton(
-                                                        onPressed: () {},
-                                                        style: ElevatedButton.styleFrom(
-                                                            backgroundColor:
-                                                                Colors.green,
-                                                            shape: RoundedRectangleBorder(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            4))),
-                                                        child: Row(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .center,
-                                                          children: [
-                                                            const Icon(
-                                                              Pixel.coin,
-                                                              color:
-                                                                  Colors.yellow,
-                                                            ),
-                                                            Text(
-                                                              shopState.selected
-                                                                      ?.price
-                                                                      .toString() ??
-                                                                  '',
-                                                              style: GoogleFonts
-                                                                  .vt323(
-                                                                      color: Colors
-                                                                          .yellow,
-                                                                      fontSize:
-                                                                          18),
-                                                            ),
-                                                          ],
-                                                        ),
+                                              child: Row(
+                                                children: [
+                                                  Expanded(
+                                                    child: ElevatedButton(
+                                                      onPressed: () {},
+                                                      style: ElevatedButton.styleFrom(
+                                                          backgroundColor:
+                                                              Colors.green,
+                                                          shape: RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          4))),
+                                                      child: Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          const Icon(
+                                                            Pixel.coin,
+                                                            color:
+                                                                Colors.yellow,
+                                                          ),
+                                                          Text(
+                                                            shopState.selected
+                                                                    ?.price
+                                                                    .toString() ??
+                                                                '',
+                                                            style: GoogleFonts
+                                                                .vt323(
+                                                                    color: Colors
+                                                                        .yellow,
+                                                                    fontSize:
+                                                                    (21+2*gameState.flutterScale).toDouble()),
+                                                          ),
+                                                        ],
                                                       ),
                                                     ),
-                                                  ],
-                                                ),
+                                                  ),
+                                                ],
                                               ),
                                             )
                                           ],
@@ -283,8 +287,7 @@ class Shop extends StatelessWidget {
                         },
                       ),
                     ],
-                  )
-                : const SizedBox.shrink(),
+                  ),
           );
         },
       ),
