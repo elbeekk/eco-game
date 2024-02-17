@@ -1,4 +1,4 @@
-import 'package:eco_game/infrastructure/services/local_storage.dart';
+import 'package:eco_game/infrastructure/services/local_storage/local_storage.dart';
 import 'package:eco_game/presentation/pages/splash/splash_google.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flame/flame.dart';

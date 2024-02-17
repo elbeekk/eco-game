@@ -1,6 +1,5 @@
 import 'package:eco_game/infrastructure/models/class/building_info.dart';
-import 'package:eco_game/infrastructure/services/local_storage_keys.dart';
-import 'package:flutter/material.dart';
+import 'package:eco_game/infrastructure/services/local_storage/local_storage_keys.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LocalStorage {

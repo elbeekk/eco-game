@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:eco_game/presentation/pages/flame_audio/audio.dart';
+import 'package:eco_game/infrastructure/services/audio/audio.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -10,7 +10,7 @@ part 'game_state.dart';
 part 'game_bloc.freezed.dart';
 
 class GameBloc extends Bloc<GameEvent, GameState> {
-  GameBloc() : super(const GameState(flameScale: 2,flutterScale: 2)) {
+  GameBloc() : super(const GameState(flameScale: 2, flutterScale: 2)) {
     on<Increment>((event, emit) {
       if (event.isFlameScale && state.flameScale < 4) {
         emit(state.copyWith(flameScale: state.flameScale + 1));
@@ -112,7 +112,8 @@ class GameBloc extends Bloc<GameEvent, GameState> {
     on<MusicMute>((event, emit) async {
       await AudioService.stopBgm();
       emit(state.copyWith(isMusicPlaying: false));
-    });on<MusicUnmute>((event, emit) async {
+    });
+    on<MusicUnmute>((event, emit) async {
       await AudioService.loadBgm();
       emit(state.copyWith(isMusicPlaying: true));
     });

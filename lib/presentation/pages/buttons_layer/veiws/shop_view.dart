@@ -11,8 +11,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pixelarticons/pixel.dart';
 
-class Shop extends StatelessWidget {
-  const Shop({super.key});
+class ShopView extends StatelessWidget {
+  const ShopView({super.key});
 
   @override
   Widget build(BuildContext context) {

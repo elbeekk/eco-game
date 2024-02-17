@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../application/game/game_bloc.dart';
+import '../../../../application/game/game_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class Coin extends StatelessWidget {
-  const Coin({super.key});
+class CoinView extends StatelessWidget {
+  const CoinView({super.key});
 
   @override
   Widget build(BuildContext context) {
