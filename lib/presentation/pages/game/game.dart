@@ -1,9 +1,8 @@
+import 'package:eco_game/application/building/building_bloc.dart';
 import 'package:eco_game/application/game/game_bloc.dart';
-import 'package:eco_game/presentation/pages/flame_audio/audio.dart';
-import 'package:eco_game/presentation/pages/flame_layer/flame_layer.dart';
+import 'package:eco_game/application/shop/shop_bloc.dart';
 import 'package:eco_game/presentation/pages/flutter_layer/flutter_layer.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_fgbg/flutter_fgbg.dart';
 
@@ -17,8 +16,18 @@ class GamePage extends StatefulWidget {
 class _GamePageState extends State<GamePage> {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<GameBloc>(
-      create: (context) => GameBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<GameBloc>(
+          create: (context) => GameBloc(),
+        ),
+        BlocProvider(
+          create: (context) => ShopBloc(),
+        ),
+        BlocProvider(
+          create: (context) => BuildingBloc(),
+        ),
+      ],
       child: BlocBuilder<GameBloc, GameState>(
         buildWhen: (previous, current) => false,
         builder: (context, state) {
@@ -47,13 +56,49 @@ class _GamePageState extends State<GamePage> {
                     //   context.read<GameBloc>().add(const GameEvent.showMoney());
                     // }
                   },
-                  child: const Scaffold(
+                  child: Scaffold(
                       body: Stack(
-                        children: [
-                          FlameLayer(),
-                          FlutterLayer(),
-                        ],
-                      )),
+                    clipBehavior: Clip.none,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          context
+                              .read<GameBloc>()
+                              .add(const GameEvent.closeAll());
+                        },
+                        child: InteractiveViewer(
+                          constrained: false,
+                          onInteractionUpdate: (details) {
+                            print(details.focalPointDelta.toString());
+                          },
+                          child: Container(
+                            height: 1000,
+                            width: 1000,
+                            color: Colors.red,
+                            child: Stack(
+                              children: [
+                                Image.asset(
+                                  "assets/images/png/summer.png",
+                                  fit: BoxFit.cover,
+                                  scale: .1,
+                                ),
+                                Positioned(
+                                  top: 10,
+                                  left: 10,
+                                  child: Container(
+                                    height: 10,
+                                    width: 10,
+                                    color: Colors.red,
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      const FlutterLayer(),
+                    ],
+                  )),
                 );
               },
             ),

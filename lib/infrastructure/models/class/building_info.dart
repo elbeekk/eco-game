@@ -2,6 +2,7 @@ import 'dart:convert';
 
 class BuildingInfoModel {
   String? name;
+  String? image;
   double? positionX;
   double? positionY;
   double? sizeX;
@@ -13,6 +14,7 @@ class BuildingInfoModel {
 
   BuildingInfoModel({
     this.name,
+    this.image,
     this.positionX,
     this.positionY,
     this.sizeX,
@@ -25,6 +27,7 @@ class BuildingInfoModel {
 
   BuildingInfoModel copyWith({
     String? name,
+    String? image,
     double? positionX,
     double? positionY,
     double? sizeX,
@@ -36,6 +39,7 @@ class BuildingInfoModel {
   }) =>
       BuildingInfoModel(
         name: name ?? this.name,
+        image: image ?? this.image,
         positionX: positionX ?? this.positionX,
         positionY: positionY ?? this.positionY,
         sizeX: sizeX ?? this.sizeX,
@@ -52,6 +56,7 @@ class BuildingInfoModel {
 
   factory BuildingInfoModel.fromJson(Map<String, dynamic> json) => BuildingInfoModel(
     name: json["name"],
+    image: json["image"],
     positionX: json["positionX"]?.toDouble(),
     positionY: json["positionY"]?.toDouble(),
     sizeX: json["sizeX"]?.toDouble(),
@@ -64,6 +69,7 @@ class BuildingInfoModel {
 
   Map<String, dynamic> toJson() => {
     "name": name,
+    "image": image,
     "positionX": positionX,
     "positionY": positionY,
     "sizeX": sizeX,

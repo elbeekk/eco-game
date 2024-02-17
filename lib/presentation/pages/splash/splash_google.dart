@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:eco_game/presentation/pages/flame_layer/flame_layer.dart';
 import 'package:eco_game/presentation/pages/game/game.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

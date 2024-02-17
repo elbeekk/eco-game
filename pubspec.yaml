@@ -45,9 +45,7 @@ dependencies:
   google_sign_in: ^6.2.1
   firebase_auth: ^4.17.4
   firebase_core: ^2.25.4
-  flame_bloc: ^1.10.10
   flame_audio: ^2.1.8
-  flame_isolate: ^0.5.1
   flutter_fgbg: ^0.3.0
   cached_network_image: ^3.3.1
   pixelarticons: ^0.4.0
