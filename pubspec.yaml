@@ -36,11 +36,8 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   google_fonts: ^6.1.0
-  flame: ^1.15.0
-  flame_tiled: ^1.18.4
   lottie: ^3.0.0
   flutter_vector_icons: ^2.0.0
-  games_services: ^4.0.1
   animated_text_kit: ^4.2.2
   google_sign_in: ^6.2.1
   firebase_auth: ^4.17.4
@@ -50,6 +47,10 @@ dependencies:
   cached_network_image: ^3.3.1
   pixelarticons: ^0.4.0
   shared_preferences: ^2.2.2
+  cloud_firestore: ^4.15.4
+  dartz: ^0.10.1
+  uuid: ^4.3.3
+  get_it: ^7.6.7
 
 
 dev_dependencies:

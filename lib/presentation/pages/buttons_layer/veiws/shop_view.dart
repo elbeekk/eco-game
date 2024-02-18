@@ -1,11 +1,9 @@
-import 'dart:math';
-
 import 'package:eco_game/application/building/building_bloc.dart';
 import 'package:eco_game/application/game/game_bloc.dart';
+import 'package:eco_game/application/settings/settings_bloc.dart';
 import 'package:eco_game/application/shop/shop_bloc.dart';
 import 'package:eco_game/infrastructure/data/local_data.dart';
-import 'package:eco_game/infrastructure/models/class/building_info.dart';
-import 'package:eco_game/infrastructure/models/class/shop_item.dart';
+import 'package:eco_game/infrastructure/models/class/building.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -24,7 +22,6 @@ class ShopView extends StatelessWidget {
           ),
           height:
               gameState.shopOpen ? MediaQuery.sizeOf(context).height * 0.49 : 0,
-          // color: Colors.orange.withOpacity(.4),
           constraints: const BoxConstraints(maxHeight: 190),
           width: MediaQuery.sizeOf(context).width,
           child: Row(
@@ -37,7 +34,7 @@ class ShopView extends StatelessWidget {
                       itemCount: LocalData.shopItems.length,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
-                        List<ShopItemModel> shopItems = LocalData.shopItems;
+                        List<BuildingModel> shopItems = LocalData.shopItems;
                         shopItems.sort(
                           (a, b) {
                             return (a.price ?? 0).compareTo(b.price ?? 0);
@@ -77,15 +74,20 @@ class ShopView extends StatelessWidget {
                                           Pixel.coin,
                                           color: Colors.orangeAccent.shade200,
                                         ),
-                                        Text(
-                                          current.price.toString() ?? '',
-                                          style: GoogleFonts.vt323(
-                                              color: Colors.orange,
-                                              fontSize: (19 +
-                                                      2 *
-                                                          gameState
-                                                              .flutterScale)
-                                                  .toDouble()),
+                                        BlocBuilder<SettingsBloc,
+                                            SettingsState>(
+                                          builder: (context, settingsState) {
+                                            return Text(
+                                              current.price.toString() ?? '',
+                                              style: GoogleFonts.vt323(
+                                                  color: Colors.orange,
+                                                  fontSize: (19 +
+                                                          2 *
+                                                              settingsState
+                                                                  .textSize)
+                                                      .toDouble()),
+                                            );
+                                          },
                                         )
                                       ],
                                     )
@@ -116,9 +118,10 @@ class ShopView extends StatelessWidget {
                                     Text(
                                       shopState.selected?.name ?? '',
                                       style: GoogleFonts.vt323(
-                                          fontSize:
-                                              (22 + 2 * gameState.flutterScale)
-                                                  .toDouble(),
+                                          fontSize: (22 + 2 * 2
+                                              // gameState.flutterScale
+                                              )
+                                              .toDouble(),
                                           color: Colors.white),
                                     ),
                                     Expanded(
@@ -150,19 +153,24 @@ class ShopView extends StatelessWidget {
                                                           Pixel.users,
                                                           color: Colors.blue,
                                                         ),
-                                                        Text(
-                                                          shopState.selected
-                                                                  ?.people
-                                                                  .toString() ??
-                                                              '',
-                                                          style: GoogleFonts.vt323(
-                                                              color:
-                                                                  Colors.blue,
-                                                              fontSize: (19 +
-                                                                      2 *
-                                                                          gameState
-                                                                              .flutterScale)
-                                                                  .toDouble()),
+                                                        BlocBuilder<
+                                                            SettingsBloc,
+                                                            SettingsState>(
+                                                          builder: (context,
+                                                              settingsState) {
+                                                            return Text(
+                                                              shopState.selected
+                                                                      ?.people
+                                                                      .toString() ??
+                                                                  '',
+                                                              style: GoogleFonts.vt323(
+                                                                  color: Colors
+                                                                      .blue,
+                                                                  fontSize: (19 +
+                                                                          2 * settingsState.textSize)
+                                                                      .toDouble()),
+                                                            );
+                                                          },
                                                         ),
                                                       ],
                                                     ),
@@ -174,17 +182,23 @@ class ShopView extends StatelessWidget {
                                                             ? Colors.green
                                                             : Colors.red,
                                                       ),
-                                                      Text(
-                                                        "${isGenerator ? "+" : ""}${shopState.selected?.energy} W/h",
-                                                        style: GoogleFonts.vt323(
-                                                            color: isGenerator
-                                                                ? Colors.green
-                                                                : Colors.red,
-                                                            fontSize: (19 +
-                                                                    2 *
-                                                                        gameState
-                                                                            .flutterScale)
-                                                                .toDouble()),
+                                                      BlocBuilder<SettingsBloc,
+                                                          SettingsState>(
+                                                        builder: (context,
+                                                            settingsState) {
+                                                          return Text(
+                                                            "${isGenerator ? "+" : ""}${shopState.selected?.energy} W/h",
+                                                            style: GoogleFonts.vt323(
+                                                                color: isGenerator
+                                                                    ? Colors
+                                                                        .green
+                                                                    : Colors
+                                                                        .red,
+                                                                fontSize: (19 +
+                                                                        2 * settingsState.textSize)
+                                                                    .toDouble()),
+                                                          );
+                                                        },
                                                       ),
                                                     ],
                                                   ),
@@ -194,16 +208,20 @@ class ShopView extends StatelessWidget {
                                                         Pixel.clock,
                                                         color: Colors.orange,
                                                       ),
-                                                      Text(
-                                                        "${shopState.selected?.duration} h",
-                                                        style: GoogleFonts.vt323(
-                                                            color:
-                                                                Colors.orange,
-                                                            fontSize: (19 +
-                                                                    2 *
-                                                                        gameState
-                                                                            .flutterScale)
-                                                                .toDouble()),
+                                                      BlocBuilder<SettingsBloc,
+                                                          SettingsState>(
+                                                        builder: (context,
+                                                            settingsState) {
+                                                          return Text(
+                                                            "${shopState.selected?.duration} h",
+                                                            style: GoogleFonts.vt323(
+                                                                color: Colors
+                                                                    .orange,
+                                                                fontSize: (19 +
+                                                                        2 * settingsState.textSize)
+                                                                    .toDouble()),
+                                                          );
+                                                        },
                                                       )
                                                     ],
                                                   ),
@@ -232,7 +250,7 @@ class ShopView extends StatelessWidget {
                                                         .add(
                                                           BuildingEvent
                                                               .addNewBuilding(
-                                                            BuildingInfoModel(
+                                                            BuildingModel(
                                                                 price: shopState
                                                                     .selected
                                                                     ?.price,
@@ -277,19 +295,23 @@ class ShopView extends StatelessWidget {
                                                         Pixel.coin,
                                                         color: Colors.yellow,
                                                       ),
-                                                      Text(
-                                                        shopState
-                                                                .selected?.price
-                                                                .toString() ??
-                                                            '',
-                                                        style: GoogleFonts.vt323(
-                                                            color:
-                                                                Colors.yellow,
-                                                            fontSize: (21 +
-                                                                    2 *
-                                                                        gameState
-                                                                            .flutterScale)
-                                                                .toDouble()),
+                                                      BlocBuilder<SettingsBloc,
+                                                          SettingsState>(
+                                                        builder: (context,
+                                                            settingsState) {
+                                                          return Text(
+                                                            shopState.selected
+                                                                    ?.price
+                                                                    .toString() ??
+                                                                '',
+                                                            style: GoogleFonts.vt323(
+                                                                color: Colors
+                                                                    .yellow,
+                                                                fontSize: (21 +
+                                                                        2 * settingsState.textSize)
+                                                                    .toDouble()),
+                                                          );
+                                                        },
                                                       ),
                                                     ],
                                                   ),

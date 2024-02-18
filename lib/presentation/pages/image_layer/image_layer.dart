@@ -2,11 +2,12 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:eco_game/application/game/game_bloc.dart';
+import 'package:eco_game/application/settings/settings_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ImageLayer extends StatefulWidget {
-  final List<Positioned> children;
+  final List<Widget> children;
 
   const ImageLayer({super.key, required this.children});
 
@@ -15,25 +16,14 @@ class ImageLayer extends StatefulWidget {
 }
 
 class _ImageLayerState extends State<ImageLayer> {
-  double width = 3000;
-  double height = 2500;
+ TransformationController transformationController =
+      TransformationController();
 
   @override
   void initState() {
-    getImageSize();
     super.initState();
   }
 
-  getImageSize() async {
-    File image = File("assets/images/png/summer.png");
-    var decodedImage = await decodeImageFromList(image.readAsBytesSync());
-    log("image_width ${decodedImage.width}");
-    log("image_height ${decodedImage.height}");
-    setState(() {
-      height = decodedImage.height.toDouble();
-      width = decodedImage.width.toDouble();
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,10 +34,49 @@ class _ImageLayerState extends State<ImageLayer> {
             context.read<GameBloc>().add(const GameEvent.closeAll());
           },
           child: InteractiveViewer(
+            minScale: 0.8,
+            scaleEnabled: false,
+            onInteractionEnd: (details) {
+
+              context.read<GameBloc>().add(
+                    GameEvent.changeCurrentPos(
+                      pos: Offset(
+                        transformationController.value
+                            .getColumn(3)
+                            .gr
+                            .y
+                            .toDouble()
+                            .abs(),
+                        transformationController.value
+                            .getColumn(3)
+                            .gr
+                            .x
+                            .toDouble()
+                            .abs(),
+                      ),
+                    ),
+                  );
+              log(Offset(
+                transformationController.value
+                    .getColumn(3)
+                    .gr
+                    .y
+                    .toDouble()
+                    .abs(),
+                transformationController.value
+                    .getColumn(3)
+                    .gr
+                    .x
+                    .toDouble()
+                    .abs(),
+              ).toString());
+            },
+            transformationController: transformationController,
+            maxScale: 1.4,
             constrained: false,
             child: Container(
-              height: height,
-              width: width,
+              height: 2000,
+              width: 2000,
               color: Colors.red,
               child: Stack(
                 children: [

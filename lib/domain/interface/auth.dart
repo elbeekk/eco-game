@@ -1,0 +1,23 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dartz/dartz.dart';
+import 'package:eco_game/infrastructure/models/class/user.dart';
+import 'package:flutter/material.dart';
+
+abstract class AuthInterface {
+  Future<Either<QueryDocumentSnapshot<Map<String,dynamic>>, dynamic>> login({
+    required String username,
+    required String password,
+  });
+
+  Future<Either<bool, dynamic>> checkUsername({
+    required String username,
+  });
+
+  Future updateFirebaseToken(String? token);
+
+  Future<Either<DocumentSnapshot<Map<String, dynamic>>, dynamic>> signUp({
+    required UserModel user,
+  });
+
+  Future<Either<String, dynamic>> setProfilePic(BuildContext context);
+}

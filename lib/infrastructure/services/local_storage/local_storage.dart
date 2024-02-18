@@ -1,4 +1,5 @@
-import 'package:eco_game/infrastructure/models/class/building_info.dart';
+import 'package:eco_game/infrastructure/models/class/building.dart';
+import 'package:eco_game/infrastructure/models/class/user.dart';
 import 'package:eco_game/infrastructure/services/local_storage/local_storage_keys.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -11,53 +12,70 @@ class LocalStorage {
     _preferences = await SharedPreferences.getInstance();
   }
 
-  static Future<void> addNewBuilding(
-      BuildingInfoModel buildingInfoModel) async {
+  /// ME
+  static Future<void> setMe(UserModel user) async {
+    if (_preferences != null) {
+      await _preferences?.setString(LocalStorageKeys.keyMe, user.toRawJson());
+    }
+  }
+
+  static UserModel getMe() {
+    if (_preferences != null) {
+      final rawUser = _preferences?.getString(LocalStorageKeys.keyMe);
+      return UserModel.fromRawJson(rawUser ?? '');
+    }
+    return UserModel();
+  }
+
+  static void removeMe() {
+    if (_preferences != null) {
+      final rawUser = _preferences?.remove(LocalStorageKeys.keyMe);
+    }
+  }
+
+  /// BUILDING
+  static Future<void> addNewBuilding(BuildingModel buildingModel) async {
     if (_preferences != null) {
       List<String> rawList =
           _preferences?.getStringList(LocalStorageKeys.keyBuildings) ?? [];
       _preferences?.setStringList(LocalStorageKeys.keyBuildings,
-          [...rawList, buildingInfoModel.toRawJson()]);
+          [...rawList, buildingModel.toRawJson()]);
     }
   }
 
-  static Future<void> removeOneBuilding(
-      BuildingInfoModel buildingInfoModel) async {
+  static Future<void> removeOneBuilding(BuildingModel buildingModel) async {
     if (_preferences != null) {
       final rawList =
           _preferences?.getStringList(LocalStorageKeys.keyBuildings);
       final modelList =
-          rawList?.map((e) => BuildingInfoModel.fromRawJson(e)).toList();
+          rawList?.map((e) => BuildingModel.fromRawJson(e)).toList();
       modelList?.removeWhere((element) =>
-          element.name == buildingInfoModel.name &&
-          element.date == buildingInfoModel.date);
+          element.name == buildingModel.name &&
+          element.date == buildingModel.date);
       _preferences?.setStringList(LocalStorageKeys.keyBuildings,
           modelList?.map((e) => e.toRawJson()).toList() ?? []);
     }
   }
 
-  static Future<void> setBuildings(
-      List<BuildingInfoModel> buildingInfoModels) async {
+  static Future<void> setBuildings(List<BuildingModel> buildingModels) async {
     if (_preferences != null) {
       _preferences?.setStringList(LocalStorageKeys.keyBuildings,
-          buildingInfoModels.map((e) => e.toRawJson()).toList());
+          buildingModels.map((e) => e.toRawJson()).toList());
     }
   }
 
-  static List<BuildingInfoModel> getBuildings() {
+  static List<BuildingModel> getBuildings() {
     if (_preferences != null) {
       final list = _preferences?.getStringList(LocalStorageKeys.keyBuildings);
-      return list?.map((e) => BuildingInfoModel.fromRawJson(e)).toList() ?? [];
+      return list?.map((e) => BuildingModel.fromRawJson(e)).toList() ?? [];
     }
     return [];
   }
 
   static Future<void> removeAllBuildings(
-      List<BuildingInfoModel> buildingInfoModels) async {
+      List<BuildingModel> buildingModel) async {
     if (_preferences != null) {
       _preferences?.remove(LocalStorageKeys.keyBuildings);
     }
   }
-
-
 }

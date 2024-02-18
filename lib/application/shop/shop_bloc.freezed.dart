@@ -16,20 +16,20 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ShopEvent {
-  ShopItemModel get shopItemModel => throw _privateConstructorUsedError;
+  BuildingModel get shopItemModel => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ShopItemModel shopItemModel) select,
+    required TResult Function(BuildingModel shopItemModel) select,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ShopItemModel shopItemModel)? select,
+    TResult? Function(BuildingModel shopItemModel)? select,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ShopItemModel shopItemModel)? select,
+    TResult Function(BuildingModel shopItemModel)? select,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -60,7 +60,7 @@ abstract class $ShopEventCopyWith<$Res> {
   factory $ShopEventCopyWith(ShopEvent value, $Res Function(ShopEvent) then) =
       _$ShopEventCopyWithImpl<$Res, ShopEvent>;
   @useResult
-  $Res call({ShopItemModel shopItemModel});
+  $Res call({BuildingModel shopItemModel});
 }
 
 /// @nodoc
@@ -82,7 +82,7 @@ class _$ShopEventCopyWithImpl<$Res, $Val extends ShopEvent>
       shopItemModel: null == shopItemModel
           ? _value.shopItemModel
           : shopItemModel // ignore: cast_nullable_to_non_nullable
-              as ShopItemModel,
+              as BuildingModel,
     ) as $Val);
   }
 }
@@ -94,7 +94,7 @@ abstract class _$$SelectImplCopyWith<$Res> implements $ShopEventCopyWith<$Res> {
       __$$SelectImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ShopItemModel shopItemModel});
+  $Res call({BuildingModel shopItemModel});
 }
 
 /// @nodoc
@@ -114,7 +114,7 @@ class __$$SelectImplCopyWithImpl<$Res>
       null == shopItemModel
           ? _value.shopItemModel
           : shopItemModel // ignore: cast_nullable_to_non_nullable
-              as ShopItemModel,
+              as BuildingModel,
     ));
   }
 }
@@ -125,7 +125,7 @@ class _$SelectImpl implements Select {
   const _$SelectImpl(this.shopItemModel);
 
   @override
-  final ShopItemModel shopItemModel;
+  final BuildingModel shopItemModel;
 
   @override
   String toString() {
@@ -153,7 +153,7 @@ class _$SelectImpl implements Select {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ShopItemModel shopItemModel) select,
+    required TResult Function(BuildingModel shopItemModel) select,
   }) {
     return select(shopItemModel);
   }
@@ -161,7 +161,7 @@ class _$SelectImpl implements Select {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ShopItemModel shopItemModel)? select,
+    TResult? Function(BuildingModel shopItemModel)? select,
   }) {
     return select?.call(shopItemModel);
   }
@@ -169,7 +169,7 @@ class _$SelectImpl implements Select {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ShopItemModel shopItemModel)? select,
+    TResult Function(BuildingModel shopItemModel)? select,
     required TResult orElse(),
   }) {
     if (select != null) {
@@ -208,10 +208,10 @@ class _$SelectImpl implements Select {
 }
 
 abstract class Select implements ShopEvent {
-  const factory Select(final ShopItemModel shopItemModel) = _$SelectImpl;
+  const factory Select(final BuildingModel shopItemModel) = _$SelectImpl;
 
   @override
-  ShopItemModel get shopItemModel;
+  BuildingModel get shopItemModel;
   @override
   @JsonKey(ignore: true)
   _$$SelectImplCopyWith<_$SelectImpl> get copyWith =>
@@ -220,7 +220,7 @@ abstract class Select implements ShopEvent {
 
 /// @nodoc
 mixin _$ShopState {
-  ShopItemModel? get selected => throw _privateConstructorUsedError;
+  BuildingModel? get selected => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ShopStateCopyWith<ShopState> get copyWith =>
@@ -232,7 +232,7 @@ abstract class $ShopStateCopyWith<$Res> {
   factory $ShopStateCopyWith(ShopState value, $Res Function(ShopState) then) =
       _$ShopStateCopyWithImpl<$Res, ShopState>;
   @useResult
-  $Res call({ShopItemModel? selected});
+  $Res call({BuildingModel? selected});
 }
 
 /// @nodoc
@@ -254,7 +254,7 @@ class _$ShopStateCopyWithImpl<$Res, $Val extends ShopState>
       selected: freezed == selected
           ? _value.selected
           : selected // ignore: cast_nullable_to_non_nullable
-              as ShopItemModel?,
+              as BuildingModel?,
     ) as $Val);
   }
 }
@@ -267,7 +267,7 @@ abstract class _$$ShopStateImplCopyWith<$Res>
       __$$ShopStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ShopItemModel? selected});
+  $Res call({BuildingModel? selected});
 }
 
 /// @nodoc
@@ -287,7 +287,7 @@ class __$$ShopStateImplCopyWithImpl<$Res>
       selected: freezed == selected
           ? _value.selected
           : selected // ignore: cast_nullable_to_non_nullable
-              as ShopItemModel?,
+              as BuildingModel?,
     ));
   }
 }
@@ -298,7 +298,7 @@ class _$ShopStateImpl implements _ShopState {
   const _$ShopStateImpl({this.selected});
 
   @override
-  final ShopItemModel? selected;
+  final BuildingModel? selected;
 
   @override
   String toString() {
@@ -325,10 +325,10 @@ class _$ShopStateImpl implements _ShopState {
 }
 
 abstract class _ShopState implements ShopState {
-  const factory _ShopState({final ShopItemModel? selected}) = _$ShopStateImpl;
+  const factory _ShopState({final BuildingModel? selected}) = _$ShopStateImpl;
 
   @override
-  ShopItemModel? get selected;
+  BuildingModel? get selected;
   @override
   @JsonKey(ignore: true)
   _$$ShopStateImplCopyWith<_$ShopStateImpl> get copyWith =>

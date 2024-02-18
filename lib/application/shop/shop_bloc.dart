@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:eco_game/infrastructure/models/class/shop_item.dart';
+import 'package:eco_game/infrastructure/models/class/building.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'shop_event.dart';

@@ -4,6 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pixelarticons/pixel.dart';
 
+import '../../../../application/settings/settings_bloc.dart';
+import '../../../../application/user/user_bloc.dart';
+
 class CoinButton extends StatelessWidget {
   const CoinButton({super.key});
 
@@ -17,12 +20,21 @@ class CoinButton extends StatelessWidget {
           },
           child: Row(
             children: [
-              Text(
-                "1230${state.money}",
-                style: GoogleFonts.vt323(
-                  color: Colors.yellow,
-                  fontSize: (24 + 2 * state.flutterScale).toDouble(),
-                ),
+              BlocBuilder<SettingsBloc, SettingsState>(
+                builder: (context, settingsState) {
+                  return BlocBuilder<UserBloc, UserState>(
+                    builder: (context, userState) {
+                      return Text(
+                        "1230${userState.coins}",
+                        style: GoogleFonts.vt323(
+                          color: Colors.yellow,
+                          fontSize: (24 + 2 * settingsState.textSize)
+                              .toDouble(),
+                        ),
+                      );
+                    },
+                  );
+                },
               ),
               const Icon(
                 Pixel.coin,

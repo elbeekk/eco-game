@@ -14,12 +14,8 @@ class CoinView extends StatelessWidget {
         return AnimatedContainer(
           duration: const Duration(milliseconds: 200),
           constraints: const BoxConstraints(maxHeight: 300, maxWidth: 450),
-          height: state.energyOpen || state.ecoOpen || state.energyOpen
-              ? MediaQuery.sizeOf(context).height * 0.3
-              : 0,
-          width: state.energyOpen || state.ecoOpen || state.energyOpen
-              ? MediaQuery.sizeOf(context).width * 0.3
-              : 0,
+          height: state.moneyOpen ? MediaQuery.sizeOf(context).height * 0.3 : 0,
+          width: state.moneyOpen ? MediaQuery.sizeOf(context).width * 0.3 : 0,
           color: Colors.redAccent,
           child: Text(
             'Google',

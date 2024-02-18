@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-class BuildingInfoModel {
+class BuildingModel {
   String? name;
   String? image;
   double? positionX;
@@ -11,8 +11,9 @@ class BuildingInfoModel {
   int? energy;
   int? people;
   String? date;
+  int? duration;
 
-  BuildingInfoModel({
+  BuildingModel({
     this.name,
     this.image,
     this.positionX,
@@ -23,9 +24,10 @@ class BuildingInfoModel {
     this.energy,
     this.people,
     this.date,
+    this.duration,
   });
 
-  BuildingInfoModel copyWith({
+  BuildingModel copyWith({
     String? name,
     String? image,
     double? positionX,
@@ -36,8 +38,9 @@ class BuildingInfoModel {
     int? energy,
     int? people,
     String? date,
+    int? duration,
   }) =>
-      BuildingInfoModel(
+      BuildingModel(
         name: name ?? this.name,
         image: image ?? this.image,
         positionX: positionX ?? this.positionX,
@@ -48,13 +51,14 @@ class BuildingInfoModel {
         energy: energy ?? this.energy,
         people: people ?? this.people,
         date: date ?? this.date,
+        duration: duration ?? this.duration,
       );
 
-  factory BuildingInfoModel.fromRawJson(String str) => BuildingInfoModel.fromJson(json.decode(str));
+  factory BuildingModel.fromRawJson(String str) => BuildingModel.fromJson(json.decode(str));
 
   String toRawJson() => json.encode(toJson());
 
-  factory BuildingInfoModel.fromJson(Map<String, dynamic> json) => BuildingInfoModel(
+  factory BuildingModel.fromJson(Map<String, dynamic> json) => BuildingModel(
     name: json["name"],
     image: json["image"],
     positionX: json["positionX"]?.toDouble(),
@@ -65,6 +69,7 @@ class BuildingInfoModel {
     energy: json["energy"],
     people: json["people"],
     date: json["date"],
+    duration: json["duration"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -78,5 +83,6 @@ class BuildingInfoModel {
     "energy": energy,
     "people": people,
     "date": date,
+    "duration": duration,
   };
 }

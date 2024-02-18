@@ -1,6 +1,11 @@
+import 'dart:developer';
+
 import 'package:eco_game/application/building/building_bloc.dart';
 import 'package:eco_game/application/game/game_bloc.dart';
+import 'package:eco_game/application/settings/settings_bloc.dart';
 import 'package:eco_game/application/shop/shop_bloc.dart';
+import 'package:eco_game/application/user/user_bloc.dart';
+import 'package:eco_game/presentation/pages/buildings_layer/new_buildings/new_buildings.dart';
 import 'package:eco_game/presentation/pages/buttons_layer/buttons_layer.dart';
 import 'package:eco_game/presentation/pages/image_layer/image_layer.dart';
 import 'package:flutter/material.dart';
@@ -19,30 +24,33 @@ class _GamePageState extends State<GamePage> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<GameBloc>(
-          create: (context) => GameBloc(),
-        ),
-        BlocProvider(
-          create: (context) => ShopBloc(),
-        ),
         BlocProvider(
           create: (context) => BuildingBloc(),
         ),
+        BlocProvider(
+          create: (context) => GameBloc(),
+        ),
+        BlocProvider(
+          create: (context) => SettingsBloc(),
+        ),
+        BlocProvider(
+          create: (context) => ShopBloc(),
+        ),BlocProvider(
+          create: (context) => UserBloc(),
+        ),
       ],
-      child: BlocBuilder<GameBloc, GameState>(
-        buildWhen: (previous, current) => false,
-        builder: (context, state) {
+      child: BlocBuilder<SettingsBloc, SettingsState>(
+        builder: (context, settingsState) {
           return FGBGNotifier(
             onEvent: (value) async {
               if (value == FGBGType.background) {
-                context.read<GameBloc>().add(const GameEvent.musicMute());
+                // context.read<SettingsBloc>().add(const GameEvent.musicMute());
               } else {
-                context.read<GameBloc>().add(const GameEvent.musicUnmute());
+                // context.read<SettingsBloc>().add(const GameEvent.musicUnmute());
               }
             },
             child: BlocBuilder<GameBloc, GameState>(
-              buildWhen: (previous, current) => false,
-              builder: (context, state) {
+              builder: (context, gameState) {
                 return RawKeyboardListener(
                   autofocus: true,
                   focusNode: FocusNode(),
@@ -61,17 +69,19 @@ class _GamePageState extends State<GamePage> {
                       body: Stack(
                     clipBehavior: Clip.none,
                     children: [
-                      ImageLayer(children: [
-                        Positioned(
-                          top: 10,
-                          left: 10,
-                          child: Container(
-                            height: 10,
-                            width: 10,
-                            color: Colors.red,
-                          ),
-                        ),
-                      ]),
+                      BlocBuilder<BuildingBloc, BuildingState>(
+                        builder: (context, buildingState) {
+                          return ImageLayer(children: [
+                            ...List.generate(buildingState.newBuildings.length,
+                                (index) {
+                              final current = buildingState.newBuildings[index];
+                              return NewBuilding(
+                                building: current,
+                              );
+                            }),
+                          ]);
+                        },
+                      ),
                       const ButtonsLayer(),
                     ],
                   )),

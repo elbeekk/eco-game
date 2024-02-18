@@ -8,5 +8,6 @@
   "price": 10,
   "energy": -10,
   "people": 10,
-  "date": ""
+  "date": "",
+  "duration": 3
 }
