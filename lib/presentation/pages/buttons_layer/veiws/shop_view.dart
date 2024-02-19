@@ -240,81 +240,78 @@ class ShopView extends StatelessWidget {
                                       child: Row(
                                         children: [
                                           Expanded(
-                                            child: BlocBuilder<BuildingBloc,
-                                                BuildingState>(
-                                              builder: (context, state) {
-                                                return ElevatedButton(
-                                                  onPressed: () {
-                                                    context
-                                                        .read<BuildingBloc>()
-                                                        .add(
-                                                          BuildingEvent
-                                                              .addNewBuilding(
-                                                            BuildingModel(
-                                                                price: shopState
-                                                                    .selected
-                                                                    ?.price,
-                                                                people: shopState
-                                                                    .selected
-                                                                    ?.people,
-                                                                energy: shopState
-                                                                    .selected
-                                                                    ?.energy,
-                                                                image: shopState
-                                                                    .selected
-                                                                    ?.image,
-                                                                date: DateTime
-                                                                        .now()
-                                                                    .millisecondsSinceEpoch
-                                                                    .toString(),
-                                                                name: shopState
-                                                                    .selected
-                                                                    ?.name,
-                                                                positionX: 100,
-                                                                positionY: 100,
-                                                                sizeX: 16,
-                                                                sizeY: 16),
-                                                          ),
-                                                        );
-                                                  },
-                                                  style: ElevatedButton.styleFrom(
-                                                      backgroundColor:
-                                                          Colors.green,
-                                                      shape:
-                                                          RoundedRectangleBorder(
+                                            child: BlocBuilder<GameBloc,
+                                                GameState>(
+                                              builder: (context, gameState) {
+                                                return BlocBuilder<BuildingBloc,
+                                                    BuildingState>(
+                                                  builder: (context, state) {
+                                                    return ElevatedButton(
+                                                      onPressed: () {
+                                                        context
+                                                            .read<
+                                                                BuildingBloc>()
+                                                            .add(
+                                                              BuildingEvent
+                                                                  .addNewBuilding(
+                                                                shopState.selected?.copyWith(
+                                                                        date: DateTime.now()
+                                                                            .millisecondsSinceEpoch
+                                                                            .toString(),
+                                                                        positionY: gameState.currentPos.dy +
+                                                                            MediaQuery.sizeOf(context).height /
+                                                                                2 -
+                                                                            100,
+                                                                        positionX: gameState.currentPos.dx +
+                                                                            MediaQuery.sizeOf(context).width /
+                                                                                2 -
+                                                                            50) ??
+                                                                    BuildingModel(),
+                                                              ),
+                                                            );
+                                                      },
+                                                      style: ElevatedButton.styleFrom(
+                                                          backgroundColor:
+                                                              Colors.green,
+                                                          shape: RoundedRectangleBorder(
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .circular(
                                                                           4))),
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      const Icon(
-                                                        Pixel.coin,
-                                                        color: Colors.yellow,
+                                                      child: Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          const Icon(
+                                                            Pixel.coin,
+                                                            color:
+                                                                Colors.yellow,
+                                                          ),
+                                                          BlocBuilder<
+                                                              SettingsBloc,
+                                                              SettingsState>(
+                                                            builder: (context,
+                                                                settingsState) {
+                                                              return Text(
+                                                                shopState
+                                                                        .selected
+                                                                        ?.price
+                                                                        .toString() ??
+                                                                    '',
+                                                                style: GoogleFonts.vt323(
+                                                                    color: Colors
+                                                                        .yellow,
+                                                                    fontSize: (21 +
+                                                                            2 * settingsState.textSize)
+                                                                        .toDouble()),
+                                                              );
+                                                            },
+                                                          ),
+                                                        ],
                                                       ),
-                                                      BlocBuilder<SettingsBloc,
-                                                          SettingsState>(
-                                                        builder: (context,
-                                                            settingsState) {
-                                                          return Text(
-                                                            shopState.selected
-                                                                    ?.price
-                                                                    .toString() ??
-                                                                '',
-                                                            style: GoogleFonts.vt323(
-                                                                color: Colors
-                                                                    .yellow,
-                                                                fontSize: (21 +
-                                                                        2 * settingsState.textSize)
-                                                                    .toDouble()),
-                                                          );
-                                                        },
-                                                      ),
-                                                    ],
-                                                  ),
+                                                    );
+                                                  },
                                                 );
                                               },
                                             ),

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:eco_game/infrastructure/models/class/building.dart';
 import 'package:eco_game/infrastructure/models/class/user.dart';
 import 'package:eco_game/infrastructure/services/local_storage/local_storage_keys.dart';
@@ -19,12 +21,15 @@ class LocalStorage {
     }
   }
 
-  static UserModel getMe() {
+  static UserModel? getMe() {
     if (_preferences != null) {
       final rawUser = _preferences?.getString(LocalStorageKeys.keyMe);
-      return UserModel.fromRawJson(rawUser ?? '');
+      if (rawUser != null) {
+        return UserModel.fromRawJson(rawUser);
+      }
+      return null;
     }
-    return UserModel();
+    return null;
   }
 
   static void removeMe() {

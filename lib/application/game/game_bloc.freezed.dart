@@ -747,10 +747,10 @@ class __$$ChangeCurrentPosImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? pos = null,
+    Object? pos = freezed,
   }) {
     return _then(_$ChangeCurrentPosImpl(
-      pos: null == pos
+      pos: freezed == pos
           ? _value.pos
           : pos // ignore: cast_nullable_to_non_nullable
               as Offset,
@@ -776,11 +776,12 @@ class _$ChangeCurrentPosImpl implements ChangeCurrentPos {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ChangeCurrentPosImpl &&
-            (identical(other.pos, pos) || other.pos == pos));
+            const DeepCollectionEquality().equals(other.pos, pos));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, pos);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(pos));
 
   @JsonKey(ignore: true)
   @override
@@ -929,7 +930,7 @@ class _$GameStateCopyWithImpl<$Res, $Val extends GameState>
     Object? shopOpen = null,
     Object? moneyOpen = null,
     Object? settingsOpen = null,
-    Object? currentPos = null,
+    Object? currentPos = freezed,
   }) {
     return _then(_value.copyWith(
       menuOpen: null == menuOpen
@@ -948,7 +949,7 @@ class _$GameStateCopyWithImpl<$Res, $Val extends GameState>
           ? _value.settingsOpen
           : settingsOpen // ignore: cast_nullable_to_non_nullable
               as bool,
-      currentPos: null == currentPos
+      currentPos: freezed == currentPos
           ? _value.currentPos
           : currentPos // ignore: cast_nullable_to_non_nullable
               as Offset,
@@ -987,7 +988,7 @@ class __$$GameStateImplCopyWithImpl<$Res>
     Object? shopOpen = null,
     Object? moneyOpen = null,
     Object? settingsOpen = null,
-    Object? currentPos = null,
+    Object? currentPos = freezed,
   }) {
     return _then(_$GameStateImpl(
       menuOpen: null == menuOpen
@@ -1006,7 +1007,7 @@ class __$$GameStateImplCopyWithImpl<$Res>
           ? _value.settingsOpen
           : settingsOpen // ignore: cast_nullable_to_non_nullable
               as bool,
-      currentPos: null == currentPos
+      currentPos: freezed == currentPos
           ? _value.currentPos
           : currentPos // ignore: cast_nullable_to_non_nullable
               as Offset,
@@ -1057,13 +1058,13 @@ class _$GameStateImpl implements _GameState {
                 other.moneyOpen == moneyOpen) &&
             (identical(other.settingsOpen, settingsOpen) ||
                 other.settingsOpen == settingsOpen) &&
-            (identical(other.currentPos, currentPos) ||
-                other.currentPos == currentPos));
+            const DeepCollectionEquality()
+                .equals(other.currentPos, currentPos));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, menuOpen, shopOpen, moneyOpen, settingsOpen, currentPos);
+  int get hashCode => Object.hash(runtimeType, menuOpen, shopOpen, moneyOpen,
+      settingsOpen, const DeepCollectionEquality().hash(currentPos));
 
   @JsonKey(ignore: true)
   @override

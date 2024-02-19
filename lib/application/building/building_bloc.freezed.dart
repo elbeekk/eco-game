@@ -21,6 +21,7 @@ mixin _$BuildingEvent {
     required TResult Function(BuildingModel buildingInfoModel) addNewBuilding,
     required TResult Function(BuildingModel buildingInfoModel)
         removeNewBuilding,
+    required TResult Function(BuildingModel buildingInfoModel) startBuilding,
     required TResult Function(String name, String date, double x, double y)
         changePosition,
   }) =>
@@ -29,6 +30,7 @@ mixin _$BuildingEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(BuildingModel buildingInfoModel)? addNewBuilding,
     TResult? Function(BuildingModel buildingInfoModel)? removeNewBuilding,
+    TResult? Function(BuildingModel buildingInfoModel)? startBuilding,
     TResult? Function(String name, String date, double x, double y)?
         changePosition,
   }) =>
@@ -37,6 +39,7 @@ mixin _$BuildingEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(BuildingModel buildingInfoModel)? addNewBuilding,
     TResult Function(BuildingModel buildingInfoModel)? removeNewBuilding,
+    TResult Function(BuildingModel buildingInfoModel)? startBuilding,
     TResult Function(String name, String date, double x, double y)?
         changePosition,
     required TResult orElse(),
@@ -46,6 +49,7 @@ mixin _$BuildingEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(AddNewBuilding value) addNewBuilding,
     required TResult Function(RemoveNewBuilding value) removeNewBuilding,
+    required TResult Function(StartBuilding value) startBuilding,
     required TResult Function(ChangePosition value) changePosition,
   }) =>
       throw _privateConstructorUsedError;
@@ -53,6 +57,7 @@ mixin _$BuildingEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AddNewBuilding value)? addNewBuilding,
     TResult? Function(RemoveNewBuilding value)? removeNewBuilding,
+    TResult? Function(StartBuilding value)? startBuilding,
     TResult? Function(ChangePosition value)? changePosition,
   }) =>
       throw _privateConstructorUsedError;
@@ -60,6 +65,7 @@ mixin _$BuildingEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddNewBuilding value)? addNewBuilding,
     TResult Function(RemoveNewBuilding value)? removeNewBuilding,
+    TResult Function(StartBuilding value)? startBuilding,
     TResult Function(ChangePosition value)? changePosition,
     required TResult orElse(),
   }) =>
@@ -153,6 +159,7 @@ class _$AddNewBuildingImpl implements AddNewBuilding {
     required TResult Function(BuildingModel buildingInfoModel) addNewBuilding,
     required TResult Function(BuildingModel buildingInfoModel)
         removeNewBuilding,
+    required TResult Function(BuildingModel buildingInfoModel) startBuilding,
     required TResult Function(String name, String date, double x, double y)
         changePosition,
   }) {
@@ -164,6 +171,7 @@ class _$AddNewBuildingImpl implements AddNewBuilding {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(BuildingModel buildingInfoModel)? addNewBuilding,
     TResult? Function(BuildingModel buildingInfoModel)? removeNewBuilding,
+    TResult? Function(BuildingModel buildingInfoModel)? startBuilding,
     TResult? Function(String name, String date, double x, double y)?
         changePosition,
   }) {
@@ -175,6 +183,7 @@ class _$AddNewBuildingImpl implements AddNewBuilding {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(BuildingModel buildingInfoModel)? addNewBuilding,
     TResult Function(BuildingModel buildingInfoModel)? removeNewBuilding,
+    TResult Function(BuildingModel buildingInfoModel)? startBuilding,
     TResult Function(String name, String date, double x, double y)?
         changePosition,
     required TResult orElse(),
@@ -190,6 +199,7 @@ class _$AddNewBuildingImpl implements AddNewBuilding {
   TResult map<TResult extends Object?>({
     required TResult Function(AddNewBuilding value) addNewBuilding,
     required TResult Function(RemoveNewBuilding value) removeNewBuilding,
+    required TResult Function(StartBuilding value) startBuilding,
     required TResult Function(ChangePosition value) changePosition,
   }) {
     return addNewBuilding(this);
@@ -200,6 +210,7 @@ class _$AddNewBuildingImpl implements AddNewBuilding {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AddNewBuilding value)? addNewBuilding,
     TResult? Function(RemoveNewBuilding value)? removeNewBuilding,
+    TResult? Function(StartBuilding value)? startBuilding,
     TResult? Function(ChangePosition value)? changePosition,
   }) {
     return addNewBuilding?.call(this);
@@ -210,6 +221,7 @@ class _$AddNewBuildingImpl implements AddNewBuilding {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddNewBuilding value)? addNewBuilding,
     TResult Function(RemoveNewBuilding value)? removeNewBuilding,
+    TResult Function(StartBuilding value)? startBuilding,
     TResult Function(ChangePosition value)? changePosition,
     required TResult orElse(),
   }) {
@@ -299,6 +311,7 @@ class _$RemoveNewBuildingImpl implements RemoveNewBuilding {
     required TResult Function(BuildingModel buildingInfoModel) addNewBuilding,
     required TResult Function(BuildingModel buildingInfoModel)
         removeNewBuilding,
+    required TResult Function(BuildingModel buildingInfoModel) startBuilding,
     required TResult Function(String name, String date, double x, double y)
         changePosition,
   }) {
@@ -310,6 +323,7 @@ class _$RemoveNewBuildingImpl implements RemoveNewBuilding {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(BuildingModel buildingInfoModel)? addNewBuilding,
     TResult? Function(BuildingModel buildingInfoModel)? removeNewBuilding,
+    TResult? Function(BuildingModel buildingInfoModel)? startBuilding,
     TResult? Function(String name, String date, double x, double y)?
         changePosition,
   }) {
@@ -321,6 +335,7 @@ class _$RemoveNewBuildingImpl implements RemoveNewBuilding {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(BuildingModel buildingInfoModel)? addNewBuilding,
     TResult Function(BuildingModel buildingInfoModel)? removeNewBuilding,
+    TResult Function(BuildingModel buildingInfoModel)? startBuilding,
     TResult Function(String name, String date, double x, double y)?
         changePosition,
     required TResult orElse(),
@@ -336,6 +351,7 @@ class _$RemoveNewBuildingImpl implements RemoveNewBuilding {
   TResult map<TResult extends Object?>({
     required TResult Function(AddNewBuilding value) addNewBuilding,
     required TResult Function(RemoveNewBuilding value) removeNewBuilding,
+    required TResult Function(StartBuilding value) startBuilding,
     required TResult Function(ChangePosition value) changePosition,
   }) {
     return removeNewBuilding(this);
@@ -346,6 +362,7 @@ class _$RemoveNewBuildingImpl implements RemoveNewBuilding {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AddNewBuilding value)? addNewBuilding,
     TResult? Function(RemoveNewBuilding value)? removeNewBuilding,
+    TResult? Function(StartBuilding value)? startBuilding,
     TResult? Function(ChangePosition value)? changePosition,
   }) {
     return removeNewBuilding?.call(this);
@@ -356,6 +373,7 @@ class _$RemoveNewBuildingImpl implements RemoveNewBuilding {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddNewBuilding value)? addNewBuilding,
     TResult Function(RemoveNewBuilding value)? removeNewBuilding,
+    TResult Function(StartBuilding value)? startBuilding,
     TResult Function(ChangePosition value)? changePosition,
     required TResult orElse(),
   }) {
@@ -373,6 +391,157 @@ abstract class RemoveNewBuilding implements BuildingEvent {
   BuildingModel get buildingInfoModel;
   @JsonKey(ignore: true)
   _$$RemoveNewBuildingImplCopyWith<_$RemoveNewBuildingImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$StartBuildingImplCopyWith<$Res> {
+  factory _$$StartBuildingImplCopyWith(
+          _$StartBuildingImpl value, $Res Function(_$StartBuildingImpl) then) =
+      __$$StartBuildingImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({BuildingModel buildingInfoModel});
+}
+
+/// @nodoc
+class __$$StartBuildingImplCopyWithImpl<$Res>
+    extends _$BuildingEventCopyWithImpl<$Res, _$StartBuildingImpl>
+    implements _$$StartBuildingImplCopyWith<$Res> {
+  __$$StartBuildingImplCopyWithImpl(
+      _$StartBuildingImpl _value, $Res Function(_$StartBuildingImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? buildingInfoModel = null,
+  }) {
+    return _then(_$StartBuildingImpl(
+      null == buildingInfoModel
+          ? _value.buildingInfoModel
+          : buildingInfoModel // ignore: cast_nullable_to_non_nullable
+              as BuildingModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$StartBuildingImpl implements StartBuilding {
+  const _$StartBuildingImpl(this.buildingInfoModel);
+
+  @override
+  final BuildingModel buildingInfoModel;
+
+  @override
+  String toString() {
+    return 'BuildingEvent.startBuilding(buildingInfoModel: $buildingInfoModel)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$StartBuildingImpl &&
+            (identical(other.buildingInfoModel, buildingInfoModel) ||
+                other.buildingInfoModel == buildingInfoModel));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, buildingInfoModel);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$StartBuildingImplCopyWith<_$StartBuildingImpl> get copyWith =>
+      __$$StartBuildingImplCopyWithImpl<_$StartBuildingImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(BuildingModel buildingInfoModel) addNewBuilding,
+    required TResult Function(BuildingModel buildingInfoModel)
+        removeNewBuilding,
+    required TResult Function(BuildingModel buildingInfoModel) startBuilding,
+    required TResult Function(String name, String date, double x, double y)
+        changePosition,
+  }) {
+    return startBuilding(buildingInfoModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(BuildingModel buildingInfoModel)? addNewBuilding,
+    TResult? Function(BuildingModel buildingInfoModel)? removeNewBuilding,
+    TResult? Function(BuildingModel buildingInfoModel)? startBuilding,
+    TResult? Function(String name, String date, double x, double y)?
+        changePosition,
+  }) {
+    return startBuilding?.call(buildingInfoModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(BuildingModel buildingInfoModel)? addNewBuilding,
+    TResult Function(BuildingModel buildingInfoModel)? removeNewBuilding,
+    TResult Function(BuildingModel buildingInfoModel)? startBuilding,
+    TResult Function(String name, String date, double x, double y)?
+        changePosition,
+    required TResult orElse(),
+  }) {
+    if (startBuilding != null) {
+      return startBuilding(buildingInfoModel);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AddNewBuilding value) addNewBuilding,
+    required TResult Function(RemoveNewBuilding value) removeNewBuilding,
+    required TResult Function(StartBuilding value) startBuilding,
+    required TResult Function(ChangePosition value) changePosition,
+  }) {
+    return startBuilding(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AddNewBuilding value)? addNewBuilding,
+    TResult? Function(RemoveNewBuilding value)? removeNewBuilding,
+    TResult? Function(StartBuilding value)? startBuilding,
+    TResult? Function(ChangePosition value)? changePosition,
+  }) {
+    return startBuilding?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AddNewBuilding value)? addNewBuilding,
+    TResult Function(RemoveNewBuilding value)? removeNewBuilding,
+    TResult Function(StartBuilding value)? startBuilding,
+    TResult Function(ChangePosition value)? changePosition,
+    required TResult orElse(),
+  }) {
+    if (startBuilding != null) {
+      return startBuilding(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class StartBuilding implements BuildingEvent {
+  const factory StartBuilding(final BuildingModel buildingInfoModel) =
+      _$StartBuildingImpl;
+
+  BuildingModel get buildingInfoModel;
+  @JsonKey(ignore: true)
+  _$$StartBuildingImplCopyWith<_$StartBuildingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -472,6 +641,7 @@ class _$ChangePositionImpl implements ChangePosition {
     required TResult Function(BuildingModel buildingInfoModel) addNewBuilding,
     required TResult Function(BuildingModel buildingInfoModel)
         removeNewBuilding,
+    required TResult Function(BuildingModel buildingInfoModel) startBuilding,
     required TResult Function(String name, String date, double x, double y)
         changePosition,
   }) {
@@ -483,6 +653,7 @@ class _$ChangePositionImpl implements ChangePosition {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(BuildingModel buildingInfoModel)? addNewBuilding,
     TResult? Function(BuildingModel buildingInfoModel)? removeNewBuilding,
+    TResult? Function(BuildingModel buildingInfoModel)? startBuilding,
     TResult? Function(String name, String date, double x, double y)?
         changePosition,
   }) {
@@ -494,6 +665,7 @@ class _$ChangePositionImpl implements ChangePosition {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(BuildingModel buildingInfoModel)? addNewBuilding,
     TResult Function(BuildingModel buildingInfoModel)? removeNewBuilding,
+    TResult Function(BuildingModel buildingInfoModel)? startBuilding,
     TResult Function(String name, String date, double x, double y)?
         changePosition,
     required TResult orElse(),
@@ -509,6 +681,7 @@ class _$ChangePositionImpl implements ChangePosition {
   TResult map<TResult extends Object?>({
     required TResult Function(AddNewBuilding value) addNewBuilding,
     required TResult Function(RemoveNewBuilding value) removeNewBuilding,
+    required TResult Function(StartBuilding value) startBuilding,
     required TResult Function(ChangePosition value) changePosition,
   }) {
     return changePosition(this);
@@ -519,6 +692,7 @@ class _$ChangePositionImpl implements ChangePosition {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AddNewBuilding value)? addNewBuilding,
     TResult? Function(RemoveNewBuilding value)? removeNewBuilding,
+    TResult? Function(StartBuilding value)? startBuilding,
     TResult? Function(ChangePosition value)? changePosition,
   }) {
     return changePosition?.call(this);
@@ -529,6 +703,7 @@ class _$ChangePositionImpl implements ChangePosition {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddNewBuilding value)? addNewBuilding,
     TResult Function(RemoveNewBuilding value)? removeNewBuilding,
+    TResult Function(StartBuilding value)? startBuilding,
     TResult Function(ChangePosition value)? changePosition,
     required TResult orElse(),
   }) {
@@ -558,6 +733,9 @@ abstract class ChangePosition implements BuildingEvent {
 /// @nodoc
 mixin _$BuildingState {
   List<BuildingModel> get newBuildings => throw _privateConstructorUsedError;
+  List<BuildingModel> get inProcessBuildings =>
+      throw _privateConstructorUsedError;
+  List<BuildingModel> get oldBuildings => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BuildingStateCopyWith<BuildingState> get copyWith =>
@@ -570,7 +748,10 @@ abstract class $BuildingStateCopyWith<$Res> {
           BuildingState value, $Res Function(BuildingState) then) =
       _$BuildingStateCopyWithImpl<$Res, BuildingState>;
   @useResult
-  $Res call({List<BuildingModel> newBuildings});
+  $Res call(
+      {List<BuildingModel> newBuildings,
+      List<BuildingModel> inProcessBuildings,
+      List<BuildingModel> oldBuildings});
 }
 
 /// @nodoc
@@ -587,11 +768,21 @@ class _$BuildingStateCopyWithImpl<$Res, $Val extends BuildingState>
   @override
   $Res call({
     Object? newBuildings = null,
+    Object? inProcessBuildings = null,
+    Object? oldBuildings = null,
   }) {
     return _then(_value.copyWith(
       newBuildings: null == newBuildings
           ? _value.newBuildings
           : newBuildings // ignore: cast_nullable_to_non_nullable
+              as List<BuildingModel>,
+      inProcessBuildings: null == inProcessBuildings
+          ? _value.inProcessBuildings
+          : inProcessBuildings // ignore: cast_nullable_to_non_nullable
+              as List<BuildingModel>,
+      oldBuildings: null == oldBuildings
+          ? _value.oldBuildings
+          : oldBuildings // ignore: cast_nullable_to_non_nullable
               as List<BuildingModel>,
     ) as $Val);
   }
@@ -605,7 +796,10 @@ abstract class _$$BuildingStateImplCopyWith<$Res>
       __$$BuildingStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<BuildingModel> newBuildings});
+  $Res call(
+      {List<BuildingModel> newBuildings,
+      List<BuildingModel> inProcessBuildings,
+      List<BuildingModel> oldBuildings});
 }
 
 /// @nodoc
@@ -620,11 +814,21 @@ class __$$BuildingStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? newBuildings = null,
+    Object? inProcessBuildings = null,
+    Object? oldBuildings = null,
   }) {
     return _then(_$BuildingStateImpl(
       newBuildings: null == newBuildings
           ? _value._newBuildings
           : newBuildings // ignore: cast_nullable_to_non_nullable
+              as List<BuildingModel>,
+      inProcessBuildings: null == inProcessBuildings
+          ? _value._inProcessBuildings
+          : inProcessBuildings // ignore: cast_nullable_to_non_nullable
+              as List<BuildingModel>,
+      oldBuildings: null == oldBuildings
+          ? _value._oldBuildings
+          : oldBuildings // ignore: cast_nullable_to_non_nullable
               as List<BuildingModel>,
     ));
   }
@@ -633,8 +837,13 @@ class __$$BuildingStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$BuildingStateImpl implements _BuildingState {
-  const _$BuildingStateImpl({final List<BuildingModel> newBuildings = const []})
-      : _newBuildings = newBuildings;
+  const _$BuildingStateImpl(
+      {final List<BuildingModel> newBuildings = const [],
+      final List<BuildingModel> inProcessBuildings = const [],
+      final List<BuildingModel> oldBuildings = const []})
+      : _newBuildings = newBuildings,
+        _inProcessBuildings = inProcessBuildings,
+        _oldBuildings = oldBuildings;
 
   final List<BuildingModel> _newBuildings;
   @override
@@ -645,9 +854,28 @@ class _$BuildingStateImpl implements _BuildingState {
     return EqualUnmodifiableListView(_newBuildings);
   }
 
+  final List<BuildingModel> _inProcessBuildings;
+  @override
+  @JsonKey()
+  List<BuildingModel> get inProcessBuildings {
+    if (_inProcessBuildings is EqualUnmodifiableListView)
+      return _inProcessBuildings;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_inProcessBuildings);
+  }
+
+  final List<BuildingModel> _oldBuildings;
+  @override
+  @JsonKey()
+  List<BuildingModel> get oldBuildings {
+    if (_oldBuildings is EqualUnmodifiableListView) return _oldBuildings;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_oldBuildings);
+  }
+
   @override
   String toString() {
-    return 'BuildingState(newBuildings: $newBuildings)';
+    return 'BuildingState(newBuildings: $newBuildings, inProcessBuildings: $inProcessBuildings, oldBuildings: $oldBuildings)';
   }
 
   @override
@@ -656,12 +884,19 @@ class _$BuildingStateImpl implements _BuildingState {
         (other.runtimeType == runtimeType &&
             other is _$BuildingStateImpl &&
             const DeepCollectionEquality()
-                .equals(other._newBuildings, _newBuildings));
+                .equals(other._newBuildings, _newBuildings) &&
+            const DeepCollectionEquality()
+                .equals(other._inProcessBuildings, _inProcessBuildings) &&
+            const DeepCollectionEquality()
+                .equals(other._oldBuildings, _oldBuildings));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_newBuildings));
+      runtimeType,
+      const DeepCollectionEquality().hash(_newBuildings),
+      const DeepCollectionEquality().hash(_inProcessBuildings),
+      const DeepCollectionEquality().hash(_oldBuildings));
 
   @JsonKey(ignore: true)
   @override
@@ -671,11 +906,17 @@ class _$BuildingStateImpl implements _BuildingState {
 }
 
 abstract class _BuildingState implements BuildingState {
-  const factory _BuildingState({final List<BuildingModel> newBuildings}) =
-      _$BuildingStateImpl;
+  const factory _BuildingState(
+      {final List<BuildingModel> newBuildings,
+      final List<BuildingModel> inProcessBuildings,
+      final List<BuildingModel> oldBuildings}) = _$BuildingStateImpl;
 
   @override
   List<BuildingModel> get newBuildings;
+  @override
+  List<BuildingModel> get inProcessBuildings;
+  @override
+  List<BuildingModel> get oldBuildings;
   @override
   @JsonKey(ignore: true)
   _$$BuildingStateImplCopyWith<_$BuildingStateImpl> get copyWith =>

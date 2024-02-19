@@ -4,6 +4,7 @@ import 'package:eco_game/application/game/game_bloc.dart';
 import 'package:eco_game/application/settings/settings_bloc.dart';
 import 'package:eco_game/application/user/user_bloc.dart';
 import 'package:eco_game/domain/di/dependancy_manager.dart';
+import 'package:eco_game/firebase_options.dart';
 import 'package:eco_game/infrastructure/services/local_storage/local_storage.dart';
 import 'package:eco_game/presentation/pages/auth_page/login_page.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -15,7 +16,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform
+  );
   FlameAudio.bgm.initialize();
   LocalStorage.init();
   setUpDependencies();

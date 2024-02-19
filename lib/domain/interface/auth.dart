@@ -2,9 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:eco_game/infrastructure/models/class/user.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 abstract class AuthInterface {
-  Future<Either<QueryDocumentSnapshot<Map<String,dynamic>>, dynamic>> login({
+  Future<Either<Map<String, dynamic>?, dynamic>> login({
     required String username,
     required String password,
   });
@@ -18,6 +19,13 @@ abstract class AuthInterface {
   Future<Either<DocumentSnapshot<Map<String, dynamic>>, dynamic>> signUp({
     required UserModel user,
   });
+
+  Future<Either<DocumentSnapshot<Map<String, dynamic>>, dynamic>> guestLogin();
+
+  Future<Either<GoogleSignInAccount?, dynamic>> googleLogin();
+
+  Future<Either<QueryDocumentSnapshot<Map<String, dynamic>>?, dynamic>>
+      loginWithEmail(String email);
 
   Future<Either<String, dynamic>> setProfilePic(BuildContext context);
 }

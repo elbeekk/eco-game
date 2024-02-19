@@ -1,7 +1,11 @@
 import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:eco_game/application/auth/auth_bloc.dart';
 import 'package:eco_game/application/game/game_bloc.dart';
 import 'package:eco_game/application/settings/settings_bloc.dart';
+import 'package:eco_game/infrastructure/services/local_storage/local_storage.dart';
+import 'package:eco_game/main.dart';
+import 'package:eco_game/presentation/pages/auth_page/login_page.dart';
 import 'package:eco_game/presentation/pages/buttons_layer/veiws/settings_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -15,7 +19,7 @@ class MenuView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GameBloc, GameState>(
-      builder: (context, state) {
+      builder: (context, gameState) {
         return Column(
           children: [
             Expanded(
@@ -25,10 +29,10 @@ class MenuView extends StatelessWidget {
                 ),
                 color: Colors.white.withOpacity(.2),
                 constraints: const BoxConstraints(maxWidth: 200),
-                width: state.menuOpen
+                width: gameState.menuOpen
                     ? MediaQuery.sizeOf(context).width * 0.25
                     : 0,
-                child: !state.settingsOpen
+                child: !gameState.settingsOpen
                     ? Column(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
@@ -44,12 +48,13 @@ class MenuView extends StatelessWidget {
                                       MediaQuery.sizeOf(context).height * 0.13,
                                   constraints: const BoxConstraints(
                                       maxWidth: 100, maxHeight: 100),
-                                  decoration: const BoxDecoration(
+                                  decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                       image: DecorationImage(
                                           fit: BoxFit.cover,
                                           image: CachedNetworkImageProvider(
-                                              'https://scontent.ftas5-1.fna.fbcdn.net/v/t39.30808-1/406011764_879049673842471_1031136137589123993_n.jpg?stp=cp0_dst-jpg_p40x40&_nc_cat=104&ccb=1-7&_nc_sid=11e7ab&_nc_ohc=jhpQj6n69DYAX_yr5KP&_nc_ht=scontent.ftas5-1.fna&oh=00_AfDDh6FanY0PQLsmLSZtS7vjbRmVaV3iklItyxMB6Fm9rQ&oe=65D423B3')),
+                                              LocalStorage.getMe()?.photoUrl ??
+                                                  'https://images.macrumors.com/t/n4CqVR2eujJL-GkUPhv1oao_PmI=/1600x/article-new/2019/04/guest-user-250x250.jpg')),
                                       color: Colors.white),
                                 ),
                                 Padding(
@@ -58,7 +63,9 @@ class MenuView extends StatelessWidget {
                                   child: Column(
                                     children: [
                                       Text(
-                                        "Elbek Mirzamakhmudov",
+                                        LocalStorage.getMe()?.firstName != null
+                                            ? "${LocalStorage.getMe()?.firstName ?? ''} ${LocalStorage.getMe()?.lastName ?? ''}"
+                                            : "Guest",
                                         style: GoogleFonts.vt323(
                                             fontSize: (22 + 2 * 2
                                                 // state.flutterScale
@@ -68,7 +75,7 @@ class MenuView extends StatelessWidget {
                                         overflow: TextOverflow.ellipsis,
                                       ),
                                       Text(
-                                        'elbekmirzamakhmudov@gmail.com',
+                                        LocalStorage.getMe()?.username ?? '',
                                         style: GoogleFonts.vt323(
                                             fontSize: (18 + 2 * 2
                                                 // state.flutterScale
@@ -76,7 +83,7 @@ class MenuView extends StatelessWidget {
                                                 .toDouble(),
                                             color: Colors.blue),
                                         overflow: TextOverflow.ellipsis,
-                                      )
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -188,37 +195,86 @@ class MenuView extends StatelessWidget {
                                 Row(
                                   children: [
                                     Expanded(
-                                      child: OutlinedButton.icon(
-                                        clipBehavior: Clip.none,
-                                        style: OutlinedButton.styleFrom(
-                                            backgroundColor:
-                                                Colors.red.withOpacity(.1),
-                                            shape: const RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.zero),
-                                            side: const BorderSide(
-                                                color: Colors.red)),
-                                        onPressed: () {
-                                          // exit(0);
-                                          SystemChannels.platform.invokeMethod(
-                                              'SystemNavigator.pop');
-                                        },
-                                        icon: Icon(
-                                          Pixel.arrowbarleft,
-                                          color: Colors.red,
-                                          size: state.menuOpen ? 20 : 0,
-                                        ),
-                                        label: Text(
-                                          "Exit",
-                                          style: GoogleFonts.vt323(
-                                              fontSize: (18 + 2 * 2
-
-                                                  // state.flutterScale
+                                      child: BlocBuilder<AuthBloc, AuthState>(
+                                        builder: (context, authState) {
+                                          return OutlinedButton.icon(
+                                            clipBehavior: Clip.none,
+                                            style: OutlinedButton.styleFrom(
+                                                backgroundColor:
+                                                    Colors.red.withOpacity(.1),
+                                                shape:
+                                                    const RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius.zero),
+                                                side: const BorderSide(
+                                                    color: Colors.red)),
+                                            onPressed: () {
+                                              context
+                                                  .read<AuthBloc>()
+                                                  .add(AuthEvent.logOut(
+                                                    onError: (error) {
+                                                      ScaffoldMessenger.of(
+                                                              context)
+                                                          .showSnackBar(
+                                                        SnackBar(
+                                                          backgroundColor:
+                                                              Colors.red,
+                                                          content: Text(
+                                                            error.toString(),
+                                                            style:
+                                                                const TextStyle(
+                                                                    color: Colors
+                                                                        .white),
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                    onSuccess: () {
+                                                      Navigator
+                                                          .pushAndRemoveUntil(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                builder:
+                                                                    (context) =>
+                                                                        const MyApp(),
+                                                              ),
+                                                              (route) => false);
+                                                    },
+                                                  ));
+                                            },
+                                            icon: authState.isLoading
+                                                ? const SizedBox.shrink()
+                                                : Icon(
+                                                    Pixel.arrowbarleft,
+                                                    color: Colors.red,
+                                                    size: gameState.menuOpen
+                                                        ? 20
+                                                        : 0,
+                                                  ),
+                                            label: authState.isLoading
+                                                ? const SizedBox(
+                                                    height: 20,
+                                                    width: 20,
+                                                    child:
+                                                        CircularProgressIndicator(
+                                                      color: Colors.red,
+                                                      strokeWidth: 1,
+                                                    ),
                                                   )
-                                                  .toDouble(),
-                                              color: Colors.red),
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
+                                                : Text(
+                                                    "Log Out",
+                                                    style: GoogleFonts.vt323(
+                                                        fontSize: (18 + 2 * 2
+
+                                                            // state.flutterScale
+                                                            )
+                                                            .toDouble(),
+                                                        color: Colors.red),
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                  ),
+                                          );
+                                        },
                                       ),
                                     ),
                                   ],
@@ -228,7 +284,7 @@ class MenuView extends StatelessWidget {
                           ),
                         ],
                       )
-                    : state.menuOpen
+                    : gameState.menuOpen
                         ? const SettingsView()
                         : const SizedBox.shrink(),
               ),

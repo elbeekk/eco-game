@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1041174152296-886m27ahs052q64uldmatc5appecsc1f.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1041174152296-886m27ahs052q64uldmatc5appecsc1f</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>1041174152296-jji6u717puen903en9j1t9bihr0eefv8.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCUWyf0EVF5dL7t_bBH35HacoECAGFluTQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1041174152296</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.hedev.ecoGame</string>
+	<key>PROJECT_ID</key>
+	<string>eco-game-780c7</string>
+	<key>STORAGE_BUCKET</key>
+	<string>eco-game-780c7.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1041174152296:ios:e1ae8ebccb98179aa7e7dd</string>
+</dict>
+</plist>

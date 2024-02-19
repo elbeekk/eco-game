@@ -12,7 +12,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   GameBloc()
       : super(
           const GameState(
-            currentPos: Offset(100, 100),
+            currentPos: Offset(0, 0),
           ),
         ) {
     on<ShowSettings>((event, emit) {

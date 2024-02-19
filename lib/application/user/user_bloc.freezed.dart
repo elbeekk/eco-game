@@ -478,7 +478,7 @@ class __$$UserStateImplCopyWithImpl<$Res>
 
 class _$UserStateImpl implements _UserState {
   const _$UserStateImpl(
-      {this.coins = 0,
+      {this.coins = 1000,
       this.email = "",
       this.firstName = "",
       this.lastName = ""});

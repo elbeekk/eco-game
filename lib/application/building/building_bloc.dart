@@ -13,17 +13,19 @@ class BuildingBloc extends Bloc<BuildingEvent, BuildingState> {
     on<AddNewBuilding>((event, emit) {
       emit(state.copyWith(
           newBuildings: [...state.newBuildings, event.buildingInfoModel]));
-    }); on<RemoveNewBuilding>((event, emit) {
+    });
+
+    on<RemoveNewBuilding>((event, emit) {
       List<BuildingModel> tempList = state.newBuildings.toList();
       tempList.removeWhere((element) {
-        if(element.name==event.buildingInfoModel.name&&element.date==event.buildingInfoModel.date){
+        if (element.name == event.buildingInfoModel.name) {
           return true;
         }
         return false;
       });
-      emit(state.copyWith(
-          newBuildings: [...state.newBuildings, event.buildingInfoModel]));
+      emit(state.copyWith(newBuildings: tempList),);
     });
+
     on<ChangePosition>((event, emit) {
       List<BuildingModel> tempList = state.newBuildings.toList();
       tempList = tempList.map((element) {
@@ -33,6 +35,27 @@ class BuildingBloc extends Bloc<BuildingEvent, BuildingState> {
         return element;
       }).toList();
       emit(state.copyWith(newBuildings: tempList));
+    });
+
+    on<StartBuilding>((event, emit) {
+
+      List<BuildingModel> tempList = state.newBuildings.toList();
+      tempList.removeWhere((element) {
+        if (element.name == event.buildingInfoModel.name) {
+          return true;
+        }
+        return false;
+      });
+      emit(state.copyWith(newBuildings: tempList),);
+      emit(
+        state.copyWith(
+          inProcessBuildings: [
+            ...state.inProcessBuildings,
+            event.buildingInfoModel.copyWith(
+                date: DateTime.now().millisecondsSinceEpoch.toString()),
+          ],
+        ),
+      );
     });
   }
 }

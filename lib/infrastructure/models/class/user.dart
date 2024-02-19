@@ -9,6 +9,7 @@ class UserModel {
   String? joinedDate;
   String? password;
   String? username;
+  String? photoUrl;
 
   UserModel({
     this.id,
@@ -19,6 +20,7 @@ class UserModel {
     this.joinedDate,
     this.password,
     this.username,
+    this.photoUrl,
   });
 
   UserModel copyWith({
@@ -30,6 +32,7 @@ class UserModel {
     String? joinedDate,
     String? password,
     String? username,
+    String? photoUrl,
   }) =>
       UserModel(
         id: id ?? this.id,
@@ -40,6 +43,7 @@ class UserModel {
         joinedDate: joinedDate ?? this.joinedDate,
         password: password ?? this.password,
         username: username ?? this.username,
+        photoUrl: photoUrl ?? this.photoUrl,
       );
 
   factory UserModel.fromRawJson(String str) => UserModel.fromJson(json.decode(str));
@@ -55,6 +59,7 @@ class UserModel {
     joinedDate: json["joinedDate"],
     password: json["password"],
     username: json["username"],
+    photoUrl: json["photoUrl"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -66,5 +71,6 @@ class UserModel {
     "joinedDate": joinedDate,
     "password": password,
     "username": username,
+    "photoUrl": photoUrl,
   };
 }

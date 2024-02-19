@@ -25,7 +25,7 @@ class CoinButton extends StatelessWidget {
                   return BlocBuilder<UserBloc, UserState>(
                     builder: (context, userState) {
                       return Text(
-                        "1230${userState.coins}",
+                        "${userState.coins}",
                         style: GoogleFonts.vt323(
                           color: Colors.yellow,
                           fontSize: (24 + 2 * settingsState.textSize)
