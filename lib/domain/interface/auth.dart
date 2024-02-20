@@ -28,4 +28,7 @@ abstract class AuthInterface {
       loginWithEmail(String email);
 
   Future<Either<String, dynamic>> setProfilePic(BuildContext context);
+
+  Future<Either<QuerySnapshot<Map<String, dynamic>>, dynamic>>
+      getBuildings();
 }

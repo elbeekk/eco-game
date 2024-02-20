@@ -75,13 +75,13 @@ class _ImageLayerState extends State<ImageLayer> {
             maxScale: 1.4,
             constrained: false,
             child: Container(
-              height: 2000,
+              height: 1500,
               width: 2000,
-              color: Colors.red,
+              color: Colors.white,
               child: Stack(
                 children: [
                   Image.asset(
-                    "assets/images/png/summer.png",
+                    "assets/map.png",
                     fit: BoxFit.cover,
                     scale: .1,
                   ),

@@ -8,7 +8,6 @@ import 'package:eco_game/firebase_options.dart';
 import 'package:eco_game/infrastructure/services/local_storage/local_storage.dart';
 import 'package:eco_game/presentation/pages/auth_page/login_page.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flame/flame.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

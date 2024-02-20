@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:eco_game/domain/interface/auth.dart';
 import 'package:eco_game/infrastructure/models/class/user.dart';
+import 'package:eco_game/infrastructure/services/local_storage/local_storage.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:uuid/uuid.dart';
@@ -121,6 +122,20 @@ class AuthRepository implements AuthInterface {
     } on FirebaseException catch (e) {
       return Right(e.message);
     }
-    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<QuerySnapshot<Map<String, dynamic>>, dynamic>>
+      getBuildings() async {
+    try {
+      final snap = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(LocalStorage.getMe()?.id)
+          .collection('buildings')
+          .get();
+      return Left(snap);
+    } on FirebaseException catch (e) {
+      return Right(e.message);
+    }
   }
 }
