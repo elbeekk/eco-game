@@ -30,6 +30,7 @@ class ShopView extends StatelessWidget {
                 child: BlocBuilder<ShopBloc, ShopState>(
                   builder: (context, shopState) {
                     return ListView.builder(
+                      padding: EdgeInsets.zero,
                       shrinkWrap: true,
                       itemCount: LocalData.shopItems.length,
                       scrollDirection: Axis.horizontal,

@@ -16,14 +16,13 @@ class ImageLayer extends StatefulWidget {
 }
 
 class _ImageLayerState extends State<ImageLayer> {
- TransformationController transformationController =
+  TransformationController transformationController =
       TransformationController();
 
   @override
   void initState() {
     super.initState();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +36,6 @@ class _ImageLayerState extends State<ImageLayer> {
             minScale: 0.8,
             scaleEnabled: false,
             onInteractionEnd: (details) {
-
               context.read<GameBloc>().add(
                     GameEvent.changeCurrentPos(
                       pos: Offset(
@@ -56,20 +54,20 @@ class _ImageLayerState extends State<ImageLayer> {
                       ),
                     ),
                   );
-              log(Offset(
-                transformationController.value
-                    .getColumn(3)
-                    .gr
-                    .y
-                    .toDouble()
-                    .abs(),
-                transformationController.value
-                    .getColumn(3)
-                    .gr
-                    .x
-                    .toDouble()
-                    .abs(),
-              ).toString());
+              // log(Offset(
+              //   transformationController.value
+              //       .getColumn(3)
+              //       .gr
+              //       .y
+              //       .toDouble()
+              //       .abs(),
+              //   transformationController.value
+              //       .getColumn(3)
+              //       .gr
+              //       .x
+              //       .toDouble()
+              //       .abs(),
+              // ).toString());
             },
             transformationController: transformationController,
             maxScale: 1.4,
@@ -85,7 +83,66 @@ class _ImageLayerState extends State<ImageLayer> {
                     fit: BoxFit.cover,
                     scale: .1,
                   ),
-                  ...widget.children
+                  ...widget.children,
+                  Positioned(
+                    top: 0,
+                    bottom: 1350,
+                    left: 0,
+                    right: 0,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            color: Colors.red.withOpacity(.4),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Positioned(
+                    top: 1410,
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            color: Colors.red.withOpacity(.4),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ), Positioned(
+                    top: 0,
+                    bottom: 0,
+                    left: 1880,
+                    right: 0,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            color: Colors.red.withOpacity(.4),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Positioned(
+                    top: 150,
+                    bottom: 0,
+                    left: 0,
+                    right: 1750,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            color: Colors.red.withOpacity(.4),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),

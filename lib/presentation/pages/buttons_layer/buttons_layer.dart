@@ -20,57 +20,55 @@ class _ButtonsLayerState extends State<ButtonsLayer> {
   Widget build(BuildContext context) {
     return BlocBuilder<GameBloc, GameState>(
       builder: (context, state) {
-        return SafeArea(
-          child: Column(
-            children: [
-              Expanded(
-                child: Row(
-                  children: [
-                    const MenuView(),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                const MenuButton(),
-                                const Spacer(),
-                                BlocBuilder<GameBloc, GameState>(
-                                  builder: (context, state) {
-                                    bool isVisible = !state.moneyOpen;
-                                    if (isVisible) {
-                                      return const Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.end,
-                                        children: [
-                                          CoinButton(),
-                                        ],
-                                      );
-                                    }
-                                    return const SizedBox.shrink();
-                                  },
-                                ),
-                                const CoinView(),
-                              ],
-                            ),
-                            const Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [ShopButton()],
-                            )
-                          ],
-                        ),
+        return Column(
+          children: [
+            Expanded(
+              child: Row(
+                children: [
+                  const MenuView(),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const MenuButton(),
+                              const Spacer(),
+                              BlocBuilder<GameBloc, GameState>(
+                                builder: (context, state) {
+                                  bool isVisible = !state.moneyOpen;
+                                  if (isVisible) {
+                                    return const Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        CoinButton(),
+                                      ],
+                                    );
+                                  }
+                                  return const SizedBox.shrink();
+                                },
+                              ),
+                              const CoinView(),
+                            ],
+                          ),
+                          const Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [ShopButton()],
+                          )
+                        ],
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-              const ShopView(),
-            ],
-          ),
+            ),
+            const ShopView(),
+          ],
         );
       },
     );
