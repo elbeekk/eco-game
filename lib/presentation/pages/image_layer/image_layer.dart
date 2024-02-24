@@ -24,10 +24,16 @@ class _ImageLayerState extends State<ImageLayer> {
     super.initState();
   }
 
+  moveTo(double dx, double dy) {
+    transformationController.value = Matrix4.identity()..translate(-dx,-dy);
+      // (Matrix4.translationValues(-dx, -dy, 0));
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GameBloc, GameState>(
       builder: (context, state) {
+        moveTo(state.currentPos.dx, state.currentPos.dy);
         return GestureDetector(
           onTap: () {
             context.read<GameBloc>().add(const GameEvent.closeAll());
@@ -113,7 +119,8 @@ class _ImageLayerState extends State<ImageLayer> {
                         ),
                       ],
                     ),
-                  ), Positioned(
+                  ),
+                  Positioned(
                     top: 0,
                     bottom: 0,
                     left: 1880,

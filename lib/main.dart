@@ -15,9 +15,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   FlameAudio.bgm.initialize();
   LocalStorage.init();
   setUpDependencies();
@@ -40,8 +38,9 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: MultiBlocProvider(providers: [
+      debugShowCheckedModeBanner: false,
+      home: MultiBlocProvider(
+        providers: [
           BlocProvider(
             create: (context) => BuildingBloc(),
           ),
@@ -57,6 +56,9 @@ class _MyAppState extends State<MyApp> {
           BlocProvider(
             create: (context) => AuthBloc(),
           ),
-        ], child: const LoginPage()));
+        ],
+        child: const LoginPage(),
+      ),
+    );
   }
 }

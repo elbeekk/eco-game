@@ -90,7 +90,7 @@ flutter:
     - assets/images/jpg/
     - assets/images/game_assets/button/images/
     - assets/images/game_assets/character/spritesheets/Original/Without Outline/
-    - assets/tiles/
+    - assets/images/game_assets/character/images/portraits/Pixel-Portraits-Free/Feminine_A/
     - assets/lottie/
     - assets/images/game_assets/village/images/
   #   - images/a_dot_ham.jpeg

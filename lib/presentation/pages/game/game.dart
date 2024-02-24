@@ -10,6 +10,7 @@ import 'package:eco_game/presentation/pages/buildings_layer/in_process_buildings
 import 'package:eco_game/presentation/pages/buildings_layer/new_buildings/new_buildings.dart';
 import 'package:eco_game/presentation/pages/buttons_layer/buttons_layer.dart';
 import 'package:eco_game/presentation/pages/image_layer/image_layer.dart';
+import 'package:eco_game/presentation/pages/message/message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -87,13 +88,13 @@ class _GamePageState extends State<GamePage> {
                           return ImageLayer(children: [
                             ...List.generate(
                                 buildingState.inProcessBuildings.length,
-                                    (index) {
-                                  final current =
+                                (index) {
+                              final current =
                                   buildingState.inProcessBuildings[index];
-                                  return InProcessBuildings(
-                                    building: current,
-                                  );
-                                }),
+                              return InProcessBuildings(
+                                building: current,
+                              );
+                            }),
                             ...List.generate(buildingState.newBuildings.length,
                                 (index) {
                               final current = buildingState.newBuildings[index];
@@ -101,11 +102,17 @@ class _GamePageState extends State<GamePage> {
                                 building: current,
                               );
                             }),
-
                           ]);
                         },
                       ),
-                      const ButtonsLayer(),
+                      // const ButtonsLayer(),
+
+                      // TODO "if there messages show themin order and hide buttons layer"
+                      const Message(
+                          image:
+                              "assets/images/game_assets/character/images/portraits/Pixel-Portraits-Free/Feminine_A/Feminine_A_happy.png",
+                          message:
+                              'Welcome, traveler, to the vibrant world of Energy Quest! I am your guide on this epic journey towards sustainability and prosperity. Behold, the humble beginnings of your very own town, where every decision you make will shape its destiny.')
                     ],
                   )),
                 );
