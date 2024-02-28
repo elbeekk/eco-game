@@ -54,22 +54,7 @@ class _GamePageState extends State<GamePage> {
           create: (context) => AuthBloc(),
         ),
         BlocProvider(
-          create: (context) => MessageBloc()
-            ..add(
-              MessageEvent.setIntroMessages(
-                  onError: (error) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        backgroundColor: Colors.red.shade300,
-                        content: Text(
-                          error.toString(),
-                          style: const TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    );
-                  },
-                  onSuccess: () {}),
-            ),
+          create: (context) => MessageBloc(),
         ),
       ],
       child: BlocBuilder<SettingsBloc, SettingsState>(
@@ -77,9 +62,13 @@ class _GamePageState extends State<GamePage> {
           return FGBGNotifier(
             onEvent: (value) async {
               if (value == FGBGType.background) {
-                // context.read<SettingsBloc>().add(const GameEvent.musicMute());
+                context
+                    .read<SettingsBloc>()
+                    .add(const SettingsEvent.musicMute());
               } else {
-                // context.read<SettingsBloc>().add(const GameEvent.musicUnmute());
+                context
+                    .read<SettingsBloc>()
+                    .add(const SettingsEvent.musicUnmute());
               }
             },
             child: BlocBuilder<GameBloc, GameState>(

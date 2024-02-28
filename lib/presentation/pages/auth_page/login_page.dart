@@ -182,10 +182,10 @@ class _LoginPageState extends State<LoginPage> {
                             //   },
                             // ),
                             Container(
-                              constraints:
-                                  BoxConstraints(maxWidth: 350, minWidth: 200),
-                              width: MediaQuery.sizeOf(context).width < 600
-                                  ? MediaQuery.sizeOf(context).width * 0.65
+                              constraints: const BoxConstraints(
+                                  maxWidth: 350, minWidth: 200),
+                              width: MediaQuery.sizeOf(context).width < 610
+                                  ? MediaQuery.sizeOf(context).width * 0.82
                                   : MediaQuery.sizeOf(context).width * 0.4,
                               child: SingleChildScrollView(
                                 child: Padding(
