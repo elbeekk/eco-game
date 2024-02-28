@@ -38,6 +38,7 @@ class _ImageLayerState extends State<ImageLayer> {
             context.read<GameBloc>().add(const GameEvent.closeAll());
           },
           child: InteractiveViewer(
+
             minScale: 0.8,
             scaleEnabled: false,
             onInteractionEnd: (details) {

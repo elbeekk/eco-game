@@ -99,6 +99,7 @@ class _GamePageState extends State<GamePage> {
                     // }
                   },
                   child: Scaffold(
+                    backgroundColor: const Color(0xffC0D470),
                     body: Stack(
                       clipBehavior: Clip.none,
                       children: [
