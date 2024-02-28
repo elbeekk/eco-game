@@ -1,11 +1,7 @@
-import 'dart:developer';
-
 import 'package:device_info_plus/device_info_plus.dart';
-import 'package:eco_game/infrastructure/services/local_storage/local_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
-import 'package:uuid/v1.dart';
 
 abstract class AppHelper {
   AppHelper._();

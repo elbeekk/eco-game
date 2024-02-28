@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
 
@@ -24,8 +25,8 @@ class _ImageLayerState extends State<ImageLayer> {
   }
 
   moveTo(double dx, double dy) {
-    transformationController.value = Matrix4.identity()..translate(-dx,-dy);
-      // (Matrix4.translationValues(-dx, -dy, 0));
+    transformationController.value = Matrix4.identity()..translate(-dx, -dy);
+    // (Matrix4.translationValues(-dx, -dy, 0));
   }
 
   @override
@@ -38,8 +39,6 @@ class _ImageLayerState extends State<ImageLayer> {
             context.read<GameBloc>().add(const GameEvent.closeAll());
           },
           child: InteractiveViewer(
-
-            minScale: 0.8,
             scaleEnabled: false,
             onInteractionEnd: (details) {
               context.read<GameBloc>().add(
@@ -75,8 +74,8 @@ class _ImageLayerState extends State<ImageLayer> {
               //       .abs(),
               // ).toString());
             },
+            trackpadScrollCausesScale: true,
             transformationController: transformationController,
-            maxScale: 1.4,
             constrained: false,
             child: Container(
               height: 1500,
@@ -87,69 +86,68 @@ class _ImageLayerState extends State<ImageLayer> {
                   Image.asset(
                     "assets/map.png",
                     fit: BoxFit.cover,
-                    scale: .1,
                   ),
                   ...widget.children,
-                  Positioned(
-                    top: 0,
-                    bottom: 1350,
-                    left: 0,
-                    right: 0,
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Container(
-                            color: Colors.red.withOpacity(.4),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Positioned(
-                    top: 1410,
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Container(
-                            color: Colors.red.withOpacity(.4),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Positioned(
-                    top: 0,
-                    bottom: 0,
-                    left: 1880,
-                    right: 0,
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Container(
-                            color: Colors.red.withOpacity(.4),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Positioned(
-                    top: 150,
-                    bottom: 0,
-                    left: 0,
-                    right: 1750,
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Container(
-                            color: Colors.red.withOpacity(.4),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  // Positioned(
+                  //   top: 0,
+                  //   bottom: 1350,
+                  //   left: 0,
+                  //   right: 0,
+                  //   child: Row(
+                  //     children: [
+                  //       Expanded(
+                  //         child: Container(
+                  //           color: Colors.red.withOpacity(.4),
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  // Positioned(
+                  //   top: 1410,
+                  //   bottom: 0,
+                  //   left: 0,
+                  //   right: 0,
+                  //   child: Row(
+                  //     children: [
+                  //       Expanded(
+                  //         child: Container(
+                  //           color: Colors.red.withOpacity(.4),
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  // Positioned(
+                  //   top: 0,
+                  //   bottom: 0,
+                  //   left: 1880,
+                  //   right: 0,
+                  //   child: Row(
+                  //     children: [
+                  //       Expanded(
+                  //         child: Container(
+                  //           color: Colors.red.withOpacity(.4),
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  // Positioned(
+                  //   top: 150,
+                  //   bottom: 0,
+                  //   left: 0,
+                  //   right: 1750,
+                  //   child: Row(
+                  //     children: [
+                  //       Expanded(
+                  //         child: Container(
+                  //           color: Colors.red.withOpacity(.4),
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
                 ],
               ),
             ),
