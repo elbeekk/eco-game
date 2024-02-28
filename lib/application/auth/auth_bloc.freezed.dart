@@ -24,8 +24,8 @@ mixin _$AuthEvent {
     required TResult Function(BuildContext context, Function onSuccess,
             dynamic Function(String) onError)
         guest,
-    required TResult Function(
-            Function onLogin, dynamic Function(String) onError)
+    required TResult Function(Function onLogin,
+            dynamic Function(String) onError, BuildContext context)
         google,
     required TResult Function() goToLogin,
     required TResult Function() showPassword1,
@@ -46,7 +46,8 @@ mixin _$AuthEvent {
     TResult? Function(BuildContext context, Function onSuccess,
             dynamic Function(String) onError)?
         guest,
-    TResult? Function(Function onLogin, dynamic Function(String) onError)?
+    TResult? Function(Function onLogin, dynamic Function(String) onError,
+            BuildContext context)?
         google,
     TResult? Function()? goToLogin,
     TResult? Function()? showPassword1,
@@ -66,7 +67,8 @@ mixin _$AuthEvent {
     TResult Function(BuildContext context, Function onSuccess,
             dynamic Function(String) onError)?
         guest,
-    TResult Function(Function onLogin, dynamic Function(String) onError)?
+    TResult Function(Function onLogin, dynamic Function(String) onError,
+            BuildContext context)?
         google,
     TResult Function()? goToLogin,
     TResult Function()? showPassword1,
@@ -241,8 +243,8 @@ class _$LoginImpl implements Login {
     required TResult Function(BuildContext context, Function onSuccess,
             dynamic Function(String) onError)
         guest,
-    required TResult Function(
-            Function onLogin, dynamic Function(String) onError)
+    required TResult Function(Function onLogin,
+            dynamic Function(String) onError, BuildContext context)
         google,
     required TResult Function() goToLogin,
     required TResult Function() showPassword1,
@@ -266,7 +268,8 @@ class _$LoginImpl implements Login {
     TResult? Function(BuildContext context, Function onSuccess,
             dynamic Function(String) onError)?
         guest,
-    TResult? Function(Function onLogin, dynamic Function(String) onError)?
+    TResult? Function(Function onLogin, dynamic Function(String) onError,
+            BuildContext context)?
         google,
     TResult? Function()? goToLogin,
     TResult? Function()? showPassword1,
@@ -289,7 +292,8 @@ class _$LoginImpl implements Login {
     TResult Function(BuildContext context, Function onSuccess,
             dynamic Function(String) onError)?
         guest,
-    TResult Function(Function onLogin, dynamic Function(String) onError)?
+    TResult Function(Function onLogin, dynamic Function(String) onError,
+            BuildContext context)?
         google,
     TResult Function()? goToLogin,
     TResult Function()? showPassword1,
@@ -464,8 +468,8 @@ class _$GuestImpl implements Guest {
     required TResult Function(BuildContext context, Function onSuccess,
             dynamic Function(String) onError)
         guest,
-    required TResult Function(
-            Function onLogin, dynamic Function(String) onError)
+    required TResult Function(Function onLogin,
+            dynamic Function(String) onError, BuildContext context)
         google,
     required TResult Function() goToLogin,
     required TResult Function() showPassword1,
@@ -489,7 +493,8 @@ class _$GuestImpl implements Guest {
     TResult? Function(BuildContext context, Function onSuccess,
             dynamic Function(String) onError)?
         guest,
-    TResult? Function(Function onLogin, dynamic Function(String) onError)?
+    TResult? Function(Function onLogin, dynamic Function(String) onError,
+            BuildContext context)?
         google,
     TResult? Function()? goToLogin,
     TResult? Function()? showPassword1,
@@ -512,7 +517,8 @@ class _$GuestImpl implements Guest {
     TResult Function(BuildContext context, Function onSuccess,
             dynamic Function(String) onError)?
         guest,
-    TResult Function(Function onLogin, dynamic Function(String) onError)?
+    TResult Function(Function onLogin, dynamic Function(String) onError,
+            BuildContext context)?
         google,
     TResult Function()? goToLogin,
     TResult Function()? showPassword1,
@@ -600,7 +606,10 @@ abstract class _$$GoogleImplCopyWith<$Res> {
           _$GoogleImpl value, $Res Function(_$GoogleImpl) then) =
       __$$GoogleImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Function onLogin, dynamic Function(String) onError});
+  $Res call(
+      {Function onLogin,
+      dynamic Function(String) onError,
+      BuildContext context});
 }
 
 /// @nodoc
@@ -616,6 +625,7 @@ class __$$GoogleImplCopyWithImpl<$Res>
   $Res call({
     Object? onLogin = null,
     Object? onError = null,
+    Object? context = null,
   }) {
     return _then(_$GoogleImpl(
       onLogin: null == onLogin
@@ -626,6 +636,10 @@ class __$$GoogleImplCopyWithImpl<$Res>
           ? _value.onError
           : onError // ignore: cast_nullable_to_non_nullable
               as dynamic Function(String),
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
     ));
   }
 }
@@ -633,16 +647,19 @@ class __$$GoogleImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GoogleImpl implements Google {
-  const _$GoogleImpl({required this.onLogin, required this.onError});
+  const _$GoogleImpl(
+      {required this.onLogin, required this.onError, required this.context});
 
   @override
   final Function onLogin;
   @override
   final dynamic Function(String) onError;
+  @override
+  final BuildContext context;
 
   @override
   String toString() {
-    return 'AuthEvent.google(onLogin: $onLogin, onError: $onError)';
+    return 'AuthEvent.google(onLogin: $onLogin, onError: $onError, context: $context)';
   }
 
   @override
@@ -651,11 +668,12 @@ class _$GoogleImpl implements Google {
         (other.runtimeType == runtimeType &&
             other is _$GoogleImpl &&
             (identical(other.onLogin, onLogin) || other.onLogin == onLogin) &&
-            (identical(other.onError, onError) || other.onError == onError));
+            (identical(other.onError, onError) || other.onError == onError) &&
+            (identical(other.context, context) || other.context == context));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, onLogin, onError);
+  int get hashCode => Object.hash(runtimeType, onLogin, onError, context);
 
   @JsonKey(ignore: true)
   @override
@@ -672,8 +690,8 @@ class _$GoogleImpl implements Google {
     required TResult Function(BuildContext context, Function onSuccess,
             dynamic Function(String) onError)
         guest,
-    required TResult Function(
-            Function onLogin, dynamic Function(String) onError)
+    required TResult Function(Function onLogin,
+            dynamic Function(String) onError, BuildContext context)
         google,
     required TResult Function() goToLogin,
     required TResult Function() showPassword1,
@@ -685,7 +703,7 @@ class _$GoogleImpl implements Google {
             dynamic Function(String) onError, Function onSuccess)
         signUp,
   }) {
-    return google(onLogin, onError);
+    return google(onLogin, onError, context);
   }
 
   @override
@@ -697,7 +715,8 @@ class _$GoogleImpl implements Google {
     TResult? Function(BuildContext context, Function onSuccess,
             dynamic Function(String) onError)?
         guest,
-    TResult? Function(Function onLogin, dynamic Function(String) onError)?
+    TResult? Function(Function onLogin, dynamic Function(String) onError,
+            BuildContext context)?
         google,
     TResult? Function()? goToLogin,
     TResult? Function()? showPassword1,
@@ -708,7 +727,7 @@ class _$GoogleImpl implements Google {
             dynamic Function(String) onError, Function onSuccess)?
         signUp,
   }) {
-    return google?.call(onLogin, onError);
+    return google?.call(onLogin, onError, context);
   }
 
   @override
@@ -720,7 +739,8 @@ class _$GoogleImpl implements Google {
     TResult Function(BuildContext context, Function onSuccess,
             dynamic Function(String) onError)?
         guest,
-    TResult Function(Function onLogin, dynamic Function(String) onError)?
+    TResult Function(Function onLogin, dynamic Function(String) onError,
+            BuildContext context)?
         google,
     TResult Function()? goToLogin,
     TResult Function()? showPassword1,
@@ -733,7 +753,7 @@ class _$GoogleImpl implements Google {
     required TResult orElse(),
   }) {
     if (google != null) {
-      return google(onLogin, onError);
+      return google(onLogin, onError, context);
     }
     return orElse();
   }
@@ -791,10 +811,12 @@ class _$GoogleImpl implements Google {
 abstract class Google implements AuthEvent {
   const factory Google(
       {required final Function onLogin,
-      required final dynamic Function(String) onError}) = _$GoogleImpl;
+      required final dynamic Function(String) onError,
+      required final BuildContext context}) = _$GoogleImpl;
 
   Function get onLogin;
   dynamic Function(String) get onError;
+  BuildContext get context;
   @JsonKey(ignore: true)
   _$$GoogleImplCopyWith<_$GoogleImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -844,8 +866,8 @@ class _$GoToLoginImpl implements GoToLogin {
     required TResult Function(BuildContext context, Function onSuccess,
             dynamic Function(String) onError)
         guest,
-    required TResult Function(
-            Function onLogin, dynamic Function(String) onError)
+    required TResult Function(Function onLogin,
+            dynamic Function(String) onError, BuildContext context)
         google,
     required TResult Function() goToLogin,
     required TResult Function() showPassword1,
@@ -869,7 +891,8 @@ class _$GoToLoginImpl implements GoToLogin {
     TResult? Function(BuildContext context, Function onSuccess,
             dynamic Function(String) onError)?
         guest,
-    TResult? Function(Function onLogin, dynamic Function(String) onError)?
+    TResult? Function(Function onLogin, dynamic Function(String) onError,
+            BuildContext context)?
         google,
     TResult? Function()? goToLogin,
     TResult? Function()? showPassword1,
@@ -892,7 +915,8 @@ class _$GoToLoginImpl implements GoToLogin {
     TResult Function(BuildContext context, Function onSuccess,
             dynamic Function(String) onError)?
         guest,
-    TResult Function(Function onLogin, dynamic Function(String) onError)?
+    TResult Function(Function onLogin, dynamic Function(String) onError,
+            BuildContext context)?
         google,
     TResult Function()? goToLogin,
     TResult Function()? showPassword1,
@@ -1008,8 +1032,8 @@ class _$ShowPassword1Impl implements ShowPassword1 {
     required TResult Function(BuildContext context, Function onSuccess,
             dynamic Function(String) onError)
         guest,
-    required TResult Function(
-            Function onLogin, dynamic Function(String) onError)
+    required TResult Function(Function onLogin,
+            dynamic Function(String) onError, BuildContext context)
         google,
     required TResult Function() goToLogin,
     required TResult Function() showPassword1,
@@ -1033,7 +1057,8 @@ class _$ShowPassword1Impl implements ShowPassword1 {
     TResult? Function(BuildContext context, Function onSuccess,
             dynamic Function(String) onError)?
         guest,
-    TResult? Function(Function onLogin, dynamic Function(String) onError)?
+    TResult? Function(Function onLogin, dynamic Function(String) onError,
+            BuildContext context)?
         google,
     TResult? Function()? goToLogin,
     TResult? Function()? showPassword1,
@@ -1056,7 +1081,8 @@ class _$ShowPassword1Impl implements ShowPassword1 {
     TResult Function(BuildContext context, Function onSuccess,
             dynamic Function(String) onError)?
         guest,
-    TResult Function(Function onLogin, dynamic Function(String) onError)?
+    TResult Function(Function onLogin, dynamic Function(String) onError,
+            BuildContext context)?
         google,
     TResult Function()? goToLogin,
     TResult Function()? showPassword1,
@@ -1172,8 +1198,8 @@ class _$ShowPassword2Impl implements ShowPassword2 {
     required TResult Function(BuildContext context, Function onSuccess,
             dynamic Function(String) onError)
         guest,
-    required TResult Function(
-            Function onLogin, dynamic Function(String) onError)
+    required TResult Function(Function onLogin,
+            dynamic Function(String) onError, BuildContext context)
         google,
     required TResult Function() goToLogin,
     required TResult Function() showPassword1,
@@ -1197,7 +1223,8 @@ class _$ShowPassword2Impl implements ShowPassword2 {
     TResult? Function(BuildContext context, Function onSuccess,
             dynamic Function(String) onError)?
         guest,
-    TResult? Function(Function onLogin, dynamic Function(String) onError)?
+    TResult? Function(Function onLogin, dynamic Function(String) onError,
+            BuildContext context)?
         google,
     TResult? Function()? goToLogin,
     TResult? Function()? showPassword1,
@@ -1220,7 +1247,8 @@ class _$ShowPassword2Impl implements ShowPassword2 {
     TResult Function(BuildContext context, Function onSuccess,
             dynamic Function(String) onError)?
         guest,
-    TResult Function(Function onLogin, dynamic Function(String) onError)?
+    TResult Function(Function onLogin, dynamic Function(String) onError,
+            BuildContext context)?
         google,
     TResult Function()? goToLogin,
     TResult Function()? showPassword1,
@@ -1371,8 +1399,8 @@ class _$LogOutImpl implements LogOut {
     required TResult Function(BuildContext context, Function onSuccess,
             dynamic Function(String) onError)
         guest,
-    required TResult Function(
-            Function onLogin, dynamic Function(String) onError)
+    required TResult Function(Function onLogin,
+            dynamic Function(String) onError, BuildContext context)
         google,
     required TResult Function() goToLogin,
     required TResult Function() showPassword1,
@@ -1396,7 +1424,8 @@ class _$LogOutImpl implements LogOut {
     TResult? Function(BuildContext context, Function onSuccess,
             dynamic Function(String) onError)?
         guest,
-    TResult? Function(Function onLogin, dynamic Function(String) onError)?
+    TResult? Function(Function onLogin, dynamic Function(String) onError,
+            BuildContext context)?
         google,
     TResult? Function()? goToLogin,
     TResult? Function()? showPassword1,
@@ -1419,7 +1448,8 @@ class _$LogOutImpl implements LogOut {
     TResult Function(BuildContext context, Function onSuccess,
             dynamic Function(String) onError)?
         guest,
-    TResult Function(Function onLogin, dynamic Function(String) onError)?
+    TResult Function(Function onLogin, dynamic Function(String) onError,
+            BuildContext context)?
         google,
     TResult Function()? goToLogin,
     TResult Function()? showPassword1,
@@ -1605,8 +1635,8 @@ class _$SignUpImpl implements SignUp {
     required TResult Function(BuildContext context, Function onSuccess,
             dynamic Function(String) onError)
         guest,
-    required TResult Function(
-            Function onLogin, dynamic Function(String) onError)
+    required TResult Function(Function onLogin,
+            dynamic Function(String) onError, BuildContext context)
         google,
     required TResult Function() goToLogin,
     required TResult Function() showPassword1,
@@ -1630,7 +1660,8 @@ class _$SignUpImpl implements SignUp {
     TResult? Function(BuildContext context, Function onSuccess,
             dynamic Function(String) onError)?
         guest,
-    TResult? Function(Function onLogin, dynamic Function(String) onError)?
+    TResult? Function(Function onLogin, dynamic Function(String) onError,
+            BuildContext context)?
         google,
     TResult? Function()? goToLogin,
     TResult? Function()? showPassword1,
@@ -1653,7 +1684,8 @@ class _$SignUpImpl implements SignUp {
     TResult Function(BuildContext context, Function onSuccess,
             dynamic Function(String) onError)?
         guest,
-    TResult Function(Function onLogin, dynamic Function(String) onError)?
+    TResult Function(Function onLogin, dynamic Function(String) onError,
+            BuildContext context)?
         google,
     TResult Function()? goToLogin,
     TResult Function()? showPassword1,

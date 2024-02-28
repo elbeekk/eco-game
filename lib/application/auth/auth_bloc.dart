@@ -4,6 +4,7 @@ import 'package:eco_game/infrastructure/models/class/user.dart';
 import 'package:eco_game/infrastructure/services/helpers.dart';
 import 'package:eco_game/infrastructure/services/local_storage/local_storage.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -34,7 +35,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     on<Google>((event, emit) async {
       emit(state.copyWith(isGoogleLoading: true));
-      final res = await authRepository.googleLogin();
+      final res = await authRepository.googleLogin(isWeb: TargetPlatform.android!=Theme.of(event.context).platform);
       await res.fold((googleAccount) async {
         if (googleAccount != null) {
           emit(state.copyWith(googleSignInAccount: googleAccount));

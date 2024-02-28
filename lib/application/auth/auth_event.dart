@@ -15,7 +15,7 @@ class AuthEvent with _$AuthEvent {
 
   const factory AuthEvent.google(
       {required Function onLogin,
-      required Function(String error) onError}) = Google;
+      required Function(String error) onError,required BuildContext context}) = Google;
 
   const factory AuthEvent.goToLogin() = GoToLogin;
 

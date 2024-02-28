@@ -707,7 +707,7 @@ class _LoginPageState extends State<LoginPage> {
                                                                   .read<
                                                                       AuthBloc>()
                                                                   .add(AuthEvent
-                                                                      .google(onError:
+                                                                      .google(context: context,onError:
                                                                           (error) {
                                                                     ScaffoldMessenger.of(
                                                                             context)

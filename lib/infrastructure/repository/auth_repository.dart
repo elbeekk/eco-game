@@ -78,7 +78,7 @@ class AuthRepository implements AuthInterface {
   }
 
   @override
-  Future<Either<GoogleSignInAccount?, dynamic>> googleLogin() async {
+  Future<Either<GoogleSignInAccount?, dynamic>> googleLogin({required bool isWeb}) async {
     final GoogleSignIn googleSignIn = GoogleSignIn();
     try {
       final GoogleSignInAccount? googleSignInAccount =

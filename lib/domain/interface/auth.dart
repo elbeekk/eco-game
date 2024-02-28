@@ -26,7 +26,7 @@ abstract class AuthInterface {
 
   Future<Either<DocumentSnapshot<Map<String, dynamic>>, dynamic>> guestLogin();
 
-  Future<Either<GoogleSignInAccount?, dynamic>> googleLogin();
+  Future<Either<GoogleSignInAccount?, dynamic>> googleLogin({required bool isWeb});
 
   Future<Either<QueryDocumentSnapshot<Map<String, dynamic>>?, dynamic>>
       loginWithEmail(String email);
