@@ -117,6 +117,11 @@ class _GamePageState extends State<GamePage> {
                         ),
                         BlocBuilder<MessageBloc, MessageState>(
                           builder: (context, state) {
+                            context.read<MessageBloc>().add(
+                                  MessageEvent.setIntroMessages(
+                                      onError: (e) {}, onSuccess: () {
+                                  }),
+                                );
                             if (state.currentMessage == null) {
                               return const ButtonsLayer();
                             }

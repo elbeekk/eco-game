@@ -34,21 +34,25 @@ class MessageBloc extends Bloc<MessageEvent, MessageState> {
     on<SetIntroMessages>((event, emit) async {
       final res = await messageRepository.getAllMessages();
       res.fold((l) {
-        List<MessageModel> introMes = LocalData.introMessages;
-        List<MessageModel> introMes1 = LocalData.introMessages;
-        List<MessageModel> remoteMes = l;
-        for (MessageModel mesI in introMes) {
-          for (MessageModel mesO in remoteMes) {
-            if (mesI.id == mesO.id) {
-              introMes1.removeWhere((element) => element.id == mesI.id);
+        List<MessageModel> introMesses = LocalData.introMessages.toList();
+        List<MessageModel> tempIntroMesses = LocalData.introMessages.toList();
+        List<MessageModel> remoteMes = l.toList();
+        for (MessageModel introMes in introMesses) {
+          for (MessageModel alreadyReadMes in remoteMes) {
+            if (introMes.id == alreadyReadMes.id) {
+              tempIntroMesses
+                  .removeWhere((element) => element.id == introMes.id);
             }
           }
         }
         emit(
           state.copyWith(
-            messages: [...state.messages, ...introMes1],
+            messages: [...state.messages, ...tempIntroMesses],
           ),
         );
+        if (state.messages.isNotEmpty) {
+          emit(state.copyWith(currentMessage: state.messages[0]));
+        }
         event.onSuccess.call();
       }, (r) {
         event.onError.call(r);

@@ -79,7 +79,7 @@ class _MessageState extends State<Message> {
                         opacity: canSkip ? 1 : 0,
                         duration: const Duration(seconds: 1),
                         child: InkWell(
-                          onTap: () {
+                          onTap: canSkip?() {
                             context.read<MessageBloc>().add(
                                   MessageEvent.readMessage(
                                     onError: (error) {
@@ -98,7 +98,7 @@ class _MessageState extends State<Message> {
                                     onSuccess: () {},
                                   ),
                                 );
-                          },
+                          }:null,
                           child: Container(
                             decoration: BoxDecoration(
                               color: Colors.white,

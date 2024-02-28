@@ -56,5 +56,23 @@ class LocalData {
             "Welcome, traveler, to the vibrant world of Energy Quest! I am your guide on this epic journey towards sustainability and prosperity. Behold, the humble beginnings of your very own town, where every decision you make will shape its destiny.",
         character:
             "assets/images/game_assets/character/images/portraits/Pixel-Portraits-Free/Feminine_A/Feminine_A_happy.png"),
+    MessageModel(
+        id: '2',
+        text:
+            "But fear not, for with determination and ingenuity, we shall transform this modest abode into a thriving beacon of renewable energy and environmental stewardship!",
+        character:
+            "assets/images/game_assets/character/images/portraits/Pixel-Portraits-Free/Feminine_A/Feminine_A_happy.png"),
+    MessageModel(
+        id: '3',
+        text:
+            "Together, we will harness the power of the sun, wind, and water to fuel our ambitions. Are you ready to embark on this extraordinary quest?",
+        character:
+            "assets/images/game_assets/character/images/portraits/Pixel-Portraits-Free/Feminine_A/Feminine_A_happy.png"),
+    MessageModel(
+        id: '4',
+        text:
+            "Excellent! Let us begin by laying the foundation of our sustainable utopia. Follow my lead, and together, we shall build a brighter future for generations to come.",
+        character:
+            "assets/images/game_assets/character/images/portraits/Pixel-Portraits-Free/Feminine_A/Feminine_A_happy.png"),
   ];
 }
