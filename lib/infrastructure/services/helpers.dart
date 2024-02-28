@@ -4,6 +4,8 @@ import 'package:device_info_plus/device_info_plus.dart';
 import 'package:eco_game/infrastructure/services/local_storage/local_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
+import 'package:uuid/v1.dart';
 
 abstract class AppHelper {
   AppHelper._();
@@ -24,6 +26,9 @@ abstract class AppHelper {
     if (isWeb) {
       final info = await DeviceInfoPlugin().webBrowserInfo;
       imei = "${info.browserName.name}_${info.platform}_${info.productSub}";
+    }
+    if (imei.contains('null')) {
+      imei = "null-${const Uuid().v1()}";
     }
     return imei;
   }
