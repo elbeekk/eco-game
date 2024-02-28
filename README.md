@@ -11,5 +11,5 @@ The game built with Flutter.
 
 ## Sources to check it out
 
-- [About this Game](ecogame.uz)
-- [Web Game](ecogame.vercel.app)
+- [About this Game](https://ecogame.uz)
+- [Web Game](https://ecogame.vercel.app)
