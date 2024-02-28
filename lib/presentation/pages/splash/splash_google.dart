@@ -27,22 +27,22 @@ class _SplashPageState extends State<SplashPage> {
       await change(1);
     });
     return Scaffold(
-      backgroundColor: Colors.grey.shade900,
+      backgroundColor: const Color(0xffC0D470),
       body: Center(
         child: AnimatedOpacity(
           opacity: opacity,
           onEnd: () async {
-            Timer(const Duration(seconds: 1), () {
-              Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) =>
-                        LocalStorage.getMe()?.firstName == null
-                            ? const LoginPage()
-                            : const GamePage(),
-                  ),
-                  (route) => false);
-            });
+            // Timer(const Duration(seconds: 1), () {
+            //   Navigator.pushAndRemoveUntil(
+            //       context,
+            //       MaterialPageRoute(
+            //         builder: (context) =>
+            //             LocalStorage.getMe()?.firstName == null
+            //                 ? const LoginPage()
+            //                 : const GamePage(),
+            //       ),
+            //       (route) => false);
+            // });
           },
           duration: const Duration(seconds: 3),
           child: Column(
@@ -51,13 +51,16 @@ class _SplashPageState extends State<SplashPage> {
               Container(
                 constraints: const BoxConstraints(maxWidth: 400, minWidth: 150),
                 width: MediaQuery.sizeOf(context).width * .3,
-                child: Image.asset(
-                  'assets/images/png/google.png',
+                child: Opacity(
+                  opacity: .7,
+                  child: Image.asset(
+                    'assets/images/png/google.png',
+                  ),
                 ),
               ),
               Text(
                 "Our Sponsor",
-                style: GoogleFonts.albertSans(color: Colors.grey.shade500),
+                style: GoogleFonts.albertSans(color: Colors.white),
               )
             ],
           ),

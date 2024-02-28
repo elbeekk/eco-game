@@ -1,6 +1,6 @@
  .loader {
-   --path: #2F3545;
-   --dot: #5628EE;
+   --path: #FFFFFF;
+   --dot: #409f1e;
    --duration: 3s;
    width: 44px;
    height: 44px;
@@ -133,7 +133,7 @@
  }
  body {
    min-height: 100vh;
-   background: #F5F9FF;
+   background: #C0D470;
    display: flex;
    justify-content: center;
    align-items: center;
