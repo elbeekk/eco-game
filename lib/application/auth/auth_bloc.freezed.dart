@@ -21,7 +21,9 @@ mixin _$AuthEvent {
     required TResult Function(String username, String password,
             Function onSuccess, dynamic Function(String) onError)
         login,
-    required TResult Function() guest,
+    required TResult Function(BuildContext context, Function onSuccess,
+            dynamic Function(String) onError)
+        guest,
     required TResult Function(
             Function onLogin, dynamic Function(String) onError)
         google,
@@ -41,7 +43,9 @@ mixin _$AuthEvent {
     TResult? Function(String username, String password, Function onSuccess,
             dynamic Function(String) onError)?
         login,
-    TResult? Function()? guest,
+    TResult? Function(BuildContext context, Function onSuccess,
+            dynamic Function(String) onError)?
+        guest,
     TResult? Function(Function onLogin, dynamic Function(String) onError)?
         google,
     TResult? Function()? goToLogin,
@@ -59,7 +63,9 @@ mixin _$AuthEvent {
     TResult Function(String username, String password, Function onSuccess,
             dynamic Function(String) onError)?
         login,
-    TResult Function()? guest,
+    TResult Function(BuildContext context, Function onSuccess,
+            dynamic Function(String) onError)?
+        guest,
     TResult Function(Function onLogin, dynamic Function(String) onError)?
         google,
     TResult Function()? goToLogin,
@@ -232,7 +238,9 @@ class _$LoginImpl implements Login {
     required TResult Function(String username, String password,
             Function onSuccess, dynamic Function(String) onError)
         login,
-    required TResult Function() guest,
+    required TResult Function(BuildContext context, Function onSuccess,
+            dynamic Function(String) onError)
+        guest,
     required TResult Function(
             Function onLogin, dynamic Function(String) onError)
         google,
@@ -255,7 +263,9 @@ class _$LoginImpl implements Login {
     TResult? Function(String username, String password, Function onSuccess,
             dynamic Function(String) onError)?
         login,
-    TResult? Function()? guest,
+    TResult? Function(BuildContext context, Function onSuccess,
+            dynamic Function(String) onError)?
+        guest,
     TResult? Function(Function onLogin, dynamic Function(String) onError)?
         google,
     TResult? Function()? goToLogin,
@@ -276,7 +286,9 @@ class _$LoginImpl implements Login {
     TResult Function(String username, String password, Function onSuccess,
             dynamic Function(String) onError)?
         login,
-    TResult Function()? guest,
+    TResult Function(BuildContext context, Function onSuccess,
+            dynamic Function(String) onError)?
+        guest,
     TResult Function(Function onLogin, dynamic Function(String) onError)?
         google,
     TResult Function()? goToLogin,
@@ -366,6 +378,11 @@ abstract class _$$GuestImplCopyWith<$Res> {
   factory _$$GuestImplCopyWith(
           _$GuestImpl value, $Res Function(_$GuestImpl) then) =
       __$$GuestImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {BuildContext context,
+      Function onSuccess,
+      dynamic Function(String) onError});
 }
 
 /// @nodoc
@@ -375,26 +392,68 @@ class __$$GuestImplCopyWithImpl<$Res>
   __$$GuestImplCopyWithImpl(
       _$GuestImpl _value, $Res Function(_$GuestImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? context = null,
+    Object? onSuccess = null,
+    Object? onError = null,
+  }) {
+    return _then(_$GuestImpl(
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+      onSuccess: null == onSuccess
+          ? _value.onSuccess
+          : onSuccess // ignore: cast_nullable_to_non_nullable
+              as Function,
+      onError: null == onError
+          ? _value.onError
+          : onError // ignore: cast_nullable_to_non_nullable
+              as dynamic Function(String),
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$GuestImpl implements Guest {
-  const _$GuestImpl();
+  const _$GuestImpl(
+      {required this.context, required this.onSuccess, required this.onError});
+
+  @override
+  final BuildContext context;
+  @override
+  final Function onSuccess;
+  @override
+  final dynamic Function(String) onError;
 
   @override
   String toString() {
-    return 'AuthEvent.guest()';
+    return 'AuthEvent.guest(context: $context, onSuccess: $onSuccess, onError: $onError)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GuestImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$GuestImpl &&
+            (identical(other.context, context) || other.context == context) &&
+            (identical(other.onSuccess, onSuccess) ||
+                other.onSuccess == onSuccess) &&
+            (identical(other.onError, onError) || other.onError == onError));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, context, onSuccess, onError);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GuestImplCopyWith<_$GuestImpl> get copyWith =>
+      __$$GuestImplCopyWithImpl<_$GuestImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -402,7 +461,9 @@ class _$GuestImpl implements Guest {
     required TResult Function(String username, String password,
             Function onSuccess, dynamic Function(String) onError)
         login,
-    required TResult Function() guest,
+    required TResult Function(BuildContext context, Function onSuccess,
+            dynamic Function(String) onError)
+        guest,
     required TResult Function(
             Function onLogin, dynamic Function(String) onError)
         google,
@@ -416,7 +477,7 @@ class _$GuestImpl implements Guest {
             dynamic Function(String) onError, Function onSuccess)
         signUp,
   }) {
-    return guest();
+    return guest(context, onSuccess, onError);
   }
 
   @override
@@ -425,7 +486,9 @@ class _$GuestImpl implements Guest {
     TResult? Function(String username, String password, Function onSuccess,
             dynamic Function(String) onError)?
         login,
-    TResult? Function()? guest,
+    TResult? Function(BuildContext context, Function onSuccess,
+            dynamic Function(String) onError)?
+        guest,
     TResult? Function(Function onLogin, dynamic Function(String) onError)?
         google,
     TResult? Function()? goToLogin,
@@ -437,7 +500,7 @@ class _$GuestImpl implements Guest {
             dynamic Function(String) onError, Function onSuccess)?
         signUp,
   }) {
-    return guest?.call();
+    return guest?.call(context, onSuccess, onError);
   }
 
   @override
@@ -446,7 +509,9 @@ class _$GuestImpl implements Guest {
     TResult Function(String username, String password, Function onSuccess,
             dynamic Function(String) onError)?
         login,
-    TResult Function()? guest,
+    TResult Function(BuildContext context, Function onSuccess,
+            dynamic Function(String) onError)?
+        guest,
     TResult Function(Function onLogin, dynamic Function(String) onError)?
         google,
     TResult Function()? goToLogin,
@@ -460,7 +525,7 @@ class _$GuestImpl implements Guest {
     required TResult orElse(),
   }) {
     if (guest != null) {
-      return guest();
+      return guest(context, onSuccess, onError);
     }
     return orElse();
   }
@@ -516,7 +581,17 @@ class _$GuestImpl implements Guest {
 }
 
 abstract class Guest implements AuthEvent {
-  const factory Guest() = _$GuestImpl;
+  const factory Guest(
+      {required final BuildContext context,
+      required final Function onSuccess,
+      required final dynamic Function(String) onError}) = _$GuestImpl;
+
+  BuildContext get context;
+  Function get onSuccess;
+  dynamic Function(String) get onError;
+  @JsonKey(ignore: true)
+  _$$GuestImplCopyWith<_$GuestImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -594,7 +669,9 @@ class _$GoogleImpl implements Google {
     required TResult Function(String username, String password,
             Function onSuccess, dynamic Function(String) onError)
         login,
-    required TResult Function() guest,
+    required TResult Function(BuildContext context, Function onSuccess,
+            dynamic Function(String) onError)
+        guest,
     required TResult Function(
             Function onLogin, dynamic Function(String) onError)
         google,
@@ -617,7 +694,9 @@ class _$GoogleImpl implements Google {
     TResult? Function(String username, String password, Function onSuccess,
             dynamic Function(String) onError)?
         login,
-    TResult? Function()? guest,
+    TResult? Function(BuildContext context, Function onSuccess,
+            dynamic Function(String) onError)?
+        guest,
     TResult? Function(Function onLogin, dynamic Function(String) onError)?
         google,
     TResult? Function()? goToLogin,
@@ -638,7 +717,9 @@ class _$GoogleImpl implements Google {
     TResult Function(String username, String password, Function onSuccess,
             dynamic Function(String) onError)?
         login,
-    TResult Function()? guest,
+    TResult Function(BuildContext context, Function onSuccess,
+            dynamic Function(String) onError)?
+        guest,
     TResult Function(Function onLogin, dynamic Function(String) onError)?
         google,
     TResult Function()? goToLogin,
@@ -760,7 +841,9 @@ class _$GoToLoginImpl implements GoToLogin {
     required TResult Function(String username, String password,
             Function onSuccess, dynamic Function(String) onError)
         login,
-    required TResult Function() guest,
+    required TResult Function(BuildContext context, Function onSuccess,
+            dynamic Function(String) onError)
+        guest,
     required TResult Function(
             Function onLogin, dynamic Function(String) onError)
         google,
@@ -783,7 +866,9 @@ class _$GoToLoginImpl implements GoToLogin {
     TResult? Function(String username, String password, Function onSuccess,
             dynamic Function(String) onError)?
         login,
-    TResult? Function()? guest,
+    TResult? Function(BuildContext context, Function onSuccess,
+            dynamic Function(String) onError)?
+        guest,
     TResult? Function(Function onLogin, dynamic Function(String) onError)?
         google,
     TResult? Function()? goToLogin,
@@ -804,7 +889,9 @@ class _$GoToLoginImpl implements GoToLogin {
     TResult Function(String username, String password, Function onSuccess,
             dynamic Function(String) onError)?
         login,
-    TResult Function()? guest,
+    TResult Function(BuildContext context, Function onSuccess,
+            dynamic Function(String) onError)?
+        guest,
     TResult Function(Function onLogin, dynamic Function(String) onError)?
         google,
     TResult Function()? goToLogin,
@@ -918,7 +1005,9 @@ class _$ShowPassword1Impl implements ShowPassword1 {
     required TResult Function(String username, String password,
             Function onSuccess, dynamic Function(String) onError)
         login,
-    required TResult Function() guest,
+    required TResult Function(BuildContext context, Function onSuccess,
+            dynamic Function(String) onError)
+        guest,
     required TResult Function(
             Function onLogin, dynamic Function(String) onError)
         google,
@@ -941,7 +1030,9 @@ class _$ShowPassword1Impl implements ShowPassword1 {
     TResult? Function(String username, String password, Function onSuccess,
             dynamic Function(String) onError)?
         login,
-    TResult? Function()? guest,
+    TResult? Function(BuildContext context, Function onSuccess,
+            dynamic Function(String) onError)?
+        guest,
     TResult? Function(Function onLogin, dynamic Function(String) onError)?
         google,
     TResult? Function()? goToLogin,
@@ -962,7 +1053,9 @@ class _$ShowPassword1Impl implements ShowPassword1 {
     TResult Function(String username, String password, Function onSuccess,
             dynamic Function(String) onError)?
         login,
-    TResult Function()? guest,
+    TResult Function(BuildContext context, Function onSuccess,
+            dynamic Function(String) onError)?
+        guest,
     TResult Function(Function onLogin, dynamic Function(String) onError)?
         google,
     TResult Function()? goToLogin,
@@ -1076,7 +1169,9 @@ class _$ShowPassword2Impl implements ShowPassword2 {
     required TResult Function(String username, String password,
             Function onSuccess, dynamic Function(String) onError)
         login,
-    required TResult Function() guest,
+    required TResult Function(BuildContext context, Function onSuccess,
+            dynamic Function(String) onError)
+        guest,
     required TResult Function(
             Function onLogin, dynamic Function(String) onError)
         google,
@@ -1099,7 +1194,9 @@ class _$ShowPassword2Impl implements ShowPassword2 {
     TResult? Function(String username, String password, Function onSuccess,
             dynamic Function(String) onError)?
         login,
-    TResult? Function()? guest,
+    TResult? Function(BuildContext context, Function onSuccess,
+            dynamic Function(String) onError)?
+        guest,
     TResult? Function(Function onLogin, dynamic Function(String) onError)?
         google,
     TResult? Function()? goToLogin,
@@ -1120,7 +1217,9 @@ class _$ShowPassword2Impl implements ShowPassword2 {
     TResult Function(String username, String password, Function onSuccess,
             dynamic Function(String) onError)?
         login,
-    TResult Function()? guest,
+    TResult Function(BuildContext context, Function onSuccess,
+            dynamic Function(String) onError)?
+        guest,
     TResult Function(Function onLogin, dynamic Function(String) onError)?
         google,
     TResult Function()? goToLogin,
@@ -1269,7 +1368,9 @@ class _$LogOutImpl implements LogOut {
     required TResult Function(String username, String password,
             Function onSuccess, dynamic Function(String) onError)
         login,
-    required TResult Function() guest,
+    required TResult Function(BuildContext context, Function onSuccess,
+            dynamic Function(String) onError)
+        guest,
     required TResult Function(
             Function onLogin, dynamic Function(String) onError)
         google,
@@ -1292,7 +1393,9 @@ class _$LogOutImpl implements LogOut {
     TResult? Function(String username, String password, Function onSuccess,
             dynamic Function(String) onError)?
         login,
-    TResult? Function()? guest,
+    TResult? Function(BuildContext context, Function onSuccess,
+            dynamic Function(String) onError)?
+        guest,
     TResult? Function(Function onLogin, dynamic Function(String) onError)?
         google,
     TResult? Function()? goToLogin,
@@ -1313,7 +1416,9 @@ class _$LogOutImpl implements LogOut {
     TResult Function(String username, String password, Function onSuccess,
             dynamic Function(String) onError)?
         login,
-    TResult Function()? guest,
+    TResult Function(BuildContext context, Function onSuccess,
+            dynamic Function(String) onError)?
+        guest,
     TResult Function(Function onLogin, dynamic Function(String) onError)?
         google,
     TResult Function()? goToLogin,
@@ -1497,7 +1602,9 @@ class _$SignUpImpl implements SignUp {
     required TResult Function(String username, String password,
             Function onSuccess, dynamic Function(String) onError)
         login,
-    required TResult Function() guest,
+    required TResult Function(BuildContext context, Function onSuccess,
+            dynamic Function(String) onError)
+        guest,
     required TResult Function(
             Function onLogin, dynamic Function(String) onError)
         google,
@@ -1520,7 +1627,9 @@ class _$SignUpImpl implements SignUp {
     TResult? Function(String username, String password, Function onSuccess,
             dynamic Function(String) onError)?
         login,
-    TResult? Function()? guest,
+    TResult? Function(BuildContext context, Function onSuccess,
+            dynamic Function(String) onError)?
+        guest,
     TResult? Function(Function onLogin, dynamic Function(String) onError)?
         google,
     TResult? Function()? goToLogin,
@@ -1541,7 +1650,9 @@ class _$SignUpImpl implements SignUp {
     TResult Function(String username, String password, Function onSuccess,
             dynamic Function(String) onError)?
         login,
-    TResult Function()? guest,
+    TResult Function(BuildContext context, Function onSuccess,
+            dynamic Function(String) onError)?
+        guest,
     TResult Function(Function onLogin, dynamic Function(String) onError)?
         google,
     TResult Function()? goToLogin,
@@ -1630,6 +1741,8 @@ abstract class SignUp implements AuthEvent {
 mixin _$AuthState {
   bool get isSignUp => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
+  bool get isGoogleLoading => throw _privateConstructorUsedError;
+  bool get isGuestLoading => throw _privateConstructorUsedError;
   bool get hidePassword1 => throw _privateConstructorUsedError;
   bool get hidePassword2 => throw _privateConstructorUsedError;
   GoogleSignInAccount? get googleSignInAccount =>
@@ -1648,6 +1761,8 @@ abstract class $AuthStateCopyWith<$Res> {
   $Res call(
       {bool isSignUp,
       bool isLoading,
+      bool isGoogleLoading,
+      bool isGuestLoading,
       bool hidePassword1,
       bool hidePassword2,
       GoogleSignInAccount? googleSignInAccount});
@@ -1668,6 +1783,8 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
   $Res call({
     Object? isSignUp = null,
     Object? isLoading = null,
+    Object? isGoogleLoading = null,
+    Object? isGuestLoading = null,
     Object? hidePassword1 = null,
     Object? hidePassword2 = null,
     Object? googleSignInAccount = freezed,
@@ -1680,6 +1797,14 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isGoogleLoading: null == isGoogleLoading
+          ? _value.isGoogleLoading
+          : isGoogleLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isGuestLoading: null == isGuestLoading
+          ? _value.isGuestLoading
+          : isGuestLoading // ignore: cast_nullable_to_non_nullable
               as bool,
       hidePassword1: null == hidePassword1
           ? _value.hidePassword1
@@ -1708,6 +1833,8 @@ abstract class _$$AuthStateImplCopyWith<$Res>
   $Res call(
       {bool isSignUp,
       bool isLoading,
+      bool isGoogleLoading,
+      bool isGuestLoading,
       bool hidePassword1,
       bool hidePassword2,
       GoogleSignInAccount? googleSignInAccount});
@@ -1726,6 +1853,8 @@ class __$$AuthStateImplCopyWithImpl<$Res>
   $Res call({
     Object? isSignUp = null,
     Object? isLoading = null,
+    Object? isGoogleLoading = null,
+    Object? isGuestLoading = null,
     Object? hidePassword1 = null,
     Object? hidePassword2 = null,
     Object? googleSignInAccount = freezed,
@@ -1738,6 +1867,14 @@ class __$$AuthStateImplCopyWithImpl<$Res>
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isGoogleLoading: null == isGoogleLoading
+          ? _value.isGoogleLoading
+          : isGoogleLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isGuestLoading: null == isGuestLoading
+          ? _value.isGuestLoading
+          : isGuestLoading // ignore: cast_nullable_to_non_nullable
               as bool,
       hidePassword1: null == hidePassword1
           ? _value.hidePassword1
@@ -1761,6 +1898,8 @@ class _$AuthStateImpl implements _AuthState {
   const _$AuthStateImpl(
       {this.isSignUp = false,
       this.isLoading = false,
+      this.isGoogleLoading = false,
+      this.isGuestLoading = false,
       this.hidePassword1 = true,
       this.hidePassword2 = true,
       this.googleSignInAccount});
@@ -1773,6 +1912,12 @@ class _$AuthStateImpl implements _AuthState {
   final bool isLoading;
   @override
   @JsonKey()
+  final bool isGoogleLoading;
+  @override
+  @JsonKey()
+  final bool isGuestLoading;
+  @override
+  @JsonKey()
   final bool hidePassword1;
   @override
   @JsonKey()
@@ -1782,7 +1927,7 @@ class _$AuthStateImpl implements _AuthState {
 
   @override
   String toString() {
-    return 'AuthState(isSignUp: $isSignUp, isLoading: $isLoading, hidePassword1: $hidePassword1, hidePassword2: $hidePassword2, googleSignInAccount: $googleSignInAccount)';
+    return 'AuthState(isSignUp: $isSignUp, isLoading: $isLoading, isGoogleLoading: $isGoogleLoading, isGuestLoading: $isGuestLoading, hidePassword1: $hidePassword1, hidePassword2: $hidePassword2, googleSignInAccount: $googleSignInAccount)';
   }
 
   @override
@@ -1794,6 +1939,10 @@ class _$AuthStateImpl implements _AuthState {
                 other.isSignUp == isSignUp) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
+            (identical(other.isGoogleLoading, isGoogleLoading) ||
+                other.isGoogleLoading == isGoogleLoading) &&
+            (identical(other.isGuestLoading, isGuestLoading) ||
+                other.isGuestLoading == isGuestLoading) &&
             (identical(other.hidePassword1, hidePassword1) ||
                 other.hidePassword1 == hidePassword1) &&
             (identical(other.hidePassword2, hidePassword2) ||
@@ -1803,8 +1952,15 @@ class _$AuthStateImpl implements _AuthState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isSignUp, isLoading,
-      hidePassword1, hidePassword2, googleSignInAccount);
+  int get hashCode => Object.hash(
+      runtimeType,
+      isSignUp,
+      isLoading,
+      isGoogleLoading,
+      isGuestLoading,
+      hidePassword1,
+      hidePassword2,
+      googleSignInAccount);
 
   @JsonKey(ignore: true)
   @override
@@ -1817,6 +1973,8 @@ abstract class _AuthState implements AuthState {
   const factory _AuthState(
       {final bool isSignUp,
       final bool isLoading,
+      final bool isGoogleLoading,
+      final bool isGuestLoading,
       final bool hidePassword1,
       final bool hidePassword2,
       final GoogleSignInAccount? googleSignInAccount}) = _$AuthStateImpl;
@@ -1825,6 +1983,10 @@ abstract class _AuthState implements AuthState {
   bool get isSignUp;
   @override
   bool get isLoading;
+  @override
+  bool get isGoogleLoading;
+  @override
+  bool get isGuestLoading;
   @override
   bool get hidePassword1;
   @override

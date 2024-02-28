@@ -49,13 +49,17 @@ class MenuView extends StatelessWidget {
                                   constraints: const BoxConstraints(
                                       maxWidth: 100, maxHeight: 100),
                                   decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      image: DecorationImage(
-                                          fit: BoxFit.cover,
-                                          image: CachedNetworkImageProvider(
-                                              LocalStorage.getMe()?.photoUrl ??
-                                                  'https://images.macrumors.com/t/n4CqVR2eujJL-GkUPhv1oao_PmI=/1600x/article-new/2019/04/guest-user-250x250.jpg')),
-                                      color: Colors.white),
+                                    shape: BoxShape.circle,
+                                    image: DecorationImage(
+                                        fit: BoxFit.cover,
+                                        image: CachedNetworkImageProvider(
+                                            (LocalStorage.getMe()?.photoUrl ??
+                                                        '')
+                                                    .isNotEmpty
+                                                ? LocalStorage.getMe()?.photoUrl??''
+                                                : 'https://images.macrumors.com/t/n4CqVR2eujJL-GkUPhv1oao_PmI=/1600x/article-new/2019/04/guest-user-250x250.jpg')),
+                                    color: Colors.transparent,
+                                  ),
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.symmetric(

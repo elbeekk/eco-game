@@ -4,7 +4,7 @@ import 'package:eco_game/infrastructure/models/class/message.dart';
 class LocalData {
   LocalData._();
 
-  static List<BuildingModel> shopItems = [
+  static List<BuildingModel> houses = [
     BuildingModel(
       name: "House",
       image: "assets/images/game_assets/village/images/HOUSE 1 - DAY.png",
@@ -13,22 +13,14 @@ class LocalData {
       duration: 10,
       price: 2000,
     ),
-    BuildingModel(
-      name: "Solar Panel",
-      image: "assets/images/game_assets/village/images/solarPanel.png",
-      energy: 15,
-      people: 0,
-      duration: 3,
-      price: 6000,
-    ),
-    BuildingModel(
-      name: "Church",
-      image: "assets/images/game_assets/village/images/CHURCH - DAY.png",
-      energy: -15,
-      people: 3,
-      duration: 15,
-      price: 7000,
-    ),
+    // BuildingModel(
+    //   name: "Church",
+    //   image: "assets/images/game_assets/village/images/CHURCH - DAY.png",
+    //   energy: -15,
+    //   people: 3,
+    //   duration: 15,
+    //   price: 7000,
+    // ),
     BuildingModel(
       name: "Bigger House",
       image: "assets/images/game_assets/village/images/HOUSE 2 - DAY.png",
@@ -46,6 +38,16 @@ class LocalData {
       price: 7000,
     ),
   ];
+  static List<BuildingModel> generators = [
+    BuildingModel(
+      name: "Solar Panel",
+      image: "assets/images/game_assets/village/images/solarPanel.png",
+      energy: 15,
+      people: 0,
+      duration: 3,
+      price: 6000,
+    ),];
+  static List<BuildingModel> trees = [];
 
   static List<MessageModel> introMessages = [
     MessageModel(

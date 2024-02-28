@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pixelarticons/pixel.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../application/message/message_bloc.dart';
 
 class Message extends StatefulWidget {
   final String image;
@@ -71,31 +73,53 @@ class _MessageState extends State<Message> {
                   const SizedBox(
                     height: 2,
                   ),
-                  AnimatedOpacity(
-                    opacity: canSkip ? 1 : 0,
-                    duration: const Duration(seconds: 1),
-                    child: InkWell(
-                      onTap: () {
-                        // TODO "make message seen and move to the next message or hide it"
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          border: Border.all(
-                              color: Colors.brown.withOpacity(.8), width: 3),
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(10),
-                            topRight: Radius.circular(10),
-                            bottomRight: Radius.circular(10),
-                            bottomLeft: Radius.circular(10),
+                  BlocBuilder<MessageBloc, MessageState>(
+                    builder: (context, state) {
+                      return AnimatedOpacity(
+                        opacity: canSkip ? 1 : 0,
+                        duration: const Duration(seconds: 1),
+                        child: InkWell(
+                          onTap: () {
+                            context.read<MessageBloc>().add(
+                                  MessageEvent.readMessage(
+                                    onError: (error) {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          backgroundColor: Colors.red.shade300,
+                                          content: Text(
+                                            error.toString(),
+                                            style:
+                                                const TextStyle(color: Colors.white),
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    onSuccess: () {},
+                                  ),
+                                );
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              border: Border.all(
+                                  color: Colors.brown.withOpacity(.8),
+                                  width: 3),
+                              borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(10),
+                                topRight: Radius.circular(10),
+                                bottomRight: Radius.circular(10),
+                                bottomLeft: Radius.circular(10),
+                              ),
+                            ),
+                            padding: const EdgeInsets.all(5),
+                            child: const Row(
+                              children: [Icon(Pixel.arrowright)],
+                            ),
                           ),
                         ),
-                        padding: const EdgeInsets.all(5),
-                        child: const Row(
-                          children: [Icon(Pixel.arrowright)],
-                        ),
-                      ),
-                    ),
+                      );
+                    },
                   ),
                 ],
               ),

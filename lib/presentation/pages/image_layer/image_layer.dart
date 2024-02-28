@@ -2,7 +2,6 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:eco_game/application/game/game_bloc.dart';
-import 'package:eco_game/application/settings/settings_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -81,7 +80,7 @@ class _ImageLayerState extends State<ImageLayer> {
             child: Container(
               height: 1500,
               width: 2000,
-              color: Colors.white,
+              color: const Color(0xffC0D470),
               child: Stack(
                 children: [
                   Image.asset(

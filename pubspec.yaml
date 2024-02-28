@@ -52,6 +52,8 @@ dependencies:
   get_it: ^7.6.7
   jiffy: ^6.2.2
   percent_indicator: ^4.2.3
+  blurrycontainer: ^1.0.2
+  device_info_plus: ^9.1.2
 
 
 dev_dependencies:

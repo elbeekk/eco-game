@@ -1,7 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:eco_game/domain/di/dependancy_manager.dart';
 import 'package:eco_game/infrastructure/models/class/user.dart';
+import 'package:eco_game/infrastructure/services/helpers.dart';
 import 'package:eco_game/infrastructure/services/local_storage/local_storage.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -29,8 +31,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       });
       emit(state.copyWith(isLoading: false));
     });
+
     on<Google>((event, emit) async {
-      emit(state.copyWith(isLoading: true));
+      emit(state.copyWith(isGoogleLoading: true));
       final res = await authRepository.googleLogin();
       await res.fold((googleAccount) async {
         if (googleAccount != null) {
@@ -51,17 +54,20 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       }, (r) {
         event.onError.call(r.toString());
       });
-      emit(state.copyWith(isLoading: false));
+      emit(state.copyWith(isGoogleLoading: false));
     });
 
     on<GoToLogin>((event, emit) async {
       await GoogleSignIn().signOut();
       emit(state.copyWith(isSignUp: false, googleSignInAccount: null));
     });
+
     on<LogOut>((event, emit) async {
       emit(state.copyWith(isLoading: true));
       try {
-        await GoogleSignIn().signOut();
+        if(LocalStorage.getMe()?.email?.isNotEmpty??false) {
+          await GoogleSignIn().signOut();
+        }
         LocalStorage.removeMe();
         event.onSuccess.call();
       } catch (e) {
@@ -109,8 +115,27 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<ShowPassword1>((event, emit) {
       emit(state.copyWith(hidePassword1: !state.hidePassword1));
     });
+
     on<ShowPassword2>((event, emit) {
       emit(state.copyWith(hidePassword2: !state.hidePassword2));
+    });
+
+    on<Guest>((event, emit) async {
+      emit(state.copyWith(isGuestLoading: true));
+      final imei = await AppHelper.generateIMEI(event.context);
+      final res = await authRepository.loginAsGuest(imei: imei);
+      res.fold((l) async {
+        if (l != null) {
+          await LocalStorage.setMe(
+            UserModel.fromJson(l),
+          );
+          event.onSuccess.call();
+        }
+      }, (r) {
+        event.onError.call(r);
+      });
+      emit(state.copyWith(isGuestLoading: false));
+
     });
   }
 }

@@ -1,6 +1,7 @@
 import 'package:eco_game/application/auth/auth_bloc.dart';
 import 'package:eco_game/application/building/building_bloc.dart';
 import 'package:eco_game/application/game/game_bloc.dart';
+import 'package:eco_game/application/message/message_bloc.dart';
 import 'package:eco_game/application/settings/settings_bloc.dart';
 import 'package:eco_game/application/user/user_bloc.dart';
 import 'package:eco_game/domain/di/dependancy_manager.dart';
@@ -55,6 +56,9 @@ class _MyAppState extends State<MyApp> {
           ),
           BlocProvider(
             create: (context) => AuthBloc(),
+          ),
+          BlocProvider(
+            create: (context) => MessageBloc(),
           ),
         ],
         child: const LoginPage(),

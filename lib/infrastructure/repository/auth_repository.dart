@@ -138,4 +138,33 @@ class AuthRepository implements AuthInterface {
       return Right(e.message);
     }
   }
+
+  @override
+  Future<Either<Map<String, dynamic>?, dynamic>> loginAsGuest(
+      {required String imei}) async {
+    try {
+      final res =
+          await FirebaseFirestore.instance.collection('users').doc(imei).get();
+      if (res.data() == null) {
+        await FirebaseFirestore.instance.collection('users').doc(imei).set(
+            UserModel(
+                    id: imei,
+                    firstName: "Guest",
+                    lastName: '',
+                    password: '',
+                    username: '',
+                    photoUrl: '',
+                    joinedDate:
+                        DateTime.now().millisecondsSinceEpoch.toString(),
+                    email: '',
+                    coins: 500)
+                .toJson());
+      }
+      final ress =
+          await FirebaseFirestore.instance.collection('users').doc(imei).get();
+      return Left(ress.data());
+    } on FirebaseException catch (e) {
+      return Right(e.message);
+    }
+  }
 }

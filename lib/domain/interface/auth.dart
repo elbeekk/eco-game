@@ -10,6 +10,10 @@ abstract class AuthInterface {
     required String password,
   });
 
+  Future<Either<Map<String, dynamic>?, dynamic>> loginAsGuest({
+    required String imei
+  });
+
   Future<Either<bool, dynamic>> checkUsername({
     required String username,
   });
@@ -29,6 +33,5 @@ abstract class AuthInterface {
 
   Future<Either<String, dynamic>> setProfilePic(BuildContext context);
 
-  Future<Either<QuerySnapshot<Map<String, dynamic>>, dynamic>>
-      getBuildings();
+  Future<Either<QuerySnapshot<Map<String, dynamic>>, dynamic>> getBuildings();
 }

@@ -8,7 +8,10 @@ class AuthEvent with _$AuthEvent {
       required Function onSuccess,
       required Function(String error) onError}) = Login;
 
-  const factory AuthEvent.guest() = Guest;
+  const factory AuthEvent.guest(
+      {required BuildContext context,
+      required Function onSuccess,
+      required Function(String error) onError}) = Guest;
 
   const factory AuthEvent.google(
       {required Function onLogin,

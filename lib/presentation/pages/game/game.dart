@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:eco_game/application/auth/auth_bloc.dart';
 import 'package:eco_game/application/building/building_bloc.dart';
 import 'package:eco_game/application/game/game_bloc.dart';
+import 'package:eco_game/application/message/message_bloc.dart';
 import 'package:eco_game/application/settings/settings_bloc.dart';
 import 'package:eco_game/application/shop/shop_bloc.dart';
 import 'package:eco_game/application/user/user_bloc.dart';
@@ -52,6 +53,24 @@ class _GamePageState extends State<GamePage> {
         BlocProvider(
           create: (context) => AuthBloc(),
         ),
+        BlocProvider(
+          create: (context) => MessageBloc()
+            ..add(
+              MessageEvent.setIntroMessages(
+                  onError: (error) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        backgroundColor: Colors.red.shade300,
+                        content: Text(
+                          error.toString(),
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    );
+                  },
+                  onSuccess: () {}),
+            ),
+        ),
       ],
       child: BlocBuilder<SettingsBloc, SettingsState>(
         builder: (context, settingsState) {
@@ -80,41 +99,45 @@ class _GamePageState extends State<GamePage> {
                     // }
                   },
                   child: Scaffold(
-                      body: Stack(
-                    clipBehavior: Clip.none,
-                    children: [
-                      BlocBuilder<BuildingBloc, BuildingState>(
-                        builder: (context, buildingState) {
-                          return ImageLayer(children: [
-                            ...List.generate(
-                                buildingState.inProcessBuildings.length,
-                                (index) {
-                              final current =
-                                  buildingState.inProcessBuildings[index];
-                              return InProcessBuildings(
-                                building: current,
-                              );
-                            }),
-                            ...List.generate(buildingState.newBuildings.length,
-                                (index) {
-                              final current = buildingState.newBuildings[index];
-                              return NewBuilding(
-                                building: current,
-                              );
-                            }),
-                          ]);
-                        },
-                      ),
-                      // const ButtonsLayer(),
-
-                      // TODO "if there messages show themin order and hide buttons layer"
-                      const Message(
-                          image:
-                              "assets/images/game_assets/character/images/portraits/Pixel-Portraits-Free/Feminine_A/Feminine_A_happy.png",
-                          message:
-                              'Welcome, traveler, to the vibrant world of Energy Quest! I am your guide on this epic journey towards sustainability and prosperity. Behold, the humble beginnings of your very own town, where every decision you make will shape its destiny.')
-                    ],
-                  )),
+                    body: Stack(
+                      clipBehavior: Clip.none,
+                      children: [
+                        BlocBuilder<BuildingBloc, BuildingState>(
+                          builder: (context, buildingState) {
+                            return ImageLayer(children: [
+                              ...List.generate(
+                                  buildingState.inProcessBuildings.length,
+                                  (index) {
+                                final current =
+                                    buildingState.inProcessBuildings[index];
+                                return InProcessBuildings(
+                                  building: current,
+                                );
+                              }),
+                              ...List.generate(
+                                  buildingState.newBuildings.length, (index) {
+                                final current =
+                                    buildingState.newBuildings[index];
+                                return NewBuilding(
+                                  building: current,
+                                );
+                              }),
+                            ]);
+                          },
+                        ),
+                        BlocBuilder<MessageBloc, MessageState>(
+                          builder: (context, state) {
+                            if (state.currentMessage == null) {
+                              return const ButtonsLayer();
+                            }
+                            return Message(
+                                image: state.currentMessage?.character ?? '',
+                                message: state.currentMessage?.text ?? '');
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
                 );
               },
             ),

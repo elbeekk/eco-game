@@ -16,42 +16,43 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ShopEvent {
-  BuildingModel get shopItemModel => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(BuildingModel shopItemModel) select,
+    required TResult Function(ShopCategory category) changeCategory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(BuildingModel shopItemModel)? select,
+    TResult? Function(ShopCategory category)? changeCategory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(BuildingModel shopItemModel)? select,
+    TResult Function(ShopCategory category)? changeCategory,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Select value) select,
+    required TResult Function(ChangeCategory value) changeCategory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Select value)? select,
+    TResult? Function(ChangeCategory value)? changeCategory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Select value)? select,
+    TResult Function(ChangeCategory value)? changeCategory,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $ShopEventCopyWith<ShopEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -59,8 +60,6 @@ mixin _$ShopEvent {
 abstract class $ShopEventCopyWith<$Res> {
   factory $ShopEventCopyWith(ShopEvent value, $Res Function(ShopEvent) then) =
       _$ShopEventCopyWithImpl<$Res, ShopEvent>;
-  @useResult
-  $Res call({BuildingModel shopItemModel});
 }
 
 /// @nodoc
@@ -72,27 +71,13 @@ class _$ShopEventCopyWithImpl<$Res, $Val extends ShopEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? shopItemModel = null,
-  }) {
-    return _then(_value.copyWith(
-      shopItemModel: null == shopItemModel
-          ? _value.shopItemModel
-          : shopItemModel // ignore: cast_nullable_to_non_nullable
-              as BuildingModel,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$SelectImplCopyWith<$Res> implements $ShopEventCopyWith<$Res> {
+abstract class _$$SelectImplCopyWith<$Res> {
   factory _$$SelectImplCopyWith(
           _$SelectImpl value, $Res Function(_$SelectImpl) then) =
       __$$SelectImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({BuildingModel shopItemModel});
 }
@@ -154,6 +139,7 @@ class _$SelectImpl implements Select {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(BuildingModel shopItemModel) select,
+    required TResult Function(ShopCategory category) changeCategory,
   }) {
     return select(shopItemModel);
   }
@@ -162,6 +148,7 @@ class _$SelectImpl implements Select {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(BuildingModel shopItemModel)? select,
+    TResult? Function(ShopCategory category)? changeCategory,
   }) {
     return select?.call(shopItemModel);
   }
@@ -170,6 +157,7 @@ class _$SelectImpl implements Select {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(BuildingModel shopItemModel)? select,
+    TResult Function(ShopCategory category)? changeCategory,
     required TResult orElse(),
   }) {
     if (select != null) {
@@ -182,6 +170,7 @@ class _$SelectImpl implements Select {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Select value) select,
+    required TResult Function(ChangeCategory value) changeCategory,
   }) {
     return select(this);
   }
@@ -190,6 +179,7 @@ class _$SelectImpl implements Select {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Select value)? select,
+    TResult? Function(ChangeCategory value)? changeCategory,
   }) {
     return select?.call(this);
   }
@@ -198,6 +188,7 @@ class _$SelectImpl implements Select {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Select value)? select,
+    TResult Function(ChangeCategory value)? changeCategory,
     required TResult orElse(),
   }) {
     if (select != null) {
@@ -210,17 +201,152 @@ class _$SelectImpl implements Select {
 abstract class Select implements ShopEvent {
   const factory Select(final BuildingModel shopItemModel) = _$SelectImpl;
 
-  @override
   BuildingModel get shopItemModel;
-  @override
   @JsonKey(ignore: true)
   _$$SelectImplCopyWith<_$SelectImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
+abstract class _$$ChangeCategoryImplCopyWith<$Res> {
+  factory _$$ChangeCategoryImplCopyWith(_$ChangeCategoryImpl value,
+          $Res Function(_$ChangeCategoryImpl) then) =
+      __$$ChangeCategoryImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ShopCategory category});
+}
+
+/// @nodoc
+class __$$ChangeCategoryImplCopyWithImpl<$Res>
+    extends _$ShopEventCopyWithImpl<$Res, _$ChangeCategoryImpl>
+    implements _$$ChangeCategoryImplCopyWith<$Res> {
+  __$$ChangeCategoryImplCopyWithImpl(
+      _$ChangeCategoryImpl _value, $Res Function(_$ChangeCategoryImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? category = null,
+  }) {
+    return _then(_$ChangeCategoryImpl(
+      null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as ShopCategory,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeCategoryImpl implements ChangeCategory {
+  const _$ChangeCategoryImpl(this.category);
+
+  @override
+  final ShopCategory category;
+
+  @override
+  String toString() {
+    return 'ShopEvent.changeCategory(category: $category)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeCategoryImpl &&
+            (identical(other.category, category) ||
+                other.category == category));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, category);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeCategoryImplCopyWith<_$ChangeCategoryImpl> get copyWith =>
+      __$$ChangeCategoryImplCopyWithImpl<_$ChangeCategoryImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(BuildingModel shopItemModel) select,
+    required TResult Function(ShopCategory category) changeCategory,
+  }) {
+    return changeCategory(category);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(BuildingModel shopItemModel)? select,
+    TResult? Function(ShopCategory category)? changeCategory,
+  }) {
+    return changeCategory?.call(category);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(BuildingModel shopItemModel)? select,
+    TResult Function(ShopCategory category)? changeCategory,
+    required TResult orElse(),
+  }) {
+    if (changeCategory != null) {
+      return changeCategory(category);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Select value) select,
+    required TResult Function(ChangeCategory value) changeCategory,
+  }) {
+    return changeCategory(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Select value)? select,
+    TResult? Function(ChangeCategory value)? changeCategory,
+  }) {
+    return changeCategory?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Select value)? select,
+    TResult Function(ChangeCategory value)? changeCategory,
+    required TResult orElse(),
+  }) {
+    if (changeCategory != null) {
+      return changeCategory(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeCategory implements ShopEvent {
+  const factory ChangeCategory(final ShopCategory category) =
+      _$ChangeCategoryImpl;
+
+  ShopCategory get category;
+  @JsonKey(ignore: true)
+  _$$ChangeCategoryImplCopyWith<_$ChangeCategoryImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$ShopState {
   BuildingModel? get selected => throw _privateConstructorUsedError;
+  ShopCategory get category => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ShopStateCopyWith<ShopState> get copyWith =>
@@ -232,7 +358,7 @@ abstract class $ShopStateCopyWith<$Res> {
   factory $ShopStateCopyWith(ShopState value, $Res Function(ShopState) then) =
       _$ShopStateCopyWithImpl<$Res, ShopState>;
   @useResult
-  $Res call({BuildingModel? selected});
+  $Res call({BuildingModel? selected, ShopCategory category});
 }
 
 /// @nodoc
@@ -249,12 +375,17 @@ class _$ShopStateCopyWithImpl<$Res, $Val extends ShopState>
   @override
   $Res call({
     Object? selected = freezed,
+    Object? category = null,
   }) {
     return _then(_value.copyWith(
       selected: freezed == selected
           ? _value.selected
           : selected // ignore: cast_nullable_to_non_nullable
               as BuildingModel?,
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as ShopCategory,
     ) as $Val);
   }
 }
@@ -267,7 +398,7 @@ abstract class _$$ShopStateImplCopyWith<$Res>
       __$$ShopStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({BuildingModel? selected});
+  $Res call({BuildingModel? selected, ShopCategory category});
 }
 
 /// @nodoc
@@ -282,12 +413,17 @@ class __$$ShopStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? selected = freezed,
+    Object? category = null,
   }) {
     return _then(_$ShopStateImpl(
       selected: freezed == selected
           ? _value.selected
           : selected // ignore: cast_nullable_to_non_nullable
               as BuildingModel?,
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as ShopCategory,
     ));
   }
 }
@@ -295,14 +431,16 @@ class __$$ShopStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ShopStateImpl implements _ShopState {
-  const _$ShopStateImpl({this.selected});
+  const _$ShopStateImpl({this.selected, required this.category});
 
   @override
   final BuildingModel? selected;
+  @override
+  final ShopCategory category;
 
   @override
   String toString() {
-    return 'ShopState(selected: $selected)';
+    return 'ShopState(selected: $selected, category: $category)';
   }
 
   @override
@@ -311,11 +449,13 @@ class _$ShopStateImpl implements _ShopState {
         (other.runtimeType == runtimeType &&
             other is _$ShopStateImpl &&
             (identical(other.selected, selected) ||
-                other.selected == selected));
+                other.selected == selected) &&
+            (identical(other.category, category) ||
+                other.category == category));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, selected);
+  int get hashCode => Object.hash(runtimeType, selected, category);
 
   @JsonKey(ignore: true)
   @override
@@ -325,10 +465,14 @@ class _$ShopStateImpl implements _ShopState {
 }
 
 abstract class _ShopState implements ShopState {
-  const factory _ShopState({final BuildingModel? selected}) = _$ShopStateImpl;
+  const factory _ShopState(
+      {final BuildingModel? selected,
+      required final ShopCategory category}) = _$ShopStateImpl;
 
   @override
   BuildingModel? get selected;
+  @override
+  ShopCategory get category;
   @override
   @JsonKey(ignore: true)
   _$$ShopStateImplCopyWith<_$ShopStateImpl> get copyWith =>
