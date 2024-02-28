@@ -1,16 +1,15 @@
-# eco_game
+# Eco Game
 
-Game built with Flutter
+The game built with Flutter.
 
-## Getting Started
+## Developers
 
-This project is a starting point for a Flutter application.
+- Elbek (Flutter Developer)
+- Doniyor (Web Developer and Video maker)
+- Humoyun (Project Manager)
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Sources to check it out
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [About this Game](https://ecogame.uz)
+- [Web Game](https://ecogame.vercel.app)
