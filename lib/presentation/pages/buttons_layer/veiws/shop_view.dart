@@ -210,6 +210,7 @@ class ShopView extends StatelessWidget {
                             Expanded(
                               child: Container(
                                 width: MediaQuery.sizeOf(context).width * 0.25,
+                                constraints: BoxConstraints(maxWidth: 300,minWidth: 150),
                                 decoration: BoxDecoration(
                                     color: Colors.black.withOpacity(.5)),
                                 child: Column(

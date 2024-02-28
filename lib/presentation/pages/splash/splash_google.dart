@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'package:eco_game/infrastructure/services/local_storage/local_storage.dart';
+import 'package:eco_game/presentation/pages/auth_page/login_page.dart';
 import 'package:eco_game/presentation/pages/game/game.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -34,7 +36,10 @@ class _SplashPageState extends State<SplashPage> {
               Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const GamePage(),
+                    builder: (context) =>
+                        LocalStorage.getMe()?.firstName == null
+                            ? const LoginPage()
+                            : const GamePage(),
                   ),
                   (route) => false);
             });
@@ -43,7 +48,8 @@ class _SplashPageState extends State<SplashPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(
+              Container(
+                constraints: const BoxConstraints(maxWidth: 400, minWidth: 150),
                 width: MediaQuery.sizeOf(context).width * .3,
                 child: Image.asset(
                   'assets/images/png/google.png',
@@ -59,5 +65,4 @@ class _SplashPageState extends State<SplashPage> {
       ),
     );
   }
-
 }
