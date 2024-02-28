@@ -35,7 +35,7 @@ class ShopView extends StatelessWidget {
                       children: [
                         Container(
                           constraints: const BoxConstraints(
-                            maxHeight: 60
+                            maxHeight: 45
                           ),
                             height: MediaQuery.sizeOf(context).height*0.11,
                             child: BlocBuilder<ShopBloc, ShopState>(
