@@ -235,7 +235,7 @@ class ShopView extends StatelessWidget {
                                                         ?.coins ??
                                                     0) <
                                                 (shopState.selected?.price ?? 0)
-                                            ? (){}
+                                            ? null
                                             : () {
                                                 context
                                                     .read<BuildingBloc>()
@@ -265,8 +265,16 @@ class ShopView extends StatelessWidget {
                                                         onError:
                                                             (String error) {},
                                                         onSuccess: () {
-                                                          Navigator.pop(
-                                                              context);
+                                                          context
+                                                              .read<ShopBloc>()
+                                                              .add(
+                                                                ShopEvent
+                                                                    .select(
+                                                                  shopState
+                                                                          .selected ??
+                                                                      BuildingModel(),
+                                                                ),
+                                                              );
                                                         },
                                                       ),
                                                     );

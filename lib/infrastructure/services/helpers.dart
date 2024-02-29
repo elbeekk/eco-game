@@ -21,11 +21,12 @@ abstract class AppHelper {
     }
     if (isWeb) {
       final info = await DeviceInfoPlugin().webBrowserInfo;
-      imei = "${info.browserName.name}_${info.platform}_${info.productSub}";
+      imei = "${info.platform}_${info.browserName.name}_${info.vendor}_${info.hardwareConcurrency}";
     }
     if (imei.contains('null')) {
       imei = "null-${const Uuid().v1()}";
     }
+    print("IMEI $imei");
     return imei;
   }
 }
