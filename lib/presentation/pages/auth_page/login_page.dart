@@ -1,7 +1,4 @@
-import 'dart:developer';
-
 import 'package:blurrycontainer/blurrycontainer.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:eco_game/application/auth/auth_bloc.dart';
 import 'package:eco_game/infrastructure/services/validators.dart';
 import 'package:eco_game/presentation/pages/game/game.dart';
@@ -17,7 +14,6 @@ import '../../../application/building/building_bloc.dart';
 import '../../../application/game/game_bloc.dart';
 import '../../../application/message/message_bloc.dart';
 import '../../../application/settings/settings_bloc.dart';
-import '../../../application/user/user_bloc.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -60,9 +56,6 @@ class _LoginPageState extends State<LoginPage> {
         ),
         BlocProvider(
           create: (context) => SettingsBloc(),
-        ),
-        BlocProvider(
-          create: (context) => UserBloc(),
         ),
         BlocProvider(
           create: (context) => AuthBloc(),

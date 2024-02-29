@@ -66,6 +66,8 @@ flutter:
     - assets/images/game_assets/button/images/
     - assets/images/game_assets/village/images/
     - assets/images/game_assets/village/images/cars/
+    - assets/images/game_assets/buildings/generators/
+    - assets/images/game_assets/buildings/consumers/
     - assets/images/game_assets/village/images/Road Signs/
     - assets/images/game_assets/character/spritesheets/Original/Without Outline/
     - assets/images/game_assets/character/images/portraits/Pixel-Portraits-Free/Feminine_A/

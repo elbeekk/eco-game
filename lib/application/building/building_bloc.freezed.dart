@@ -18,7 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$BuildingEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(BuildingModel buildingInfoModel) addNewBuilding,
+    required TResult Function(BuildingModel buildingInfoModel,
+            dynamic Function(String) onError, Function onSuccess)
+        addNewBuilding,
     required TResult Function(BuildingModel buildingInfoModel)
         removeNewBuilding,
     required TResult Function(BuildingModel buildingInfoModel) startBuilding,
@@ -28,7 +30,9 @@ mixin _$BuildingEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(BuildingModel buildingInfoModel)? addNewBuilding,
+    TResult? Function(BuildingModel buildingInfoModel,
+            dynamic Function(String) onError, Function onSuccess)?
+        addNewBuilding,
     TResult? Function(BuildingModel buildingInfoModel)? removeNewBuilding,
     TResult? Function(BuildingModel buildingInfoModel)? startBuilding,
     TResult? Function(String name, String date, double x, double y)?
@@ -37,7 +41,9 @@ mixin _$BuildingEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(BuildingModel buildingInfoModel)? addNewBuilding,
+    TResult Function(BuildingModel buildingInfoModel,
+            dynamic Function(String) onError, Function onSuccess)?
+        addNewBuilding,
     TResult Function(BuildingModel buildingInfoModel)? removeNewBuilding,
     TResult Function(BuildingModel buildingInfoModel)? startBuilding,
     TResult Function(String name, String date, double x, double y)?
@@ -96,7 +102,10 @@ abstract class _$$AddNewBuildingImplCopyWith<$Res> {
           $Res Function(_$AddNewBuildingImpl) then) =
       __$$AddNewBuildingImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({BuildingModel buildingInfoModel});
+  $Res call(
+      {BuildingModel buildingInfoModel,
+      dynamic Function(String) onError,
+      Function onSuccess});
 }
 
 /// @nodoc
@@ -111,12 +120,22 @@ class __$$AddNewBuildingImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? buildingInfoModel = null,
+    Object? onError = null,
+    Object? onSuccess = null,
   }) {
     return _then(_$AddNewBuildingImpl(
-      null == buildingInfoModel
+      buildingInfoModel: null == buildingInfoModel
           ? _value.buildingInfoModel
           : buildingInfoModel // ignore: cast_nullable_to_non_nullable
               as BuildingModel,
+      onError: null == onError
+          ? _value.onError
+          : onError // ignore: cast_nullable_to_non_nullable
+              as dynamic Function(String),
+      onSuccess: null == onSuccess
+          ? _value.onSuccess
+          : onSuccess // ignore: cast_nullable_to_non_nullable
+              as Function,
     ));
   }
 }
@@ -124,14 +143,21 @@ class __$$AddNewBuildingImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AddNewBuildingImpl implements AddNewBuilding {
-  const _$AddNewBuildingImpl(this.buildingInfoModel);
+  const _$AddNewBuildingImpl(
+      {required this.buildingInfoModel,
+      required this.onError,
+      required this.onSuccess});
 
   @override
   final BuildingModel buildingInfoModel;
+  @override
+  final dynamic Function(String) onError;
+  @override
+  final Function onSuccess;
 
   @override
   String toString() {
-    return 'BuildingEvent.addNewBuilding(buildingInfoModel: $buildingInfoModel)';
+    return 'BuildingEvent.addNewBuilding(buildingInfoModel: $buildingInfoModel, onError: $onError, onSuccess: $onSuccess)';
   }
 
   @override
@@ -140,11 +166,15 @@ class _$AddNewBuildingImpl implements AddNewBuilding {
         (other.runtimeType == runtimeType &&
             other is _$AddNewBuildingImpl &&
             (identical(other.buildingInfoModel, buildingInfoModel) ||
-                other.buildingInfoModel == buildingInfoModel));
+                other.buildingInfoModel == buildingInfoModel) &&
+            (identical(other.onError, onError) || other.onError == onError) &&
+            (identical(other.onSuccess, onSuccess) ||
+                other.onSuccess == onSuccess));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, buildingInfoModel);
+  int get hashCode =>
+      Object.hash(runtimeType, buildingInfoModel, onError, onSuccess);
 
   @JsonKey(ignore: true)
   @override
@@ -156,32 +186,38 @@ class _$AddNewBuildingImpl implements AddNewBuilding {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(BuildingModel buildingInfoModel) addNewBuilding,
+    required TResult Function(BuildingModel buildingInfoModel,
+            dynamic Function(String) onError, Function onSuccess)
+        addNewBuilding,
     required TResult Function(BuildingModel buildingInfoModel)
         removeNewBuilding,
     required TResult Function(BuildingModel buildingInfoModel) startBuilding,
     required TResult Function(String name, String date, double x, double y)
         changePosition,
   }) {
-    return addNewBuilding(buildingInfoModel);
+    return addNewBuilding(buildingInfoModel, onError, onSuccess);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(BuildingModel buildingInfoModel)? addNewBuilding,
+    TResult? Function(BuildingModel buildingInfoModel,
+            dynamic Function(String) onError, Function onSuccess)?
+        addNewBuilding,
     TResult? Function(BuildingModel buildingInfoModel)? removeNewBuilding,
     TResult? Function(BuildingModel buildingInfoModel)? startBuilding,
     TResult? Function(String name, String date, double x, double y)?
         changePosition,
   }) {
-    return addNewBuilding?.call(buildingInfoModel);
+    return addNewBuilding?.call(buildingInfoModel, onError, onSuccess);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(BuildingModel buildingInfoModel)? addNewBuilding,
+    TResult Function(BuildingModel buildingInfoModel,
+            dynamic Function(String) onError, Function onSuccess)?
+        addNewBuilding,
     TResult Function(BuildingModel buildingInfoModel)? removeNewBuilding,
     TResult Function(BuildingModel buildingInfoModel)? startBuilding,
     TResult Function(String name, String date, double x, double y)?
@@ -189,7 +225,7 @@ class _$AddNewBuildingImpl implements AddNewBuilding {
     required TResult orElse(),
   }) {
     if (addNewBuilding != null) {
-      return addNewBuilding(buildingInfoModel);
+      return addNewBuilding(buildingInfoModel, onError, onSuccess);
     }
     return orElse();
   }
@@ -233,10 +269,14 @@ class _$AddNewBuildingImpl implements AddNewBuilding {
 }
 
 abstract class AddNewBuilding implements BuildingEvent {
-  const factory AddNewBuilding(final BuildingModel buildingInfoModel) =
-      _$AddNewBuildingImpl;
+  const factory AddNewBuilding(
+      {required final BuildingModel buildingInfoModel,
+      required final dynamic Function(String) onError,
+      required final Function onSuccess}) = _$AddNewBuildingImpl;
 
   BuildingModel get buildingInfoModel;
+  dynamic Function(String) get onError;
+  Function get onSuccess;
   @JsonKey(ignore: true)
   _$$AddNewBuildingImplCopyWith<_$AddNewBuildingImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -308,7 +348,9 @@ class _$RemoveNewBuildingImpl implements RemoveNewBuilding {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(BuildingModel buildingInfoModel) addNewBuilding,
+    required TResult Function(BuildingModel buildingInfoModel,
+            dynamic Function(String) onError, Function onSuccess)
+        addNewBuilding,
     required TResult Function(BuildingModel buildingInfoModel)
         removeNewBuilding,
     required TResult Function(BuildingModel buildingInfoModel) startBuilding,
@@ -321,7 +363,9 @@ class _$RemoveNewBuildingImpl implements RemoveNewBuilding {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(BuildingModel buildingInfoModel)? addNewBuilding,
+    TResult? Function(BuildingModel buildingInfoModel,
+            dynamic Function(String) onError, Function onSuccess)?
+        addNewBuilding,
     TResult? Function(BuildingModel buildingInfoModel)? removeNewBuilding,
     TResult? Function(BuildingModel buildingInfoModel)? startBuilding,
     TResult? Function(String name, String date, double x, double y)?
@@ -333,7 +377,9 @@ class _$RemoveNewBuildingImpl implements RemoveNewBuilding {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(BuildingModel buildingInfoModel)? addNewBuilding,
+    TResult Function(BuildingModel buildingInfoModel,
+            dynamic Function(String) onError, Function onSuccess)?
+        addNewBuilding,
     TResult Function(BuildingModel buildingInfoModel)? removeNewBuilding,
     TResult Function(BuildingModel buildingInfoModel)? startBuilding,
     TResult Function(String name, String date, double x, double y)?
@@ -459,7 +505,9 @@ class _$StartBuildingImpl implements StartBuilding {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(BuildingModel buildingInfoModel) addNewBuilding,
+    required TResult Function(BuildingModel buildingInfoModel,
+            dynamic Function(String) onError, Function onSuccess)
+        addNewBuilding,
     required TResult Function(BuildingModel buildingInfoModel)
         removeNewBuilding,
     required TResult Function(BuildingModel buildingInfoModel) startBuilding,
@@ -472,7 +520,9 @@ class _$StartBuildingImpl implements StartBuilding {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(BuildingModel buildingInfoModel)? addNewBuilding,
+    TResult? Function(BuildingModel buildingInfoModel,
+            dynamic Function(String) onError, Function onSuccess)?
+        addNewBuilding,
     TResult? Function(BuildingModel buildingInfoModel)? removeNewBuilding,
     TResult? Function(BuildingModel buildingInfoModel)? startBuilding,
     TResult? Function(String name, String date, double x, double y)?
@@ -484,7 +534,9 @@ class _$StartBuildingImpl implements StartBuilding {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(BuildingModel buildingInfoModel)? addNewBuilding,
+    TResult Function(BuildingModel buildingInfoModel,
+            dynamic Function(String) onError, Function onSuccess)?
+        addNewBuilding,
     TResult Function(BuildingModel buildingInfoModel)? removeNewBuilding,
     TResult Function(BuildingModel buildingInfoModel)? startBuilding,
     TResult Function(String name, String date, double x, double y)?
@@ -638,7 +690,9 @@ class _$ChangePositionImpl implements ChangePosition {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(BuildingModel buildingInfoModel) addNewBuilding,
+    required TResult Function(BuildingModel buildingInfoModel,
+            dynamic Function(String) onError, Function onSuccess)
+        addNewBuilding,
     required TResult Function(BuildingModel buildingInfoModel)
         removeNewBuilding,
     required TResult Function(BuildingModel buildingInfoModel) startBuilding,
@@ -651,7 +705,9 @@ class _$ChangePositionImpl implements ChangePosition {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(BuildingModel buildingInfoModel)? addNewBuilding,
+    TResult? Function(BuildingModel buildingInfoModel,
+            dynamic Function(String) onError, Function onSuccess)?
+        addNewBuilding,
     TResult? Function(BuildingModel buildingInfoModel)? removeNewBuilding,
     TResult? Function(BuildingModel buildingInfoModel)? startBuilding,
     TResult? Function(String name, String date, double x, double y)?
@@ -663,7 +719,9 @@ class _$ChangePositionImpl implements ChangePosition {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(BuildingModel buildingInfoModel)? addNewBuilding,
+    TResult Function(BuildingModel buildingInfoModel,
+            dynamic Function(String) onError, Function onSuccess)?
+        addNewBuilding,
     TResult Function(BuildingModel buildingInfoModel)? removeNewBuilding,
     TResult Function(BuildingModel buildingInfoModel)? startBuilding,
     TResult Function(String name, String date, double x, double y)?

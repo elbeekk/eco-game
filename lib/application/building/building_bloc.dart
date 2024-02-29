@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:eco_game/domain/di/dependancy_manager.dart';
 import 'package:eco_game/infrastructure/models/class/building.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -10,9 +11,20 @@ part 'building_bloc.freezed.dart';
 
 class BuildingBloc extends Bloc<BuildingEvent, BuildingState> {
   BuildingBloc() : super(const BuildingState()) {
-    on<AddNewBuilding>((event, emit) {
-      emit(state.copyWith(
-          newBuildings: [...state.newBuildings, event.buildingInfoModel]));
+    on<AddNewBuilding>((event, emit) async {
+      final res = await userRepository.addMoney(
+          money: 0 - (event.buildingInfoModel.price ?? 0));
+      res.fold((l) {
+        if(l) {
+          emit(state.copyWith(
+            newBuildings: [...state.newBuildings, event.buildingInfoModel]));
+          event.onSuccess.call();
+        }else{
+
+        }
+      }, (r) {
+        event.onError.call(r);
+      });
     });
 
     on<RemoveNewBuilding>((event, emit) {
@@ -23,7 +35,9 @@ class BuildingBloc extends Bloc<BuildingEvent, BuildingState> {
         }
         return false;
       });
-      emit(state.copyWith(newBuildings: tempList),);
+      emit(
+        state.copyWith(newBuildings: tempList),
+      );
     });
 
     on<ChangePosition>((event, emit) {
@@ -38,7 +52,6 @@ class BuildingBloc extends Bloc<BuildingEvent, BuildingState> {
     });
 
     on<StartBuilding>((event, emit) {
-
       List<BuildingModel> tempList = state.newBuildings.toList();
       tempList.removeWhere((element) {
         if (element.name == event.buildingInfoModel.name) {
@@ -46,7 +59,9 @@ class BuildingBloc extends Bloc<BuildingEvent, BuildingState> {
         }
         return false;
       });
-      emit(state.copyWith(newBuildings: tempList),);
+      emit(
+        state.copyWith(newBuildings: tempList),
+      );
       emit(
         state.copyWith(
           inProcessBuildings: [

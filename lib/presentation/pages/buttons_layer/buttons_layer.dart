@@ -16,6 +16,16 @@ class ButtonsLayer extends StatefulWidget {
 }
 
 class _ButtonsLayerState extends State<ButtonsLayer> {
+
+  final shopButton = GlobalKey();
+  final generators = GlobalKey();
+
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GameBloc, GameState>(
@@ -56,9 +66,13 @@ class _ButtonsLayerState extends State<ButtonsLayer> {
                               const CoinView(),
                             ],
                           ),
-                          const Row(
+                          Row(
                             mainAxisAlignment: MainAxisAlignment.end,
-                            children: [ShopButton()],
+                            children: [
+                              ShopButton(
+                                key: shopButton,
+                              )
+                            ],
                           )
                         ],
                       ),
@@ -67,7 +81,9 @@ class _ButtonsLayerState extends State<ButtonsLayer> {
                 ],
               ),
             ),
-            const ShopView(),
+            ShopView(
+              key: generators,
+            ),
           ],
         );
       },

@@ -110,7 +110,7 @@ class InProcessBuildings extends StatelessWidget {
                       DateTime.fromMillisecondsSinceEpoch(
                         int.parse(building.date ?? '0'),
                       ).add(
-                        Duration(hours: building.duration ?? 0),
+                        Duration(minutes: ((building.duration ?? 0)*60).toInt()),
                       ),
                     ).fromNow()} ",
                     style: TextStyle(
@@ -134,7 +134,7 @@ class InProcessBuildings extends StatelessWidget {
                               )
                               .abs()
                               .inHours /
-                          Duration(hours: building.duration ?? 0).inHours,
+                          Duration(hours: ((building.duration ?? 0)*60).toInt()).inHours,
                     ),
                   ),
                 ],

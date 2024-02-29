@@ -1,12 +1,9 @@
-import 'dart:developer';
-
 import 'package:eco_game/application/auth/auth_bloc.dart';
 import 'package:eco_game/application/building/building_bloc.dart';
 import 'package:eco_game/application/game/game_bloc.dart';
 import 'package:eco_game/application/message/message_bloc.dart';
 import 'package:eco_game/application/settings/settings_bloc.dart';
 import 'package:eco_game/application/shop/shop_bloc.dart';
-import 'package:eco_game/application/user/user_bloc.dart';
 import 'package:eco_game/presentation/pages/buildings_layer/in_process_buildings/in_process_buildings.dart';
 import 'package:eco_game/presentation/pages/buildings_layer/new_buildings/new_buildings.dart';
 import 'package:eco_game/presentation/pages/buttons_layer/buttons_layer.dart';
@@ -46,9 +43,6 @@ class _GamePageState extends State<GamePage> {
         ),
         BlocProvider(
           create: (context) => ShopBloc(),
-        ),
-        BlocProvider(
-          create: (context) => UserBloc(),
         ),
         BlocProvider(
           create: (context) => AuthBloc(),
@@ -118,10 +112,9 @@ class _GamePageState extends State<GamePage> {
                           builder: (context, state) {
                             context.read<MessageBloc>().add(
                                   MessageEvent.setIntroMessages(
-                                      onError: (e) {}, onSuccess: () {
-                                  }),
+                                      onError: (e) {}, onSuccess: () {}),
                                 );
-                            if (state.currentMessage == null) {
+                            if (state.currentMessage == null || state.messages.isEmpty) {
                               return const ButtonsLayer();
                             }
                             return Message(

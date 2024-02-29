@@ -40,25 +40,22 @@ class NewBuilding extends StatelessWidget {
                           children: [
                             Row(
                               children: [
-                                GestureDetector(
-                                  onTap: () {},
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        color: Colors.red,
-                                        boxShadow: [
-                                          BoxShadow(
-                                              color: Colors.black
-                                                  .withOpacity(.2),
-                                              spreadRadius: 1,
-                                              blurRadius: 1)
-                                        ],
-                                        borderRadius:
-                                        BorderRadius.circular(5)),
-                                    child: const Icon(
-                                      Icons.close,
-                                      color: Colors.white,
-                                      size: 20,
-                                    ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                      color: Colors.red,
+                                      boxShadow: [
+                                        BoxShadow(
+                                            color: Colors.black
+                                                .withOpacity(.2),
+                                            spreadRadius: 1,
+                                            blurRadius: 1)
+                                      ],
+                                      borderRadius:
+                                      BorderRadius.circular(5)),
+                                  child: const Icon(
+                                    Icons.close,
+                                    color: Colors.white,
+                                    size: 20,
                                   ),
                                 ),
                                 const SizedBox(
@@ -92,7 +89,11 @@ class NewBuilding extends StatelessWidget {
                             const SizedBox(
                               height: 10,
                             ),
-                            Image.asset(building.image ?? ''),
+                            SizedBox(
+
+                                height: 100,
+                                width: 100,
+                                child: Image.asset(building.image ?? '')),
                           ],
                         ),
                       ],
@@ -172,7 +173,10 @@ class NewBuilding extends StatelessWidget {
                             const SizedBox(
                               height: 10,
                             ),
-                            Image.asset(building.image ?? ''),
+                            SizedBox(
+                                height: 100,
+                                width: 100,
+                                child: Image.asset(building.image ?? '')),
                           ],
                         ),
                       ],

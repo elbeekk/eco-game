@@ -3,13 +3,11 @@ import 'package:eco_game/application/building/building_bloc.dart';
 import 'package:eco_game/application/game/game_bloc.dart';
 import 'package:eco_game/application/message/message_bloc.dart';
 import 'package:eco_game/application/settings/settings_bloc.dart';
-import 'package:eco_game/application/user/user_bloc.dart';
 import 'package:eco_game/domain/di/dependancy_manager.dart';
 import 'package:eco_game/firebase_options.dart';
 import 'package:eco_game/infrastructure/services/local_storage/local_storage.dart';
 import 'package:eco_game/presentation/pages/auth_page/login_page.dart';
 import 'package:eco_game/presentation/pages/game/game.dart';
-import 'package:eco_game/presentation/pages/splash/splash_google.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
@@ -53,9 +51,6 @@ class _MyAppState extends State<MyApp> {
           ),
           BlocProvider(
             create: (context) => SettingsBloc(),
-          ),
-          BlocProvider(
-            create: (context) => UserBloc(),
           ),
           BlocProvider(
             create: (context) => AuthBloc(),

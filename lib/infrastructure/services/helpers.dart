@@ -13,11 +13,11 @@ abstract class AppHelper {
     String imei = '';
     if (isiOS) {
       final info = await DeviceInfoPlugin().iosInfo;
-      imei = "${info.systemName}_${info.systemVersion}";
+      imei = "${info.systemName}_${info.name}_${info.identifierForVendor}";
     }
     if (isAndroid) {
       final info = await DeviceInfoPlugin().androidInfo;
-      imei = "${info.bootloader}_${info.model}";
+      imei = "${info.bootloader}_${info.model}_${info.hardware}";
     }
     if (isWeb) {
       final info = await DeviceInfoPlugin().webBrowserInfo;

@@ -10,9 +10,8 @@ abstract class AuthInterface {
     required String password,
   });
 
-  Future<Either<Map<String, dynamic>?, dynamic>> loginAsGuest({
-    required String imei
-  });
+  Future<Either<Map<String, dynamic>?, dynamic>> loginAsGuest(
+      {required String imei});
 
   Future<Either<bool, dynamic>> checkUsername({
     required String username,
@@ -26,7 +25,7 @@ abstract class AuthInterface {
 
   Future<Either<DocumentSnapshot<Map<String, dynamic>>, dynamic>> guestLogin();
 
-  Future<Either<GoogleSignInAccount?, dynamic>> googleLogin({required bool isWeb});
+  Future<Either<GoogleSignInAccount?, dynamic>> googleLogin();
 
   Future<Either<QueryDocumentSnapshot<Map<String, dynamic>>?, dynamic>>
       loginWithEmail(String email);

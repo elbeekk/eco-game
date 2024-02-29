@@ -15,17 +15,15 @@ class ShopButton extends StatelessWidget {
               begin: state.shopOpen ? 70 : 0, end: state.shopOpen ? 0 : 70),
           duration: const Duration(milliseconds: 200),
           builder: (context, value, child) {
-            return Padding(
-              padding: const EdgeInsets.all(15),
-              child: IconButton(
-                onPressed: () {
-                  context.read<GameBloc>().add(const GameEvent.showShop());
-                },
-                icon: Icon(
-                  Ionicons.ios_construct,
-                  color: Colors.white,
-                  size: value.toDouble(),
-                ),
+            return IconButton(
+              onPressed: () {
+                context.read<GameBloc>().add(const GameEvent.showShop());
+              },
+              icon: Icon(
+
+                Ionicons.ios_construct,
+                color: Colors.white,
+                size: value.toDouble(),
               ),
             );
           },

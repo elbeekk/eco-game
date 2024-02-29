@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:eco_game/domain/di/dependancy_manager.dart';
 import 'package:eco_game/infrastructure/data/local_data.dart';
@@ -34,20 +36,17 @@ class MessageBloc extends Bloc<MessageEvent, MessageState> {
     on<SetIntroMessages>((event, emit) async {
       final res = await messageRepository.getAllMessages();
       res.fold((l) {
-        List<MessageModel> introMesses = LocalData.introMessages.toList();
-        List<MessageModel> tempIntroMesses = LocalData.introMessages.toList();
-        List<MessageModel> remoteMes = l.toList();
-        for (MessageModel introMes in introMesses) {
-          for (MessageModel alreadyReadMes in remoteMes) {
-            if (introMes.id == alreadyReadMes.id) {
-              tempIntroMesses
-                  .removeWhere((element) => element.id == introMes.id);
-            }
-          }
-        }
+        List<String> introMesses =
+            LocalData.introMessages.map((e) => e.toRawJson()).toList();
+        List<String> remoteMes = l.map((e) => e.toRawJson()).toList();
+        Set<String> remoteSet = remoteMes.toSet();
+        Set<String> introSet = introMesses.toSet();
+        List<MessageModel> tempMes = List.from(remoteSet.difference(introSet))
+            .map((e) => MessageModel.fromRawJson(e))
+            .toList();
         emit(
           state.copyWith(
-            messages: [...state.messages, ...tempIntroMesses],
+            messages: tempMes,
           ),
         );
         if (state.messages.isNotEmpty) {

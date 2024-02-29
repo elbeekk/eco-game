@@ -35,7 +35,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     on<Google>((event, emit) async {
       emit(state.copyWith(isGoogleLoading: true));
-      final res = await authRepository.googleLogin(isWeb: TargetPlatform.android!=Theme.of(event.context).platform);
+      final res = await authRepository.googleLogin();
       await res.fold((googleAccount) async {
         if (googleAccount != null) {
           emit(state.copyWith(googleSignInAccount: googleAccount));

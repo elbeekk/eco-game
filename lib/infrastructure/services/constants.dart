@@ -2,4 +2,4 @@ class AppConstants {
   AppConstants._();
 }
 
-enum ShopCategory { houses, generators, trees }
+enum ShopCategory { houses, generators}

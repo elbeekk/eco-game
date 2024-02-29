@@ -60,7 +60,7 @@ class AuthRepository implements AuthInterface {
           .copyWith(
             id: docId,
             joinedDate: DateTime.now().millisecondsSinceEpoch.toString(),
-            coins: 500,
+            coins: 10000,
           )
           .toJson());
       final data =
@@ -78,7 +78,7 @@ class AuthRepository implements AuthInterface {
   }
 
   @override
-  Future<Either<GoogleSignInAccount?, dynamic>> googleLogin({required bool isWeb}) async {
+  Future<Either<GoogleSignInAccount?, dynamic>> googleLogin() async {
     //ss
     final GoogleSignIn googleSignIn = GoogleSignIn();
     try {
@@ -158,7 +158,7 @@ class AuthRepository implements AuthInterface {
                     joinedDate:
                         DateTime.now().millisecondsSinceEpoch.toString(),
                     email: '',
-                    coins: 500)
+                    coins: 10000)
                 .toJson());
       }
       final ress =

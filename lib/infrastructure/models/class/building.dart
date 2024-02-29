@@ -5,26 +5,26 @@ class BuildingModel {
   String? image;
   double? positionX;
   double? positionY;
-  double? sizeX;
-  double? sizeY;
+  double? bottom;
   int? price;
   int? energy;
-  int? people;
   String? date;
-  int? duration;
+  double? duration;
+  String? description;
+  int? income;
 
   BuildingModel({
     this.name,
     this.image,
     this.positionX,
     this.positionY,
-    this.sizeX,
-    this.sizeY,
+    this.bottom,
     this.price,
     this.energy,
-    this.people,
     this.date,
     this.duration,
+    this.description,
+    this.income,
   });
 
   BuildingModel copyWith({
@@ -32,26 +32,26 @@ class BuildingModel {
     String? image,
     double? positionX,
     double? positionY,
-    double? sizeX,
-    double? sizeY,
+    double? bottom,
     int? price,
     int? energy,
-    int? people,
     String? date,
-    int? duration,
+    double? duration,
+    String? description,
+    int? income,
   }) =>
       BuildingModel(
         name: name ?? this.name,
         image: image ?? this.image,
         positionX: positionX ?? this.positionX,
         positionY: positionY ?? this.positionY,
-        sizeX: sizeX ?? this.sizeX,
-        sizeY: sizeY ?? this.sizeY,
+        bottom: bottom ?? this.bottom,
         price: price ?? this.price,
         energy: energy ?? this.energy,
-        people: people ?? this.people,
         date: date ?? this.date,
         duration: duration ?? this.duration,
+        description: description ?? this.description,
+        income: income ?? this.income,
       );
 
   factory BuildingModel.fromRawJson(String str) => BuildingModel.fromJson(json.decode(str));
@@ -63,13 +63,13 @@ class BuildingModel {
     image: json["image"],
     positionX: json["positionX"]?.toDouble(),
     positionY: json["positionY"]?.toDouble(),
-    sizeX: json["sizeX"]?.toDouble(),
-    sizeY: json["sizeY"]?.toDouble(),
+    bottom: json["bottom"]?.toDouble(),
     price: json["price"],
     energy: json["energy"],
-    people: json["people"],
     date: json["date"],
-    duration: json["duration"],
+    duration: json["duration"]?.toDouble(),
+    description: json["description"],
+    income: json["income"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -77,12 +77,12 @@ class BuildingModel {
     "image": image,
     "positionX": positionX,
     "positionY": positionY,
-    "sizeX": sizeX,
-    "sizeY": sizeY,
+    "bottom": bottom,
     "price": price,
     "energy": energy,
-    "people": people,
     "date": date,
     "duration": duration,
+    "description": description,
+    "income": income,
   };
 }
