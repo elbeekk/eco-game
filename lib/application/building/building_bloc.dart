@@ -11,62 +11,65 @@ part 'building_bloc.freezed.dart';
 
 class BuildingBloc extends Bloc<BuildingEvent, BuildingState> {
   BuildingBloc() : super(const BuildingState()) {
-    on<AddNewBuilding>((event, emit) async {
-      final res = await userRepository.addMoney(
-          money: 0 - (event.buildingInfoModel.price ?? 0));
+    on<AddPendingBuilding>((event, emit) async {
+      emit(state.copyWith(isBuyLoading: true));
+      final res =
+          await userRepository.addMoney(money: 0 - (event.building.price ?? 0));
       res.fold((l) {
-        if(l) {
+        if (l) {
           emit(state.copyWith(
-            newBuildings: [...state.newBuildings, event.buildingInfoModel]));
+              pendingBuildings: [...state.pendingBuildings, event.building]));
           event.onSuccess.call();
-        }else{
-
-        }
+        } else {}
       }, (r) {
         event.onError.call(r);
       });
+      emit(state.copyWith(isBuyLoading: false));
     });
 
-    on<RemoveNewBuilding>((event, emit) {
-      List<BuildingModel> tempList = state.newBuildings.toList();
+    on<RemovePendingBuilding>((event, emit) {
+      List<BuildingModel> tempList = state.pendingBuildings.toList();
       tempList.removeWhere((element) {
-        if (element.name == event.buildingInfoModel.name) {
+        if (element.name == event.building.name) {
           return true;
         }
         return false;
       });
       emit(
-        state.copyWith(newBuildings: tempList),
+        state.copyWith(pendingBuildings: tempList),
       );
     });
 
-    on<ChangePosition>((event, emit) {
-      List<BuildingModel> tempList = state.newBuildings.toList();
+    on<UpdatePendingBuilding>((event, emit) {
+      List<BuildingModel> tempList = state.pendingBuildings.toList();
       tempList = tempList.map((element) {
-        if (element.name == event.name && element.date == event.date) {
-          return element.copyWith(positionX: event.x, positionY: event.y);
+        if (element.name == event.building.name &&
+            element.date == event.building.date) {
+          return element.copyWith(
+              positionX: event.building.positionX,
+              positionY: event.building.positionY);
         }
         return element;
       }).toList();
-      emit(state.copyWith(newBuildings: tempList));
+      emit(state.copyWith(pendingBuildings: tempList));
     });
 
-    on<StartBuilding>((event, emit) {
-      List<BuildingModel> tempList = state.newBuildings.toList();
+    on<AddConstructingBuilding>((event, emit) {
+      List<BuildingModel> tempList = state.pendingBuildings.toList();
       tempList.removeWhere((element) {
-        if (element.name == event.buildingInfoModel.name) {
+        if (element.name == event.building.name) {
           return true;
         }
         return false;
       });
       emit(
-        state.copyWith(newBuildings: tempList),
+        state.copyWith(pendingBuildings: tempList),
       );
       emit(
         state.copyWith(
-          inProcessBuildings: [
-            ...state.inProcessBuildings,
-            event.buildingInfoModel.copyWith(
+          constructingBuildings: [
+            ...state.constructingBuildings,
+            event.building.copyWith(
                 date: DateTime.now().millisecondsSinceEpoch.toString()),
           ],
         ),

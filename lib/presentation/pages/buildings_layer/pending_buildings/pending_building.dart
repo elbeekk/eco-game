@@ -8,10 +8,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../application/game/game_bloc.dart';
 
-class NewBuilding extends StatelessWidget {
+class PendingBuilding extends StatelessWidget {
   final BuildingModel building;
 
-  const NewBuilding({super.key, required this.building});
+  const PendingBuilding({super.key, required this.building});
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +25,15 @@ class NewBuilding extends StatelessWidget {
                 return Draggable(
                     onDragEnd: (details) {
                       context.read<BuildingBloc>().add(
-                            BuildingEvent.changePosition(
-                                name: building.name ?? '',
-                                date: building.date ?? '',
-                                x: details.offset.dx + gameState.currentPos.dx,
-                                y: details.offset.dy + gameState.currentPos.dy),
+                            BuildingEvent.updatePendingBuilding(
+                              building: building.copyWith(
+                                  positionX: details.offset.dx +
+                                      gameState.currentPos.dx,
+                                  positionY: details.offset.dy +
+                                      gameState.currentPos.dy),
+                              onError: (String error) {},
+                              onSuccess: () {},
+                            ),
                           );
                     },
                     childWhenDragging: const SizedBox.shrink(),
@@ -45,13 +49,11 @@ class NewBuilding extends StatelessWidget {
                                       color: Colors.red,
                                       boxShadow: [
                                         BoxShadow(
-                                            color: Colors.black
-                                                .withOpacity(.2),
+                                            color: Colors.black.withOpacity(.2),
                                             spreadRadius: 1,
                                             blurRadius: 1)
                                       ],
-                                      borderRadius:
-                                      BorderRadius.circular(5)),
+                                      borderRadius: BorderRadius.circular(5)),
                                   child: const Icon(
                                     Icons.close,
                                     color: Colors.white,
@@ -68,13 +70,12 @@ class NewBuilding extends StatelessWidget {
                                         color: Colors.green,
                                         boxShadow: [
                                           BoxShadow(
-                                              color: Colors.black
-                                                  .withOpacity(.2),
+                                              color:
+                                                  Colors.black.withOpacity(.2),
                                               spreadRadius: 1,
                                               blurRadius: 1)
                                         ],
-                                        borderRadius:
-                                        BorderRadius.circular(5)),
+                                        borderRadius: BorderRadius.circular(5)),
                                     child: const Icon(
                                       Icons.check,
                                       color: Colors.white,
@@ -90,7 +91,6 @@ class NewBuilding extends StatelessWidget {
                               height: 10,
                             ),
                             SizedBox(
-
                                 height: 100,
                                 width: 100,
                                 child: Image.asset(building.image ?? '')),
@@ -110,8 +110,13 @@ class NewBuilding extends StatelessWidget {
                                     return GestureDetector(
                                       onTap: () {
                                         context.read<BuildingBloc>().add(
-                                            BuildingEvent.removeNewBuilding(
-                                                building));
+                                              BuildingEvent
+                                                  .removePendingBuilding(
+                                                      building: building,
+                                                      onError:
+                                                          (String error) {},
+                                                      onSuccess: () {}),
+                                            );
                                       },
                                       child: Container(
                                         decoration: BoxDecoration(
@@ -142,8 +147,13 @@ class NewBuilding extends StatelessWidget {
                                     return GestureDetector(
                                       onTap: () {
                                         context.read<BuildingBloc>().add(
-                                            BuildingEvent.startBuilding(
-                                                building));
+                                              BuildingEvent
+                                                  .addConstructingBuilding(
+                                                      building: building,
+                                                      onError:
+                                                          (String error) {},
+                                                      onSuccess: () {}),
+                                            );
                                       },
                                       child: Container(
                                         decoration: BoxDecoration(

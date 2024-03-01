@@ -347,6 +347,7 @@ abstract class ChangeCategory implements ShopEvent {
 mixin _$ShopState {
   BuildingModel? get selected => throw _privateConstructorUsedError;
   ShopCategory get category => throw _privateConstructorUsedError;
+  dynamic get isBuyLoading => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ShopStateCopyWith<ShopState> get copyWith =>
@@ -358,7 +359,8 @@ abstract class $ShopStateCopyWith<$Res> {
   factory $ShopStateCopyWith(ShopState value, $Res Function(ShopState) then) =
       _$ShopStateCopyWithImpl<$Res, ShopState>;
   @useResult
-  $Res call({BuildingModel? selected, ShopCategory category});
+  $Res call(
+      {BuildingModel? selected, ShopCategory category, dynamic isBuyLoading});
 }
 
 /// @nodoc
@@ -376,6 +378,7 @@ class _$ShopStateCopyWithImpl<$Res, $Val extends ShopState>
   $Res call({
     Object? selected = freezed,
     Object? category = null,
+    Object? isBuyLoading = freezed,
   }) {
     return _then(_value.copyWith(
       selected: freezed == selected
@@ -386,6 +389,10 @@ class _$ShopStateCopyWithImpl<$Res, $Val extends ShopState>
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as ShopCategory,
+      isBuyLoading: freezed == isBuyLoading
+          ? _value.isBuyLoading
+          : isBuyLoading // ignore: cast_nullable_to_non_nullable
+              as dynamic,
     ) as $Val);
   }
 }
@@ -398,7 +405,8 @@ abstract class _$$ShopStateImplCopyWith<$Res>
       __$$ShopStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({BuildingModel? selected, ShopCategory category});
+  $Res call(
+      {BuildingModel? selected, ShopCategory category, dynamic isBuyLoading});
 }
 
 /// @nodoc
@@ -414,6 +422,7 @@ class __$$ShopStateImplCopyWithImpl<$Res>
   $Res call({
     Object? selected = freezed,
     Object? category = null,
+    Object? isBuyLoading = freezed,
   }) {
     return _then(_$ShopStateImpl(
       selected: freezed == selected
@@ -424,6 +433,8 @@ class __$$ShopStateImplCopyWithImpl<$Res>
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as ShopCategory,
+      isBuyLoading:
+          freezed == isBuyLoading ? _value.isBuyLoading! : isBuyLoading,
     ));
   }
 }
@@ -431,16 +442,20 @@ class __$$ShopStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ShopStateImpl implements _ShopState {
-  const _$ShopStateImpl({this.selected, required this.category});
+  const _$ShopStateImpl(
+      {this.selected, required this.category, this.isBuyLoading = false});
 
   @override
   final BuildingModel? selected;
   @override
   final ShopCategory category;
+  @override
+  @JsonKey()
+  final dynamic isBuyLoading;
 
   @override
   String toString() {
-    return 'ShopState(selected: $selected, category: $category)';
+    return 'ShopState(selected: $selected, category: $category, isBuyLoading: $isBuyLoading)';
   }
 
   @override
@@ -451,11 +466,14 @@ class _$ShopStateImpl implements _ShopState {
             (identical(other.selected, selected) ||
                 other.selected == selected) &&
             (identical(other.category, category) ||
-                other.category == category));
+                other.category == category) &&
+            const DeepCollectionEquality()
+                .equals(other.isBuyLoading, isBuyLoading));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, selected, category);
+  int get hashCode => Object.hash(runtimeType, selected, category,
+      const DeepCollectionEquality().hash(isBuyLoading));
 
   @JsonKey(ignore: true)
   @override
@@ -467,12 +485,15 @@ class _$ShopStateImpl implements _ShopState {
 abstract class _ShopState implements ShopState {
   const factory _ShopState(
       {final BuildingModel? selected,
-      required final ShopCategory category}) = _$ShopStateImpl;
+      required final ShopCategory category,
+      final dynamic isBuyLoading}) = _$ShopStateImpl;
 
   @override
   BuildingModel? get selected;
   @override
   ShopCategory get category;
+  @override
+  dynamic get isBuyLoading;
   @override
   @JsonKey(ignore: true)
   _$$ShopStateImplCopyWith<_$ShopStateImpl> get copyWith =>

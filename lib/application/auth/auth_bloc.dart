@@ -7,6 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:uuid/uuid.dart';
 
 part 'auth_event.dart';
 
@@ -66,7 +67,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<LogOut>((event, emit) async {
       emit(state.copyWith(isLoading: true));
       try {
-        if(LocalStorage.getMe()?.email?.isNotEmpty??false) {
+        if (LocalStorage.getMe()?.email?.isNotEmpty ?? false) {
           await GoogleSignIn().signOut();
         }
         LocalStorage.removeMe();
@@ -123,8 +124,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     on<Guest>((event, emit) async {
       emit(state.copyWith(isGuestLoading: true));
-      final imei = await AppHelper.generateIMEI(event.context);
-      final res = await authRepository.loginAsGuest(imei: imei);
+      String? guestId = LocalStorage.getGuestId();
+      if (guestId == null) {
+        guestId = "GUEST_${const Uuid().v1()}";
+        LocalStorage.setGuestId(guestId);
+      }
+      final res = await authRepository.loginAsGuest(imei: guestId);
       res.fold((l) async {
         if (l != null) {
           await LocalStorage.setMe(
@@ -136,7 +141,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         event.onError.call(r);
       });
       emit(state.copyWith(isGuestLoading: false));
-
     });
   }
 }

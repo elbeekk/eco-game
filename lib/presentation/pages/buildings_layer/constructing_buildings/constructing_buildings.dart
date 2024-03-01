@@ -4,10 +4,10 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import '../../../../infrastructure/models/class/building.dart';
 
-class InProcessBuildings extends StatelessWidget {
+class ConstructingBuilding extends StatelessWidget {
   final BuildingModel building;
 
-  const InProcessBuildings({super.key, required this.building});
+  const ConstructingBuilding({super.key, required this.building});
 
   @override
   Widget build(BuildContext context) {

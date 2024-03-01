@@ -16,65 +16,89 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$BuildingEvent {
+  BuildingModel get building => throw _privateConstructorUsedError;
+  dynamic Function(String) get onError => throw _privateConstructorUsedError;
+  Function get onSuccess => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(BuildingModel buildingInfoModel,
+    required TResult Function(BuildingModel building,
             dynamic Function(String) onError, Function onSuccess)
-        addNewBuilding,
-    required TResult Function(BuildingModel buildingInfoModel)
-        removeNewBuilding,
-    required TResult Function(BuildingModel buildingInfoModel) startBuilding,
-    required TResult Function(String name, String date, double x, double y)
-        changePosition,
+        addPendingBuilding,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String) onError, Function onSuccess)
+        removePendingBuilding,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String) onError, Function onSuccess)
+        addConstructingBuilding,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String) onError, Function onSuccess)
+        updatePendingBuilding,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(BuildingModel buildingInfoModel,
-            dynamic Function(String) onError, Function onSuccess)?
-        addNewBuilding,
-    TResult? Function(BuildingModel buildingInfoModel)? removeNewBuilding,
-    TResult? Function(BuildingModel buildingInfoModel)? startBuilding,
-    TResult? Function(String name, String date, double x, double y)?
-        changePosition,
+    TResult? Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        addPendingBuilding,
+    TResult? Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        removePendingBuilding,
+    TResult? Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        addConstructingBuilding,
+    TResult? Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        updatePendingBuilding,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(BuildingModel buildingInfoModel,
-            dynamic Function(String) onError, Function onSuccess)?
-        addNewBuilding,
-    TResult Function(BuildingModel buildingInfoModel)? removeNewBuilding,
-    TResult Function(BuildingModel buildingInfoModel)? startBuilding,
-    TResult Function(String name, String date, double x, double y)?
-        changePosition,
+    TResult Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        addPendingBuilding,
+    TResult Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        removePendingBuilding,
+    TResult Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        addConstructingBuilding,
+    TResult Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        updatePendingBuilding,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AddNewBuilding value) addNewBuilding,
-    required TResult Function(RemoveNewBuilding value) removeNewBuilding,
-    required TResult Function(StartBuilding value) startBuilding,
-    required TResult Function(ChangePosition value) changePosition,
+    required TResult Function(AddPendingBuilding value) addPendingBuilding,
+    required TResult Function(RemovePendingBuilding value)
+        removePendingBuilding,
+    required TResult Function(AddConstructingBuilding value)
+        addConstructingBuilding,
+    required TResult Function(UpdatePendingBuilding value)
+        updatePendingBuilding,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(AddNewBuilding value)? addNewBuilding,
-    TResult? Function(RemoveNewBuilding value)? removeNewBuilding,
-    TResult? Function(StartBuilding value)? startBuilding,
-    TResult? Function(ChangePosition value)? changePosition,
+    TResult? Function(AddPendingBuilding value)? addPendingBuilding,
+    TResult? Function(RemovePendingBuilding value)? removePendingBuilding,
+    TResult? Function(AddConstructingBuilding value)? addConstructingBuilding,
+    TResult? Function(UpdatePendingBuilding value)? updatePendingBuilding,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AddNewBuilding value)? addNewBuilding,
-    TResult Function(RemoveNewBuilding value)? removeNewBuilding,
-    TResult Function(StartBuilding value)? startBuilding,
-    TResult Function(ChangePosition value)? changePosition,
+    TResult Function(AddPendingBuilding value)? addPendingBuilding,
+    TResult Function(RemovePendingBuilding value)? removePendingBuilding,
+    TResult Function(AddConstructingBuilding value)? addConstructingBuilding,
+    TResult Function(UpdatePendingBuilding value)? updatePendingBuilding,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $BuildingEventCopyWith<BuildingEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -83,6 +107,11 @@ abstract class $BuildingEventCopyWith<$Res> {
   factory $BuildingEventCopyWith(
           BuildingEvent value, $Res Function(BuildingEvent) then) =
       _$BuildingEventCopyWithImpl<$Res, BuildingEvent>;
+  @useResult
+  $Res call(
+      {BuildingModel building,
+      dynamic Function(String) onError,
+      Function onSuccess});
 }
 
 /// @nodoc
@@ -94,39 +123,64 @@ class _$BuildingEventCopyWithImpl<$Res, $Val extends BuildingEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? building = null,
+    Object? onError = null,
+    Object? onSuccess = null,
+  }) {
+    return _then(_value.copyWith(
+      building: null == building
+          ? _value.building
+          : building // ignore: cast_nullable_to_non_nullable
+              as BuildingModel,
+      onError: null == onError
+          ? _value.onError
+          : onError // ignore: cast_nullable_to_non_nullable
+              as dynamic Function(String),
+      onSuccess: null == onSuccess
+          ? _value.onSuccess
+          : onSuccess // ignore: cast_nullable_to_non_nullable
+              as Function,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$AddNewBuildingImplCopyWith<$Res> {
-  factory _$$AddNewBuildingImplCopyWith(_$AddNewBuildingImpl value,
-          $Res Function(_$AddNewBuildingImpl) then) =
-      __$$AddNewBuildingImplCopyWithImpl<$Res>;
+abstract class _$$AddPendingBuildingImplCopyWith<$Res>
+    implements $BuildingEventCopyWith<$Res> {
+  factory _$$AddPendingBuildingImplCopyWith(_$AddPendingBuildingImpl value,
+          $Res Function(_$AddPendingBuildingImpl) then) =
+      __$$AddPendingBuildingImplCopyWithImpl<$Res>;
+  @override
   @useResult
   $Res call(
-      {BuildingModel buildingInfoModel,
+      {BuildingModel building,
       dynamic Function(String) onError,
       Function onSuccess});
 }
 
 /// @nodoc
-class __$$AddNewBuildingImplCopyWithImpl<$Res>
-    extends _$BuildingEventCopyWithImpl<$Res, _$AddNewBuildingImpl>
-    implements _$$AddNewBuildingImplCopyWith<$Res> {
-  __$$AddNewBuildingImplCopyWithImpl(
-      _$AddNewBuildingImpl _value, $Res Function(_$AddNewBuildingImpl) _then)
+class __$$AddPendingBuildingImplCopyWithImpl<$Res>
+    extends _$BuildingEventCopyWithImpl<$Res, _$AddPendingBuildingImpl>
+    implements _$$AddPendingBuildingImplCopyWith<$Res> {
+  __$$AddPendingBuildingImplCopyWithImpl(_$AddPendingBuildingImpl _value,
+      $Res Function(_$AddPendingBuildingImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? buildingInfoModel = null,
+    Object? building = null,
     Object? onError = null,
     Object? onSuccess = null,
   }) {
-    return _then(_$AddNewBuildingImpl(
-      buildingInfoModel: null == buildingInfoModel
-          ? _value.buildingInfoModel
-          : buildingInfoModel // ignore: cast_nullable_to_non_nullable
+    return _then(_$AddPendingBuildingImpl(
+      building: null == building
+          ? _value.building
+          : building // ignore: cast_nullable_to_non_nullable
               as BuildingModel,
       onError: null == onError
           ? _value.onError
@@ -142,14 +196,12 @@ class __$$AddNewBuildingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AddNewBuildingImpl implements AddNewBuilding {
-  const _$AddNewBuildingImpl(
-      {required this.buildingInfoModel,
-      required this.onError,
-      required this.onSuccess});
+class _$AddPendingBuildingImpl implements AddPendingBuilding {
+  const _$AddPendingBuildingImpl(
+      {required this.building, required this.onError, required this.onSuccess});
 
   @override
-  final BuildingModel buildingInfoModel;
+  final BuildingModel building;
   @override
   final dynamic Function(String) onError;
   @override
@@ -157,75 +209,88 @@ class _$AddNewBuildingImpl implements AddNewBuilding {
 
   @override
   String toString() {
-    return 'BuildingEvent.addNewBuilding(buildingInfoModel: $buildingInfoModel, onError: $onError, onSuccess: $onSuccess)';
+    return 'BuildingEvent.addPendingBuilding(building: $building, onError: $onError, onSuccess: $onSuccess)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AddNewBuildingImpl &&
-            (identical(other.buildingInfoModel, buildingInfoModel) ||
-                other.buildingInfoModel == buildingInfoModel) &&
+            other is _$AddPendingBuildingImpl &&
+            (identical(other.building, building) ||
+                other.building == building) &&
             (identical(other.onError, onError) || other.onError == onError) &&
             (identical(other.onSuccess, onSuccess) ||
                 other.onSuccess == onSuccess));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, buildingInfoModel, onError, onSuccess);
+  int get hashCode => Object.hash(runtimeType, building, onError, onSuccess);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$AddNewBuildingImplCopyWith<_$AddNewBuildingImpl> get copyWith =>
-      __$$AddNewBuildingImplCopyWithImpl<_$AddNewBuildingImpl>(
+  _$$AddPendingBuildingImplCopyWith<_$AddPendingBuildingImpl> get copyWith =>
+      __$$AddPendingBuildingImplCopyWithImpl<_$AddPendingBuildingImpl>(
           this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(BuildingModel buildingInfoModel,
+    required TResult Function(BuildingModel building,
             dynamic Function(String) onError, Function onSuccess)
-        addNewBuilding,
-    required TResult Function(BuildingModel buildingInfoModel)
-        removeNewBuilding,
-    required TResult Function(BuildingModel buildingInfoModel) startBuilding,
-    required TResult Function(String name, String date, double x, double y)
-        changePosition,
+        addPendingBuilding,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String) onError, Function onSuccess)
+        removePendingBuilding,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String) onError, Function onSuccess)
+        addConstructingBuilding,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String) onError, Function onSuccess)
+        updatePendingBuilding,
   }) {
-    return addNewBuilding(buildingInfoModel, onError, onSuccess);
+    return addPendingBuilding(building, onError, onSuccess);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(BuildingModel buildingInfoModel,
-            dynamic Function(String) onError, Function onSuccess)?
-        addNewBuilding,
-    TResult? Function(BuildingModel buildingInfoModel)? removeNewBuilding,
-    TResult? Function(BuildingModel buildingInfoModel)? startBuilding,
-    TResult? Function(String name, String date, double x, double y)?
-        changePosition,
+    TResult? Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        addPendingBuilding,
+    TResult? Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        removePendingBuilding,
+    TResult? Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        addConstructingBuilding,
+    TResult? Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        updatePendingBuilding,
   }) {
-    return addNewBuilding?.call(buildingInfoModel, onError, onSuccess);
+    return addPendingBuilding?.call(building, onError, onSuccess);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(BuildingModel buildingInfoModel,
-            dynamic Function(String) onError, Function onSuccess)?
-        addNewBuilding,
-    TResult Function(BuildingModel buildingInfoModel)? removeNewBuilding,
-    TResult Function(BuildingModel buildingInfoModel)? startBuilding,
-    TResult Function(String name, String date, double x, double y)?
-        changePosition,
+    TResult Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        addPendingBuilding,
+    TResult Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        removePendingBuilding,
+    TResult Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        addConstructingBuilding,
+    TResult Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        updatePendingBuilding,
     required TResult orElse(),
   }) {
-    if (addNewBuilding != null) {
-      return addNewBuilding(buildingInfoModel, onError, onSuccess);
+    if (addPendingBuilding != null) {
+      return addPendingBuilding(building, onError, onSuccess);
     }
     return orElse();
   }
@@ -233,161 +298,206 @@ class _$AddNewBuildingImpl implements AddNewBuilding {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AddNewBuilding value) addNewBuilding,
-    required TResult Function(RemoveNewBuilding value) removeNewBuilding,
-    required TResult Function(StartBuilding value) startBuilding,
-    required TResult Function(ChangePosition value) changePosition,
+    required TResult Function(AddPendingBuilding value) addPendingBuilding,
+    required TResult Function(RemovePendingBuilding value)
+        removePendingBuilding,
+    required TResult Function(AddConstructingBuilding value)
+        addConstructingBuilding,
+    required TResult Function(UpdatePendingBuilding value)
+        updatePendingBuilding,
   }) {
-    return addNewBuilding(this);
+    return addPendingBuilding(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(AddNewBuilding value)? addNewBuilding,
-    TResult? Function(RemoveNewBuilding value)? removeNewBuilding,
-    TResult? Function(StartBuilding value)? startBuilding,
-    TResult? Function(ChangePosition value)? changePosition,
+    TResult? Function(AddPendingBuilding value)? addPendingBuilding,
+    TResult? Function(RemovePendingBuilding value)? removePendingBuilding,
+    TResult? Function(AddConstructingBuilding value)? addConstructingBuilding,
+    TResult? Function(UpdatePendingBuilding value)? updatePendingBuilding,
   }) {
-    return addNewBuilding?.call(this);
+    return addPendingBuilding?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AddNewBuilding value)? addNewBuilding,
-    TResult Function(RemoveNewBuilding value)? removeNewBuilding,
-    TResult Function(StartBuilding value)? startBuilding,
-    TResult Function(ChangePosition value)? changePosition,
+    TResult Function(AddPendingBuilding value)? addPendingBuilding,
+    TResult Function(RemovePendingBuilding value)? removePendingBuilding,
+    TResult Function(AddConstructingBuilding value)? addConstructingBuilding,
+    TResult Function(UpdatePendingBuilding value)? updatePendingBuilding,
     required TResult orElse(),
   }) {
-    if (addNewBuilding != null) {
-      return addNewBuilding(this);
+    if (addPendingBuilding != null) {
+      return addPendingBuilding(this);
     }
     return orElse();
   }
 }
 
-abstract class AddNewBuilding implements BuildingEvent {
-  const factory AddNewBuilding(
-      {required final BuildingModel buildingInfoModel,
+abstract class AddPendingBuilding implements BuildingEvent {
+  const factory AddPendingBuilding(
+      {required final BuildingModel building,
       required final dynamic Function(String) onError,
-      required final Function onSuccess}) = _$AddNewBuildingImpl;
+      required final Function onSuccess}) = _$AddPendingBuildingImpl;
 
-  BuildingModel get buildingInfoModel;
+  @override
+  BuildingModel get building;
+  @override
   dynamic Function(String) get onError;
+  @override
   Function get onSuccess;
+  @override
   @JsonKey(ignore: true)
-  _$$AddNewBuildingImplCopyWith<_$AddNewBuildingImpl> get copyWith =>
+  _$$AddPendingBuildingImplCopyWith<_$AddPendingBuildingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$RemoveNewBuildingImplCopyWith<$Res> {
-  factory _$$RemoveNewBuildingImplCopyWith(_$RemoveNewBuildingImpl value,
-          $Res Function(_$RemoveNewBuildingImpl) then) =
-      __$$RemoveNewBuildingImplCopyWithImpl<$Res>;
+abstract class _$$RemovePendingBuildingImplCopyWith<$Res>
+    implements $BuildingEventCopyWith<$Res> {
+  factory _$$RemovePendingBuildingImplCopyWith(
+          _$RemovePendingBuildingImpl value,
+          $Res Function(_$RemovePendingBuildingImpl) then) =
+      __$$RemovePendingBuildingImplCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({BuildingModel buildingInfoModel});
+  $Res call(
+      {BuildingModel building,
+      dynamic Function(String) onError,
+      Function onSuccess});
 }
 
 /// @nodoc
-class __$$RemoveNewBuildingImplCopyWithImpl<$Res>
-    extends _$BuildingEventCopyWithImpl<$Res, _$RemoveNewBuildingImpl>
-    implements _$$RemoveNewBuildingImplCopyWith<$Res> {
-  __$$RemoveNewBuildingImplCopyWithImpl(_$RemoveNewBuildingImpl _value,
-      $Res Function(_$RemoveNewBuildingImpl) _then)
+class __$$RemovePendingBuildingImplCopyWithImpl<$Res>
+    extends _$BuildingEventCopyWithImpl<$Res, _$RemovePendingBuildingImpl>
+    implements _$$RemovePendingBuildingImplCopyWith<$Res> {
+  __$$RemovePendingBuildingImplCopyWithImpl(_$RemovePendingBuildingImpl _value,
+      $Res Function(_$RemovePendingBuildingImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? buildingInfoModel = null,
+    Object? building = null,
+    Object? onError = null,
+    Object? onSuccess = null,
   }) {
-    return _then(_$RemoveNewBuildingImpl(
-      null == buildingInfoModel
-          ? _value.buildingInfoModel
-          : buildingInfoModel // ignore: cast_nullable_to_non_nullable
+    return _then(_$RemovePendingBuildingImpl(
+      building: null == building
+          ? _value.building
+          : building // ignore: cast_nullable_to_non_nullable
               as BuildingModel,
+      onError: null == onError
+          ? _value.onError
+          : onError // ignore: cast_nullable_to_non_nullable
+              as dynamic Function(String),
+      onSuccess: null == onSuccess
+          ? _value.onSuccess
+          : onSuccess // ignore: cast_nullable_to_non_nullable
+              as Function,
     ));
   }
 }
 
 /// @nodoc
 
-class _$RemoveNewBuildingImpl implements RemoveNewBuilding {
-  const _$RemoveNewBuildingImpl(this.buildingInfoModel);
+class _$RemovePendingBuildingImpl implements RemovePendingBuilding {
+  const _$RemovePendingBuildingImpl(
+      {required this.building, required this.onError, required this.onSuccess});
 
   @override
-  final BuildingModel buildingInfoModel;
+  final BuildingModel building;
+  @override
+  final dynamic Function(String) onError;
+  @override
+  final Function onSuccess;
 
   @override
   String toString() {
-    return 'BuildingEvent.removeNewBuilding(buildingInfoModel: $buildingInfoModel)';
+    return 'BuildingEvent.removePendingBuilding(building: $building, onError: $onError, onSuccess: $onSuccess)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RemoveNewBuildingImpl &&
-            (identical(other.buildingInfoModel, buildingInfoModel) ||
-                other.buildingInfoModel == buildingInfoModel));
+            other is _$RemovePendingBuildingImpl &&
+            (identical(other.building, building) ||
+                other.building == building) &&
+            (identical(other.onError, onError) || other.onError == onError) &&
+            (identical(other.onSuccess, onSuccess) ||
+                other.onSuccess == onSuccess));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, buildingInfoModel);
+  int get hashCode => Object.hash(runtimeType, building, onError, onSuccess);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$RemoveNewBuildingImplCopyWith<_$RemoveNewBuildingImpl> get copyWith =>
-      __$$RemoveNewBuildingImplCopyWithImpl<_$RemoveNewBuildingImpl>(
-          this, _$identity);
+  _$$RemovePendingBuildingImplCopyWith<_$RemovePendingBuildingImpl>
+      get copyWith => __$$RemovePendingBuildingImplCopyWithImpl<
+          _$RemovePendingBuildingImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(BuildingModel buildingInfoModel,
+    required TResult Function(BuildingModel building,
             dynamic Function(String) onError, Function onSuccess)
-        addNewBuilding,
-    required TResult Function(BuildingModel buildingInfoModel)
-        removeNewBuilding,
-    required TResult Function(BuildingModel buildingInfoModel) startBuilding,
-    required TResult Function(String name, String date, double x, double y)
-        changePosition,
+        addPendingBuilding,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String) onError, Function onSuccess)
+        removePendingBuilding,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String) onError, Function onSuccess)
+        addConstructingBuilding,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String) onError, Function onSuccess)
+        updatePendingBuilding,
   }) {
-    return removeNewBuilding(buildingInfoModel);
+    return removePendingBuilding(building, onError, onSuccess);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(BuildingModel buildingInfoModel,
-            dynamic Function(String) onError, Function onSuccess)?
-        addNewBuilding,
-    TResult? Function(BuildingModel buildingInfoModel)? removeNewBuilding,
-    TResult? Function(BuildingModel buildingInfoModel)? startBuilding,
-    TResult? Function(String name, String date, double x, double y)?
-        changePosition,
+    TResult? Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        addPendingBuilding,
+    TResult? Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        removePendingBuilding,
+    TResult? Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        addConstructingBuilding,
+    TResult? Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        updatePendingBuilding,
   }) {
-    return removeNewBuilding?.call(buildingInfoModel);
+    return removePendingBuilding?.call(building, onError, onSuccess);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(BuildingModel buildingInfoModel,
-            dynamic Function(String) onError, Function onSuccess)?
-        addNewBuilding,
-    TResult Function(BuildingModel buildingInfoModel)? removeNewBuilding,
-    TResult Function(BuildingModel buildingInfoModel)? startBuilding,
-    TResult Function(String name, String date, double x, double y)?
-        changePosition,
+    TResult Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        addPendingBuilding,
+    TResult Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        removePendingBuilding,
+    TResult Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        addConstructingBuilding,
+    TResult Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        updatePendingBuilding,
     required TResult orElse(),
   }) {
-    if (removeNewBuilding != null) {
-      return removeNewBuilding(buildingInfoModel);
+    if (removePendingBuilding != null) {
+      return removePendingBuilding(building, onError, onSuccess);
     }
     return orElse();
   }
@@ -395,156 +505,207 @@ class _$RemoveNewBuildingImpl implements RemoveNewBuilding {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AddNewBuilding value) addNewBuilding,
-    required TResult Function(RemoveNewBuilding value) removeNewBuilding,
-    required TResult Function(StartBuilding value) startBuilding,
-    required TResult Function(ChangePosition value) changePosition,
+    required TResult Function(AddPendingBuilding value) addPendingBuilding,
+    required TResult Function(RemovePendingBuilding value)
+        removePendingBuilding,
+    required TResult Function(AddConstructingBuilding value)
+        addConstructingBuilding,
+    required TResult Function(UpdatePendingBuilding value)
+        updatePendingBuilding,
   }) {
-    return removeNewBuilding(this);
+    return removePendingBuilding(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(AddNewBuilding value)? addNewBuilding,
-    TResult? Function(RemoveNewBuilding value)? removeNewBuilding,
-    TResult? Function(StartBuilding value)? startBuilding,
-    TResult? Function(ChangePosition value)? changePosition,
+    TResult? Function(AddPendingBuilding value)? addPendingBuilding,
+    TResult? Function(RemovePendingBuilding value)? removePendingBuilding,
+    TResult? Function(AddConstructingBuilding value)? addConstructingBuilding,
+    TResult? Function(UpdatePendingBuilding value)? updatePendingBuilding,
   }) {
-    return removeNewBuilding?.call(this);
+    return removePendingBuilding?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AddNewBuilding value)? addNewBuilding,
-    TResult Function(RemoveNewBuilding value)? removeNewBuilding,
-    TResult Function(StartBuilding value)? startBuilding,
-    TResult Function(ChangePosition value)? changePosition,
+    TResult Function(AddPendingBuilding value)? addPendingBuilding,
+    TResult Function(RemovePendingBuilding value)? removePendingBuilding,
+    TResult Function(AddConstructingBuilding value)? addConstructingBuilding,
+    TResult Function(UpdatePendingBuilding value)? updatePendingBuilding,
     required TResult orElse(),
   }) {
-    if (removeNewBuilding != null) {
-      return removeNewBuilding(this);
+    if (removePendingBuilding != null) {
+      return removePendingBuilding(this);
     }
     return orElse();
   }
 }
 
-abstract class RemoveNewBuilding implements BuildingEvent {
-  const factory RemoveNewBuilding(final BuildingModel buildingInfoModel) =
-      _$RemoveNewBuildingImpl;
+abstract class RemovePendingBuilding implements BuildingEvent {
+  const factory RemovePendingBuilding(
+      {required final BuildingModel building,
+      required final dynamic Function(String) onError,
+      required final Function onSuccess}) = _$RemovePendingBuildingImpl;
 
-  BuildingModel get buildingInfoModel;
+  @override
+  BuildingModel get building;
+  @override
+  dynamic Function(String) get onError;
+  @override
+  Function get onSuccess;
+  @override
   @JsonKey(ignore: true)
-  _$$RemoveNewBuildingImplCopyWith<_$RemoveNewBuildingImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$RemovePendingBuildingImplCopyWith<_$RemovePendingBuildingImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$StartBuildingImplCopyWith<$Res> {
-  factory _$$StartBuildingImplCopyWith(
-          _$StartBuildingImpl value, $Res Function(_$StartBuildingImpl) then) =
-      __$$StartBuildingImplCopyWithImpl<$Res>;
+abstract class _$$AddConstructingBuildingImplCopyWith<$Res>
+    implements $BuildingEventCopyWith<$Res> {
+  factory _$$AddConstructingBuildingImplCopyWith(
+          _$AddConstructingBuildingImpl value,
+          $Res Function(_$AddConstructingBuildingImpl) then) =
+      __$$AddConstructingBuildingImplCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({BuildingModel buildingInfoModel});
+  $Res call(
+      {BuildingModel building,
+      dynamic Function(String) onError,
+      Function onSuccess});
 }
 
 /// @nodoc
-class __$$StartBuildingImplCopyWithImpl<$Res>
-    extends _$BuildingEventCopyWithImpl<$Res, _$StartBuildingImpl>
-    implements _$$StartBuildingImplCopyWith<$Res> {
-  __$$StartBuildingImplCopyWithImpl(
-      _$StartBuildingImpl _value, $Res Function(_$StartBuildingImpl) _then)
+class __$$AddConstructingBuildingImplCopyWithImpl<$Res>
+    extends _$BuildingEventCopyWithImpl<$Res, _$AddConstructingBuildingImpl>
+    implements _$$AddConstructingBuildingImplCopyWith<$Res> {
+  __$$AddConstructingBuildingImplCopyWithImpl(
+      _$AddConstructingBuildingImpl _value,
+      $Res Function(_$AddConstructingBuildingImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? buildingInfoModel = null,
+    Object? building = null,
+    Object? onError = null,
+    Object? onSuccess = null,
   }) {
-    return _then(_$StartBuildingImpl(
-      null == buildingInfoModel
-          ? _value.buildingInfoModel
-          : buildingInfoModel // ignore: cast_nullable_to_non_nullable
+    return _then(_$AddConstructingBuildingImpl(
+      building: null == building
+          ? _value.building
+          : building // ignore: cast_nullable_to_non_nullable
               as BuildingModel,
+      onError: null == onError
+          ? _value.onError
+          : onError // ignore: cast_nullable_to_non_nullable
+              as dynamic Function(String),
+      onSuccess: null == onSuccess
+          ? _value.onSuccess
+          : onSuccess // ignore: cast_nullable_to_non_nullable
+              as Function,
     ));
   }
 }
 
 /// @nodoc
 
-class _$StartBuildingImpl implements StartBuilding {
-  const _$StartBuildingImpl(this.buildingInfoModel);
+class _$AddConstructingBuildingImpl implements AddConstructingBuilding {
+  const _$AddConstructingBuildingImpl(
+      {required this.building, required this.onError, required this.onSuccess});
 
   @override
-  final BuildingModel buildingInfoModel;
+  final BuildingModel building;
+  @override
+  final dynamic Function(String) onError;
+  @override
+  final Function onSuccess;
 
   @override
   String toString() {
-    return 'BuildingEvent.startBuilding(buildingInfoModel: $buildingInfoModel)';
+    return 'BuildingEvent.addConstructingBuilding(building: $building, onError: $onError, onSuccess: $onSuccess)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$StartBuildingImpl &&
-            (identical(other.buildingInfoModel, buildingInfoModel) ||
-                other.buildingInfoModel == buildingInfoModel));
+            other is _$AddConstructingBuildingImpl &&
+            (identical(other.building, building) ||
+                other.building == building) &&
+            (identical(other.onError, onError) || other.onError == onError) &&
+            (identical(other.onSuccess, onSuccess) ||
+                other.onSuccess == onSuccess));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, buildingInfoModel);
+  int get hashCode => Object.hash(runtimeType, building, onError, onSuccess);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$StartBuildingImplCopyWith<_$StartBuildingImpl> get copyWith =>
-      __$$StartBuildingImplCopyWithImpl<_$StartBuildingImpl>(this, _$identity);
+  _$$AddConstructingBuildingImplCopyWith<_$AddConstructingBuildingImpl>
+      get copyWith => __$$AddConstructingBuildingImplCopyWithImpl<
+          _$AddConstructingBuildingImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(BuildingModel buildingInfoModel,
+    required TResult Function(BuildingModel building,
             dynamic Function(String) onError, Function onSuccess)
-        addNewBuilding,
-    required TResult Function(BuildingModel buildingInfoModel)
-        removeNewBuilding,
-    required TResult Function(BuildingModel buildingInfoModel) startBuilding,
-    required TResult Function(String name, String date, double x, double y)
-        changePosition,
+        addPendingBuilding,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String) onError, Function onSuccess)
+        removePendingBuilding,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String) onError, Function onSuccess)
+        addConstructingBuilding,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String) onError, Function onSuccess)
+        updatePendingBuilding,
   }) {
-    return startBuilding(buildingInfoModel);
+    return addConstructingBuilding(building, onError, onSuccess);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(BuildingModel buildingInfoModel,
-            dynamic Function(String) onError, Function onSuccess)?
-        addNewBuilding,
-    TResult? Function(BuildingModel buildingInfoModel)? removeNewBuilding,
-    TResult? Function(BuildingModel buildingInfoModel)? startBuilding,
-    TResult? Function(String name, String date, double x, double y)?
-        changePosition,
+    TResult? Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        addPendingBuilding,
+    TResult? Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        removePendingBuilding,
+    TResult? Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        addConstructingBuilding,
+    TResult? Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        updatePendingBuilding,
   }) {
-    return startBuilding?.call(buildingInfoModel);
+    return addConstructingBuilding?.call(building, onError, onSuccess);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(BuildingModel buildingInfoModel,
-            dynamic Function(String) onError, Function onSuccess)?
-        addNewBuilding,
-    TResult Function(BuildingModel buildingInfoModel)? removeNewBuilding,
-    TResult Function(BuildingModel buildingInfoModel)? startBuilding,
-    TResult Function(String name, String date, double x, double y)?
-        changePosition,
+    TResult Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        addPendingBuilding,
+    TResult Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        removePendingBuilding,
+    TResult Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        addConstructingBuilding,
+    TResult Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        updatePendingBuilding,
     required TResult orElse(),
   }) {
-    if (startBuilding != null) {
-      return startBuilding(buildingInfoModel);
+    if (addConstructingBuilding != null) {
+      return addConstructingBuilding(building, onError, onSuccess);
     }
     return orElse();
   }
@@ -552,184 +713,206 @@ class _$StartBuildingImpl implements StartBuilding {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AddNewBuilding value) addNewBuilding,
-    required TResult Function(RemoveNewBuilding value) removeNewBuilding,
-    required TResult Function(StartBuilding value) startBuilding,
-    required TResult Function(ChangePosition value) changePosition,
+    required TResult Function(AddPendingBuilding value) addPendingBuilding,
+    required TResult Function(RemovePendingBuilding value)
+        removePendingBuilding,
+    required TResult Function(AddConstructingBuilding value)
+        addConstructingBuilding,
+    required TResult Function(UpdatePendingBuilding value)
+        updatePendingBuilding,
   }) {
-    return startBuilding(this);
+    return addConstructingBuilding(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(AddNewBuilding value)? addNewBuilding,
-    TResult? Function(RemoveNewBuilding value)? removeNewBuilding,
-    TResult? Function(StartBuilding value)? startBuilding,
-    TResult? Function(ChangePosition value)? changePosition,
+    TResult? Function(AddPendingBuilding value)? addPendingBuilding,
+    TResult? Function(RemovePendingBuilding value)? removePendingBuilding,
+    TResult? Function(AddConstructingBuilding value)? addConstructingBuilding,
+    TResult? Function(UpdatePendingBuilding value)? updatePendingBuilding,
   }) {
-    return startBuilding?.call(this);
+    return addConstructingBuilding?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AddNewBuilding value)? addNewBuilding,
-    TResult Function(RemoveNewBuilding value)? removeNewBuilding,
-    TResult Function(StartBuilding value)? startBuilding,
-    TResult Function(ChangePosition value)? changePosition,
+    TResult Function(AddPendingBuilding value)? addPendingBuilding,
+    TResult Function(RemovePendingBuilding value)? removePendingBuilding,
+    TResult Function(AddConstructingBuilding value)? addConstructingBuilding,
+    TResult Function(UpdatePendingBuilding value)? updatePendingBuilding,
     required TResult orElse(),
   }) {
-    if (startBuilding != null) {
-      return startBuilding(this);
+    if (addConstructingBuilding != null) {
+      return addConstructingBuilding(this);
     }
     return orElse();
   }
 }
 
-abstract class StartBuilding implements BuildingEvent {
-  const factory StartBuilding(final BuildingModel buildingInfoModel) =
-      _$StartBuildingImpl;
+abstract class AddConstructingBuilding implements BuildingEvent {
+  const factory AddConstructingBuilding(
+      {required final BuildingModel building,
+      required final dynamic Function(String) onError,
+      required final Function onSuccess}) = _$AddConstructingBuildingImpl;
 
-  BuildingModel get buildingInfoModel;
+  @override
+  BuildingModel get building;
+  @override
+  dynamic Function(String) get onError;
+  @override
+  Function get onSuccess;
+  @override
   @JsonKey(ignore: true)
-  _$$StartBuildingImplCopyWith<_$StartBuildingImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$AddConstructingBuildingImplCopyWith<_$AddConstructingBuildingImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ChangePositionImplCopyWith<$Res> {
-  factory _$$ChangePositionImplCopyWith(_$ChangePositionImpl value,
-          $Res Function(_$ChangePositionImpl) then) =
-      __$$ChangePositionImplCopyWithImpl<$Res>;
+abstract class _$$UpdatePendingBuildingImplCopyWith<$Res>
+    implements $BuildingEventCopyWith<$Res> {
+  factory _$$UpdatePendingBuildingImplCopyWith(
+          _$UpdatePendingBuildingImpl value,
+          $Res Function(_$UpdatePendingBuildingImpl) then) =
+      __$$UpdatePendingBuildingImplCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({String name, String date, double x, double y});
+  $Res call(
+      {BuildingModel building,
+      dynamic Function(String) onError,
+      Function onSuccess});
 }
 
 /// @nodoc
-class __$$ChangePositionImplCopyWithImpl<$Res>
-    extends _$BuildingEventCopyWithImpl<$Res, _$ChangePositionImpl>
-    implements _$$ChangePositionImplCopyWith<$Res> {
-  __$$ChangePositionImplCopyWithImpl(
-      _$ChangePositionImpl _value, $Res Function(_$ChangePositionImpl) _then)
+class __$$UpdatePendingBuildingImplCopyWithImpl<$Res>
+    extends _$BuildingEventCopyWithImpl<$Res, _$UpdatePendingBuildingImpl>
+    implements _$$UpdatePendingBuildingImplCopyWith<$Res> {
+  __$$UpdatePendingBuildingImplCopyWithImpl(_$UpdatePendingBuildingImpl _value,
+      $Res Function(_$UpdatePendingBuildingImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
-    Object? date = null,
-    Object? x = null,
-    Object? y = null,
+    Object? building = null,
+    Object? onError = null,
+    Object? onSuccess = null,
   }) {
-    return _then(_$ChangePositionImpl(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      date: null == date
-          ? _value.date
-          : date // ignore: cast_nullable_to_non_nullable
-              as String,
-      x: null == x
-          ? _value.x
-          : x // ignore: cast_nullable_to_non_nullable
-              as double,
-      y: null == y
-          ? _value.y
-          : y // ignore: cast_nullable_to_non_nullable
-              as double,
+    return _then(_$UpdatePendingBuildingImpl(
+      building: null == building
+          ? _value.building
+          : building // ignore: cast_nullable_to_non_nullable
+              as BuildingModel,
+      onError: null == onError
+          ? _value.onError
+          : onError // ignore: cast_nullable_to_non_nullable
+              as dynamic Function(String),
+      onSuccess: null == onSuccess
+          ? _value.onSuccess
+          : onSuccess // ignore: cast_nullable_to_non_nullable
+              as Function,
     ));
   }
 }
 
 /// @nodoc
 
-class _$ChangePositionImpl implements ChangePosition {
-  const _$ChangePositionImpl(
-      {required this.name,
-      required this.date,
-      required this.x,
-      required this.y});
+class _$UpdatePendingBuildingImpl implements UpdatePendingBuilding {
+  const _$UpdatePendingBuildingImpl(
+      {required this.building, required this.onError, required this.onSuccess});
 
   @override
-  final String name;
+  final BuildingModel building;
   @override
-  final String date;
+  final dynamic Function(String) onError;
   @override
-  final double x;
-  @override
-  final double y;
+  final Function onSuccess;
 
   @override
   String toString() {
-    return 'BuildingEvent.changePosition(name: $name, date: $date, x: $x, y: $y)';
+    return 'BuildingEvent.updatePendingBuilding(building: $building, onError: $onError, onSuccess: $onSuccess)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ChangePositionImpl &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.date, date) || other.date == date) &&
-            (identical(other.x, x) || other.x == x) &&
-            (identical(other.y, y) || other.y == y));
+            other is _$UpdatePendingBuildingImpl &&
+            (identical(other.building, building) ||
+                other.building == building) &&
+            (identical(other.onError, onError) || other.onError == onError) &&
+            (identical(other.onSuccess, onSuccess) ||
+                other.onSuccess == onSuccess));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, date, x, y);
+  int get hashCode => Object.hash(runtimeType, building, onError, onSuccess);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ChangePositionImplCopyWith<_$ChangePositionImpl> get copyWith =>
-      __$$ChangePositionImplCopyWithImpl<_$ChangePositionImpl>(
-          this, _$identity);
+  _$$UpdatePendingBuildingImplCopyWith<_$UpdatePendingBuildingImpl>
+      get copyWith => __$$UpdatePendingBuildingImplCopyWithImpl<
+          _$UpdatePendingBuildingImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(BuildingModel buildingInfoModel,
+    required TResult Function(BuildingModel building,
             dynamic Function(String) onError, Function onSuccess)
-        addNewBuilding,
-    required TResult Function(BuildingModel buildingInfoModel)
-        removeNewBuilding,
-    required TResult Function(BuildingModel buildingInfoModel) startBuilding,
-    required TResult Function(String name, String date, double x, double y)
-        changePosition,
+        addPendingBuilding,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String) onError, Function onSuccess)
+        removePendingBuilding,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String) onError, Function onSuccess)
+        addConstructingBuilding,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String) onError, Function onSuccess)
+        updatePendingBuilding,
   }) {
-    return changePosition(name, date, x, y);
+    return updatePendingBuilding(building, onError, onSuccess);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(BuildingModel buildingInfoModel,
-            dynamic Function(String) onError, Function onSuccess)?
-        addNewBuilding,
-    TResult? Function(BuildingModel buildingInfoModel)? removeNewBuilding,
-    TResult? Function(BuildingModel buildingInfoModel)? startBuilding,
-    TResult? Function(String name, String date, double x, double y)?
-        changePosition,
+    TResult? Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        addPendingBuilding,
+    TResult? Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        removePendingBuilding,
+    TResult? Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        addConstructingBuilding,
+    TResult? Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        updatePendingBuilding,
   }) {
-    return changePosition?.call(name, date, x, y);
+    return updatePendingBuilding?.call(building, onError, onSuccess);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(BuildingModel buildingInfoModel,
-            dynamic Function(String) onError, Function onSuccess)?
-        addNewBuilding,
-    TResult Function(BuildingModel buildingInfoModel)? removeNewBuilding,
-    TResult Function(BuildingModel buildingInfoModel)? startBuilding,
-    TResult Function(String name, String date, double x, double y)?
-        changePosition,
+    TResult Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        addPendingBuilding,
+    TResult Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        removePendingBuilding,
+    TResult Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        addConstructingBuilding,
+    TResult Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        updatePendingBuilding,
     required TResult orElse(),
   }) {
-    if (changePosition != null) {
-      return changePosition(name, date, x, y);
+    if (updatePendingBuilding != null) {
+      return updatePendingBuilding(building, onError, onSuccess);
     }
     return orElse();
   }
@@ -737,63 +920,71 @@ class _$ChangePositionImpl implements ChangePosition {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AddNewBuilding value) addNewBuilding,
-    required TResult Function(RemoveNewBuilding value) removeNewBuilding,
-    required TResult Function(StartBuilding value) startBuilding,
-    required TResult Function(ChangePosition value) changePosition,
+    required TResult Function(AddPendingBuilding value) addPendingBuilding,
+    required TResult Function(RemovePendingBuilding value)
+        removePendingBuilding,
+    required TResult Function(AddConstructingBuilding value)
+        addConstructingBuilding,
+    required TResult Function(UpdatePendingBuilding value)
+        updatePendingBuilding,
   }) {
-    return changePosition(this);
+    return updatePendingBuilding(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(AddNewBuilding value)? addNewBuilding,
-    TResult? Function(RemoveNewBuilding value)? removeNewBuilding,
-    TResult? Function(StartBuilding value)? startBuilding,
-    TResult? Function(ChangePosition value)? changePosition,
+    TResult? Function(AddPendingBuilding value)? addPendingBuilding,
+    TResult? Function(RemovePendingBuilding value)? removePendingBuilding,
+    TResult? Function(AddConstructingBuilding value)? addConstructingBuilding,
+    TResult? Function(UpdatePendingBuilding value)? updatePendingBuilding,
   }) {
-    return changePosition?.call(this);
+    return updatePendingBuilding?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AddNewBuilding value)? addNewBuilding,
-    TResult Function(RemoveNewBuilding value)? removeNewBuilding,
-    TResult Function(StartBuilding value)? startBuilding,
-    TResult Function(ChangePosition value)? changePosition,
+    TResult Function(AddPendingBuilding value)? addPendingBuilding,
+    TResult Function(RemovePendingBuilding value)? removePendingBuilding,
+    TResult Function(AddConstructingBuilding value)? addConstructingBuilding,
+    TResult Function(UpdatePendingBuilding value)? updatePendingBuilding,
     required TResult orElse(),
   }) {
-    if (changePosition != null) {
-      return changePosition(this);
+    if (updatePendingBuilding != null) {
+      return updatePendingBuilding(this);
     }
     return orElse();
   }
 }
 
-abstract class ChangePosition implements BuildingEvent {
-  const factory ChangePosition(
-      {required final String name,
-      required final String date,
-      required final double x,
-      required final double y}) = _$ChangePositionImpl;
+abstract class UpdatePendingBuilding implements BuildingEvent {
+  const factory UpdatePendingBuilding(
+      {required final BuildingModel building,
+      required final dynamic Function(String) onError,
+      required final Function onSuccess}) = _$UpdatePendingBuildingImpl;
 
-  String get name;
-  String get date;
-  double get x;
-  double get y;
+  @override
+  BuildingModel get building;
+  @override
+  dynamic Function(String) get onError;
+  @override
+  Function get onSuccess;
+  @override
   @JsonKey(ignore: true)
-  _$$ChangePositionImplCopyWith<_$ChangePositionImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$UpdatePendingBuildingImplCopyWith<_$UpdatePendingBuildingImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 mixin _$BuildingState {
-  List<BuildingModel> get newBuildings => throw _privateConstructorUsedError;
-  List<BuildingModel> get inProcessBuildings =>
+  List<BuildingModel> get pendingBuildings =>
       throw _privateConstructorUsedError;
-  List<BuildingModel> get oldBuildings => throw _privateConstructorUsedError;
+  List<BuildingModel> get constructingBuildings =>
+      throw _privateConstructorUsedError;
+  List<BuildingModel> get existingBuildings =>
+      throw _privateConstructorUsedError;
+  bool get isBuyLoading => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BuildingStateCopyWith<BuildingState> get copyWith =>
@@ -807,9 +998,10 @@ abstract class $BuildingStateCopyWith<$Res> {
       _$BuildingStateCopyWithImpl<$Res, BuildingState>;
   @useResult
   $Res call(
-      {List<BuildingModel> newBuildings,
-      List<BuildingModel> inProcessBuildings,
-      List<BuildingModel> oldBuildings});
+      {List<BuildingModel> pendingBuildings,
+      List<BuildingModel> constructingBuildings,
+      List<BuildingModel> existingBuildings,
+      bool isBuyLoading});
 }
 
 /// @nodoc
@@ -825,23 +1017,28 @@ class _$BuildingStateCopyWithImpl<$Res, $Val extends BuildingState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? newBuildings = null,
-    Object? inProcessBuildings = null,
-    Object? oldBuildings = null,
+    Object? pendingBuildings = null,
+    Object? constructingBuildings = null,
+    Object? existingBuildings = null,
+    Object? isBuyLoading = null,
   }) {
     return _then(_value.copyWith(
-      newBuildings: null == newBuildings
-          ? _value.newBuildings
-          : newBuildings // ignore: cast_nullable_to_non_nullable
+      pendingBuildings: null == pendingBuildings
+          ? _value.pendingBuildings
+          : pendingBuildings // ignore: cast_nullable_to_non_nullable
               as List<BuildingModel>,
-      inProcessBuildings: null == inProcessBuildings
-          ? _value.inProcessBuildings
-          : inProcessBuildings // ignore: cast_nullable_to_non_nullable
+      constructingBuildings: null == constructingBuildings
+          ? _value.constructingBuildings
+          : constructingBuildings // ignore: cast_nullable_to_non_nullable
               as List<BuildingModel>,
-      oldBuildings: null == oldBuildings
-          ? _value.oldBuildings
-          : oldBuildings // ignore: cast_nullable_to_non_nullable
+      existingBuildings: null == existingBuildings
+          ? _value.existingBuildings
+          : existingBuildings // ignore: cast_nullable_to_non_nullable
               as List<BuildingModel>,
+      isBuyLoading: null == isBuyLoading
+          ? _value.isBuyLoading
+          : isBuyLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -855,9 +1052,10 @@ abstract class _$$BuildingStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<BuildingModel> newBuildings,
-      List<BuildingModel> inProcessBuildings,
-      List<BuildingModel> oldBuildings});
+      {List<BuildingModel> pendingBuildings,
+      List<BuildingModel> constructingBuildings,
+      List<BuildingModel> existingBuildings,
+      bool isBuyLoading});
 }
 
 /// @nodoc
@@ -871,23 +1069,28 @@ class __$$BuildingStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? newBuildings = null,
-    Object? inProcessBuildings = null,
-    Object? oldBuildings = null,
+    Object? pendingBuildings = null,
+    Object? constructingBuildings = null,
+    Object? existingBuildings = null,
+    Object? isBuyLoading = null,
   }) {
     return _then(_$BuildingStateImpl(
-      newBuildings: null == newBuildings
-          ? _value._newBuildings
-          : newBuildings // ignore: cast_nullable_to_non_nullable
+      pendingBuildings: null == pendingBuildings
+          ? _value._pendingBuildings
+          : pendingBuildings // ignore: cast_nullable_to_non_nullable
               as List<BuildingModel>,
-      inProcessBuildings: null == inProcessBuildings
-          ? _value._inProcessBuildings
-          : inProcessBuildings // ignore: cast_nullable_to_non_nullable
+      constructingBuildings: null == constructingBuildings
+          ? _value._constructingBuildings
+          : constructingBuildings // ignore: cast_nullable_to_non_nullable
               as List<BuildingModel>,
-      oldBuildings: null == oldBuildings
-          ? _value._oldBuildings
-          : oldBuildings // ignore: cast_nullable_to_non_nullable
+      existingBuildings: null == existingBuildings
+          ? _value._existingBuildings
+          : existingBuildings // ignore: cast_nullable_to_non_nullable
               as List<BuildingModel>,
+      isBuyLoading: null == isBuyLoading
+          ? _value.isBuyLoading
+          : isBuyLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -896,44 +1099,51 @@ class __$$BuildingStateImplCopyWithImpl<$Res>
 
 class _$BuildingStateImpl implements _BuildingState {
   const _$BuildingStateImpl(
-      {final List<BuildingModel> newBuildings = const [],
-      final List<BuildingModel> inProcessBuildings = const [],
-      final List<BuildingModel> oldBuildings = const []})
-      : _newBuildings = newBuildings,
-        _inProcessBuildings = inProcessBuildings,
-        _oldBuildings = oldBuildings;
+      {final List<BuildingModel> pendingBuildings = const [],
+      final List<BuildingModel> constructingBuildings = const [],
+      final List<BuildingModel> existingBuildings = const [],
+      this.isBuyLoading = false})
+      : _pendingBuildings = pendingBuildings,
+        _constructingBuildings = constructingBuildings,
+        _existingBuildings = existingBuildings;
 
-  final List<BuildingModel> _newBuildings;
+  final List<BuildingModel> _pendingBuildings;
   @override
   @JsonKey()
-  List<BuildingModel> get newBuildings {
-    if (_newBuildings is EqualUnmodifiableListView) return _newBuildings;
+  List<BuildingModel> get pendingBuildings {
+    if (_pendingBuildings is EqualUnmodifiableListView)
+      return _pendingBuildings;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_newBuildings);
+    return EqualUnmodifiableListView(_pendingBuildings);
   }
 
-  final List<BuildingModel> _inProcessBuildings;
+  final List<BuildingModel> _constructingBuildings;
   @override
   @JsonKey()
-  List<BuildingModel> get inProcessBuildings {
-    if (_inProcessBuildings is EqualUnmodifiableListView)
-      return _inProcessBuildings;
+  List<BuildingModel> get constructingBuildings {
+    if (_constructingBuildings is EqualUnmodifiableListView)
+      return _constructingBuildings;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_inProcessBuildings);
+    return EqualUnmodifiableListView(_constructingBuildings);
   }
 
-  final List<BuildingModel> _oldBuildings;
+  final List<BuildingModel> _existingBuildings;
   @override
   @JsonKey()
-  List<BuildingModel> get oldBuildings {
-    if (_oldBuildings is EqualUnmodifiableListView) return _oldBuildings;
+  List<BuildingModel> get existingBuildings {
+    if (_existingBuildings is EqualUnmodifiableListView)
+      return _existingBuildings;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_oldBuildings);
+    return EqualUnmodifiableListView(_existingBuildings);
   }
+
+  @override
+  @JsonKey()
+  final bool isBuyLoading;
 
   @override
   String toString() {
-    return 'BuildingState(newBuildings: $newBuildings, inProcessBuildings: $inProcessBuildings, oldBuildings: $oldBuildings)';
+    return 'BuildingState(pendingBuildings: $pendingBuildings, constructingBuildings: $constructingBuildings, existingBuildings: $existingBuildings, isBuyLoading: $isBuyLoading)';
   }
 
   @override
@@ -942,19 +1152,22 @@ class _$BuildingStateImpl implements _BuildingState {
         (other.runtimeType == runtimeType &&
             other is _$BuildingStateImpl &&
             const DeepCollectionEquality()
-                .equals(other._newBuildings, _newBuildings) &&
+                .equals(other._pendingBuildings, _pendingBuildings) &&
             const DeepCollectionEquality()
-                .equals(other._inProcessBuildings, _inProcessBuildings) &&
+                .equals(other._constructingBuildings, _constructingBuildings) &&
             const DeepCollectionEquality()
-                .equals(other._oldBuildings, _oldBuildings));
+                .equals(other._existingBuildings, _existingBuildings) &&
+            (identical(other.isBuyLoading, isBuyLoading) ||
+                other.isBuyLoading == isBuyLoading));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(_newBuildings),
-      const DeepCollectionEquality().hash(_inProcessBuildings),
-      const DeepCollectionEquality().hash(_oldBuildings));
+      const DeepCollectionEquality().hash(_pendingBuildings),
+      const DeepCollectionEquality().hash(_constructingBuildings),
+      const DeepCollectionEquality().hash(_existingBuildings),
+      isBuyLoading);
 
   @JsonKey(ignore: true)
   @override
@@ -965,16 +1178,19 @@ class _$BuildingStateImpl implements _BuildingState {
 
 abstract class _BuildingState implements BuildingState {
   const factory _BuildingState(
-      {final List<BuildingModel> newBuildings,
-      final List<BuildingModel> inProcessBuildings,
-      final List<BuildingModel> oldBuildings}) = _$BuildingStateImpl;
+      {final List<BuildingModel> pendingBuildings,
+      final List<BuildingModel> constructingBuildings,
+      final List<BuildingModel> existingBuildings,
+      final bool isBuyLoading}) = _$BuildingStateImpl;
 
   @override
-  List<BuildingModel> get newBuildings;
+  List<BuildingModel> get pendingBuildings;
   @override
-  List<BuildingModel> get inProcessBuildings;
+  List<BuildingModel> get constructingBuildings;
   @override
-  List<BuildingModel> get oldBuildings;
+  List<BuildingModel> get existingBuildings;
+  @override
+  bool get isBuyLoading;
   @override
   @JsonKey(ignore: true)
   _$$BuildingStateImplCopyWith<_$BuildingStateImpl> get copyWith =>

@@ -4,8 +4,6 @@ import 'package:eco_game/application/game/game_bloc.dart';
 import 'package:eco_game/application/message/message_bloc.dart';
 import 'package:eco_game/application/settings/settings_bloc.dart';
 import 'package:eco_game/application/shop/shop_bloc.dart';
-import 'package:eco_game/presentation/pages/buildings_layer/in_process_buildings/in_process_buildings.dart';
-import 'package:eco_game/presentation/pages/buildings_layer/new_buildings/new_buildings.dart';
 import 'package:eco_game/presentation/pages/buttons_layer/buttons_layer.dart';
 import 'package:eco_game/presentation/pages/image_layer/image_layer.dart';
 import 'package:eco_game/presentation/pages/message/message.dart';
@@ -13,6 +11,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_fgbg/flutter_fgbg.dart';
+
+import '../buildings_layer/constructing_buildings/constructing_buildings.dart';
+import '../buildings_layer/pending_buildings/pending_building.dart';
 
 class GamePage extends StatefulWidget {
   const GamePage({super.key});
@@ -89,19 +90,21 @@ class _GamePageState extends State<GamePage> {
                           builder: (context, buildingState) {
                             return ImageLayer(children: [
                               ...List.generate(
-                                  buildingState.inProcessBuildings.length,
+                                buildingState.constructingBuildings.length,
+                                (index) {
+                                  final current = buildingState
+                                      .constructingBuildings[index];
+                                  return ConstructingBuilding(
+                                    building: current,
+                                  );
+                                },
+                              ),
+                              ...List.generate(
+                                  buildingState.pendingBuildings.length,
                                   (index) {
                                 final current =
-                                    buildingState.inProcessBuildings[index];
-                                return InProcessBuildings(
-                                  building: current,
-                                );
-                              }),
-                              ...List.generate(
-                                  buildingState.newBuildings.length, (index) {
-                                final current =
-                                    buildingState.newBuildings[index];
-                                return NewBuilding(
+                                    buildingState.pendingBuildings[index];
+                                return PendingBuilding(
                                   building: current,
                                 );
                               }),
@@ -114,7 +117,8 @@ class _GamePageState extends State<GamePage> {
                                   MessageEvent.setIntroMessages(
                                       onError: (e) {}, onSuccess: () {}),
                                 );
-                            if (state.currentMessage == null || state.messages.isEmpty) {
+                            if (state.currentMessage == null ||
+                                state.messages.isEmpty) {
                               return const ButtonsLayer();
                             }
                             return Message(

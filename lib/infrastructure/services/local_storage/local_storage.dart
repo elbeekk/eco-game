@@ -37,6 +37,28 @@ class LocalStorage {
       final rawUser = _preferences?.remove(LocalStorageKeys.keyMe);
     }
   }
+ static Future<void> setGuestId(String id) async {
+    if (_preferences != null) {
+      await _preferences?.setString(LocalStorageKeys.keyGuestId, id);
+    }
+  }
+
+  static String? getGuestId() {
+    if (_preferences != null) {
+      final guestId = _preferences?.getString(LocalStorageKeys.keyGuestId);
+      if (guestId != null) {
+        return guestId;
+      }
+      return null;
+    }
+    return null;
+  }
+
+  static void removeGuestId() {
+    if (_preferences != null) {
+      _preferences?.remove(LocalStorageKeys.keyGuestId);
+    }
+  }
 
   /// BUILDING
   static Future<void> addNewBuilding(BuildingModel buildingModel) async {

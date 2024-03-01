@@ -2,21 +2,27 @@ part of 'building_bloc.dart';
 
 @freezed
 class BuildingEvent with _$BuildingEvent {
-  const factory BuildingEvent.addNewBuilding({
-    required BuildingModel buildingInfoModel,
-  required Function(String error) onError,
-  required Function onSuccess,
-  }) = AddNewBuilding;
+  const factory BuildingEvent.addPendingBuilding({
+    required BuildingModel building,
+    required Function(String error) onError,
+    required Function onSuccess,
+  }) = AddPendingBuilding;
 
-  const factory BuildingEvent.removeNewBuilding(
-      BuildingModel buildingInfoModel) = RemoveNewBuilding;
+  const factory BuildingEvent.removePendingBuilding({
+    required BuildingModel building,
+    required Function(String error) onError,
+    required Function onSuccess,
+  }) = RemovePendingBuilding;
 
-  const factory BuildingEvent.startBuilding(BuildingModel buildingInfoModel) =
-      StartBuilding;
+  const factory BuildingEvent.addConstructingBuilding({
+    required BuildingModel building,
+    required Function(String error) onError,
+    required Function onSuccess,
+  }) = AddConstructingBuilding;
 
-  const factory BuildingEvent.changePosition(
-      {required String name,
-      required String date,
-      required double x,
-      required double y}) = ChangePosition;
+  const factory BuildingEvent.updatePendingBuilding({
+    required BuildingModel building,
+    required Function(String error) onError,
+    required Function onSuccess,
+  }) = UpdatePendingBuilding;
 }
