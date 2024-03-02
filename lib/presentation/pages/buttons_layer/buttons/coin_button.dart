@@ -24,7 +24,8 @@ class CoinButton extends StatelessWidget {
             children: [
               BlocBuilder<SettingsBloc, SettingsState>(
                 builder: (context, settingsState) {
-                  return StreamBuilder(
+                  if(LocalStorage.getMe()?.id!=null) {
+                    return StreamBuilder(
                     stream: FirebaseFirestore.instance
                         .collection('users')
                         .doc(LocalStorage.getMe()?.id ?? '')
@@ -42,6 +43,8 @@ class CoinButton extends StatelessWidget {
                       );
                     },
                   );
+                  }
+                  return Text("${LocalStorage.getMe()?.id}\n${LocalStorage.getGuestId()}");
                 },
               ),
               const Icon(

@@ -100,11 +100,6 @@ class AuthRepository implements AuthInterface {
     }
   }
 
-  @override
-  Future<Either<DocumentSnapshot<Map<String, dynamic>>, dynamic>> guestLogin() {
-    // TODO: implement guestLogin
-    throw UnimplementedError();
-  }
 
   @override
   Future<Either<QueryDocumentSnapshot<Map<String, dynamic>>?, dynamic>>

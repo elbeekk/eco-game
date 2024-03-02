@@ -132,10 +132,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       final res = await authRepository.loginAsGuest(imei: guestId);
       res.fold((l) async {
         if (l != null) {
-          await LocalStorage.setMe(
-            UserModel.fromJson(l),
-          );
-          event.onSuccess.call();
+          await LocalStorage.setMe(UserModel.fromJson(l),);
+          if(LocalStorage.getMe()?.id!=null) {
+            event.onSuccess.call();
+          }
         }
       }, (r) {
         event.onError.call(r);

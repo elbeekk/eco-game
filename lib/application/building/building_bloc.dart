@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:eco_game/domain/di/dependancy_manager.dart';
 import 'package:eco_game/infrastructure/models/class/building.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:uuid/uuid.dart';
 
 part 'building_event.dart';
 
@@ -13,8 +14,10 @@ class BuildingBloc extends Bloc<BuildingEvent, BuildingState> {
   BuildingBloc() : super(const BuildingState()) {
     on<AddPendingBuilding>((event, emit) async {
       emit(state.copyWith(isBuyLoading: true));
-      final res = await userRepository.addPendingBuilding(
-        pendingBuilding: event.building.copyWith(
+      final id = Uuid().v1();
+      final res = await buildingRepository.addPendingBuilding(
+        building: event.building.copyWith(
+          id: id,
           date: DateTime.now().millisecondsSinceEpoch.toString(),
         ),
       );
@@ -31,17 +34,21 @@ class BuildingBloc extends Bloc<BuildingEvent, BuildingState> {
       emit(state.copyWith(isBuyLoading: false));
     });
 
-    on<RemovePendingBuilding>((event, emit) {
-      List<BuildingModel> tempList = state.pendingBuildings.toList();
-      tempList.removeWhere((element) {
-        if (element.name == event.building.name) {
-          return true;
-        }
-        return false;
-      });
-      emit(
-        state.copyWith(pendingBuildings: tempList),
-      );
+    on<RemovePendingBuilding>((event, emit) async {
+      final res = await buildingRepository.removePendingBuilding(
+          building: event.building);
+      res.fold((l) {
+        List<BuildingModel> tempList = state.pendingBuildings.toList();
+        tempList.removeWhere((element) {
+          if (element.id == event.building.id) {
+            return true;
+          }
+          return false;
+        });
+        emit(
+          state.copyWith(pendingBuildings: tempList),
+        );
+      }, (r) {});
     });
 
     on<UpdatePendingBuilding>((event, emit) {

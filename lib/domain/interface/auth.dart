@@ -23,8 +23,6 @@ abstract class AuthInterface {
     required UserModel user,
   });
 
-  Future<Either<DocumentSnapshot<Map<String, dynamic>>, dynamic>> guestLogin();
-
   Future<Either<GoogleSignInAccount?, dynamic>> googleLogin();
 
   Future<Either<QueryDocumentSnapshot<Map<String, dynamic>>?, dynamic>>

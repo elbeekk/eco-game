@@ -25,4 +25,5 @@ class BuildingEvent with _$BuildingEvent {
     required Function(String error) onError,
     required Function onSuccess,
   }) = UpdatePendingBuilding;
+  const factory BuildingEvent.getAll() = GetAll;
 }
