@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'shop_bloc.dart';
 
@@ -12,7 +12,7 @@ part of 'shop_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ShopEvent {
@@ -74,18 +74,20 @@ class _$ShopEventCopyWithImpl<$Res, $Val extends ShopEvent>
 }
 
 /// @nodoc
-abstract class _$$SelectCopyWith<$Res> {
-  factory _$$SelectCopyWith(_$Select value, $Res Function(_$Select) then) =
-      __$$SelectCopyWithImpl<$Res>;
+abstract class _$$SelectImplCopyWith<$Res> {
+  factory _$$SelectImplCopyWith(
+          _$SelectImpl value, $Res Function(_$SelectImpl) then) =
+      __$$SelectImplCopyWithImpl<$Res>;
   @useResult
   $Res call({BuildingModel shopItemModel});
 }
 
 /// @nodoc
-class __$$SelectCopyWithImpl<$Res>
-    extends _$ShopEventCopyWithImpl<$Res, _$Select>
-    implements _$$SelectCopyWith<$Res> {
-  __$$SelectCopyWithImpl(_$Select _value, $Res Function(_$Select) _then)
+class __$$SelectImplCopyWithImpl<$Res>
+    extends _$ShopEventCopyWithImpl<$Res, _$SelectImpl>
+    implements _$$SelectImplCopyWith<$Res> {
+  __$$SelectImplCopyWithImpl(
+      _$SelectImpl _value, $Res Function(_$SelectImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -93,7 +95,7 @@ class __$$SelectCopyWithImpl<$Res>
   $Res call({
     Object? shopItemModel = null,
   }) {
-    return _then(_$Select(
+    return _then(_$SelectImpl(
       null == shopItemModel
           ? _value.shopItemModel
           : shopItemModel // ignore: cast_nullable_to_non_nullable
@@ -104,8 +106,8 @@ class __$$SelectCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Select implements Select {
-  const _$Select(this.shopItemModel);
+class _$SelectImpl implements Select {
+  const _$SelectImpl(this.shopItemModel);
 
   @override
   final BuildingModel shopItemModel;
@@ -116,10 +118,10 @@ class _$Select implements Select {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Select &&
+            other is _$SelectImpl &&
             (identical(other.shopItemModel, shopItemModel) ||
                 other.shopItemModel == shopItemModel));
   }
@@ -130,8 +132,8 @@ class _$Select implements Select {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SelectCopyWith<_$Select> get copyWith =>
-      __$$SelectCopyWithImpl<_$Select>(this, _$identity);
+  _$$SelectImplCopyWith<_$SelectImpl> get copyWith =>
+      __$$SelectImplCopyWithImpl<_$SelectImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -197,29 +199,29 @@ class _$Select implements Select {
 }
 
 abstract class Select implements ShopEvent {
-  const factory Select(final BuildingModel shopItemModel) = _$Select;
+  const factory Select(final BuildingModel shopItemModel) = _$SelectImpl;
 
   BuildingModel get shopItemModel;
   @JsonKey(ignore: true)
-  _$$SelectCopyWith<_$Select> get copyWith =>
+  _$$SelectImplCopyWith<_$SelectImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ChangeCategoryCopyWith<$Res> {
-  factory _$$ChangeCategoryCopyWith(
-          _$ChangeCategory value, $Res Function(_$ChangeCategory) then) =
-      __$$ChangeCategoryCopyWithImpl<$Res>;
+abstract class _$$ChangeCategoryImplCopyWith<$Res> {
+  factory _$$ChangeCategoryImplCopyWith(_$ChangeCategoryImpl value,
+          $Res Function(_$ChangeCategoryImpl) then) =
+      __$$ChangeCategoryImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ShopCategory category});
 }
 
 /// @nodoc
-class __$$ChangeCategoryCopyWithImpl<$Res>
-    extends _$ShopEventCopyWithImpl<$Res, _$ChangeCategory>
-    implements _$$ChangeCategoryCopyWith<$Res> {
-  __$$ChangeCategoryCopyWithImpl(
-      _$ChangeCategory _value, $Res Function(_$ChangeCategory) _then)
+class __$$ChangeCategoryImplCopyWithImpl<$Res>
+    extends _$ShopEventCopyWithImpl<$Res, _$ChangeCategoryImpl>
+    implements _$$ChangeCategoryImplCopyWith<$Res> {
+  __$$ChangeCategoryImplCopyWithImpl(
+      _$ChangeCategoryImpl _value, $Res Function(_$ChangeCategoryImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -227,7 +229,7 @@ class __$$ChangeCategoryCopyWithImpl<$Res>
   $Res call({
     Object? category = null,
   }) {
-    return _then(_$ChangeCategory(
+    return _then(_$ChangeCategoryImpl(
       null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
@@ -238,8 +240,8 @@ class __$$ChangeCategoryCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ChangeCategory implements ChangeCategory {
-  const _$ChangeCategory(this.category);
+class _$ChangeCategoryImpl implements ChangeCategory {
+  const _$ChangeCategoryImpl(this.category);
 
   @override
   final ShopCategory category;
@@ -250,10 +252,10 @@ class _$ChangeCategory implements ChangeCategory {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ChangeCategory &&
+            other is _$ChangeCategoryImpl &&
             (identical(other.category, category) ||
                 other.category == category));
   }
@@ -264,8 +266,9 @@ class _$ChangeCategory implements ChangeCategory {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ChangeCategoryCopyWith<_$ChangeCategory> get copyWith =>
-      __$$ChangeCategoryCopyWithImpl<_$ChangeCategory>(this, _$identity);
+  _$$ChangeCategoryImplCopyWith<_$ChangeCategoryImpl> get copyWith =>
+      __$$ChangeCategoryImplCopyWithImpl<_$ChangeCategoryImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -331,11 +334,12 @@ class _$ChangeCategory implements ChangeCategory {
 }
 
 abstract class ChangeCategory implements ShopEvent {
-  const factory ChangeCategory(final ShopCategory category) = _$ChangeCategory;
+  const factory ChangeCategory(final ShopCategory category) =
+      _$ChangeCategoryImpl;
 
   ShopCategory get category;
   @JsonKey(ignore: true)
-  _$$ChangeCategoryCopyWith<_$ChangeCategory> get copyWith =>
+  _$$ChangeCategoryImplCopyWith<_$ChangeCategoryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -374,7 +378,7 @@ class _$ShopStateCopyWithImpl<$Res, $Val extends ShopState>
   $Res call({
     Object? selected = freezed,
     Object? category = null,
-    Object? isBuyLoading = null,
+    Object? isBuyLoading = freezed,
   }) {
     return _then(_value.copyWith(
       selected: freezed == selected
@@ -385,7 +389,7 @@ class _$ShopStateCopyWithImpl<$Res, $Val extends ShopState>
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as ShopCategory,
-      isBuyLoading: null == isBuyLoading
+      isBuyLoading: freezed == isBuyLoading
           ? _value.isBuyLoading
           : isBuyLoading // ignore: cast_nullable_to_non_nullable
               as dynamic,
@@ -394,10 +398,11 @@ class _$ShopStateCopyWithImpl<$Res, $Val extends ShopState>
 }
 
 /// @nodoc
-abstract class _$$_ShopStateCopyWith<$Res> implements $ShopStateCopyWith<$Res> {
-  factory _$$_ShopStateCopyWith(
-          _$_ShopState value, $Res Function(_$_ShopState) then) =
-      __$$_ShopStateCopyWithImpl<$Res>;
+abstract class _$$ShopStateImplCopyWith<$Res>
+    implements $ShopStateCopyWith<$Res> {
+  factory _$$ShopStateImplCopyWith(
+          _$ShopStateImpl value, $Res Function(_$ShopStateImpl) then) =
+      __$$ShopStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -405,11 +410,11 @@ abstract class _$$_ShopStateCopyWith<$Res> implements $ShopStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ShopStateCopyWithImpl<$Res>
-    extends _$ShopStateCopyWithImpl<$Res, _$_ShopState>
-    implements _$$_ShopStateCopyWith<$Res> {
-  __$$_ShopStateCopyWithImpl(
-      _$_ShopState _value, $Res Function(_$_ShopState) _then)
+class __$$ShopStateImplCopyWithImpl<$Res>
+    extends _$ShopStateCopyWithImpl<$Res, _$ShopStateImpl>
+    implements _$$ShopStateImplCopyWith<$Res> {
+  __$$ShopStateImplCopyWithImpl(
+      _$ShopStateImpl _value, $Res Function(_$ShopStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -417,9 +422,9 @@ class __$$_ShopStateCopyWithImpl<$Res>
   $Res call({
     Object? selected = freezed,
     Object? category = null,
-    Object? isBuyLoading = null,
+    Object? isBuyLoading = freezed,
   }) {
-    return _then(_$_ShopState(
+    return _then(_$ShopStateImpl(
       selected: freezed == selected
           ? _value.selected
           : selected // ignore: cast_nullable_to_non_nullable
@@ -428,15 +433,16 @@ class __$$_ShopStateCopyWithImpl<$Res>
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as ShopCategory,
-      isBuyLoading: null == isBuyLoading ? _value.isBuyLoading : isBuyLoading,
+      isBuyLoading:
+          freezed == isBuyLoading ? _value.isBuyLoading! : isBuyLoading,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_ShopState implements _ShopState {
-  const _$_ShopState(
+class _$ShopStateImpl implements _ShopState {
+  const _$ShopStateImpl(
       {this.selected, required this.category, this.isBuyLoading = false});
 
   @override
@@ -453,10 +459,10 @@ class _$_ShopState implements _ShopState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ShopState &&
+            other is _$ShopStateImpl &&
             (identical(other.selected, selected) ||
                 other.selected == selected) &&
             (identical(other.category, category) ||
@@ -472,15 +478,15 @@ class _$_ShopState implements _ShopState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ShopStateCopyWith<_$_ShopState> get copyWith =>
-      __$$_ShopStateCopyWithImpl<_$_ShopState>(this, _$identity);
+  _$$ShopStateImplCopyWith<_$ShopStateImpl> get copyWith =>
+      __$$ShopStateImplCopyWithImpl<_$ShopStateImpl>(this, _$identity);
 }
 
 abstract class _ShopState implements ShopState {
   const factory _ShopState(
       {final BuildingModel? selected,
       required final ShopCategory category,
-      final dynamic isBuyLoading}) = _$_ShopState;
+      final dynamic isBuyLoading}) = _$ShopStateImpl;
 
   @override
   BuildingModel? get selected;
@@ -490,6 +496,6 @@ abstract class _ShopState implements ShopState {
   dynamic get isBuyLoading;
   @override
   @JsonKey(ignore: true)
-  _$$_ShopStateCopyWith<_$_ShopState> get copyWith =>
+  _$$ShopStateImplCopyWith<_$ShopStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -7,6 +7,7 @@ import 'package:eco_game/application/game/game_bloc.dart';
 import 'package:eco_game/application/message/message_bloc.dart';
 import 'package:eco_game/application/settings/settings_bloc.dart';
 import 'package:eco_game/application/shop/shop_bloc.dart';
+import 'package:eco_game/presentation/pages/buildings_layer/existing_buildings/existing_building.dart';
 import 'package:eco_game/presentation/pages/buttons_layer/buttons_layer.dart';
 import 'package:eco_game/presentation/pages/image_layer/image_layer.dart';
 import 'package:eco_game/presentation/pages/message/message.dart';
@@ -58,12 +59,15 @@ class _GamePageState extends State<GamePage> {
       child: BlocBuilder<SettingsBloc, SettingsState>(
         builder: (context, settingsState) {
           return FGBGNotifier(
+
             onEvent: (value) async {
               if (value == FGBGType.background) {
                 context
                     .read<SettingsBloc>()
                     .add(const SettingsEvent.musicMute());
+
               } else {
+                context.read<BuildingBloc>().add(const BuildingEvent.getAll(),);
                 context
                     .read<SettingsBloc>()
                     .add(const SettingsEvent.musicUnmute());
@@ -91,13 +95,14 @@ class _GamePageState extends State<GamePage> {
                       children: [
                         BlocBuilder<BuildingBloc, BuildingState>(
                           builder: (context, buildingState) {
+                            if(buildingState.existingBuildings.isEmpty&&buildingState.constructingBuildings.isEmpty&&buildingState.pendingBuildings.isEmpty) {
+                              context.read<BuildingBloc>().add(const BuildingEvent.getAll(),);
+                            }
                             return ImageLayer(children: [
                               ...List.generate(
                                 buildingState.constructingBuildings.length,
                                 (index) {
-                                  final current = buildingState
-                                      .constructingBuildings[index];
-
+                                  final current = buildingState.constructingBuildings[index];
                                   return ConstructingBuilding(
                                     building: current,
                                   );
@@ -109,6 +114,15 @@ class _GamePageState extends State<GamePage> {
                                 final current =
                                     buildingState.pendingBuildings[index];
                                 return PendingBuilding(
+                                  building: current,
+                                );
+                              }),
+                              ...List.generate(
+                                  buildingState.existingBuildings.length,
+                                  (index) {
+                                final current =
+                                    buildingState.existingBuildings[index];
+                                return ExistingBuilding(
                                   building: current,
                                 );
                               }),

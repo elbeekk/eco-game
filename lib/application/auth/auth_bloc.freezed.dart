@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'auth_bloc.dart';
 
@@ -12,7 +12,7 @@ part of 'auth_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AuthEvent {
@@ -138,9 +138,10 @@ class _$AuthEventCopyWithImpl<$Res, $Val extends AuthEvent>
 }
 
 /// @nodoc
-abstract class _$$LoginCopyWith<$Res> {
-  factory _$$LoginCopyWith(_$Login value, $Res Function(_$Login) then) =
-      __$$LoginCopyWithImpl<$Res>;
+abstract class _$$LoginImplCopyWith<$Res> {
+  factory _$$LoginImplCopyWith(
+          _$LoginImpl value, $Res Function(_$LoginImpl) then) =
+      __$$LoginImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {String username,
@@ -150,9 +151,11 @@ abstract class _$$LoginCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$LoginCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res, _$Login>
-    implements _$$LoginCopyWith<$Res> {
-  __$$LoginCopyWithImpl(_$Login _value, $Res Function(_$Login) _then)
+class __$$LoginImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$LoginImpl>
+    implements _$$LoginImplCopyWith<$Res> {
+  __$$LoginImplCopyWithImpl(
+      _$LoginImpl _value, $Res Function(_$LoginImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -163,7 +166,7 @@ class __$$LoginCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res, _$Login>
     Object? onSuccess = null,
     Object? onError = null,
   }) {
-    return _then(_$Login(
+    return _then(_$LoginImpl(
       username: null == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
@@ -186,8 +189,8 @@ class __$$LoginCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res, _$Login>
 
 /// @nodoc
 
-class _$Login implements Login {
-  const _$Login(
+class _$LoginImpl implements Login {
+  const _$LoginImpl(
       {required this.username,
       required this.password,
       required this.onSuccess,
@@ -208,10 +211,10 @@ class _$Login implements Login {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Login &&
+            other is _$LoginImpl &&
             (identical(other.username, username) ||
                 other.username == username) &&
             (identical(other.password, password) ||
@@ -228,8 +231,8 @@ class _$Login implements Login {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LoginCopyWith<_$Login> get copyWith =>
-      __$$LoginCopyWithImpl<_$Login>(this, _$identity);
+  _$$LoginImplCopyWith<_$LoginImpl> get copyWith =>
+      __$$LoginImplCopyWithImpl<_$LoginImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -363,20 +366,22 @@ abstract class Login implements AuthEvent {
       {required final String username,
       required final String password,
       required final Function onSuccess,
-      required final dynamic Function(String) onError}) = _$Login;
+      required final dynamic Function(String) onError}) = _$LoginImpl;
 
   String get username;
   String get password;
   Function get onSuccess;
   dynamic Function(String) get onError;
   @JsonKey(ignore: true)
-  _$$LoginCopyWith<_$Login> get copyWith => throw _privateConstructorUsedError;
+  _$$LoginImplCopyWith<_$LoginImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$GuestCopyWith<$Res> {
-  factory _$$GuestCopyWith(_$Guest value, $Res Function(_$Guest) then) =
-      __$$GuestCopyWithImpl<$Res>;
+abstract class _$$GuestImplCopyWith<$Res> {
+  factory _$$GuestImplCopyWith(
+          _$GuestImpl value, $Res Function(_$GuestImpl) then) =
+      __$$GuestImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {BuildContext context,
@@ -385,9 +390,11 @@ abstract class _$$GuestCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$GuestCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res, _$Guest>
-    implements _$$GuestCopyWith<$Res> {
-  __$$GuestCopyWithImpl(_$Guest _value, $Res Function(_$Guest) _then)
+class __$$GuestImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$GuestImpl>
+    implements _$$GuestImplCopyWith<$Res> {
+  __$$GuestImplCopyWithImpl(
+      _$GuestImpl _value, $Res Function(_$GuestImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -397,7 +404,7 @@ class __$$GuestCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res, _$Guest>
     Object? onSuccess = null,
     Object? onError = null,
   }) {
-    return _then(_$Guest(
+    return _then(_$GuestImpl(
       context: null == context
           ? _value.context
           : context // ignore: cast_nullable_to_non_nullable
@@ -416,8 +423,8 @@ class __$$GuestCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res, _$Guest>
 
 /// @nodoc
 
-class _$Guest implements Guest {
-  const _$Guest(
+class _$GuestImpl implements Guest {
+  const _$GuestImpl(
       {required this.context, required this.onSuccess, required this.onError});
 
   @override
@@ -433,10 +440,10 @@ class _$Guest implements Guest {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Guest &&
+            other is _$GuestImpl &&
             (identical(other.context, context) || other.context == context) &&
             (identical(other.onSuccess, onSuccess) ||
                 other.onSuccess == onSuccess) &&
@@ -449,8 +456,8 @@ class _$Guest implements Guest {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$GuestCopyWith<_$Guest> get copyWith =>
-      __$$GuestCopyWithImpl<_$Guest>(this, _$identity);
+  _$$GuestImplCopyWith<_$GuestImpl> get copyWith =>
+      __$$GuestImplCopyWithImpl<_$GuestImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -583,19 +590,21 @@ abstract class Guest implements AuthEvent {
   const factory Guest(
       {required final BuildContext context,
       required final Function onSuccess,
-      required final dynamic Function(String) onError}) = _$Guest;
+      required final dynamic Function(String) onError}) = _$GuestImpl;
 
   BuildContext get context;
   Function get onSuccess;
   dynamic Function(String) get onError;
   @JsonKey(ignore: true)
-  _$$GuestCopyWith<_$Guest> get copyWith => throw _privateConstructorUsedError;
+  _$$GuestImplCopyWith<_$GuestImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$GoogleCopyWith<$Res> {
-  factory _$$GoogleCopyWith(_$Google value, $Res Function(_$Google) then) =
-      __$$GoogleCopyWithImpl<$Res>;
+abstract class _$$GoogleImplCopyWith<$Res> {
+  factory _$$GoogleImplCopyWith(
+          _$GoogleImpl value, $Res Function(_$GoogleImpl) then) =
+      __$$GoogleImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {Function onLogin,
@@ -604,10 +613,11 @@ abstract class _$$GoogleCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$GoogleCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res, _$Google>
-    implements _$$GoogleCopyWith<$Res> {
-  __$$GoogleCopyWithImpl(_$Google _value, $Res Function(_$Google) _then)
+class __$$GoogleImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$GoogleImpl>
+    implements _$$GoogleImplCopyWith<$Res> {
+  __$$GoogleImplCopyWithImpl(
+      _$GoogleImpl _value, $Res Function(_$GoogleImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -617,7 +627,7 @@ class __$$GoogleCopyWithImpl<$Res>
     Object? onError = null,
     Object? context = null,
   }) {
-    return _then(_$Google(
+    return _then(_$GoogleImpl(
       onLogin: null == onLogin
           ? _value.onLogin
           : onLogin // ignore: cast_nullable_to_non_nullable
@@ -636,8 +646,8 @@ class __$$GoogleCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Google implements Google {
-  const _$Google(
+class _$GoogleImpl implements Google {
+  const _$GoogleImpl(
       {required this.onLogin, required this.onError, required this.context});
 
   @override
@@ -653,10 +663,10 @@ class _$Google implements Google {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Google &&
+            other is _$GoogleImpl &&
             (identical(other.onLogin, onLogin) || other.onLogin == onLogin) &&
             (identical(other.onError, onError) || other.onError == onError) &&
             (identical(other.context, context) || other.context == context));
@@ -668,8 +678,8 @@ class _$Google implements Google {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$GoogleCopyWith<_$Google> get copyWith =>
-      __$$GoogleCopyWithImpl<_$Google>(this, _$identity);
+  _$$GoogleImplCopyWith<_$GoogleImpl> get copyWith =>
+      __$$GoogleImplCopyWithImpl<_$GoogleImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -802,36 +812,36 @@ abstract class Google implements AuthEvent {
   const factory Google(
       {required final Function onLogin,
       required final dynamic Function(String) onError,
-      required final BuildContext context}) = _$Google;
+      required final BuildContext context}) = _$GoogleImpl;
 
   Function get onLogin;
   dynamic Function(String) get onError;
   BuildContext get context;
   @JsonKey(ignore: true)
-  _$$GoogleCopyWith<_$Google> get copyWith =>
+  _$$GoogleImplCopyWith<_$GoogleImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$GoToLoginCopyWith<$Res> {
-  factory _$$GoToLoginCopyWith(
-          _$GoToLogin value, $Res Function(_$GoToLogin) then) =
-      __$$GoToLoginCopyWithImpl<$Res>;
+abstract class _$$GoToLoginImplCopyWith<$Res> {
+  factory _$$GoToLoginImplCopyWith(
+          _$GoToLoginImpl value, $Res Function(_$GoToLoginImpl) then) =
+      __$$GoToLoginImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$GoToLoginCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res, _$GoToLogin>
-    implements _$$GoToLoginCopyWith<$Res> {
-  __$$GoToLoginCopyWithImpl(
-      _$GoToLogin _value, $Res Function(_$GoToLogin) _then)
+class __$$GoToLoginImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$GoToLoginImpl>
+    implements _$$GoToLoginImplCopyWith<$Res> {
+  __$$GoToLoginImplCopyWithImpl(
+      _$GoToLoginImpl _value, $Res Function(_$GoToLoginImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$GoToLogin implements GoToLogin {
-  const _$GoToLogin();
+class _$GoToLoginImpl implements GoToLogin {
+  const _$GoToLoginImpl();
 
   @override
   String toString() {
@@ -839,9 +849,9 @@ class _$GoToLogin implements GoToLogin {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GoToLogin);
+        (other.runtimeType == runtimeType && other is _$GoToLoginImpl);
   }
 
   @override
@@ -975,29 +985,29 @@ class _$GoToLogin implements GoToLogin {
 }
 
 abstract class GoToLogin implements AuthEvent {
-  const factory GoToLogin() = _$GoToLogin;
+  const factory GoToLogin() = _$GoToLoginImpl;
 }
 
 /// @nodoc
-abstract class _$$ShowPassword1CopyWith<$Res> {
-  factory _$$ShowPassword1CopyWith(
-          _$ShowPassword1 value, $Res Function(_$ShowPassword1) then) =
-      __$$ShowPassword1CopyWithImpl<$Res>;
+abstract class _$$ShowPassword1ImplCopyWith<$Res> {
+  factory _$$ShowPassword1ImplCopyWith(
+          _$ShowPassword1Impl value, $Res Function(_$ShowPassword1Impl) then) =
+      __$$ShowPassword1ImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ShowPassword1CopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res, _$ShowPassword1>
-    implements _$$ShowPassword1CopyWith<$Res> {
-  __$$ShowPassword1CopyWithImpl(
-      _$ShowPassword1 _value, $Res Function(_$ShowPassword1) _then)
+class __$$ShowPassword1ImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$ShowPassword1Impl>
+    implements _$$ShowPassword1ImplCopyWith<$Res> {
+  __$$ShowPassword1ImplCopyWithImpl(
+      _$ShowPassword1Impl _value, $Res Function(_$ShowPassword1Impl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$ShowPassword1 implements ShowPassword1 {
-  const _$ShowPassword1();
+class _$ShowPassword1Impl implements ShowPassword1 {
+  const _$ShowPassword1Impl();
 
   @override
   String toString() {
@@ -1005,9 +1015,9 @@ class _$ShowPassword1 implements ShowPassword1 {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ShowPassword1);
+        (other.runtimeType == runtimeType && other is _$ShowPassword1Impl);
   }
 
   @override
@@ -1141,29 +1151,29 @@ class _$ShowPassword1 implements ShowPassword1 {
 }
 
 abstract class ShowPassword1 implements AuthEvent {
-  const factory ShowPassword1() = _$ShowPassword1;
+  const factory ShowPassword1() = _$ShowPassword1Impl;
 }
 
 /// @nodoc
-abstract class _$$ShowPassword2CopyWith<$Res> {
-  factory _$$ShowPassword2CopyWith(
-          _$ShowPassword2 value, $Res Function(_$ShowPassword2) then) =
-      __$$ShowPassword2CopyWithImpl<$Res>;
+abstract class _$$ShowPassword2ImplCopyWith<$Res> {
+  factory _$$ShowPassword2ImplCopyWith(
+          _$ShowPassword2Impl value, $Res Function(_$ShowPassword2Impl) then) =
+      __$$ShowPassword2ImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ShowPassword2CopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res, _$ShowPassword2>
-    implements _$$ShowPassword2CopyWith<$Res> {
-  __$$ShowPassword2CopyWithImpl(
-      _$ShowPassword2 _value, $Res Function(_$ShowPassword2) _then)
+class __$$ShowPassword2ImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$ShowPassword2Impl>
+    implements _$$ShowPassword2ImplCopyWith<$Res> {
+  __$$ShowPassword2ImplCopyWithImpl(
+      _$ShowPassword2Impl _value, $Res Function(_$ShowPassword2Impl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$ShowPassword2 implements ShowPassword2 {
-  const _$ShowPassword2();
+class _$ShowPassword2Impl implements ShowPassword2 {
+  const _$ShowPassword2Impl();
 
   @override
   String toString() {
@@ -1171,9 +1181,9 @@ class _$ShowPassword2 implements ShowPassword2 {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ShowPassword2);
+        (other.runtimeType == runtimeType && other is _$ShowPassword2Impl);
   }
 
   @override
@@ -1307,22 +1317,24 @@ class _$ShowPassword2 implements ShowPassword2 {
 }
 
 abstract class ShowPassword2 implements AuthEvent {
-  const factory ShowPassword2() = _$ShowPassword2;
+  const factory ShowPassword2() = _$ShowPassword2Impl;
 }
 
 /// @nodoc
-abstract class _$$LogOutCopyWith<$Res> {
-  factory _$$LogOutCopyWith(_$LogOut value, $Res Function(_$LogOut) then) =
-      __$$LogOutCopyWithImpl<$Res>;
+abstract class _$$LogOutImplCopyWith<$Res> {
+  factory _$$LogOutImplCopyWith(
+          _$LogOutImpl value, $Res Function(_$LogOutImpl) then) =
+      __$$LogOutImplCopyWithImpl<$Res>;
   @useResult
   $Res call({dynamic Function(String) onError, Function onSuccess});
 }
 
 /// @nodoc
-class __$$LogOutCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res, _$LogOut>
-    implements _$$LogOutCopyWith<$Res> {
-  __$$LogOutCopyWithImpl(_$LogOut _value, $Res Function(_$LogOut) _then)
+class __$$LogOutImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$LogOutImpl>
+    implements _$$LogOutImplCopyWith<$Res> {
+  __$$LogOutImplCopyWithImpl(
+      _$LogOutImpl _value, $Res Function(_$LogOutImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1331,7 +1343,7 @@ class __$$LogOutCopyWithImpl<$Res>
     Object? onError = null,
     Object? onSuccess = null,
   }) {
-    return _then(_$LogOut(
+    return _then(_$LogOutImpl(
       onError: null == onError
           ? _value.onError
           : onError // ignore: cast_nullable_to_non_nullable
@@ -1346,8 +1358,8 @@ class __$$LogOutCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LogOut implements LogOut {
-  const _$LogOut({required this.onError, required this.onSuccess});
+class _$LogOutImpl implements LogOut {
+  const _$LogOutImpl({required this.onError, required this.onSuccess});
 
   @override
   final dynamic Function(String) onError;
@@ -1360,10 +1372,10 @@ class _$LogOut implements LogOut {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LogOut &&
+            other is _$LogOutImpl &&
             (identical(other.onError, onError) || other.onError == onError) &&
             (identical(other.onSuccess, onSuccess) ||
                 other.onSuccess == onSuccess));
@@ -1375,8 +1387,8 @@ class _$LogOut implements LogOut {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LogOutCopyWith<_$LogOut> get copyWith =>
-      __$$LogOutCopyWithImpl<_$LogOut>(this, _$identity);
+  _$$LogOutImplCopyWith<_$LogOutImpl> get copyWith =>
+      __$$LogOutImplCopyWithImpl<_$LogOutImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1508,19 +1520,20 @@ class _$LogOut implements LogOut {
 abstract class LogOut implements AuthEvent {
   const factory LogOut(
       {required final dynamic Function(String) onError,
-      required final Function onSuccess}) = _$LogOut;
+      required final Function onSuccess}) = _$LogOutImpl;
 
   dynamic Function(String) get onError;
   Function get onSuccess;
   @JsonKey(ignore: true)
-  _$$LogOutCopyWith<_$LogOut> get copyWith =>
+  _$$LogOutImplCopyWith<_$LogOutImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SignUpCopyWith<$Res> {
-  factory _$$SignUpCopyWith(_$SignUp value, $Res Function(_$SignUp) then) =
-      __$$SignUpCopyWithImpl<$Res>;
+abstract class _$$SignUpImplCopyWith<$Res> {
+  factory _$$SignUpImplCopyWith(
+          _$SignUpImpl value, $Res Function(_$SignUpImpl) then) =
+      __$$SignUpImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {String username,
@@ -1530,10 +1543,11 @@ abstract class _$$SignUpCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$SignUpCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res, _$SignUp>
-    implements _$$SignUpCopyWith<$Res> {
-  __$$SignUpCopyWithImpl(_$SignUp _value, $Res Function(_$SignUp) _then)
+class __$$SignUpImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$SignUpImpl>
+    implements _$$SignUpImplCopyWith<$Res> {
+  __$$SignUpImplCopyWithImpl(
+      _$SignUpImpl _value, $Res Function(_$SignUpImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1544,7 +1558,7 @@ class __$$SignUpCopyWithImpl<$Res>
     Object? onError = null,
     Object? onSuccess = null,
   }) {
-    return _then(_$SignUp(
+    return _then(_$SignUpImpl(
       username: null == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
@@ -1567,8 +1581,8 @@ class __$$SignUpCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SignUp implements SignUp {
-  const _$SignUp(
+class _$SignUpImpl implements SignUp {
+  const _$SignUpImpl(
       {required this.username,
       required this.password,
       required this.onError,
@@ -1589,10 +1603,10 @@ class _$SignUp implements SignUp {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SignUp &&
+            other is _$SignUpImpl &&
             (identical(other.username, username) ||
                 other.username == username) &&
             (identical(other.password, password) ||
@@ -1609,8 +1623,8 @@ class _$SignUp implements SignUp {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SignUpCopyWith<_$SignUp> get copyWith =>
-      __$$SignUpCopyWithImpl<_$SignUp>(this, _$identity);
+  _$$SignUpImplCopyWith<_$SignUpImpl> get copyWith =>
+      __$$SignUpImplCopyWithImpl<_$SignUpImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1744,14 +1758,14 @@ abstract class SignUp implements AuthEvent {
       {required final String username,
       required final String password,
       required final dynamic Function(String) onError,
-      required final Function onSuccess}) = _$SignUp;
+      required final Function onSuccess}) = _$SignUpImpl;
 
   String get username;
   String get password;
   dynamic Function(String) get onError;
   Function get onSuccess;
   @JsonKey(ignore: true)
-  _$$SignUpCopyWith<_$SignUp> get copyWith =>
+  _$$SignUpImplCopyWith<_$SignUpImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1841,10 +1855,11 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
 }
 
 /// @nodoc
-abstract class _$$_AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
-  factory _$$_AuthStateCopyWith(
-          _$_AuthState value, $Res Function(_$_AuthState) then) =
-      __$$_AuthStateCopyWithImpl<$Res>;
+abstract class _$$AuthStateImplCopyWith<$Res>
+    implements $AuthStateCopyWith<$Res> {
+  factory _$$AuthStateImplCopyWith(
+          _$AuthStateImpl value, $Res Function(_$AuthStateImpl) then) =
+      __$$AuthStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1858,11 +1873,11 @@ abstract class _$$_AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_AuthStateCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$_AuthState>
-    implements _$$_AuthStateCopyWith<$Res> {
-  __$$_AuthStateCopyWithImpl(
-      _$_AuthState _value, $Res Function(_$_AuthState) _then)
+class __$$AuthStateImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$AuthStateImpl>
+    implements _$$AuthStateImplCopyWith<$Res> {
+  __$$AuthStateImplCopyWithImpl(
+      _$AuthStateImpl _value, $Res Function(_$AuthStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1876,7 +1891,7 @@ class __$$_AuthStateCopyWithImpl<$Res>
     Object? hidePassword2 = null,
     Object? googleSignInAccount = freezed,
   }) {
-    return _then(_$_AuthState(
+    return _then(_$AuthStateImpl(
       isSignUp: null == isSignUp
           ? _value.isSignUp
           : isSignUp // ignore: cast_nullable_to_non_nullable
@@ -1911,8 +1926,8 @@ class __$$_AuthStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AuthState implements _AuthState {
-  const _$_AuthState(
+class _$AuthStateImpl implements _AuthState {
+  const _$AuthStateImpl(
       {this.isSignUp = false,
       this.isLoading = false,
       this.isGoogleLoading = false,
@@ -1948,10 +1963,10 @@ class _$_AuthState implements _AuthState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AuthState &&
+            other is _$AuthStateImpl &&
             (identical(other.isSignUp, isSignUp) ||
                 other.isSignUp == isSignUp) &&
             (identical(other.isLoading, isLoading) ||
@@ -1982,8 +1997,8 @@ class _$_AuthState implements _AuthState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AuthStateCopyWith<_$_AuthState> get copyWith =>
-      __$$_AuthStateCopyWithImpl<_$_AuthState>(this, _$identity);
+  _$$AuthStateImplCopyWith<_$AuthStateImpl> get copyWith =>
+      __$$AuthStateImplCopyWithImpl<_$AuthStateImpl>(this, _$identity);
 }
 
 abstract class _AuthState implements AuthState {
@@ -1994,7 +2009,7 @@ abstract class _AuthState implements AuthState {
       final bool isGuestLoading,
       final bool hidePassword1,
       final bool hidePassword2,
-      final GoogleSignInAccount? googleSignInAccount}) = _$_AuthState;
+      final GoogleSignInAccount? googleSignInAccount}) = _$AuthStateImpl;
 
   @override
   bool get isSignUp;
@@ -2012,6 +2027,6 @@ abstract class _AuthState implements AuthState {
   GoogleSignInAccount? get googleSignInAccount;
   @override
   @JsonKey(ignore: true)
-  _$$_AuthStateCopyWith<_$_AuthState> get copyWith =>
+  _$$AuthStateImplCopyWith<_$AuthStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -63,25 +63,30 @@ class PendingBuilding extends StatelessWidget {
                                 const SizedBox(
                                   width: 20,
                                 ),
-                                GestureDetector(
-                                  onTap: () {},
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        color: Colors.green,
-                                        boxShadow: [
-                                          BoxShadow(
-                                              color:
-                                                  Colors.black.withOpacity(.2),
-                                              spreadRadius: 1,
-                                              blurRadius: 1)
-                                        ],
-                                        borderRadius: BorderRadius.circular(5)),
-                                    child: const Icon(
-                                      Icons.check,
-                                      color: Colors.white,
-                                      size: 20,
-                                    ),
-                                  ),
+                                BlocBuilder<BuildingBloc, BuildingState>(
+                                  builder: (context, state) {
+                                    return GestureDetector(
+                                      onTap: () {},
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            color: Colors.green,
+                                            boxShadow: [
+                                              BoxShadow(
+                                                  color: Colors.black
+                                                      .withOpacity(.2),
+                                                  spreadRadius: 1,
+                                                  blurRadius: 1)
+                                            ],
+                                            borderRadius:
+                                                BorderRadius.circular(5)),
+                                        child: const Icon(
+                                          Icons.check,
+                                          color: Colors.white,
+                                          size: 20,
+                                        ),
+                                      ),
+                                    );
+                                  },
                                 ),
 
                                 // Text(" ${building.duration??'...'} hours "),
@@ -148,11 +153,24 @@ class PendingBuilding extends StatelessWidget {
                                       onTap: () {
                                         context.read<BuildingBloc>().add(
                                               BuildingEvent
-                                                  .addConstructingBuilding(
+                                                  .removePendingBuilding(
                                                       building: building,
                                                       onError:
                                                           (String error) {},
-                                                      onSuccess: () {}),
+                                                      onSuccess: () {
+                                                        context
+                                                            .read<
+                                                                BuildingBloc>()
+                                                            .add(
+                                                              BuildingEvent.addConstructingBuilding(
+                                                                  building:
+                                                                      building,
+                                                                  onError: (String
+                                                                      error) {},
+                                                                  onSuccess:
+                                                                      () {}),
+                                                            );
+                                                      }),
                                             );
                                       },
                                       child: Container(

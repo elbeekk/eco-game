@@ -14,16 +14,36 @@ class BuildingEvent with _$BuildingEvent {
     required Function onSuccess,
   }) = RemovePendingBuilding;
 
+  const factory BuildingEvent.removeConstructingBuilding({
+    required BuildingModel building,
+    required Function(String error) onError,
+    required Function onSuccess,
+  }) = RemoveConstructingBuilding;
+
   const factory BuildingEvent.addConstructingBuilding({
     required BuildingModel building,
     required Function(String error) onError,
     required Function onSuccess,
   }) = AddConstructingBuilding;
 
+  const factory BuildingEvent.addExistingBuilding({
+    required BuildingModel building,
+    required Function(String error) onError,
+    required Function onSuccess,
+  }) = AddExistingBuilding;
+
+  const factory BuildingEvent.removeExistingBuilding({
+    required BuildingModel building,
+    required Function(String error) onError,
+    required Function onSuccess,
+  }) = RemoveExistingBuilding;
+
+
   const factory BuildingEvent.updatePendingBuilding({
     required BuildingModel building,
     required Function(String error) onError,
     required Function onSuccess,
   }) = UpdatePendingBuilding;
+
   const factory BuildingEvent.getAll() = GetAll;
 }

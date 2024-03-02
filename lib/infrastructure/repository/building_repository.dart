@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:eco_game/domain/di/dependancy_manager.dart';
 import 'package:eco_game/domain/interface/building.dart';
+import 'package:eco_game/infrastructure/services/constants.dart';
 
 import '../models/class/building.dart';
 import '../services/local_storage/local_storage.dart';
@@ -18,7 +19,8 @@ class BuildingRepository implements BuildingInterface {
             .collection('users')
             .doc(LocalStorage.getMe()?.id)
             .collection('pendingBuildings')
-            .add(building.toJson());
+            .doc(building.id)
+            .set(building.toJson());
         return const Left(true);
       }, (r) {
         return Right(r);
@@ -52,13 +54,44 @@ class BuildingRepository implements BuildingInterface {
   }
 
   @override
+  Future<Either<bool, dynamic>> removeConstructingBuilding(
+      {required BuildingModel building}) async {
+    try {
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(LocalStorage.getMe()?.id)
+          .collection('constructingBuildings')
+          .doc(building.id)
+          .delete();
+      return const Left(true);
+    } on FirebaseException catch (e) {
+      return Right(e.message);
+    }
+  }
+  @override
+  Future<Either<bool, dynamic>> removeExistingBuilding(
+      {required BuildingModel building}) async {
+    try {
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(LocalStorage.getMe()?.id)
+          .collection('existingBuildings')
+          .doc(building.id)
+          .delete();
+      return const Left(true);
+    } on FirebaseException catch (e) {
+      return Right(e.message);
+    }
+  }
+
+  @override
   Future<Either<bool, dynamic>> addConstructingBuilding(
       {required BuildingModel building}) async {
     try {
       await FirebaseFirestore.instance
           .collection('users')
           .doc(LocalStorage.getMe()?.id)
-          .collection('constructingBuilding')
+          .collection('constructingBuildings')
           .add(building.toJson());
       return const Left(true);
     } on FirebaseException catch (e) {
@@ -73,7 +106,7 @@ class BuildingRepository implements BuildingInterface {
       await FirebaseFirestore.instance
           .collection('users')
           .doc(LocalStorage.getMe()?.id)
-          .collection('existingBuilding')
+          .collection('existingBuildings')
           .add(building.toJson());
       return const Left(true);
     } on FirebaseException catch (e) {
@@ -82,22 +115,23 @@ class BuildingRepository implements BuildingInterface {
   }
 
   @override
-  Future<Either<List<BuildingModel>, dynamic>> getConstructingBuilding() async {
-    try{
-     // final res = await FirebaseFirestore.instance.collection('users').doc(LocalStorage.getMe().id).
-    }on FirebaseException catch(e){}
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<Either<List<BuildingModel>, dynamic>> getExistingBuilding() {
-    // TODO: implement getExistingBuilding
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<Either<List<BuildingModel>, dynamic>> getPendingBuilding() {
-    // TODO: implement getPendingBuilding
-    throw UnimplementedError();
+  Future<Either<List<BuildingModel>, dynamic>> getBuildings(
+      {required BuildingType type}) async {
+    try {
+      final res = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(LocalStorage.getMe()?.id)
+          .collection('${type.name.toLowerCase()}Buildings')
+          .get();
+      return Left(res.docs
+          .map(
+            (e) => BuildingModel.fromJson(
+              e.data(),
+            ),
+          )
+          .toList());
+    } on FirebaseException catch (e) {
+      return Right(e.message);
+    }
   }
 }

@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'settings_bloc.dart';
 
@@ -12,7 +12,7 @@ part of 'settings_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$SettingsEvent {
@@ -87,25 +87,25 @@ class _$SettingsEventCopyWithImpl<$Res, $Val extends SettingsEvent>
 }
 
 /// @nodoc
-abstract class _$$MusicMuteCopyWith<$Res> {
-  factory _$$MusicMuteCopyWith(
-          _$MusicMute value, $Res Function(_$MusicMute) then) =
-      __$$MusicMuteCopyWithImpl<$Res>;
+abstract class _$$MusicMuteImplCopyWith<$Res> {
+  factory _$$MusicMuteImplCopyWith(
+          _$MusicMuteImpl value, $Res Function(_$MusicMuteImpl) then) =
+      __$$MusicMuteImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$MusicMuteCopyWithImpl<$Res>
-    extends _$SettingsEventCopyWithImpl<$Res, _$MusicMute>
-    implements _$$MusicMuteCopyWith<$Res> {
-  __$$MusicMuteCopyWithImpl(
-      _$MusicMute _value, $Res Function(_$MusicMute) _then)
+class __$$MusicMuteImplCopyWithImpl<$Res>
+    extends _$SettingsEventCopyWithImpl<$Res, _$MusicMuteImpl>
+    implements _$$MusicMuteImplCopyWith<$Res> {
+  __$$MusicMuteImplCopyWithImpl(
+      _$MusicMuteImpl _value, $Res Function(_$MusicMuteImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$MusicMute implements MusicMute {
-  const _$MusicMute();
+class _$MusicMuteImpl implements MusicMute {
+  const _$MusicMuteImpl();
 
   @override
   String toString() {
@@ -113,9 +113,9 @@ class _$MusicMute implements MusicMute {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$MusicMute);
+        (other.runtimeType == runtimeType && other is _$MusicMuteImpl);
   }
 
   @override
@@ -197,29 +197,29 @@ class _$MusicMute implements MusicMute {
 }
 
 abstract class MusicMute implements SettingsEvent {
-  const factory MusicMute() = _$MusicMute;
+  const factory MusicMute() = _$MusicMuteImpl;
 }
 
 /// @nodoc
-abstract class _$$MusicUnmuteCopyWith<$Res> {
-  factory _$$MusicUnmuteCopyWith(
-          _$MusicUnmute value, $Res Function(_$MusicUnmute) then) =
-      __$$MusicUnmuteCopyWithImpl<$Res>;
+abstract class _$$MusicUnmuteImplCopyWith<$Res> {
+  factory _$$MusicUnmuteImplCopyWith(
+          _$MusicUnmuteImpl value, $Res Function(_$MusicUnmuteImpl) then) =
+      __$$MusicUnmuteImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$MusicUnmuteCopyWithImpl<$Res>
-    extends _$SettingsEventCopyWithImpl<$Res, _$MusicUnmute>
-    implements _$$MusicUnmuteCopyWith<$Res> {
-  __$$MusicUnmuteCopyWithImpl(
-      _$MusicUnmute _value, $Res Function(_$MusicUnmute) _then)
+class __$$MusicUnmuteImplCopyWithImpl<$Res>
+    extends _$SettingsEventCopyWithImpl<$Res, _$MusicUnmuteImpl>
+    implements _$$MusicUnmuteImplCopyWith<$Res> {
+  __$$MusicUnmuteImplCopyWithImpl(
+      _$MusicUnmuteImpl _value, $Res Function(_$MusicUnmuteImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$MusicUnmute implements MusicUnmute {
-  const _$MusicUnmute();
+class _$MusicUnmuteImpl implements MusicUnmute {
+  const _$MusicUnmuteImpl();
 
   @override
   String toString() {
@@ -227,9 +227,9 @@ class _$MusicUnmute implements MusicUnmute {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$MusicUnmute);
+        (other.runtimeType == runtimeType && other is _$MusicUnmuteImpl);
   }
 
   @override
@@ -311,29 +311,29 @@ class _$MusicUnmute implements MusicUnmute {
 }
 
 abstract class MusicUnmute implements SettingsEvent {
-  const factory MusicUnmute() = _$MusicUnmute;
+  const factory MusicUnmute() = _$MusicUnmuteImpl;
 }
 
 /// @nodoc
-abstract class _$$IncrementCopyWith<$Res> {
-  factory _$$IncrementCopyWith(
-          _$Increment value, $Res Function(_$Increment) then) =
-      __$$IncrementCopyWithImpl<$Res>;
+abstract class _$$IncrementImplCopyWith<$Res> {
+  factory _$$IncrementImplCopyWith(
+          _$IncrementImpl value, $Res Function(_$IncrementImpl) then) =
+      __$$IncrementImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$IncrementCopyWithImpl<$Res>
-    extends _$SettingsEventCopyWithImpl<$Res, _$Increment>
-    implements _$$IncrementCopyWith<$Res> {
-  __$$IncrementCopyWithImpl(
-      _$Increment _value, $Res Function(_$Increment) _then)
+class __$$IncrementImplCopyWithImpl<$Res>
+    extends _$SettingsEventCopyWithImpl<$Res, _$IncrementImpl>
+    implements _$$IncrementImplCopyWith<$Res> {
+  __$$IncrementImplCopyWithImpl(
+      _$IncrementImpl _value, $Res Function(_$IncrementImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$Increment implements Increment {
-  const _$Increment();
+class _$IncrementImpl implements Increment {
+  const _$IncrementImpl();
 
   @override
   String toString() {
@@ -341,9 +341,9 @@ class _$Increment implements Increment {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Increment);
+        (other.runtimeType == runtimeType && other is _$IncrementImpl);
   }
 
   @override
@@ -425,29 +425,29 @@ class _$Increment implements Increment {
 }
 
 abstract class Increment implements SettingsEvent {
-  const factory Increment() = _$Increment;
+  const factory Increment() = _$IncrementImpl;
 }
 
 /// @nodoc
-abstract class _$$DecrementCopyWith<$Res> {
-  factory _$$DecrementCopyWith(
-          _$Decrement value, $Res Function(_$Decrement) then) =
-      __$$DecrementCopyWithImpl<$Res>;
+abstract class _$$DecrementImplCopyWith<$Res> {
+  factory _$$DecrementImplCopyWith(
+          _$DecrementImpl value, $Res Function(_$DecrementImpl) then) =
+      __$$DecrementImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$DecrementCopyWithImpl<$Res>
-    extends _$SettingsEventCopyWithImpl<$Res, _$Decrement>
-    implements _$$DecrementCopyWith<$Res> {
-  __$$DecrementCopyWithImpl(
-      _$Decrement _value, $Res Function(_$Decrement) _then)
+class __$$DecrementImplCopyWithImpl<$Res>
+    extends _$SettingsEventCopyWithImpl<$Res, _$DecrementImpl>
+    implements _$$DecrementImplCopyWith<$Res> {
+  __$$DecrementImplCopyWithImpl(
+      _$DecrementImpl _value, $Res Function(_$DecrementImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$Decrement implements Decrement {
-  const _$Decrement();
+class _$DecrementImpl implements Decrement {
+  const _$DecrementImpl();
 
   @override
   String toString() {
@@ -455,9 +455,9 @@ class _$Decrement implements Decrement {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Decrement);
+        (other.runtimeType == runtimeType && other is _$DecrementImpl);
   }
 
   @override
@@ -539,7 +539,7 @@ class _$Decrement implements Decrement {
 }
 
 abstract class Decrement implements SettingsEvent {
-  const factory Decrement() = _$Decrement;
+  const factory Decrement() = _$DecrementImpl;
 }
 
 /// @nodoc
@@ -591,22 +591,22 @@ class _$SettingsStateCopyWithImpl<$Res, $Val extends SettingsState>
 }
 
 /// @nodoc
-abstract class _$$_SettingsStateCopyWith<$Res>
+abstract class _$$SettingsStateImplCopyWith<$Res>
     implements $SettingsStateCopyWith<$Res> {
-  factory _$$_SettingsStateCopyWith(
-          _$_SettingsState value, $Res Function(_$_SettingsState) then) =
-      __$$_SettingsStateCopyWithImpl<$Res>;
+  factory _$$SettingsStateImplCopyWith(
+          _$SettingsStateImpl value, $Res Function(_$SettingsStateImpl) then) =
+      __$$SettingsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int textSize, bool isMusicPlaying});
 }
 
 /// @nodoc
-class __$$_SettingsStateCopyWithImpl<$Res>
-    extends _$SettingsStateCopyWithImpl<$Res, _$_SettingsState>
-    implements _$$_SettingsStateCopyWith<$Res> {
-  __$$_SettingsStateCopyWithImpl(
-      _$_SettingsState _value, $Res Function(_$_SettingsState) _then)
+class __$$SettingsStateImplCopyWithImpl<$Res>
+    extends _$SettingsStateCopyWithImpl<$Res, _$SettingsStateImpl>
+    implements _$$SettingsStateImplCopyWith<$Res> {
+  __$$SettingsStateImplCopyWithImpl(
+      _$SettingsStateImpl _value, $Res Function(_$SettingsStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -615,7 +615,7 @@ class __$$_SettingsStateCopyWithImpl<$Res>
     Object? textSize = null,
     Object? isMusicPlaying = null,
   }) {
-    return _then(_$_SettingsState(
+    return _then(_$SettingsStateImpl(
       textSize: null == textSize
           ? _value.textSize
           : textSize // ignore: cast_nullable_to_non_nullable
@@ -630,8 +630,9 @@ class __$$_SettingsStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SettingsState implements _SettingsState {
-  const _$_SettingsState({required this.textSize, this.isMusicPlaying = false});
+class _$SettingsStateImpl implements _SettingsState {
+  const _$SettingsStateImpl(
+      {required this.textSize, this.isMusicPlaying = false});
 
   @override
   final int textSize;
@@ -645,10 +646,10 @@ class _$_SettingsState implements _SettingsState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SettingsState &&
+            other is _$SettingsStateImpl &&
             (identical(other.textSize, textSize) ||
                 other.textSize == textSize) &&
             (identical(other.isMusicPlaying, isMusicPlaying) ||
@@ -661,14 +662,14 @@ class _$_SettingsState implements _SettingsState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SettingsStateCopyWith<_$_SettingsState> get copyWith =>
-      __$$_SettingsStateCopyWithImpl<_$_SettingsState>(this, _$identity);
+  _$$SettingsStateImplCopyWith<_$SettingsStateImpl> get copyWith =>
+      __$$SettingsStateImplCopyWithImpl<_$SettingsStateImpl>(this, _$identity);
 }
 
 abstract class _SettingsState implements SettingsState {
   const factory _SettingsState(
       {required final int textSize,
-      final bool isMusicPlaying}) = _$_SettingsState;
+      final bool isMusicPlaying}) = _$SettingsStateImpl;
 
   @override
   int get textSize;
@@ -676,6 +677,6 @@ abstract class _SettingsState implements SettingsState {
   bool get isMusicPlaying;
   @override
   @JsonKey(ignore: true)
-  _$$_SettingsStateCopyWith<_$_SettingsState> get copyWith =>
+  _$$SettingsStateImplCopyWith<_$SettingsStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

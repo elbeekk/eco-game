@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
+import '../../../../application/building/building_bloc.dart';
 import '../../../../infrastructure/models/class/building.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,12 +20,6 @@ class ConstructingBuilding extends StatefulWidget {
 }
 
 class _ConstructingBuildingState extends State<ConstructingBuilding> {
-  update() {
-    Timer.periodic(const Duration(milliseconds: 100), (timer) {
-      setState(() {});
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -118,72 +113,85 @@ class _ConstructingBuildingState extends State<ConstructingBuilding> {
                   ],
                 ),
               ),
-              BlocBuilder<ConstBuildingBloc, ConstBuildingState>(
-                buildWhen: (previous, current) => true,
+              BlocBuilder<BuildingBloc, BuildingState>(
                 builder: (context, state) {
-                  context.read<ConstBuildingBloc>().add(
-                        ConstBuildingEvent.update(
-                          time: DateTime.now(),
-                        ),
-                      );
-                  final endTime = DateTime.fromMillisecondsSinceEpoch(
-                    int.parse(
-                      widget.building.date ?? '0',
-                    ),
-                  )
-                      .add(
-                        Duration(
-                          minutes:
-                              ((widget.building.duration ?? 0) * 60).toInt(),
+                  return BlocBuilder<ConstBuildingBloc, ConstBuildingState>(
+                    buildWhen: (previous, current) => true,
+                    builder: (context, state) {
+                      context.read<ConstBuildingBloc>().add(
+                            ConstBuildingEvent.update(
+                              time: DateTime.now(),
+                            ),
+                          );
+                      final endTime = DateTime.fromMillisecondsSinceEpoch(
+                        int.parse(
+                          widget.building.date ?? '0',
                         ),
                       )
-                      .millisecondsSinceEpoch;
-                  final startTime = DateTime.fromMillisecondsSinceEpoch(
-                    int.parse(
-                      widget.building.date ?? '0',
-                    ),
-                  ).millisecondsSinceEpoch;
-                  final now = state.time.millisecondsSinceEpoch;
-                  final duration = Duration(
-                    minutes: ((widget.building.duration ?? 0) * 60).toInt(),
-                  ).inMilliseconds;
-                  final percent = (now - startTime) / duration;
-                  return Positioned(
-                    top: -80,
-                    child: Container(
-                      padding: const EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                              color: Colors.orange.shade300, width: 1.5)),
-                      child: Column(
-                        children: [
-                          Text(
-                            Jiffy.parseFromDateTime(
-                              DateTime.fromMillisecondsSinceEpoch(
-                                endTime),
-                            ).fromNow(),
-                            style: const TextStyle(
-                              color: Colors.orange,
+                          .add(
+                            Duration(
+                              minutes: ((widget.building.duration ?? 0) * 60)
+                                  .toInt(),
                             ),
+                          )
+                          .millisecondsSinceEpoch;
+                      final startTime = DateTime.fromMillisecondsSinceEpoch(
+                        int.parse(
+                          widget.building.date ?? '0',
+                        ),
+                      ).millisecondsSinceEpoch;
+                      final now = state.time.millisecondsSinceEpoch;
+                      final duration = Duration(
+                        minutes: ((widget.building.duration ?? 0) * 60).toInt(),
+                      ).inMilliseconds;
+                      final percent = (now - startTime) / duration;
+
+                      if (endTime < now) {
+                        context.read<BuildingBloc>().add(
+                            BuildingEvent.addConstructingBuilding(
+                                building: widget.building,
+                                onError: (e) {},
+                                onSuccess: () {}));
+                      }
+
+                      return Positioned(
+                        top: -80,
+                        child: Container(
+                          padding: const EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(
+                                  color: Colors.orange.shade300, width: 1.5)),
+                          child: Column(
+                            children: [
+                              Text(
+                                Jiffy.parseFromDateTime(
+                                  DateTime.fromMillisecondsSinceEpoch(endTime),
+                                ).fromNow(),
+                                style: const TextStyle(
+                                  color: Colors.orange,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              SizedBox(
+                                child: LinearPercentIndicator(
+                                  width: 80,
+                                  lineHeight: 7,
+                                  barRadius: const Radius.circular(10),
+                                  progressColor: Colors.red,
+                                  backgroundColor:
+                                      Colors.orange.withOpacity(.1),
+                                  percent: percent,
+                                ),
+                              ),
+                            ],
                           ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          SizedBox(
-                            child: LinearPercentIndicator(
-                              width: 80,
-                              lineHeight: 7,
-                              barRadius: const Radius.circular(10),
-                              progressColor: Colors.red,
-                              backgroundColor: Colors.orange.withOpacity(.1),
-                              percent: percent,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                        ),
+                      );
+                    },
                   );
                 },
               ),

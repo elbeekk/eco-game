@@ -3,3 +3,4 @@ class AppConstants {
 }
 
 enum ShopCategory { houses, generators}
+enum BuildingType { pending, constructing,existing}
