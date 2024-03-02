@@ -212,20 +212,12 @@ class ShopView extends StatelessWidget {
                 ),
               ),
               BlocListener<ShopBloc, ShopState>(
-                child: const Text(
-                  'elbekjon',
-                  style: TextStyle(color: Colors.white),
-                ),
-
+                child: const SizedBox.shrink(),
                 listenWhen: (previous, current) {
-                  // log(current.selected?.toRawJson()??'');
                   return previous.selected?.toRawJson() !=
                       current.selected?.toRawJson();
-                  //   &&
-                  // current.selected?.name != null;
                 },
                 listener: (listenerContext, shopState) {
-                  log(shopState.selected?.toRawJson() ?? "");
                   if (shopState.selected?.image != null) {
                     showDialog(
                       context: context,
@@ -255,16 +247,7 @@ class ShopView extends StatelessWidget {
                                                           0)
                                                   ? null
                                                   : () {
-                                                      context
-                                                          .read<ShopBloc>()
-                                                          .add(
-                                                            ShopEvent.select(
-                                                              shopState
-                                                                      .selected ??
-                                                                  BuildingModel(),
-                                                            ),
-                                                          );
-                                                      // Navigator.pop(context);
+                                                      Navigator.pop(context);
                                                       context
                                                           .read<BuildingBloc>()
                                                           .add(
@@ -291,7 +274,8 @@ class ShopView extends StatelessWidget {
                                                               onError: (String
                                                                   error) {},
                                                               onSuccess: () {
-                                                                Navigator.pop(context);
+                                                                Navigator.pop(
+                                                                    context);
                                                               },
                                                             ),
                                                           );

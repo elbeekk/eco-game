@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:developer';
+
 import 'package:eco_game/application/auth/auth_bloc.dart';
 import 'package:eco_game/application/building/building_bloc.dart';
 import 'package:eco_game/application/game/game_bloc.dart';
@@ -94,6 +97,7 @@ class _GamePageState extends State<GamePage> {
                                 (index) {
                                   final current = buildingState
                                       .constructingBuildings[index];
+
                                   return ConstructingBuilding(
                                     building: current,
                                   );

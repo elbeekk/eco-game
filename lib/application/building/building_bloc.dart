@@ -13,14 +13,18 @@ class BuildingBloc extends Bloc<BuildingEvent, BuildingState> {
   BuildingBloc() : super(const BuildingState()) {
     on<AddPendingBuilding>((event, emit) async {
       emit(state.copyWith(isBuyLoading: true));
-      final res =
-          await userRepository.addMoney(money: 0 - (event.building.price ?? 0));
-      res.fold((l) {
-        if (l) {
-          emit(state.copyWith(
-              pendingBuildings: [...state.pendingBuildings, event.building]));
-          event.onSuccess.call();
-        } else {}
+      final res = await userRepository.addPendingBuilding(
+        pendingBuilding: event.building.copyWith(
+          date: DateTime.now().millisecondsSinceEpoch.toString(),
+        ),
+      );
+      res.fold((l) async {
+        emit(
+          state.copyWith(
+            pendingBuildings: [...state.pendingBuildings, event.building],
+          ),
+        );
+        event.onSuccess.call();
       }, (r) {
         event.onError.call(r);
       });

@@ -17,8 +17,8 @@ class CoinButton extends StatelessWidget {
     return BlocBuilder<GameBloc, GameState>(
       builder: (context, state) {
         return GestureDetector(
-          onTap: () {
-            context.read<GameBloc>().add(const GameEvent.showMoney());
+          onTap: () async {
+            // context.read<GameBloc>().add(const GameEvent.showMoney());
           },
           child: Row(
             children: [

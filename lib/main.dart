@@ -5,6 +5,7 @@ import 'package:eco_game/application/message/message_bloc.dart';
 import 'package:eco_game/application/settings/settings_bloc.dart';
 import 'package:eco_game/domain/di/dependancy_manager.dart';
 import 'package:eco_game/firebase_options.dart';
+import 'package:eco_game/infrastructure/services/google_wallet.dart';
 import 'package:eco_game/infrastructure/services/local_storage/local_storage.dart';
 import 'package:eco_game/presentation/pages/auth_page/login_page.dart';
 import 'package:eco_game/presentation/pages/game/game.dart';
@@ -18,6 +19,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   FlameAudio.bgm.initialize();
+
   LocalStorage.init();
   setUpDependencies();
 
@@ -37,8 +39,15 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  init(BuildContext context) async {
+    if (TargetPlatform.android == Theme.of(context).platform) {
+      await WalletService.init();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    init(context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: MultiBlocProvider(
@@ -59,9 +68,9 @@ class _MyAppState extends State<MyApp> {
             create: (context) => MessageBloc(),
           ),
         ],
-        child:(LocalStorage.getMe()?.email==null)
-                        ? const LoginPage()
-                        : const GamePage(),
+        child: (LocalStorage.getMe()?.email == null)
+            ? const LoginPage()
+            : const GamePage(),
       ),
     );
   }

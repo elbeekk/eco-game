@@ -1,4 +1,5 @@
 {
+  "id": "",
   "name": "",
   "image": "",
   "positionX": 0.5,
@@ -8,7 +9,7 @@
   "energy": -10,
   "people": 10,
   "date": "",
-  "duration": 3,
+  "duration": 3.1,
   "description": "",
   "income": 10
 }

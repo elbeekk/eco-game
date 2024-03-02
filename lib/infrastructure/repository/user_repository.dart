@@ -33,12 +33,18 @@ class UserRepository implements UserInterface {
   Future<Either<bool, dynamic>> addPendingBuilding(
       {required BuildingModel pendingBuilding}) async {
     try {
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(LocalStorage.getMe()?.id)
-          .collection('pendingBuildings')
-          .add(pendingBuilding.toJson());
-      return const Left(true);
+      final res = await addMoney(money: pendingBuilding.price ?? 0);
+      res.fold((l) async {
+        await FirebaseFirestore.instance
+            .collection('users')
+            .doc(LocalStorage.getMe()?.id)
+            .collection('pendingBuildings')
+            .add(pendingBuilding.toJson());
+        return const Left(true);
+      }, (r) {
+        return Right(r);
+      });
+      return const Left(false);
     } on FirebaseException catch (e) {
       return Right(e.message);
     }

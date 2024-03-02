@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'building_bloc.dart';
 
@@ -12,7 +12,7 @@ part of 'building_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$BuildingEvent {
@@ -149,11 +149,11 @@ class _$BuildingEventCopyWithImpl<$Res, $Val extends BuildingEvent>
 }
 
 /// @nodoc
-abstract class _$$AddPendingBuildingImplCopyWith<$Res>
+abstract class _$$AddPendingBuildingCopyWith<$Res>
     implements $BuildingEventCopyWith<$Res> {
-  factory _$$AddPendingBuildingImplCopyWith(_$AddPendingBuildingImpl value,
-          $Res Function(_$AddPendingBuildingImpl) then) =
-      __$$AddPendingBuildingImplCopyWithImpl<$Res>;
+  factory _$$AddPendingBuildingCopyWith(_$AddPendingBuilding value,
+          $Res Function(_$AddPendingBuilding) then) =
+      __$$AddPendingBuildingCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -163,11 +163,11 @@ abstract class _$$AddPendingBuildingImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$AddPendingBuildingImplCopyWithImpl<$Res>
-    extends _$BuildingEventCopyWithImpl<$Res, _$AddPendingBuildingImpl>
-    implements _$$AddPendingBuildingImplCopyWith<$Res> {
-  __$$AddPendingBuildingImplCopyWithImpl(_$AddPendingBuildingImpl _value,
-      $Res Function(_$AddPendingBuildingImpl) _then)
+class __$$AddPendingBuildingCopyWithImpl<$Res>
+    extends _$BuildingEventCopyWithImpl<$Res, _$AddPendingBuilding>
+    implements _$$AddPendingBuildingCopyWith<$Res> {
+  __$$AddPendingBuildingCopyWithImpl(
+      _$AddPendingBuilding _value, $Res Function(_$AddPendingBuilding) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -177,7 +177,7 @@ class __$$AddPendingBuildingImplCopyWithImpl<$Res>
     Object? onError = null,
     Object? onSuccess = null,
   }) {
-    return _then(_$AddPendingBuildingImpl(
+    return _then(_$AddPendingBuilding(
       building: null == building
           ? _value.building
           : building // ignore: cast_nullable_to_non_nullable
@@ -196,8 +196,8 @@ class __$$AddPendingBuildingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AddPendingBuildingImpl implements AddPendingBuilding {
-  const _$AddPendingBuildingImpl(
+class _$AddPendingBuilding implements AddPendingBuilding {
+  const _$AddPendingBuilding(
       {required this.building, required this.onError, required this.onSuccess});
 
   @override
@@ -213,10 +213,10 @@ class _$AddPendingBuildingImpl implements AddPendingBuilding {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AddPendingBuildingImpl &&
+            other is _$AddPendingBuilding &&
             (identical(other.building, building) ||
                 other.building == building) &&
             (identical(other.onError, onError) || other.onError == onError) &&
@@ -230,8 +230,8 @@ class _$AddPendingBuildingImpl implements AddPendingBuilding {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$AddPendingBuildingImplCopyWith<_$AddPendingBuildingImpl> get copyWith =>
-      __$$AddPendingBuildingImplCopyWithImpl<_$AddPendingBuildingImpl>(
+  _$$AddPendingBuildingCopyWith<_$AddPendingBuilding> get copyWith =>
+      __$$AddPendingBuildingCopyWithImpl<_$AddPendingBuilding>(
           this, _$identity);
 
   @override
@@ -340,7 +340,7 @@ abstract class AddPendingBuilding implements BuildingEvent {
   const factory AddPendingBuilding(
       {required final BuildingModel building,
       required final dynamic Function(String) onError,
-      required final Function onSuccess}) = _$AddPendingBuildingImpl;
+      required final Function onSuccess}) = _$AddPendingBuilding;
 
   @override
   BuildingModel get building;
@@ -350,17 +350,16 @@ abstract class AddPendingBuilding implements BuildingEvent {
   Function get onSuccess;
   @override
   @JsonKey(ignore: true)
-  _$$AddPendingBuildingImplCopyWith<_$AddPendingBuildingImpl> get copyWith =>
+  _$$AddPendingBuildingCopyWith<_$AddPendingBuilding> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$RemovePendingBuildingImplCopyWith<$Res>
+abstract class _$$RemovePendingBuildingCopyWith<$Res>
     implements $BuildingEventCopyWith<$Res> {
-  factory _$$RemovePendingBuildingImplCopyWith(
-          _$RemovePendingBuildingImpl value,
-          $Res Function(_$RemovePendingBuildingImpl) then) =
-      __$$RemovePendingBuildingImplCopyWithImpl<$Res>;
+  factory _$$RemovePendingBuildingCopyWith(_$RemovePendingBuilding value,
+          $Res Function(_$RemovePendingBuilding) then) =
+      __$$RemovePendingBuildingCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -370,11 +369,11 @@ abstract class _$$RemovePendingBuildingImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$RemovePendingBuildingImplCopyWithImpl<$Res>
-    extends _$BuildingEventCopyWithImpl<$Res, _$RemovePendingBuildingImpl>
-    implements _$$RemovePendingBuildingImplCopyWith<$Res> {
-  __$$RemovePendingBuildingImplCopyWithImpl(_$RemovePendingBuildingImpl _value,
-      $Res Function(_$RemovePendingBuildingImpl) _then)
+class __$$RemovePendingBuildingCopyWithImpl<$Res>
+    extends _$BuildingEventCopyWithImpl<$Res, _$RemovePendingBuilding>
+    implements _$$RemovePendingBuildingCopyWith<$Res> {
+  __$$RemovePendingBuildingCopyWithImpl(_$RemovePendingBuilding _value,
+      $Res Function(_$RemovePendingBuilding) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -384,7 +383,7 @@ class __$$RemovePendingBuildingImplCopyWithImpl<$Res>
     Object? onError = null,
     Object? onSuccess = null,
   }) {
-    return _then(_$RemovePendingBuildingImpl(
+    return _then(_$RemovePendingBuilding(
       building: null == building
           ? _value.building
           : building // ignore: cast_nullable_to_non_nullable
@@ -403,8 +402,8 @@ class __$$RemovePendingBuildingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$RemovePendingBuildingImpl implements RemovePendingBuilding {
-  const _$RemovePendingBuildingImpl(
+class _$RemovePendingBuilding implements RemovePendingBuilding {
+  const _$RemovePendingBuilding(
       {required this.building, required this.onError, required this.onSuccess});
 
   @override
@@ -420,10 +419,10 @@ class _$RemovePendingBuildingImpl implements RemovePendingBuilding {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RemovePendingBuildingImpl &&
+            other is _$RemovePendingBuilding &&
             (identical(other.building, building) ||
                 other.building == building) &&
             (identical(other.onError, onError) || other.onError == onError) &&
@@ -437,9 +436,9 @@ class _$RemovePendingBuildingImpl implements RemovePendingBuilding {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$RemovePendingBuildingImplCopyWith<_$RemovePendingBuildingImpl>
-      get copyWith => __$$RemovePendingBuildingImplCopyWithImpl<
-          _$RemovePendingBuildingImpl>(this, _$identity);
+  _$$RemovePendingBuildingCopyWith<_$RemovePendingBuilding> get copyWith =>
+      __$$RemovePendingBuildingCopyWithImpl<_$RemovePendingBuilding>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -547,7 +546,7 @@ abstract class RemovePendingBuilding implements BuildingEvent {
   const factory RemovePendingBuilding(
       {required final BuildingModel building,
       required final dynamic Function(String) onError,
-      required final Function onSuccess}) = _$RemovePendingBuildingImpl;
+      required final Function onSuccess}) = _$RemovePendingBuilding;
 
   @override
   BuildingModel get building;
@@ -557,17 +556,16 @@ abstract class RemovePendingBuilding implements BuildingEvent {
   Function get onSuccess;
   @override
   @JsonKey(ignore: true)
-  _$$RemovePendingBuildingImplCopyWith<_$RemovePendingBuildingImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$RemovePendingBuildingCopyWith<_$RemovePendingBuilding> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$AddConstructingBuildingImplCopyWith<$Res>
+abstract class _$$AddConstructingBuildingCopyWith<$Res>
     implements $BuildingEventCopyWith<$Res> {
-  factory _$$AddConstructingBuildingImplCopyWith(
-          _$AddConstructingBuildingImpl value,
-          $Res Function(_$AddConstructingBuildingImpl) then) =
-      __$$AddConstructingBuildingImplCopyWithImpl<$Res>;
+  factory _$$AddConstructingBuildingCopyWith(_$AddConstructingBuilding value,
+          $Res Function(_$AddConstructingBuilding) then) =
+      __$$AddConstructingBuildingCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -577,12 +575,11 @@ abstract class _$$AddConstructingBuildingImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$AddConstructingBuildingImplCopyWithImpl<$Res>
-    extends _$BuildingEventCopyWithImpl<$Res, _$AddConstructingBuildingImpl>
-    implements _$$AddConstructingBuildingImplCopyWith<$Res> {
-  __$$AddConstructingBuildingImplCopyWithImpl(
-      _$AddConstructingBuildingImpl _value,
-      $Res Function(_$AddConstructingBuildingImpl) _then)
+class __$$AddConstructingBuildingCopyWithImpl<$Res>
+    extends _$BuildingEventCopyWithImpl<$Res, _$AddConstructingBuilding>
+    implements _$$AddConstructingBuildingCopyWith<$Res> {
+  __$$AddConstructingBuildingCopyWithImpl(_$AddConstructingBuilding _value,
+      $Res Function(_$AddConstructingBuilding) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -592,7 +589,7 @@ class __$$AddConstructingBuildingImplCopyWithImpl<$Res>
     Object? onError = null,
     Object? onSuccess = null,
   }) {
-    return _then(_$AddConstructingBuildingImpl(
+    return _then(_$AddConstructingBuilding(
       building: null == building
           ? _value.building
           : building // ignore: cast_nullable_to_non_nullable
@@ -611,8 +608,8 @@ class __$$AddConstructingBuildingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AddConstructingBuildingImpl implements AddConstructingBuilding {
-  const _$AddConstructingBuildingImpl(
+class _$AddConstructingBuilding implements AddConstructingBuilding {
+  const _$AddConstructingBuilding(
       {required this.building, required this.onError, required this.onSuccess});
 
   @override
@@ -628,10 +625,10 @@ class _$AddConstructingBuildingImpl implements AddConstructingBuilding {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AddConstructingBuildingImpl &&
+            other is _$AddConstructingBuilding &&
             (identical(other.building, building) ||
                 other.building == building) &&
             (identical(other.onError, onError) || other.onError == onError) &&
@@ -645,9 +642,9 @@ class _$AddConstructingBuildingImpl implements AddConstructingBuilding {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$AddConstructingBuildingImplCopyWith<_$AddConstructingBuildingImpl>
-      get copyWith => __$$AddConstructingBuildingImplCopyWithImpl<
-          _$AddConstructingBuildingImpl>(this, _$identity);
+  _$$AddConstructingBuildingCopyWith<_$AddConstructingBuilding> get copyWith =>
+      __$$AddConstructingBuildingCopyWithImpl<_$AddConstructingBuilding>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -755,7 +752,7 @@ abstract class AddConstructingBuilding implements BuildingEvent {
   const factory AddConstructingBuilding(
       {required final BuildingModel building,
       required final dynamic Function(String) onError,
-      required final Function onSuccess}) = _$AddConstructingBuildingImpl;
+      required final Function onSuccess}) = _$AddConstructingBuilding;
 
   @override
   BuildingModel get building;
@@ -765,17 +762,16 @@ abstract class AddConstructingBuilding implements BuildingEvent {
   Function get onSuccess;
   @override
   @JsonKey(ignore: true)
-  _$$AddConstructingBuildingImplCopyWith<_$AddConstructingBuildingImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$AddConstructingBuildingCopyWith<_$AddConstructingBuilding> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$UpdatePendingBuildingImplCopyWith<$Res>
+abstract class _$$UpdatePendingBuildingCopyWith<$Res>
     implements $BuildingEventCopyWith<$Res> {
-  factory _$$UpdatePendingBuildingImplCopyWith(
-          _$UpdatePendingBuildingImpl value,
-          $Res Function(_$UpdatePendingBuildingImpl) then) =
-      __$$UpdatePendingBuildingImplCopyWithImpl<$Res>;
+  factory _$$UpdatePendingBuildingCopyWith(_$UpdatePendingBuilding value,
+          $Res Function(_$UpdatePendingBuilding) then) =
+      __$$UpdatePendingBuildingCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -785,11 +781,11 @@ abstract class _$$UpdatePendingBuildingImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$UpdatePendingBuildingImplCopyWithImpl<$Res>
-    extends _$BuildingEventCopyWithImpl<$Res, _$UpdatePendingBuildingImpl>
-    implements _$$UpdatePendingBuildingImplCopyWith<$Res> {
-  __$$UpdatePendingBuildingImplCopyWithImpl(_$UpdatePendingBuildingImpl _value,
-      $Res Function(_$UpdatePendingBuildingImpl) _then)
+class __$$UpdatePendingBuildingCopyWithImpl<$Res>
+    extends _$BuildingEventCopyWithImpl<$Res, _$UpdatePendingBuilding>
+    implements _$$UpdatePendingBuildingCopyWith<$Res> {
+  __$$UpdatePendingBuildingCopyWithImpl(_$UpdatePendingBuilding _value,
+      $Res Function(_$UpdatePendingBuilding) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -799,7 +795,7 @@ class __$$UpdatePendingBuildingImplCopyWithImpl<$Res>
     Object? onError = null,
     Object? onSuccess = null,
   }) {
-    return _then(_$UpdatePendingBuildingImpl(
+    return _then(_$UpdatePendingBuilding(
       building: null == building
           ? _value.building
           : building // ignore: cast_nullable_to_non_nullable
@@ -818,8 +814,8 @@ class __$$UpdatePendingBuildingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$UpdatePendingBuildingImpl implements UpdatePendingBuilding {
-  const _$UpdatePendingBuildingImpl(
+class _$UpdatePendingBuilding implements UpdatePendingBuilding {
+  const _$UpdatePendingBuilding(
       {required this.building, required this.onError, required this.onSuccess});
 
   @override
@@ -835,10 +831,10 @@ class _$UpdatePendingBuildingImpl implements UpdatePendingBuilding {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$UpdatePendingBuildingImpl &&
+            other is _$UpdatePendingBuilding &&
             (identical(other.building, building) ||
                 other.building == building) &&
             (identical(other.onError, onError) || other.onError == onError) &&
@@ -852,9 +848,9 @@ class _$UpdatePendingBuildingImpl implements UpdatePendingBuilding {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$UpdatePendingBuildingImplCopyWith<_$UpdatePendingBuildingImpl>
-      get copyWith => __$$UpdatePendingBuildingImplCopyWithImpl<
-          _$UpdatePendingBuildingImpl>(this, _$identity);
+  _$$UpdatePendingBuildingCopyWith<_$UpdatePendingBuilding> get copyWith =>
+      __$$UpdatePendingBuildingCopyWithImpl<_$UpdatePendingBuilding>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -962,7 +958,7 @@ abstract class UpdatePendingBuilding implements BuildingEvent {
   const factory UpdatePendingBuilding(
       {required final BuildingModel building,
       required final dynamic Function(String) onError,
-      required final Function onSuccess}) = _$UpdatePendingBuildingImpl;
+      required final Function onSuccess}) = _$UpdatePendingBuilding;
 
   @override
   BuildingModel get building;
@@ -972,8 +968,8 @@ abstract class UpdatePendingBuilding implements BuildingEvent {
   Function get onSuccess;
   @override
   @JsonKey(ignore: true)
-  _$$UpdatePendingBuildingImplCopyWith<_$UpdatePendingBuildingImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$UpdatePendingBuildingCopyWith<_$UpdatePendingBuilding> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1044,11 +1040,11 @@ class _$BuildingStateCopyWithImpl<$Res, $Val extends BuildingState>
 }
 
 /// @nodoc
-abstract class _$$BuildingStateImplCopyWith<$Res>
+abstract class _$$_BuildingStateCopyWith<$Res>
     implements $BuildingStateCopyWith<$Res> {
-  factory _$$BuildingStateImplCopyWith(
-          _$BuildingStateImpl value, $Res Function(_$BuildingStateImpl) then) =
-      __$$BuildingStateImplCopyWithImpl<$Res>;
+  factory _$$_BuildingStateCopyWith(
+          _$_BuildingState value, $Res Function(_$_BuildingState) then) =
+      __$$_BuildingStateCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1059,11 +1055,11 @@ abstract class _$$BuildingStateImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$BuildingStateImplCopyWithImpl<$Res>
-    extends _$BuildingStateCopyWithImpl<$Res, _$BuildingStateImpl>
-    implements _$$BuildingStateImplCopyWith<$Res> {
-  __$$BuildingStateImplCopyWithImpl(
-      _$BuildingStateImpl _value, $Res Function(_$BuildingStateImpl) _then)
+class __$$_BuildingStateCopyWithImpl<$Res>
+    extends _$BuildingStateCopyWithImpl<$Res, _$_BuildingState>
+    implements _$$_BuildingStateCopyWith<$Res> {
+  __$$_BuildingStateCopyWithImpl(
+      _$_BuildingState _value, $Res Function(_$_BuildingState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1074,7 +1070,7 @@ class __$$BuildingStateImplCopyWithImpl<$Res>
     Object? existingBuildings = null,
     Object? isBuyLoading = null,
   }) {
-    return _then(_$BuildingStateImpl(
+    return _then(_$_BuildingState(
       pendingBuildings: null == pendingBuildings
           ? _value._pendingBuildings
           : pendingBuildings // ignore: cast_nullable_to_non_nullable
@@ -1097,8 +1093,8 @@ class __$$BuildingStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$BuildingStateImpl implements _BuildingState {
-  const _$BuildingStateImpl(
+class _$_BuildingState implements _BuildingState {
+  const _$_BuildingState(
       {final List<BuildingModel> pendingBuildings = const [],
       final List<BuildingModel> constructingBuildings = const [],
       final List<BuildingModel> existingBuildings = const [],
@@ -1111,8 +1107,6 @@ class _$BuildingStateImpl implements _BuildingState {
   @override
   @JsonKey()
   List<BuildingModel> get pendingBuildings {
-    if (_pendingBuildings is EqualUnmodifiableListView)
-      return _pendingBuildings;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_pendingBuildings);
   }
@@ -1121,8 +1115,6 @@ class _$BuildingStateImpl implements _BuildingState {
   @override
   @JsonKey()
   List<BuildingModel> get constructingBuildings {
-    if (_constructingBuildings is EqualUnmodifiableListView)
-      return _constructingBuildings;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_constructingBuildings);
   }
@@ -1131,8 +1123,6 @@ class _$BuildingStateImpl implements _BuildingState {
   @override
   @JsonKey()
   List<BuildingModel> get existingBuildings {
-    if (_existingBuildings is EqualUnmodifiableListView)
-      return _existingBuildings;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_existingBuildings);
   }
@@ -1147,10 +1137,10 @@ class _$BuildingStateImpl implements _BuildingState {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BuildingStateImpl &&
+            other is _$_BuildingState &&
             const DeepCollectionEquality()
                 .equals(other._pendingBuildings, _pendingBuildings) &&
             const DeepCollectionEquality()
@@ -1172,8 +1162,8 @@ class _$BuildingStateImpl implements _BuildingState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$BuildingStateImplCopyWith<_$BuildingStateImpl> get copyWith =>
-      __$$BuildingStateImplCopyWithImpl<_$BuildingStateImpl>(this, _$identity);
+  _$$_BuildingStateCopyWith<_$_BuildingState> get copyWith =>
+      __$$_BuildingStateCopyWithImpl<_$_BuildingState>(this, _$identity);
 }
 
 abstract class _BuildingState implements BuildingState {
@@ -1181,7 +1171,7 @@ abstract class _BuildingState implements BuildingState {
       {final List<BuildingModel> pendingBuildings,
       final List<BuildingModel> constructingBuildings,
       final List<BuildingModel> existingBuildings,
-      final bool isBuyLoading}) = _$BuildingStateImpl;
+      final bool isBuyLoading}) = _$_BuildingState;
 
   @override
   List<BuildingModel> get pendingBuildings;
@@ -1193,6 +1183,6 @@ abstract class _BuildingState implements BuildingState {
   bool get isBuyLoading;
   @override
   @JsonKey(ignore: true)
-  _$$BuildingStateImplCopyWith<_$BuildingStateImpl> get copyWith =>
+  _$$_BuildingStateCopyWith<_$_BuildingState> get copyWith =>
       throw _privateConstructorUsedError;
 }

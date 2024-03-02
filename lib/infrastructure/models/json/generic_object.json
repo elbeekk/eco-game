@@ -1,0 +1,268 @@
+{
+  "genericType": "GENERIC_OTHER",
+  "cardTitle": {
+    "kind": "walletobjects#localizedString",
+    "translatedValues": [
+      {
+        "kind": "walletobjects#translatedString",
+        "language": "en-US",
+        "value": "Eco Game"
+      }
+    ],
+    "defaultValue": {
+      "kind": "walletobjects#translatedString",
+      "language": "en-US",
+      "value": "Eco Game"
+    }
+  },
+  "subheader": {
+    "kind": "walletobjects#localizedString",
+    "translatedValues": [
+      {
+        "kind": "walletobjects#translatedString",
+        "language": "en-US",
+        "value": "Eco Game"
+      }
+    ],
+    "defaultValue": {
+      "kind": "walletobjects#translatedString",
+      "language": "en-US",
+      "value": "Eco Game"
+    }
+  },
+  "header": {
+    "kind": "walletobjects#localizedString",
+    "translatedValues": [
+      {
+        "kind": "walletobjects#translatedString",
+        "language": "en-US",
+        "value": "Eco Game"
+      }
+    ],
+    "defaultValue": {
+      "kind": "walletobjects#translatedString",
+      "language": "en-US",
+      "value": "Eco Game"
+    }
+  },
+  "logo":{
+    "kind": "string",
+    "sourceUri": {
+      "uri": "string",
+      "description": "string",
+      "localizedDescription": {
+        "kind": "walletobjects#localizedString",
+        "translatedValues": [
+          {
+            "kind": "walletobjects#translatedString",
+            "language": "en-US",
+            "value": "Eco Game"
+          }
+        ],
+        "defaultValue": {
+          "kind": "walletobjects#translatedString",
+          "language": "en-US",
+          "value": "Eco Game"
+        }
+      }
+    },
+    "contentDescription": {
+      "kind": "walletobjects#localizedString",
+      "translatedValues": [
+        {
+          "kind": "walletobjects#translatedString",
+          "language": "en-US",
+          "value": "Eco Game"
+        }
+      ],
+      "defaultValue": {
+        "kind": "walletobjects#translatedString",
+        "language": "en-US",
+        "value": "Eco Game"
+      }
+    }
+  },
+  "hexBackgroundColor": "string",
+  "id": "string",
+  "classId": "string",
+  "heroImage": {
+    "kind": "string",
+    "sourceUri": {
+      "uri": "string",
+      "description": "string",
+      "localizedDescription": {
+        "kind": "walletobjects#localizedString",
+        "translatedValues": [
+          {
+            "kind": "walletobjects#translatedString",
+            "language": "en-US",
+            "value": "Eco Game"
+          }
+        ],
+        "defaultValue": {
+          "kind": "walletobjects#translatedString",
+          "language": "en-US",
+          "value": "Eco Game"
+        }
+      }
+    },
+    "contentDescription": {
+      "kind": "walletobjects#localizedString",
+      "translatedValues": [
+        {
+          "kind": "walletobjects#translatedString",
+          "language": "en-US",
+          "value": "Eco Game"
+        }
+      ],
+      "defaultValue": {
+        "kind": "walletobjects#translatedString",
+        "language": "en-US",
+        "value": "Eco Game"
+      }
+    }
+  },
+  "imageModulesData": [
+    {
+      "mainImage": {
+        "kind": "string",
+        "sourceUri": {
+          "uri": "string",
+          "description": "string",
+          "localizedDescription": {
+            "kind": "walletobjects#localizedString",
+            "translatedValues": [
+              {
+                "kind": "walletobjects#translatedString",
+                "language": "en-US",
+                "value": "Eco Game"
+              }
+            ],
+            "defaultValue": {
+              "kind": "walletobjects#translatedString",
+              "language": "en-US",
+              "value": "Eco Game"
+            }
+          }
+        },
+        "contentDescription": {
+          "kind": "walletobjects#localizedString",
+          "translatedValues": [
+            {
+              "kind": "walletobjects#translatedString",
+              "language": "en-US",
+              "value": "Eco Game"
+            }
+          ],
+          "defaultValue": {
+            "kind": "walletobjects#translatedString",
+            "language": "en-US",
+            "value": "Eco Game"
+          }
+        }
+      },
+      "id": "string"
+    }
+  ],
+  "textModulesData": [
+    {
+      "header": "string",
+      "body": "string",
+      "localizedHeader":  {
+        "kind": "walletobjects#localizedString",
+        "translatedValues": [
+          {
+            "kind": "walletobjects#translatedString",
+            "language": "en-US",
+            "value": "Eco Game"
+          }
+        ],
+        "defaultValue": {
+          "kind": "walletobjects#translatedString",
+          "language": "en-US",
+          "value": "Eco Game"
+        }
+      },
+      "localizedBody":  {
+        "kind": "walletobjects#localizedString",
+        "translatedValues": [
+          {
+            "kind": "walletobjects#translatedString",
+            "language": "en-US",
+            "value": "Eco Game"
+          }
+        ],
+        "defaultValue": {
+          "kind": "walletobjects#translatedString",
+          "language": "en-US",
+          "value": "Eco Game"
+        }
+      },
+      "id": "string"
+    }
+  ],
+  "linksModuleData": {
+    "uris": [
+            {
+        "kind": "string",
+        "uri": "string",
+        "description": "string",
+        "localizedDescription": {
+          "kind": "walletobjects#localizedString",
+          "translatedValues": [
+            {
+              "kind": "walletobjects#translatedString",
+              "language": "en-US",
+              "value": "Eco Game"
+            }
+          ],
+          "defaultValue": {
+            "kind": "walletobjects#translatedString",
+            "language": "en-US",
+            "value": "Eco Game"
+          }
+        },
+        "id": "string"
+      }
+
+    ]
+  },
+  "state": "ACTIVE",
+  "wideLogo": {
+    "kind": "string",
+    "sourceUri": {
+      "uri": "string",
+      "description": "string",
+      "localizedDescription": {
+        "kind": "walletobjects#localizedString",
+        "translatedValues": [
+          {
+            "kind": "walletobjects#translatedString",
+            "language": "en-US",
+            "value": "Eco Game"
+          }
+        ],
+        "defaultValue": {
+          "kind": "walletobjects#translatedString",
+          "language": "en-US",
+          "value": "Eco Game"
+        }
+      }
+    },
+    "contentDescription": {
+      "kind": "walletobjects#localizedString",
+      "translatedValues": [
+        {
+          "kind": "walletobjects#translatedString",
+          "language": "en-US",
+          "value": "Eco Game"
+        }
+      ],
+      "defaultValue": {
+        "kind": "walletobjects#translatedString",
+        "language": "en-US",
+        "value": "Eco Game"
+      }
+    }
+  }
+}

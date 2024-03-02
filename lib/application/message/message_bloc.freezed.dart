@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'message_bloc.dart';
 
@@ -12,7 +12,7 @@ part of 'message_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$MessageEvent {
@@ -109,22 +109,22 @@ class _$MessageEventCopyWithImpl<$Res, $Val extends MessageEvent>
 }
 
 /// @nodoc
-abstract class _$$ReadMessageImplCopyWith<$Res>
+abstract class _$$ReadMessageCopyWith<$Res>
     implements $MessageEventCopyWith<$Res> {
-  factory _$$ReadMessageImplCopyWith(
-          _$ReadMessageImpl value, $Res Function(_$ReadMessageImpl) then) =
-      __$$ReadMessageImplCopyWithImpl<$Res>;
+  factory _$$ReadMessageCopyWith(
+          _$ReadMessage value, $Res Function(_$ReadMessage) then) =
+      __$$ReadMessageCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({dynamic Function(String) onError, Function onSuccess});
 }
 
 /// @nodoc
-class __$$ReadMessageImplCopyWithImpl<$Res>
-    extends _$MessageEventCopyWithImpl<$Res, _$ReadMessageImpl>
-    implements _$$ReadMessageImplCopyWith<$Res> {
-  __$$ReadMessageImplCopyWithImpl(
-      _$ReadMessageImpl _value, $Res Function(_$ReadMessageImpl) _then)
+class __$$ReadMessageCopyWithImpl<$Res>
+    extends _$MessageEventCopyWithImpl<$Res, _$ReadMessage>
+    implements _$$ReadMessageCopyWith<$Res> {
+  __$$ReadMessageCopyWithImpl(
+      _$ReadMessage _value, $Res Function(_$ReadMessage) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -133,7 +133,7 @@ class __$$ReadMessageImplCopyWithImpl<$Res>
     Object? onError = null,
     Object? onSuccess = null,
   }) {
-    return _then(_$ReadMessageImpl(
+    return _then(_$ReadMessage(
       onError: null == onError
           ? _value.onError
           : onError // ignore: cast_nullable_to_non_nullable
@@ -148,8 +148,8 @@ class __$$ReadMessageImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ReadMessageImpl implements ReadMessage {
-  const _$ReadMessageImpl({required this.onError, required this.onSuccess});
+class _$ReadMessage implements ReadMessage {
+  const _$ReadMessage({required this.onError, required this.onSuccess});
 
   @override
   final dynamic Function(String) onError;
@@ -162,10 +162,10 @@ class _$ReadMessageImpl implements ReadMessage {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ReadMessageImpl &&
+            other is _$ReadMessage &&
             (identical(other.onError, onError) || other.onError == onError) &&
             (identical(other.onSuccess, onSuccess) ||
                 other.onSuccess == onSuccess));
@@ -177,8 +177,8 @@ class _$ReadMessageImpl implements ReadMessage {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ReadMessageImplCopyWith<_$ReadMessageImpl> get copyWith =>
-      __$$ReadMessageImplCopyWithImpl<_$ReadMessageImpl>(this, _$identity);
+  _$$ReadMessageCopyWith<_$ReadMessage> get copyWith =>
+      __$$ReadMessageCopyWithImpl<_$ReadMessage>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -254,7 +254,7 @@ class _$ReadMessageImpl implements ReadMessage {
 abstract class ReadMessage implements MessageEvent {
   const factory ReadMessage(
       {required final dynamic Function(String) onError,
-      required final Function onSuccess}) = _$ReadMessageImpl;
+      required final Function onSuccess}) = _$ReadMessage;
 
   @override
   dynamic Function(String) get onError;
@@ -262,27 +262,27 @@ abstract class ReadMessage implements MessageEvent {
   Function get onSuccess;
   @override
   @JsonKey(ignore: true)
-  _$$ReadMessageImplCopyWith<_$ReadMessageImpl> get copyWith =>
+  _$$ReadMessageCopyWith<_$ReadMessage> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SetIntroMessagesImplCopyWith<$Res>
+abstract class _$$SetIntroMessagesCopyWith<$Res>
     implements $MessageEventCopyWith<$Res> {
-  factory _$$SetIntroMessagesImplCopyWith(_$SetIntroMessagesImpl value,
-          $Res Function(_$SetIntroMessagesImpl) then) =
-      __$$SetIntroMessagesImplCopyWithImpl<$Res>;
+  factory _$$SetIntroMessagesCopyWith(
+          _$SetIntroMessages value, $Res Function(_$SetIntroMessages) then) =
+      __$$SetIntroMessagesCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({dynamic Function(String) onError, Function onSuccess});
 }
 
 /// @nodoc
-class __$$SetIntroMessagesImplCopyWithImpl<$Res>
-    extends _$MessageEventCopyWithImpl<$Res, _$SetIntroMessagesImpl>
-    implements _$$SetIntroMessagesImplCopyWith<$Res> {
-  __$$SetIntroMessagesImplCopyWithImpl(_$SetIntroMessagesImpl _value,
-      $Res Function(_$SetIntroMessagesImpl) _then)
+class __$$SetIntroMessagesCopyWithImpl<$Res>
+    extends _$MessageEventCopyWithImpl<$Res, _$SetIntroMessages>
+    implements _$$SetIntroMessagesCopyWith<$Res> {
+  __$$SetIntroMessagesCopyWithImpl(
+      _$SetIntroMessages _value, $Res Function(_$SetIntroMessages) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -291,7 +291,7 @@ class __$$SetIntroMessagesImplCopyWithImpl<$Res>
     Object? onError = null,
     Object? onSuccess = null,
   }) {
-    return _then(_$SetIntroMessagesImpl(
+    return _then(_$SetIntroMessages(
       onError: null == onError
           ? _value.onError
           : onError // ignore: cast_nullable_to_non_nullable
@@ -306,9 +306,8 @@ class __$$SetIntroMessagesImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SetIntroMessagesImpl implements SetIntroMessages {
-  const _$SetIntroMessagesImpl(
-      {required this.onError, required this.onSuccess});
+class _$SetIntroMessages implements SetIntroMessages {
+  const _$SetIntroMessages({required this.onError, required this.onSuccess});
 
   @override
   final dynamic Function(String) onError;
@@ -321,10 +320,10 @@ class _$SetIntroMessagesImpl implements SetIntroMessages {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SetIntroMessagesImpl &&
+            other is _$SetIntroMessages &&
             (identical(other.onError, onError) || other.onError == onError) &&
             (identical(other.onSuccess, onSuccess) ||
                 other.onSuccess == onSuccess));
@@ -336,9 +335,8 @@ class _$SetIntroMessagesImpl implements SetIntroMessages {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SetIntroMessagesImplCopyWith<_$SetIntroMessagesImpl> get copyWith =>
-      __$$SetIntroMessagesImplCopyWithImpl<_$SetIntroMessagesImpl>(
-          this, _$identity);
+  _$$SetIntroMessagesCopyWith<_$SetIntroMessages> get copyWith =>
+      __$$SetIntroMessagesCopyWithImpl<_$SetIntroMessages>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -414,7 +412,7 @@ class _$SetIntroMessagesImpl implements SetIntroMessages {
 abstract class SetIntroMessages implements MessageEvent {
   const factory SetIntroMessages(
       {required final dynamic Function(String) onError,
-      required final Function onSuccess}) = _$SetIntroMessagesImpl;
+      required final Function onSuccess}) = _$SetIntroMessages;
 
   @override
   dynamic Function(String) get onError;
@@ -422,7 +420,7 @@ abstract class SetIntroMessages implements MessageEvent {
   Function get onSuccess;
   @override
   @JsonKey(ignore: true)
-  _$$SetIntroMessagesImplCopyWith<_$SetIntroMessagesImpl> get copyWith =>
+  _$$SetIntroMessagesCopyWith<_$SetIntroMessages> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -475,22 +473,22 @@ class _$MessageStateCopyWithImpl<$Res, $Val extends MessageState>
 }
 
 /// @nodoc
-abstract class _$$MessageStateImplCopyWith<$Res>
+abstract class _$$_MessageStateCopyWith<$Res>
     implements $MessageStateCopyWith<$Res> {
-  factory _$$MessageStateImplCopyWith(
-          _$MessageStateImpl value, $Res Function(_$MessageStateImpl) then) =
-      __$$MessageStateImplCopyWithImpl<$Res>;
+  factory _$$_MessageStateCopyWith(
+          _$_MessageState value, $Res Function(_$_MessageState) then) =
+      __$$_MessageStateCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({MessageModel? currentMessage, List<MessageModel> messages});
 }
 
 /// @nodoc
-class __$$MessageStateImplCopyWithImpl<$Res>
-    extends _$MessageStateCopyWithImpl<$Res, _$MessageStateImpl>
-    implements _$$MessageStateImplCopyWith<$Res> {
-  __$$MessageStateImplCopyWithImpl(
-      _$MessageStateImpl _value, $Res Function(_$MessageStateImpl) _then)
+class __$$_MessageStateCopyWithImpl<$Res>
+    extends _$MessageStateCopyWithImpl<$Res, _$_MessageState>
+    implements _$$_MessageStateCopyWith<$Res> {
+  __$$_MessageStateCopyWithImpl(
+      _$_MessageState _value, $Res Function(_$_MessageState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -499,7 +497,7 @@ class __$$MessageStateImplCopyWithImpl<$Res>
     Object? currentMessage = freezed,
     Object? messages = null,
   }) {
-    return _then(_$MessageStateImpl(
+    return _then(_$_MessageState(
       currentMessage: freezed == currentMessage
           ? _value.currentMessage
           : currentMessage // ignore: cast_nullable_to_non_nullable
@@ -514,8 +512,8 @@ class __$$MessageStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$MessageStateImpl implements _MessageState {
-  const _$MessageStateImpl(
+class _$_MessageState implements _MessageState {
+  const _$_MessageState(
       {this.currentMessage, final List<MessageModel> messages = const []})
       : _messages = messages;
 
@@ -525,7 +523,6 @@ class _$MessageStateImpl implements _MessageState {
   @override
   @JsonKey()
   List<MessageModel> get messages {
-    if (_messages is EqualUnmodifiableListView) return _messages;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_messages);
   }
@@ -536,10 +533,10 @@ class _$MessageStateImpl implements _MessageState {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MessageStateImpl &&
+            other is _$_MessageState &&
             (identical(other.currentMessage, currentMessage) ||
                 other.currentMessage == currentMessage) &&
             const DeepCollectionEquality().equals(other._messages, _messages));
@@ -552,14 +549,14 @@ class _$MessageStateImpl implements _MessageState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$MessageStateImplCopyWith<_$MessageStateImpl> get copyWith =>
-      __$$MessageStateImplCopyWithImpl<_$MessageStateImpl>(this, _$identity);
+  _$$_MessageStateCopyWith<_$_MessageState> get copyWith =>
+      __$$_MessageStateCopyWithImpl<_$_MessageState>(this, _$identity);
 }
 
 abstract class _MessageState implements MessageState {
   const factory _MessageState(
       {final MessageModel? currentMessage,
-      final List<MessageModel> messages}) = _$MessageStateImpl;
+      final List<MessageModel> messages}) = _$_MessageState;
 
   @override
   MessageModel? get currentMessage;
@@ -567,6 +564,6 @@ abstract class _MessageState implements MessageState {
   List<MessageModel> get messages;
   @override
   @JsonKey(ignore: true)
-  _$$MessageStateImplCopyWith<_$MessageStateImpl> get copyWith =>
+  _$$_MessageStateCopyWith<_$_MessageState> get copyWith =>
       throw _privateConstructorUsedError;
 }
