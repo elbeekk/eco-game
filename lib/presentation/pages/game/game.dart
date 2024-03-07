@@ -100,6 +100,15 @@ class _GamePageState extends State<GamePage> {
                             }
                             return ImageLayer(children: [
                               ...List.generate(
+                                  buildingState.existingBuildings.length,
+                                      (index) {
+                                    final current =
+                                    buildingState.existingBuildings[index];
+                                    return ExistingBuilding(
+                                      building: current,
+                                    );
+                                  }),
+                              ...List.generate(
                                 buildingState.constructingBuildings.length,
                                 (index) {
                                   final current = buildingState.constructingBuildings[index];
@@ -117,15 +126,7 @@ class _GamePageState extends State<GamePage> {
                                   building: current,
                                 );
                               }),
-                              ...List.generate(
-                                  buildingState.existingBuildings.length,
-                                  (index) {
-                                final current =
-                                    buildingState.existingBuildings[index];
-                                return ExistingBuilding(
-                                  building: current,
-                                );
-                              }),
+
                             ]);
                           },
                         ),

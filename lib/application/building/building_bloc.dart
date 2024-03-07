@@ -60,7 +60,18 @@ class BuildingBloc extends Bloc<BuildingEvent, BuildingState> {
     on<AddConstructingBuilding>((event, emit) async {
       final res = await buildingRepository.addConstructingBuilding(
           building: event.building);
+
       res.fold((l) {
+        List<BuildingModel> tempList = state.pendingBuildings.toList();
+        tempList.removeWhere((element) {
+          if (element.id == event.building.id) {
+            return true;
+          }
+          return false;
+        });
+        emit(
+          state.copyWith(pendingBuildings: tempList),
+        );
         emit(
           state.copyWith(
             constructingBuildings: [
@@ -90,24 +101,23 @@ class BuildingBloc extends Bloc<BuildingEvent, BuildingState> {
     });
 
     /// existing
-    on<AddExistingBuilding>((event, emit) {
-      BuildingEvent.removeConstructingBuilding(
-          building: event.building,
-          onError: (e) {},
-          onSuccess: () async {
-            final res = await buildingRepository.addExistingBuilding(
-                building: event.building);
-            res.fold((l) {
-              emit(
-                state.copyWith(
-                  existingBuildings: [
-                    ...state.existingBuildings,
-                    event.building
-                  ],
-                ),
-              );
-            }, (r) {});
-          });
+    on<AddExistingBuilding>((event, emit) async {
+      final res = await buildingRepository.addExistingBuilding(
+          building: event.building);
+      res.fold((l) {
+        List<BuildingModel> tempList = state.constructingBuildings.toList();
+        tempList.removeWhere((element) {
+          if (element.id == event.building.id) {
+            return true;
+          }
+          return false;
+        });
+        emit(
+          state.copyWith(
+              existingBuildings: [...state.existingBuildings, event.building],
+              constructingBuildings: tempList),
+        );
+      }, (r) {});
     });
 
     on<RemoveExistingBuilding>((event, emit) async {

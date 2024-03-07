@@ -68,6 +68,7 @@ class BuildingRepository implements BuildingInterface {
       return Right(e.message);
     }
   }
+
   @override
   Future<Either<bool, dynamic>> removeExistingBuilding(
       {required BuildingModel building}) async {
@@ -91,8 +92,15 @@ class BuildingRepository implements BuildingInterface {
       await FirebaseFirestore.instance
           .collection('users')
           .doc(LocalStorage.getMe()?.id)
+          .collection('pendingBuildings')
+          .doc(building.id)
+          .delete();
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(LocalStorage.getMe()?.id)
           .collection('constructingBuildings')
-          .add(building.toJson());
+          .doc(building.id)
+          .set(building.toJson());
       return const Left(true);
     } on FirebaseException catch (e) {
       return Right(e.message);
@@ -106,8 +114,15 @@ class BuildingRepository implements BuildingInterface {
       await FirebaseFirestore.instance
           .collection('users')
           .doc(LocalStorage.getMe()?.id)
+          .collection('constructingBuildings')
+          .doc(building.id)
+          .delete();
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(LocalStorage.getMe()?.id)
           .collection('existingBuildings')
-          .add(building.toJson());
+          .doc(building.id)
+          .set(building.toJson());
       return const Left(true);
     } on FirebaseException catch (e) {
       return Right(e.message);
