@@ -96,6 +96,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
                   .toString(),
               photoUrl: state.googleSignInAccount?.photoUrl,
               email: state.googleSignInAccount?.email,
+              points: 0
             ),
           );
           res.fold((l) {

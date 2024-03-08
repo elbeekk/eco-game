@@ -5,6 +5,7 @@ class UserModel {
   String? firstName;
   String? lastName;
   int? coins;
+  int? points;
   String? email;
   String? joinedDate;
   String? password;
@@ -16,6 +17,7 @@ class UserModel {
     this.firstName,
     this.lastName,
     this.coins,
+    this.points,
     this.email,
     this.joinedDate,
     this.password,
@@ -28,6 +30,7 @@ class UserModel {
     String? firstName,
     String? lastName,
     int? coins,
+    int? points,
     String? email,
     String? joinedDate,
     String? password,
@@ -39,6 +42,7 @@ class UserModel {
         firstName: firstName ?? this.firstName,
         lastName: lastName ?? this.lastName,
         coins: coins ?? this.coins,
+        points: points ?? this.points,
         email: email ?? this.email,
         joinedDate: joinedDate ?? this.joinedDate,
         password: password ?? this.password,
@@ -55,6 +59,7 @@ class UserModel {
     firstName: json["firstName"],
     lastName: json["lastName"],
     coins: json["coins"],
+    points: json["points"],
     email: json["email"],
     joinedDate: json["joinedDate"],
     password: json["password"],
@@ -67,6 +72,7 @@ class UserModel {
     "firstName": firstName,
     "lastName": lastName,
     "coins": coins,
+    "points": points,
     "email": email,
     "joinedDate": joinedDate,
     "password": password,

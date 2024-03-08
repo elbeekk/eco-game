@@ -32,6 +32,7 @@ dependencies:
   google_sign_in_web: ^0.12.3+2
   flutter_google_wallet: ^0.1.4
   jiffy: ^6.2.1
+  shimmer: ^3.0.0
 
 
 

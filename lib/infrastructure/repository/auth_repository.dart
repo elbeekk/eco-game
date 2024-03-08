@@ -153,7 +153,8 @@ class AuthRepository implements AuthInterface {
                     joinedDate:
                         DateTime.now().millisecondsSinceEpoch.toString(),
                     email: '',
-                    coins: 10000)
+                    coins: 10000,
+            points: 0)
                 .toJson());
       }
       final ress =
