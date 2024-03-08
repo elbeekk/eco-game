@@ -15,7 +15,7 @@ class MenuButton extends StatelessWidget {
               context.read<GameBloc>().add(const GameEvent.showMenu());
             },
             icon: Icon(
-              state.menuOpen ? Pixel.arrowleft : Pixel.arrowright,
+              state.menuOpen ? Pixel.arrowleft : Pixel.menu,
               color: Colors.orange,
             ));
       },

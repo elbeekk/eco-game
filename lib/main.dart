@@ -68,7 +68,7 @@ class _MyAppState extends State<MyApp> {
             create: (context) => MessageBloc(),
           ),
         ],
-        child: (LocalStorage.getMe()?.email == null)
+        child: (LocalStorage.getMe()?.id == null)
             ? const LoginPage()
             : const GamePage(),
       ),

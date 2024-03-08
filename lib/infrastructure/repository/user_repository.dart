@@ -15,7 +15,7 @@ class UserRepository implements UserInterface {
           .doc(LocalStorage.getMe()?.id)
           .get();
       final user = UserModel.fromJson(res.data() ?? {});
-      if ((user.coins ?? 0) + money > 0) {
+      if ((user.coins ?? 0) + money >= 0) {
         await FirebaseFirestore.instance
             .collection('users')
             .doc(LocalStorage.getMe()?.id)

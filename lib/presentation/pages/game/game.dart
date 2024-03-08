@@ -59,15 +59,15 @@ class _GamePageState extends State<GamePage> {
       child: BlocBuilder<SettingsBloc, SettingsState>(
         builder: (context, settingsState) {
           return FGBGNotifier(
-
             onEvent: (value) async {
               if (value == FGBGType.background) {
                 context
                     .read<SettingsBloc>()
                     .add(const SettingsEvent.musicMute());
-
               } else {
-                context.read<BuildingBloc>().add(const BuildingEvent.getAll(),);
+                context.read<BuildingBloc>().add(
+                      const BuildingEvent.getAll(),
+                    );
                 context
                     .read<SettingsBloc>()
                     .add(const SettingsEvent.musicUnmute());
@@ -95,28 +95,35 @@ class _GamePageState extends State<GamePage> {
                       children: [
                         BlocBuilder<BuildingBloc, BuildingState>(
                           builder: (context, buildingState) {
-                            if(buildingState.existingBuildings.isEmpty&&buildingState.constructingBuildings.isEmpty&&buildingState.pendingBuildings.isEmpty) {
-                              context.read<BuildingBloc>().add(const BuildingEvent.getAll(),);
+                            if (buildingState.existingBuildings.isEmpty &&
+                                buildingState.constructingBuildings.isEmpty &&
+                                buildingState.pendingBuildings.isEmpty) {
+                              context.read<BuildingBloc>().add(
+                                    const BuildingEvent.getAll(),
+                                  );
                             }
                             return ImageLayer(children: [
                               ...List.generate(
-                                  buildingState.existingBuildings.length,
-                                      (index) {
-                                    final current =
-                                    buildingState.existingBuildings[index];
-                                    return ExistingBuilding(
-                                      building: current,
-                                    );
-                                  }),
-                              ...List.generate(
                                 buildingState.constructingBuildings.length,
-                                (index) {
-                                  final current = buildingState.constructingBuildings[index];
+                                    (index) {
+                                  final current = buildingState
+                                      .constructingBuildings[index];
                                   return ConstructingBuilding(
                                     building: current,
                                   );
                                 },
                               ),
+                              ...List.generate(
+                                  buildingState.existingBuildings.length,
+                                  (index) {
+                                final current = buildingState
+                                    .existingBuildings.reversed
+                                    .toList()[index];
+                                return ExistingBuilding(
+                                  building: current,
+                                );
+                              }),
+
                               ...List.generate(
                                   buildingState.pendingBuildings.length,
                                   (index) {
@@ -126,7 +133,6 @@ class _GamePageState extends State<GamePage> {
                                   building: current,
                                 );
                               }),
-
                             ]);
                           },
                         ),

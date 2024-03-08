@@ -12,16 +12,20 @@ class BuildingRepository implements BuildingInterface {
   Future<Either<bool, dynamic>> addPendingBuilding(
       {required BuildingModel building}) async {
     try {
-      final res =
-          await userRepository.addMoney(money: 0 - (building.price ?? 0));
+      final res = await userRepository.addMoney(
+        money: 0 - (building.price ?? 0),
+      );
       res.fold((l) async {
-        await FirebaseFirestore.instance
-            .collection('users')
-            .doc(LocalStorage.getMe()?.id)
-            .collection('pendingBuildings')
-            .doc(building.id)
-            .set(building.toJson());
-        return const Left(true);
+        if (l) {
+          await FirebaseFirestore.instance
+              .collection('users')
+              .doc(LocalStorage.getMe()?.id)
+              .collection('pendingBuildings')
+              .doc(building.id)
+              .set(building.toJson());
+          return const Left(true);
+        }
+        return const Left(false);
       }, (r) {
         return Right(r);
       });
@@ -92,15 +96,15 @@ class BuildingRepository implements BuildingInterface {
       await FirebaseFirestore.instance
           .collection('users')
           .doc(LocalStorage.getMe()?.id)
-          .collection('pendingBuildings')
-          .doc(building.id)
-          .delete();
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(LocalStorage.getMe()?.id)
           .collection('constructingBuildings')
           .doc(building.id)
           .set(building.toJson());
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(LocalStorage.getMe()?.id)
+          .collection('pendingBuildings')
+          .doc(building.id)
+          .delete();
       return const Left(true);
     } on FirebaseException catch (e) {
       return Right(e.message);

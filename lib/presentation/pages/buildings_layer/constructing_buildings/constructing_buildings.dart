@@ -157,7 +157,7 @@ class _ConstructingBuildingState extends State<ConstructingBuilding> {
                         if(percent>=1.0){
                           percent = 1.0;
                         }
-                        if (endTime < now) {
+                        if (endTime <= now) {
                           context.read<BuildingBloc>().add(
                               BuildingEvent.addExistingBuilding(
                                   building: widget.building,
@@ -166,7 +166,7 @@ class _ConstructingBuildingState extends State<ConstructingBuilding> {
                         }
 
                         return AnimatedOpacity(
-                          opacity: state.time.second.isOdd ? .7 : .5,
+                          opacity: state.time.second.isOdd ? .9 : .4,
                           duration: const Duration(seconds: 1),
                           child: Container(
                             padding: const EdgeInsets.all(5),

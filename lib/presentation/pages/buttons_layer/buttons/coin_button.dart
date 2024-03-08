@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:eco_game/application/game/game_bloc.dart';
 import 'package:eco_game/infrastructure/models/class/user.dart';
@@ -24,27 +26,30 @@ class CoinButton extends StatelessWidget {
             children: [
               BlocBuilder<SettingsBloc, SettingsState>(
                 builder: (context, settingsState) {
-                  if(LocalStorage.getMe()?.id!=null) {
+                  if (LocalStorage.getMe()?.id != null) {
                     return StreamBuilder(
-                    stream: FirebaseFirestore.instance
-                        .collection('users')
-                        .doc(LocalStorage.getMe()?.id ?? '')
-                        .snapshots(),
-                    builder: (context, snapshot) {
-                      LocalStorage.setMe(
-                          UserModel.fromJson(snapshot.data?.data() ?? {}));
-                      return Text(
-                        "${snapshot.data?['coins']}",
-                        style: GoogleFonts.vt323(
-                          color: Colors.yellow,
-                          fontSize:
-                              (24 + 2 * settingsState.textSize).toDouble(),
-                        ),
-                      );
-                    },
-                  );
+                        stream: FirebaseFirestore.instance
+                            .collection('users')
+                            .doc(LocalStorage.getMe()?.id ?? '')
+                            .snapshots(),
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            LocalStorage.setMe(UserModel.fromJson(
+                                snapshot.data?.data() ?? {}));
+                            return Text(
+                              "${LocalStorage.getMe()?.coins}",
+                              style: GoogleFonts.vt323(
+                                color: Colors.yellow,
+                                fontSize: (24 + 2 * settingsState.textSize)
+                                    .toDouble(),
+                              ),
+                            );
+                          }
+                          return const Text("data");
+                        });
                   }
-                  return Text("${LocalStorage.getMe()?.id}\n${LocalStorage.getGuestId()}");
+                  return Text(
+                      "${LocalStorage.getMe()?.id}\n${LocalStorage.getGuestId()}");
                 },
               ),
               const Icon(

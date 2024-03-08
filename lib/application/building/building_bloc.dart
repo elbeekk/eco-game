@@ -41,12 +41,14 @@ class BuildingBloc extends Bloc<BuildingEvent, BuildingState> {
           building: event.building);
       res.fold((l) {
         List<BuildingModel> tempList = state.pendingBuildings.toList();
+        print("before $tempList");
         tempList.removeWhere((element) {
           if (element.id == event.building.id) {
             return true;
           }
           return false;
         });
+        print("after $tempList");
         emit(
           state.copyWith(pendingBuildings: tempList),
         );
@@ -60,25 +62,21 @@ class BuildingBloc extends Bloc<BuildingEvent, BuildingState> {
     on<AddConstructingBuilding>((event, emit) async {
       final res = await buildingRepository.addConstructingBuilding(
           building: event.building);
-
       res.fold((l) {
         List<BuildingModel> tempList = state.pendingBuildings.toList();
+        print("before $tempList");
         tempList.removeWhere((element) {
           if (element.id == event.building.id) {
             return true;
           }
           return false;
         });
+        print("after $tempList");
         emit(
-          state.copyWith(pendingBuildings: tempList),
-        );
-        emit(
-          state.copyWith(
-            constructingBuildings: [
-              ...state.constructingBuildings,
-              event.building
-            ],
-          ),
+          state.copyWith(constructingBuildings: [
+            ...state.constructingBuildings,
+            event.building
+          ], pendingBuildings: tempList),
         );
       }, (r) {});
     });

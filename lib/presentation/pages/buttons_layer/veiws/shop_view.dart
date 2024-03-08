@@ -132,7 +132,7 @@ class ShopView extends StatelessWidget {
                                   final current = shopItems[index];
 
                                   final canBuy =
-                                      (LocalStorage.getMe()?.coins ?? 0) >
+                                      (LocalStorage.getMe()?.coins ?? 0) >=
                                           (current.price ?? 0);
                                   return Opacity(
                                     opacity: canBuy ? 1 : .7,
@@ -273,18 +273,18 @@ class ShopView extends StatelessWidget {
                                                                   BuildingModel(),
                                                               onError: (String
                                                                   error) {},
-                                                              onSuccess: () {
-                                                                Navigator.pop(
-                                                                    context);
-                                                              },
+                                                              onSuccess: () {},
                                                             ),
                                                           );
-                                                      context
-                                                          .read<ShopBloc>()
-                                                          .add(ShopEvent.select(
-                                                              shopState
-                                                                      .selected ??
-                                                                  BuildingModel()));
+                                                      // context
+                                                      //     .read<ShopBloc>()
+                                                      //     .add(
+                                                      //       ShopEvent.select(
+                                                      //         shopState
+                                                      //                 .selected ??
+                                                      //             BuildingModel(),
+                                                      //       ),
+                                                      //     );
                                                     },
                                               style: ElevatedButton.styleFrom(
                                                   shape: RoundedRectangleBorder(
