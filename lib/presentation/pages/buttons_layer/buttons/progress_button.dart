@@ -509,6 +509,7 @@ class ProgressButton extends StatelessWidget {
                         }
                         final current = state.user;
                         return AlertDialog(
+                          backgroundColor: const Color(0xffC0D470),
                           contentPadding: EdgeInsets.zero,
                           content: ClipRRect(
                               borderRadius: BorderRadius.circular(10),
@@ -523,7 +524,7 @@ class ProgressButton extends StatelessWidget {
                                   Positioned(
                                       top: 0,
                                       left: 0,
-                                      child: Container(
+                                      child: SizedBox(
                                         width:
                                             MediaQuery.sizeOf(context).width *
                                                 0.5,
