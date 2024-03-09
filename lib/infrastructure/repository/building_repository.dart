@@ -135,11 +135,11 @@ class BuildingRepository implements BuildingInterface {
 
   @override
   Future<Either<List<BuildingModel>, dynamic>> getBuildings(
-      {required BuildingType type}) async {
+      {required BuildingType type,required String docId}) async {
     try {
       final res = await FirebaseFirestore.instance
           .collection('users')
-          .doc(LocalStorage.getMe()?.id)
+          .doc(docId)
           .collection('${type.name.toLowerCase()}Buildings')
           .get();
       return Left(res.docs

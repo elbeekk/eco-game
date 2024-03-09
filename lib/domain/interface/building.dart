@@ -29,5 +29,5 @@ abstract class BuildingInterface {
   });
 
   Future<Either<List<BuildingModel>, dynamic>> getBuildings(
-      {required BuildingType type});
+      {required BuildingType type,required String docId});
 }
