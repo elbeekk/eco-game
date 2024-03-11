@@ -26,7 +26,7 @@ class ResourceView extends StatelessWidget {
           Map<String, double> consumptionData = {};
           List<BuildingModel> income = state.existingBuildings.where((element) {
             if ((element.energy ?? 0) >= 0) {
-              incomeAll += element.energy?.toDouble() ?? 0;
+              incomeAll += element.energy?.abs().toDouble() ?? 0;
               incomeData.update(element.name ?? '',
                   (value) => value + (element.energy ?? 0).abs().toDouble(),
                   ifAbsent: () {
@@ -39,7 +39,7 @@ class ResourceView extends StatelessWidget {
           List<BuildingModel> consumption =
               state.existingBuildings.where((element) {
             if ((element.energy ?? 0) <= 0) {
-              consumptionAll += element.energy?.toDouble() ?? 0;
+              consumptionAll += element.energy?.abs().toDouble() ?? 0;
               log(consumptionData.toString());
               consumptionData.update(element.name ?? '',
                   (value) => value + (element.energy ?? 0).abs().toDouble(),
@@ -66,87 +66,91 @@ class ResourceView extends StatelessWidget {
                 borderRadius: BorderRadius.circular(7),
                 color: Colors.grey.shade100,
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  if (incomeData.isNotEmpty)
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          'Income',
-                          style: TextStyle(
-                              color: Colors.green.shade300,
-                              fontSize: 17,
-                              letterSpacing: 1.1),
-                        ),
-                        PieChart(
-                          colorList: [
-                            Colors.green.shade100,
-                            Colors.green.shade300,
-                            Colors.green.shade500,
-                            Colors.green.shade700,
-                            Colors.green.shade900,
-                          ],
-                          chartRadius:
-                              MediaQuery.sizeOf(context).height * 0.3 > 200
-                                  ? 200
-                                  : MediaQuery.sizeOf(context).height * 0.3,
-                          dataMap: incomeData,
-                          chartType: ChartType.disc,
-                          legendOptions: const LegendOptions(
-                            legendPosition: LegendPosition.bottom,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 15),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    if (incomeData.isNotEmpty)
+                      Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            'Income +${incomeAll.toInt()}',
+                            style: TextStyle(
+                                color: Colors.green.shade300,
+                                fontSize: 17,
+                                letterSpacing: 1.1),
                           ),
-                        ),
-                      ],
-                    ),
-                  Column(
-                    children: [
-                      Expanded(
-                        child: Shimmer.fromColors(
-                          baseColor: Colors.green,
-                          direction: ShimmerDirection.ttb,
-                          highlightColor: Colors.red,
-                          child: const VerticalDivider(
-                            indent: 50,
-                            endIndent: 50,
+                          PieChart(
+                            colorList: [
+                              Colors.green.shade100,
+                              Colors.green.shade300,
+                              Colors.green.shade500,
+                              Colors.green.shade700,
+                              Colors.green.shade900,
+                            ],
+                            chartRadius:
+                                MediaQuery.sizeOf(context).height * 0.3 > 200
+                                    ? 200
+                                    : MediaQuery.sizeOf(context).height * 0.3,
+                            dataMap: incomeData,
+                            chartType: ChartType.disc,
+                            legendOptions: const LegendOptions(
+                              legendPosition: LegendPosition.bottom,
+                            ),
                           ),
-                        ),
+                        ],
                       ),
-                    ],
-                  ),
-                  if (consumptionData.isNotEmpty)
                     Column(
-                      mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text(
-                          'Consumption',
-                          style: TextStyle(
-                              color: Colors.red.shade300,
-                              fontSize: 17,
-                              letterSpacing: 1.1),
-                        ),
-                        PieChart(
-                          colorList: [
-                            Colors.red.shade100,
-                            Colors.red.shade300,
-                            Colors.red.shade500,
-                            Colors.red.shade700,
-                            Colors.red.shade900,
-                          ],
-                          chartRadius:
-                              MediaQuery.sizeOf(context).height * 0.3 > 200
-                                  ? 200
-                                  : MediaQuery.sizeOf(context).height * 0.3,
-                          dataMap: consumptionData,
-                          chartType: ChartType.disc,
-                          legendOptions: const LegendOptions(
-                            legendPosition: LegendPosition.bottom,
+                        Expanded(
+                          child: Shimmer.fromColors(
+                            baseColor: Colors.green,
+                            direction: ShimmerDirection.ttb,
+                            highlightColor: Colors.red,
+                            child: const VerticalDivider(
+                              indent: 50,
+                              endIndent: 50,
+                            ),
                           ),
                         ),
                       ],
                     ),
-                ],
+                    if (consumptionData.isNotEmpty)
+                      Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            'Consumption -${consumptionAll.toInt()}',
+                            style: TextStyle(
+                                color: Colors.red.shade300,
+                                fontSize: 17,
+                                letterSpacing: 1.1),
+                          ),
+                          PieChart(
+                            colorList: [
+                              Colors.red.shade100,
+                              Colors.red.shade300,
+                              Colors.red.shade500,
+                              Colors.red.shade700,
+                              Colors.red.shade900,
+                            ],
+                            chartRadius:
+                                MediaQuery.sizeOf(context).height * 0.3 > 200
+                                    ? 200
+                                    : MediaQuery.sizeOf(context).height * 0.3,
+                            dataMap: consumptionData,
+                            chartType: ChartType.disc,
+                            legendOptions: const LegendOptions(
+                              legendPosition: LegendPosition.bottom,
+                            ),
+                          ),
+                        ],
+                      ),
+                  ],
+                ),
               ),
             ),
           );

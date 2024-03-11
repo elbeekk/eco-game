@@ -28,7 +28,7 @@ class LocalData {
         image: "assets/images/game_assets/buildings/consumers/factory.png",
         description:
             "A factory for manufacturing goods. Requires energy for machinery, lighting, and heating.",
-        energy: 50,
+        energy: -50,
         duration: 3,
         price: 8000,
         points: 80),

@@ -113,7 +113,7 @@ class _GamePageState extends State<GamePage> {
                                 .existingBuildings
                                 .where((element) {
                               if ((element.energy ?? 0) >= 0) {
-                                incomeAll += element.energy?.toDouble() ?? 0;
+                                incomeAll += element.energy?.abs().toDouble() ?? 0;
                                 incomeData.update(
                                     element.name ?? '',
                                     (value) =>
@@ -131,7 +131,7 @@ class _GamePageState extends State<GamePage> {
                                 .where((element) {
                               if ((element.energy ?? 0) <= 0) {
                                 consumptionAll +=
-                                    element.energy?.toDouble() ?? 0;
+                                    element.energy?.abs().toDouble() ?? 0;
                                 consumptionData.update(
                                     element.name ?? '',
                                     (value) =>

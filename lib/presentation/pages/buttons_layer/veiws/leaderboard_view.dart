@@ -94,8 +94,9 @@ class LeaderboardView extends StatelessWidget {
                             ],
                           ),
                           SizedBox(
-                            height:
-                                MediaQuery.sizeOf(context).height> 500?MediaQuery.sizeOf(context).height * 0.12:MediaQuery.sizeOf(context).height * 0.25,
+                            height: MediaQuery.sizeOf(context).height > 500
+                                ? MediaQuery.sizeOf(context).height * 0.12
+                                : MediaQuery.sizeOf(context).height * 0.25,
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.end,
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -433,9 +434,12 @@ class LeaderboardView extends StatelessWidget {
                   children: [
                     ImageLayer(
                       children: List.generate(
-                          state.buildings.length,
-                          (index) => ExistingBuilding(
-                              building: state.buildings[index])),
+                        state.buildings.length,
+                        (index) => ExistingBuilding(
+                          building: state.buildings[index],
+                          isView: true,
+                        ),
+                      ),
                     ),
                     Positioned(
                         top: 0,
