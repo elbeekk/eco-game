@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <base href="/">
+
+    <meta charset="UTF-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="description" content="A new Flutter project.">
+    <meta name="google-signin-client_id"
+          content="1041174152296-pp9ugcjuov83c3nannoqa9d0ka7j4rsv.apps.googleusercontent.com">
+    <!-- iOS meta tags & icons -->
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="eco_game">
+    <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png"/>
+
+    <title>Eco Game</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+    <script type="module">
+    import { initializeApp } from "firebase/app";
+    import { getAnalytics } from "firebase/analytics";
+    const firebaseConfig = {
+      apiKey: "AIzaSyAWlHysBdU8CC8piBXlVhps_JL6WBcAU08",
+      authDomain: "eco-game-780c7.firebaseapp.com",
+      projectId: "eco-game-780c7",
+      storageBucket: "eco-game-780c7.appspot.com",
+      messagingSenderId: "1041174152296",
+      appId: "1:1041174152296:web:b775847fd82785e4a7e7dd",
+      measurementId: "G-CN5M1K6D2M"
+    };
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+
+    </script>
+    <script>
+    // The value below is injected by flutter build, do not touch.
+    const serviceWorkerVersion = "2493394392";
+
+    </script>
+    <!-- This script adds the flutter initialization JS code -->
+    <script src="flutter.js" defer></script>
+</head>
+<body>
+<div class="loader">
+    <svg viewBox="0 0 80 80">
+        <circle id="test" cx="40" cy="40" r="32"></circle>
+    </svg>
+</div>
+
+<div class="loader triangle">
+    <svg viewBox="0 0 86 80">
+        <polygon points="43 8 79 72 7 72"></polygon>
+    </svg>
+</div>
+
+<div class="loader">
+    <svg viewBox="0 0 80 80">
+        <rect x="8" y="8" width="64" height="64"></rect>
+    </svg>
+</div>
+
+<!-- dribbble -->
+<a class="dribbble" href="https://dribbble.com/shots/5878367-Loaders" target="_blank"><img
+        src="https://cdn.dribbble.com/assets/dribbble-ball-mark-2bd45f09c2fb58dbbfb44766d5d1d07c5a12972d602ef8b32204d28fa3dda554.svg"
+        alt=""></a>
+
+<script>
+    window.addEventListener('load', function(ev) {
+      // Download main.dart.js
+      _flutter.loader.loadEntrypoint({
+        serviceWorker: {
+          serviceWorkerVersion: serviceWorkerVersion,
+        },
+        onEntrypointLoaded: function(engineInitializer) {
+          engineInitializer.initializeEngine().then(function(appRunner) {
+            appRunner.runApp();
+          });
+        }
+      });
+    });
+
+</script>
+</body>
+</html>
