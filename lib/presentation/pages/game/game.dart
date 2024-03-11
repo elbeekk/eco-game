@@ -157,7 +157,7 @@ class _GamePageState extends State<GamePage> {
                                     .existingBuildings.reversed
                                     .toList()[index];
                                 return ExistingBuilding(
-                                  building: current,
+                                  building: current, contekst: context,
                                 );
                               }),
                               if (incomeAll < consumptionAll)

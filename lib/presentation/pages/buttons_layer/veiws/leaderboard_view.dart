@@ -436,6 +436,7 @@ class LeaderboardView extends StatelessWidget {
                       children: List.generate(
                         state.buildings.length,
                         (index) => ExistingBuilding(
+                          contekst: context,
                           building: state.buildings[index],
                           isView: true,
                         ),
