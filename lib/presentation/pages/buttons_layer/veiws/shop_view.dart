@@ -26,7 +26,7 @@ class ShopView extends StatelessWidget {
             milliseconds: 200,
           ),
           height:
-              gameState.shopOpen ? MediaQuery.sizeOf(context).height * 0.49 : 0,
+              gameState.shopOpen ? MediaQuery.sizeOf(context).height * 0.44 : 0,
           constraints: const BoxConstraints(maxHeight: 190),
           width: MediaQuery.sizeOf(context).width,
           child: Row(
@@ -247,7 +247,6 @@ class ShopView extends StatelessWidget {
                                                           0)
                                                   ? null
                                                   : () {
-                                                      Navigator.pop(context);
                                                       context
                                                           .read<BuildingBloc>()
                                                           .add(
@@ -273,7 +272,9 @@ class ShopView extends StatelessWidget {
                                                                   BuildingModel(),
                                                               onError: (String
                                                                   error) {},
-                                                              onSuccess: () {},
+                                                              onSuccess: () {
+                                                                Navigator.pop(context);
+                                                              },
                                                             ),
                                                           );
                                                       // context

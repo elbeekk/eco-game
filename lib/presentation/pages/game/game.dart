@@ -15,7 +15,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_fgbg/flutter_fgbg.dart';
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+import 'package:shimmer/shimmer.dart';
 
+import '../../../infrastructure/models/class/building.dart';
 import '../buildings_layer/constructing_buildings/constructing_buildings.dart';
 import '../buildings_layer/pending_buildings/pending_building.dart';
 
@@ -102,10 +105,53 @@ class _GamePageState extends State<GamePage> {
                                     const BuildingEvent.getAll(),
                                   );
                             }
+                            double incomeAll = 0;
+                            double consumptionAll = 0;
+                            Map<String, double> incomeData = {};
+                            Map<String, double> consumptionData = {};
+                            List<BuildingModel> income = buildingState
+                                .existingBuildings
+                                .where((element) {
+                              if ((element.energy ?? 0) >= 0) {
+                                incomeAll += element.energy?.toDouble() ?? 0;
+                                incomeData.update(
+                                    element.name ?? '',
+                                    (value) =>
+                                        value +
+                                        (element.energy ?? 0).abs().toDouble(),
+                                    ifAbsent: () {
+                                  return element.energy?.abs().toDouble() ?? 0;
+                                });
+                                return true;
+                              }
+                              return false;
+                            }).toList();
+                            List<BuildingModel> consumption = buildingState
+                                .existingBuildings
+                                .where((element) {
+                              if ((element.energy ?? 0) <= 0) {
+                                consumptionAll +=
+                                    element.energy?.toDouble() ?? 0;
+                                consumptionData.update(
+                                    element.name ?? '',
+                                    (value) =>
+                                        value +
+                                        (element.energy ?? 0).abs().toDouble(),
+                                    ifAbsent: () {
+                                  return element.energy?.abs().toDouble() ?? 0;
+                                });
+                                return true;
+                              }
+                              return false;
+                            }).toList();
+                            log("income => $incomeData");
+                            log("consumption => $consumptionData");
+                            log("incomeALL => $incomeAll");
+                            log("consumptionALL => $consumptionAll");
                             return ImageLayer(children: [
                               ...List.generate(
                                 buildingState.constructingBuildings.length,
-                                    (index) {
+                                (index) {
                                   final current = buildingState
                                       .constructingBuildings[index];
                                   return ConstructingBuilding(
@@ -123,7 +169,26 @@ class _GamePageState extends State<GamePage> {
                                   building: current,
                                 );
                               }),
-
+                              if (incomeAll < consumptionAll)
+                                ...List.generate(
+                                    buildingState.existingBuildings.length,
+                                    (index) {
+                                  final current = buildingState
+                                      .existingBuildings.reversed
+                                      .toList()[index];
+                                  return Positioned(
+                                    top: (current.positionY ?? 0) - 35,
+                                    left: (current.positionX ?? 0) + 37,
+                                    child: Shimmer.fromColors(
+                                      highlightColor: Colors.orange.shade400,
+                                      baseColor: Colors.grey.shade700,
+                                      child: const Icon(
+                                        MaterialCommunityIcons.lightning_bolt,
+                                        size: 30,
+                                      ),
+                                    ),
+                                  );
+                                }),
                               ...List.generate(
                                   buildingState.pendingBuildings.length,
                                   (index) {

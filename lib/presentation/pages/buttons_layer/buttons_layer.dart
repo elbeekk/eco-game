@@ -1,12 +1,15 @@
 import 'package:eco_game/application/game/game_bloc.dart';
+import 'package:eco_game/application/leaderboard/leaderboard_bloc.dart';
 import 'package:eco_game/presentation/pages/buttons_layer/buttons/coin_button.dart';
 import 'package:eco_game/presentation/pages/buttons_layer/buttons/menu_button.dart';
-import 'package:eco_game/presentation/pages/buttons_layer/buttons/progress_button.dart';
+import 'package:eco_game/presentation/pages/buttons_layer/buttons/resource_button.dart';
+import 'package:eco_game/presentation/pages/buttons_layer/buttons/leaderboard_button.dart';
 import 'package:eco_game/presentation/pages/buttons_layer/buttons/shop_button.dart';
 import 'package:eco_game/presentation/pages/buttons_layer/veiws/coin_view.dart';
 import 'package:eco_game/presentation/pages/buttons_layer/veiws/menu_view.dart';
 import 'package:eco_game/presentation/pages/buttons_layer/veiws/shop_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ButtonsLayer extends StatefulWidget {
@@ -17,29 +20,24 @@ class ButtonsLayer extends StatefulWidget {
 }
 
 class _ButtonsLayerState extends State<ButtonsLayer> {
-
   final shopButton = GlobalKey();
   final generators = GlobalKey();
-
-
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GameBloc, GameState>(
       builder: (context, state) {
-        return Column(
-          children: [
-            Expanded(
-              child: Row(
-                children: [
-                  const MenuView(),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.all(10),
+        return GestureDetector(
+          onTap: () {
+            context.read<GameBloc>().add(const GameEvent.closeAll());
+          },
+          child: Column(
+            children: [
+              Expanded(
+                child: Row(
+                  children: [
+                    const MenuView(),
+                    Expanded(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -50,7 +48,8 @@ class _ButtonsLayerState extends State<ButtonsLayer> {
                               const Column(
                                 children: [
                                   MenuButton(),
-                                  ProgressButton(),
+                                  LeaderboardButton(),
+                                  ResourceButton(),
                                 ],
                               ),
                               const Spacer(),
@@ -69,7 +68,7 @@ class _ButtonsLayerState extends State<ButtonsLayer> {
                                   return const SizedBox.shrink();
                                 },
                               ),
-                              const CoinView(),
+                              // const CoinView(),
                             ],
                           ),
                           Row(
@@ -83,14 +82,14 @@ class _ButtonsLayerState extends State<ButtonsLayer> {
                         ],
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            ShopView(
-              key: generators,
-            ),
-          ],
+              ShopView(
+                key: generators,
+              ),
+            ],
+          ),
         );
       },
     );

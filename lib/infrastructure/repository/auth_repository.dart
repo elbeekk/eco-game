@@ -79,8 +79,9 @@ class AuthRepository implements AuthInterface {
 
   @override
   Future<Either<GoogleSignInAccount?, dynamic>> googleLogin() async {
-    //ss
-    final GoogleSignIn googleSignIn = GoogleSignIn();
+    final GoogleSignIn googleSignIn = GoogleSignIn(
+        // clientId: "1041174152296-1nm56vc0ejcm6tm8fu2f5i3jmd1hkoub.apps.googleusercontent.com"
+    );
     try {
       final GoogleSignInAccount? googleSignInAccount =
           await googleSignIn.signIn();

@@ -29,5 +29,16 @@ class UserRepository implements UserInterface {
     }
   }
 
+  @override
+  Future<Either<UserModel, dynamic>> getUser({required String id}) async {
+    try{
+      final res = await FirebaseFirestore.instance.collection('users').doc(id).get();
+      final user = UserModel.fromJson(res.data()??{});
+      return Left(user);
+    }catch(e) {
+      return Right(e);
+    }
+  }
+
 
 }

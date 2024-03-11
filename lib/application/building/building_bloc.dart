@@ -5,6 +5,8 @@ import 'package:eco_game/infrastructure/services/constants.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:uuid/uuid.dart';
 
+import '../../infrastructure/services/local_storage/local_storage.dart';
+
 part 'building_event.dart';
 
 part 'building_state.dart';
@@ -64,14 +66,12 @@ class BuildingBloc extends Bloc<BuildingEvent, BuildingState> {
           building: event.building);
       res.fold((l) {
         List<BuildingModel> tempList = state.pendingBuildings.toList();
-        print("before $tempList");
         tempList.removeWhere((element) {
           if (element.id == event.building.id) {
             return true;
           }
           return false;
         });
-        print("after $tempList");
         emit(
           state.copyWith(constructingBuildings: [
             ...state.constructingBuildings,
@@ -150,24 +150,30 @@ class BuildingBloc extends Bloc<BuildingEvent, BuildingState> {
     });
 
     on<GetAll>((event, emit) async {
-      final pending =
-          await buildingRepository.getBuildings(type: BuildingType.pending);
+      final pending = await buildingRepository.getBuildings(
+          type: BuildingType.pending, docId: LocalStorage.getMe()?.id ?? '');
 
       pending.fold((l) {
+        l.removeWhere((element) => element.id==null);
         emit(state.copyWith(pendingBuildings: l));
       }, (r) => null);
 
       final constructing = await buildingRepository.getBuildings(
-          type: BuildingType.constructing);
+          type: BuildingType.constructing,
+          docId: LocalStorage.getMe()?.id ?? '');
       constructing.fold((l) {
+        l.removeWhere((element) => element.id==null);
+
         emit(
           state.copyWith(constructingBuildings: l),
         );
       }, (r) => null);
 
-      final existing =
-          await buildingRepository.getBuildings(type: BuildingType.existing);
+      final existing = await buildingRepository.getBuildings(
+          type: BuildingType.existing, docId: LocalStorage.getMe()?.id ?? '');
       existing.fold((l) {
+        l.removeWhere((element) => element.id==null);
+
         emit(state.copyWith(existingBuildings: l));
       }, (r) => null);
     });

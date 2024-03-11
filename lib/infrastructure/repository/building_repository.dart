@@ -96,15 +96,15 @@ class BuildingRepository implements BuildingInterface {
       await FirebaseFirestore.instance
           .collection('users')
           .doc(LocalStorage.getMe()?.id)
-          .collection('constructingBuildings')
-          .doc(building.id)
-          .set(building.toJson());
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(LocalStorage.getMe()?.id)
           .collection('pendingBuildings')
           .doc(building.id)
           .delete();
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(LocalStorage.getMe()?.id)
+          .collection('constructingBuildings')
+          .doc(building.id)
+          .set(building.copyWith(date: DateTime.now().millisecondsSinceEpoch.toString()).toJson());
       return const Left(true);
     } on FirebaseException catch (e) {
       return Right(e.message);
@@ -135,18 +135,20 @@ class BuildingRepository implements BuildingInterface {
 
   @override
   Future<Either<List<BuildingModel>, dynamic>> getBuildings(
-      {required BuildingType type}) async {
+      {required BuildingType type,required String docId}) async {
     try {
       final res = await FirebaseFirestore.instance
           .collection('users')
-          .doc(LocalStorage.getMe()?.id)
+          .doc(docId)
           .collection('${type.name.toLowerCase()}Buildings')
           .get();
       return Left(res.docs
           .map(
-            (e) => BuildingModel.fromJson(
-              e.data(),
-            ),
+            (e) {
+              return BuildingModel.fromJson(
+                e.data(),
+            );
+            },
           )
           .toList());
     } on FirebaseException catch (e) {
