@@ -19,16 +19,17 @@ class BuildingBloc extends Bloc<BuildingEvent, BuildingState> {
     on<AddPendingBuilding>((event, emit) async {
       emit(state.copyWith(isBuyLoading: true));
       final id = const Uuid().v1();
+      final building = event.building.copyWith(
+        id: id,
+        date: DateTime.now().millisecondsSinceEpoch.toString(),
+      );
       final res = await buildingRepository.addPendingBuilding(
-        building: event.building.copyWith(
-          id: id,
-          date: DateTime.now().millisecondsSinceEpoch.toString(),
-        ),
+        building: building,
       );
       res.fold((l) async {
         emit(
           state.copyWith(
-            pendingBuildings: [...state.pendingBuildings, event.building],
+            pendingBuildings: [...state.pendingBuildings, building],
           ),
         );
         event.onSuccess.call();
@@ -64,6 +65,7 @@ class BuildingBloc extends Bloc<BuildingEvent, BuildingState> {
     on<AddConstructingBuilding>((event, emit) async {
       final res = await buildingRepository.addConstructingBuilding(
           building: event.building);
+      await userRepository.addPoints(points: event.building.points ?? 0);
       res.fold((l) {
         List<BuildingModel> tempList = state.pendingBuildings.toList();
         tempList.removeWhere((element) {
@@ -154,7 +156,7 @@ class BuildingBloc extends Bloc<BuildingEvent, BuildingState> {
           type: BuildingType.pending, docId: LocalStorage.getMe()?.id ?? '');
 
       pending.fold((l) {
-        l.removeWhere((element) => element.id==null);
+        l.removeWhere((element) => element.id == null);
         emit(state.copyWith(pendingBuildings: l));
       }, (r) => null);
 
@@ -162,7 +164,7 @@ class BuildingBloc extends Bloc<BuildingEvent, BuildingState> {
           type: BuildingType.constructing,
           docId: LocalStorage.getMe()?.id ?? '');
       constructing.fold((l) {
-        l.removeWhere((element) => element.id==null);
+        l.removeWhere((element) => element.id == null);
 
         emit(
           state.copyWith(constructingBuildings: l),
@@ -172,7 +174,7 @@ class BuildingBloc extends Bloc<BuildingEvent, BuildingState> {
       final existing = await buildingRepository.getBuildings(
           type: BuildingType.existing, docId: LocalStorage.getMe()?.id ?? '');
       existing.fold((l) {
-        l.removeWhere((element) => element.id==null);
+        l.removeWhere((element) => element.id == null);
 
         emit(state.copyWith(existingBuildings: l));
       }, (r) => null);

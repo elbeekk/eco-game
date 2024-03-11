@@ -6,10 +6,12 @@ class BuildingModel {
   String? image;
   double? positionX;
   double? positionY;
-  double? bottom;
+  int? bottom;
+  int? width;
+  int? height;
   int? price;
   int? energy;
-  int? people;
+  int? points;
   String? date;
   double? duration;
   String? description;
@@ -22,9 +24,11 @@ class BuildingModel {
     this.positionX,
     this.positionY,
     this.bottom,
+    this.width,
+    this.height,
     this.price,
     this.energy,
-    this.people,
+    this.points,
     this.date,
     this.duration,
     this.description,
@@ -37,10 +41,12 @@ class BuildingModel {
     String? image,
     double? positionX,
     double? positionY,
-    double? bottom,
+    int? bottom,
+    int? width,
+    int? height,
     int? price,
     int? energy,
-    int? people,
+    int? points,
     String? date,
     double? duration,
     String? description,
@@ -53,9 +59,11 @@ class BuildingModel {
         positionX: positionX ?? this.positionX,
         positionY: positionY ?? this.positionY,
         bottom: bottom ?? this.bottom,
+        width: width ?? this.width,
+        height: height ?? this.height,
         price: price ?? this.price,
         energy: energy ?? this.energy,
-        people: people ?? this.people,
+        points: points ?? this.points,
         date: date ?? this.date,
         duration: duration ?? this.duration,
         description: description ?? this.description,
@@ -72,10 +80,12 @@ class BuildingModel {
     image: json["image"],
     positionX: json["positionX"]?.toDouble(),
     positionY: json["positionY"]?.toDouble(),
-    bottom: json["bottom"]?.toDouble(),
+    bottom: json["bottom"],
+    width: json["width"],
+    height: json["height"],
     price: json["price"],
     energy: json["energy"],
-    people: json["people"],
+    points: json["points"],
     date: json["date"],
     duration: json["duration"]?.toDouble(),
     description: json["description"],
@@ -89,9 +99,11 @@ class BuildingModel {
     "positionX": positionX,
     "positionY": positionY,
     "bottom": bottom,
+    "width": width,
+    "height": height,
     "price": price,
     "energy": energy,
-    "people": people,
+    "points": points,
     "date": date,
     "duration": duration,
     "description": description,

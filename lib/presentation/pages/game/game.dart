@@ -149,16 +149,7 @@ class _GamePageState extends State<GamePage> {
                             log("incomeALL => $incomeAll");
                             log("consumptionALL => $consumptionAll");
                             return ImageLayer(children: [
-                              ...List.generate(
-                                buildingState.constructingBuildings.length,
-                                (index) {
-                                  final current = buildingState
-                                      .constructingBuildings[index];
-                                  return ConstructingBuilding(
-                                    building: current,
-                                  );
-                                },
-                              ),
+
                               ...List.generate(
                                   buildingState.existingBuildings.length,
                                   (index) {
@@ -189,15 +180,26 @@ class _GamePageState extends State<GamePage> {
                                     ),
                                   );
                                 }),
+
+                              ...List.generate(
+                                buildingState.constructingBuildings.length,
+                                    (index) {
+                                  final current = buildingState
+                                      .constructingBuildings[index];
+                                  return ConstructingBuilding(
+                                    building: current,
+                                  );
+                                },
+                              ),
                               ...List.generate(
                                   buildingState.pendingBuildings.length,
-                                  (index) {
-                                final current =
+                                      (index) {
+                                    final current =
                                     buildingState.pendingBuildings[index];
-                                return PendingBuilding(
-                                  building: current,
-                                );
-                              }),
+                                    return PendingBuilding(
+                                      building: current,
+                                    );
+                                  }),
                             ]);
                           },
                         ),

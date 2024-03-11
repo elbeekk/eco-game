@@ -24,6 +24,8 @@ class ConstructingBuilding extends StatefulWidget {
 class _ConstructingBuildingState extends State<ConstructingBuilding> {
   @override
   Widget build(BuildContext context) {
+    final width = widget.building.width?.toDouble() ?? 100;
+    final height = widget.building.height?.toDouble() ?? 100;
     return BlocProvider(
       create: (context) => ConstBuildingBloc(),
       child: Positioned(
@@ -33,87 +35,80 @@ class _ConstructingBuildingState extends State<ConstructingBuilding> {
             clipBehavior: Clip.none,
             children: [
               Container(
-                height: 100,
-                width: 100,
-                padding: const EdgeInsets.symmetric(horizontal: 12),
+                decoration: BoxDecoration(
+                    color: Colors.brown.withOpacity(.15),
+                    borderRadius: BorderRadius.circular(10)),
+                height: height,
+                width: width,
                 child: Stack(
                   children: [
-                    // Wrap(
-                    //   children: List.generate(
-                    //     6,
-                    //     (index) => SizedBox(
-                    //       height: 25,
-                    //       width: 25,
-                    //       child: Opacity(
-                    //         opacity: .8,
-                    //         child: Image.asset(
-                    //             "assets/images/game_assets/village/images/TERRAIN SET 1 - DAY.png"),
-                    //       ),
-                    //     ),
+                    // Positioned(
+                    //   bottom: 0,
+                    //   left: 0,
+                    //   child: Row(
+                    //     children: [
+                    //       Image.asset(
+                    //           'assets/images/game_assets/village/images/Road Signs/roadblock.png'),
+                    //       Image.asset(
+                    //           'assets/images/game_assets/village/images/Road Signs/roadblock.png'),
+                    //     ],
                     //   ),
                     // ),
-                    Positioned(
-                      top: -5,
-                      left: 20,
-                      child: Image.asset(
-                          'assets/images/game_assets/village/images/Road Signs/Sign Attention.png'),
-                    ),
-                    Positioned(
-                      top: -5,
-                      right: 20,
-                      child: Image.asset(
-                          'assets/images/game_assets/village/images/Road Signs/Sign Attention.png'),
-                    ),
-                    Positioned(
-                      bottom: 0,
-                      left: 0,
-                      child: Row(
-                        children: [
-                          Image.asset(
-                              'assets/images/game_assets/village/images/Road Signs/roadblock.png'),
-                          Image.asset(
-                              'assets/images/game_assets/village/images/Road Signs/roadblock.png'),
-                        ],
+                    // Positioned(
+                    //   // top: -40,
+                    //   left: 0,
+                    //   child: Row(
+                    //     children: [
+                    //       Image.asset(
+                    //           'assets/images/game_assets/village/images/Road Signs/roadblock.png'),
+                    //       Image.asset(
+                    //           'assets/images/game_assets/village/images/Road Signs/roadblock.png'),
+                    //     ],
+                    //   ),
+                    // ),
+                    ...List.generate(
+                      height ~/ 16,
+                      (index) => Positioned(
+                        right: 5,
+                        top: index * 14 + 5,
+                        child: Image.asset(
+                            'assets/images/game_assets/village/images/Road Signs/cone.png'),
                       ),
                     ),
-                    Positioned(
-                      // top: -40,
-                      left: 0,
-                      child: Row(
-                        children: [
-                          Image.asset(
-                              'assets/images/game_assets/village/images/Road Signs/roadblock.png'),
-                          Image.asset(
-                              'assets/images/game_assets/village/images/Road Signs/roadblock.png'),
-                        ],
+                    ...List.generate(
+                      height ~/ 16,
+                      (index) => Positioned(
+                        left: 5,
+                        top: index * 14 + 5,
+                        child: Image.asset(
+                            'assets/images/game_assets/village/images/Road Signs/cone.png'),
                       ),
                     ),
-                    Positioned(
-                      left: 0,
-                      top: 0,
-                      child: Column(
-                        children: [
-                          Image.asset(
-                              'assets/images/game_assets/village/images/Road Signs/cone.png'),
-                          Image.asset(
-                              'assets/images/game_assets/village/images/Road Signs/cone.png'),
-                          Image.asset(
-                              'assets/images/game_assets/village/images/Road Signs/cone.png'),
-                        ],
+                    ...List.generate(
+                      width ~/ 16,
+                      (index) => Positioned(
+                        top: 5,
+                        left: index * 14 + 5,
+                        child: Image.asset(
+                            'assets/images/game_assets/village/images/Road Signs/cone.png'),
                       ),
                     ),
-                    Positioned(
-                      right: 0,
-                      top: 0,
-                      child: Column(
-                        children: [
-                          Image.asset(
-                              'assets/images/game_assets/village/images/Road Signs/cone.png'),
-                          Image.asset(
-                              'assets/images/game_assets/village/images/Road Signs/cone.png'),
-                          Image.asset(
-                              'assets/images/game_assets/village/images/Road Signs/cone.png'),
-                        ],
+                    ...List.generate(
+                      width ~/ 16,
+                      (index) => Positioned(
+                        bottom: 5,
+                        right: index * 14 + 5,
+                        child: Image.asset(
+                            'assets/images/game_assets/village/images/Road Signs/cone.png'),
+                      ),
+                    ),
+                    ...List.generate(
+                      width ~/ 33,
+                      (index) => Positioned(
+                        top: height * 0.3,
+                        left: index * 30 + 15,
+                        child: Image.asset(
+                            'assets/images/game_assets/village/images/Road Signs/Sign Attention.png'),
                       ),
                     ),
                   ],
@@ -121,6 +116,7 @@ class _ConstructingBuildingState extends State<ConstructingBuilding> {
               ),
               Positioned(
                 top: -50,
+                left: -45 + (widget.building.width?.toDouble() ?? 100) * 0.5,
                 child: BlocBuilder<BuildingBloc, BuildingState>(
                   builder: (context, state) {
                     return BlocBuilder<ConstBuildingBloc, ConstBuildingState>(
@@ -154,7 +150,7 @@ class _ConstructingBuildingState extends State<ConstructingBuilding> {
                               ((widget.building.duration ?? 0) * 60).toInt(),
                         ).inMilliseconds;
                         double percent = (now - startTime) / duration;
-                        if(percent>=1.0){
+                        if (percent >= 1.0) {
                           percent = 1.0;
                         }
                         if (endTime <= now) {

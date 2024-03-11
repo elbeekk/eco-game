@@ -9,8 +9,10 @@ import 'package:eco_game/infrastructure/services/constants.dart';
 import 'package:eco_game/infrastructure/services/local_storage/local_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pixelarticons/pixel.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../../../../application/building/building_bloc.dart';
 
@@ -268,7 +270,7 @@ class ShopView extends StatelessWidget {
                                                                               .dx +
                                                                           MediaQuery.sizeOf(context).width /
                                                                               2 -
-                                                                          50) ??
+                                                                          50,) ??
                                                                   BuildingModel(),
                                                               onError: (String
                                                                   error) {},
@@ -366,6 +368,33 @@ class ShopView extends StatelessWidget {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
+                                      Shimmer.fromColors(
+                                        baseColor: Colors.cyan,
+                                        highlightColor: Colors.cyan.withOpacity(.5),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            const Icon(
+                                              Icons.leaderboard_outlined,
+                                            ),
+                                            BlocBuilder<SettingsBloc,
+                                                SettingsState>(
+                                              builder: (context, settingsState) {
+                                                return Text(
+                                                  " +${shopState.selected?.points} points",
+                                                  style: GoogleFonts.vt323(
+                                                      fontSize: (19 +
+                                                          2 *
+                                                              settingsState
+                                                                  .textSize)
+                                                          .toDouble()),
+                                                );
+                                              },
+                                            )
+                                          ],
+                                        ),
+                                      ),
                                       Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
@@ -380,7 +409,7 @@ class ShopView extends StatelessWidget {
                                               SettingsState>(
                                             builder: (context, settingsState) {
                                               return Text(
-                                                "${isGenerator ? "+" : ""}${shopState.selected?.energy} W/h",
+                                                " ${isGenerator ? "+" : ""}${shopState.selected?.energy} W/h",
                                                 style: GoogleFonts.vt323(
                                                     color: isGenerator
                                                         ? Colors.green
@@ -407,7 +436,7 @@ class ShopView extends StatelessWidget {
                                               SettingsState>(
                                             builder: (context, settingsState) {
                                               return Text(
-                                                "${shopState.selected?.duration} h",
+                                                " ${shopState.selected?.duration} h",
                                                 style: GoogleFonts.vt323(
                                                     color: Colors.orange,
                                                     fontSize: (19 +

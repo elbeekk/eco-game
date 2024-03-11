@@ -30,15 +30,33 @@ class UserRepository implements UserInterface {
   }
 
   @override
-  Future<Either<UserModel, dynamic>> getUser({required String id}) async {
-    try{
-      final res = await FirebaseFirestore.instance.collection('users').doc(id).get();
-      final user = UserModel.fromJson(res.data()??{});
-      return Left(user);
-    }catch(e) {
-      return Right(e);
+  Future<Either<bool, dynamic>> addPoints({required int points}) async {
+    try {
+      final res = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(LocalStorage.getMe()?.id)
+          .get();
+      final user = UserModel.fromJson(res.data() ?? {});
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(LocalStorage.getMe()?.id)
+          .update({"points": (user.points ?? 0) + points});
+      return const Left(true);
+    } on FirebaseException catch (e) {
+      debugPrint("addPoints error $e");
+      return Right(e.message);
     }
   }
 
-
+  @override
+  Future<Either<UserModel, dynamic>> getUser({required String id}) async {
+    try {
+      final res =
+          await FirebaseFirestore.instance.collection('users').doc(id).get();
+      final user = UserModel.fromJson(res.data() ?? {});
+      return Left(user);
+    } catch (e) {
+      return Right(e);
+    }
+  }
 }
