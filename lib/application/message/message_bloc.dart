@@ -21,12 +21,11 @@ class MessageBloc extends Bloc<MessageEvent, MessageState> {
         final res = await messageRepository.readMessage(
             messageModel: state.currentMessage ?? MessageModel());
         res.fold((l) {
-          if (l) {
             emit(
-              state.copyWith(messages: temp, currentMessage: null),
+              state.copyWith(messages: temp, currentMessage: temp.isNotEmpty?temp[0]:null),
             );
+            log("setting ${ temp.isNotEmpty?temp[0].toJson():null}");
             event.onSuccess.call();
-          }
         }, (r) {
           event.onError.call(r);
         });
@@ -49,8 +48,8 @@ class MessageBloc extends Bloc<MessageEvent, MessageState> {
             messages: tempMes,
           ),
         );
-        if (state.messages.isNotEmpty) {
-          emit(state.copyWith(currentMessage: state.messages[0]));
+        if (tempMes.isNotEmpty) {
+          emit(state.copyWith(currentMessage: tempMes[0]));
         }
         event.onSuccess.call();
       }, (r) {

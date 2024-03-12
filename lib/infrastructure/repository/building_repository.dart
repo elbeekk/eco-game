@@ -171,6 +171,7 @@ class BuildingRepository implements BuildingInterface {
       return Right(e.message);
     }
   }
+
   @override
   Future<Either<bool, dynamic>> upgradeRoof(
       {required BuildingModel building}) async {
@@ -185,5 +186,22 @@ class BuildingRepository implements BuildingInterface {
     } on FirebaseException catch (e) {
       return Right(e.message);
     }
+  }
+
+  @override
+  Future<Either<bool, dynamic>> updatePendingBuilding(
+      {required BuildingModel building}) async {
+    try {
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(LocalStorage.getMe()?.id ?? '')
+          .collection('pendingBuildings')
+          .doc(building.id)
+          .update(building.toJson());
+      return const Left(true);
+    } on FirebaseException catch (e) {
+      return Right(e.message);
+    }
+    throw UnimplementedError();
   }
 }

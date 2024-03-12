@@ -24,6 +24,8 @@ class PendingBuilding extends StatelessWidget {
               builder: (context, gameState) {
                 return Draggable(
                     onDragEnd: (details) {
+                      log("new ${details.offset.dx + gameState.currentPos.dx}");
+                      log("old ${building.positionX}");
                       context.read<BuildingBloc>().add(
                             BuildingEvent.updatePendingBuilding(
                               building: building.copyWith(
@@ -31,10 +33,15 @@ class PendingBuilding extends StatelessWidget {
                                       gameState.currentPos.dx,
                                   positionY: details.offset.dy +
                                       gameState.currentPos.dy),
-                              onError: (String error) {},
-                              onSuccess: () {},
+                              onError: (String error) {
+                                log(error);
+                              },
+                              onSuccess: () {
+                                log('succes');
+                              },
                             ),
                           );
+                      log('succes1');
                     },
                     childWhenDragging: const SizedBox.shrink(),
                     feedback: Stack(
@@ -64,21 +71,18 @@ class PendingBuilding extends StatelessWidget {
                                   width: 20,
                                 ),
                                 GestureDetector(
-                                  onTap: () {
-
-                                  },
+                                  onTap: () {},
                                   child: Container(
                                     decoration: BoxDecoration(
                                         color: Colors.green,
                                         boxShadow: [
                                           BoxShadow(
-                                              color: Colors.black
-                                                  .withOpacity(.2),
+                                              color:
+                                                  Colors.black.withOpacity(.2),
                                               spreadRadius: 1,
                                               blurRadius: 1)
                                         ],
-                                        borderRadius:
-                                        BorderRadius.circular(5)),
+                                        borderRadius: BorderRadius.circular(5)),
                                     child: const Icon(
                                       Icons.check,
                                       color: Colors.white,
@@ -101,6 +105,7 @@ class PendingBuilding extends StatelessWidget {
                         ),
                       ],
                     ),
+
                     child: Stack(
                       clipBehavior: Clip.none,
                       children: [
@@ -150,13 +155,13 @@ class PendingBuilding extends StatelessWidget {
                                     return GestureDetector(
                                       onTap: () {
                                         context.read<BuildingBloc>().add(
-                                          BuildingEvent
-                                              .addConstructingBuilding(
-                                            building: building,
-                                            onError: (String error) {},
-                                            onSuccess: () {},
-                                          ),
-                                        );
+                                              BuildingEvent
+                                                  .addConstructingBuilding(
+                                                building: building,
+                                                onError: (String error) {},
+                                                onSuccess: () {},
+                                              ),
+                                            );
                                       },
                                       child: Container(
                                         decoration: BoxDecoration(

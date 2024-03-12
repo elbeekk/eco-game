@@ -99,13 +99,11 @@ class _GamePageState extends State<GamePage> {
                       children: [
                         BlocBuilder<BuildingBloc, BuildingState>(
                           builder: (context, buildingState) {
-                            if (buildingState.existingBuildings.isEmpty &&
-                                buildingState.constructingBuildings.isEmpty &&
-                                buildingState.pendingBuildings.isEmpty) {
-                              context.read<BuildingBloc>().add(
-                                    const BuildingEvent.getAll(),
-                                  );
-                            }
+                            // if (DateTime.now().minute.isOdd) {
+                            //   context.read<BuildingBloc>().add(
+                            //         const BuildingEvent.getAll(),
+                            //       );
+                            // }
                             double incomeAll = 0;
                             double consumptionAll = 0;
                             Map<String, double> incomeData = {};
@@ -132,14 +130,14 @@ class _GamePageState extends State<GamePage> {
                                         value +
                                         (element.energy ?? 0).abs().toDouble(),
                                     ifAbsent: () {
-                                  log((element.energy?.abs().toDouble() ?? 0)
-                                      .toString());
+                                  // log((element.energy?.abs().toDouble() ?? 0)
+                                  //     .toString());
                                   return element.energy?.abs().toDouble() ?? 0;
                                 });
                               }
                             }
-                            log("income => $incomeData");
-                            log("consumption => $consumptionData");
+                            // log("income => $incomeData");
+                            // log("consumption => $consumptionData");
                             return ImageLayer(children: [
                               ...List.generate(
                                   buildingState.existingBuildings.length,
@@ -172,21 +170,36 @@ class _GamePageState extends State<GamePage> {
                                           context: context,
                                           builder: (context) => AlertDialog(
                                             shape: RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.circular(7),
+                                              borderRadius:
+                                                  BorderRadius.circular(7),
                                             ),
-                                            title: const Text('Not Enough Energy',style: TextStyle(color: Colors.red),),
-                                            content:
-                                                Text(LocalData.notEnoughEnergy,style: const TextStyle(fontSize: 17),),
+                                            title: const Text(
+                                              'Not Enough Energy',
+                                              style:
+                                                  TextStyle(color: Colors.red),
+                                            ),
+                                            content: Text(
+                                              LocalData.notEnoughEnergy,
+                                              style:
+                                                  const TextStyle(fontSize: 17),
+                                            ),
                                             actions: [
-                                              ElevatedButton(onPressed: (){
-                                                Navigator.pop(context);
-                                              }, 
+                                              ElevatedButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                  },
                                                   style: ElevatedButton.styleFrom(
-                                                    shape: RoundedRectangleBorder(
-                                                      borderRadius: BorderRadius.circular(7)
-                                                    )
-                                                  ),
-                                                  child: const Text('Ok',style: TextStyle(color: Colors.red),))
+                                                      shape:
+                                                          RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          7))),
+                                                  child: const Text(
+                                                    'Ok',
+                                                    style: TextStyle(
+                                                        color: Colors.red),
+                                                  ))
                                             ],
                                           ),
                                         );
@@ -224,22 +237,43 @@ class _GamePageState extends State<GamePage> {
                             ]);
                           },
                         ),
-                      const ButtonsLayer(),
-                      BlocBuilder<MessageBloc, MessageState>(
-                          builder: (context, state) {
-                            log('getting mess');
-                            context.read<MessageBloc>().add(
-                                  MessageEvent.setIntroMessages(
-                                      onError: (e) {}, onSuccess: () {}),
-                                );
-                            if(state.messages.isNotEmpty) {
-                              return Message(
-                                image: state.currentMessage?.character ?? '',
-                                message: state.currentMessage?.text ?? '');
-                            }
-                            return const SizedBox.shrink();
-                          },
-                        ),
+                        const ButtonsLayer(),
+                        Message()
+                        // BlocBuilder<MessageBloc, MessageState>(
+                        //   buildWhen: (previous, current) =>
+                        //       previous.currentMessage?.toRawJson() !=
+                        //       current.currentMessage?.toRawJson(),
+                        //   builder: (context, state) {
+                        //     context.read<MessageBloc>().add(
+                        //           MessageEvent.setIntroMessages(
+                        //               onError: (e) {}, onSuccess: () {}),
+                        //         );
+                        //     log(state.currentMessage?.toJson().toString() ??
+                        //         '');
+                        //     if (state.messages.isNotEmpty) {
+                        //       if (state.currentMessage?.id == "6") {
+                        //         if (gameState.shopOpen) {
+                        //           return Message(
+                        //               image:
+                        //                   state.currentMessage?.character ?? '',
+                        //               message:
+                        //                   state.currentMessage?.text ?? '');
+                        //         }
+                        //         log(LocalData.introMessages[5].toJson().toString());
+                        //         return Message(
+                        //             image:
+                        //                 LocalData.introMessages[4].character ??
+                        //                     '',
+                        //             message:
+                        //                 LocalData.introMessages[4].text ?? '');
+                        //       }
+                        //       return Message(
+                        //           image: state.currentMessage?.character ?? '',
+                        //           message: state.currentMessage?.text ?? '');
+                        //     }
+                        //     return const SizedBox.shrink();
+                        //   },
+                        // ),
                       ],
                     ),
                   ),

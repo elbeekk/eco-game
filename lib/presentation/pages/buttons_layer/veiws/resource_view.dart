@@ -19,6 +19,7 @@ class ResourceView extends StatelessWidget {
     return BlocProvider.value(
       value: BlocProvider.of<BuildingBloc>(blocText),
       child: BlocBuilder<BuildingBloc, BuildingState>(
+        buildWhen: (previous, current) => false,
         builder: (context, state) {
           double incomeAll = 0;
           double consumptionAll = 0;
@@ -45,26 +46,28 @@ class ResourceView extends StatelessWidget {
           // log("income => $incomeData");
           // log("consumption => $consumptionData");
           return AlertDialog(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(7)
-            ),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(7)),
             scrollable: true,
-            title: Center(child: Shimmer.fromColors(
-                baseColor: Colors.green,
-                highlightColor: Colors.red,
-                child: const Text("Recource Managment",))),
+            contentPadding: EdgeInsets.all(4),
+            title: Center(
+                child: Shimmer.fromColors(
+                    baseColor: Colors.green,
+                    highlightColor: Colors.red,
+                    child: const Text(
+                      "Recource Managment",
+                    ))),
             content: Container(
               height: MediaQuery.sizeOf(context).height * 0.8 > 500
-                  ? 500
-                  : MediaQuery.sizeOf(context).height * 0.8,
-              width: MediaQuery.sizeOf(context).width * 0.4,
+                  ? MediaQuery.sizeOf(context).height * 0.3
+                  : MediaQuery.sizeOf(context).height * 0.6,
+              width: MediaQuery.sizeOf(context).width * 0.6,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(7),
               ),
               child: Center(
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
-
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -93,11 +96,9 @@ class ResourceView extends StatelessWidget {
                                 Colors.blue.shade900,
                               ],
                               chartRadius:
-                                  MediaQuery.sizeOf(context).height * 0.3 >
-                                          200
+                                  MediaQuery.sizeOf(context).height * 0.3 > 200
                                       ? 200
-                                      : MediaQuery.sizeOf(context).height *
-                                          0.3,
+                                      : MediaQuery.sizeOf(context).height * 0.3,
                               dataMap: incomeData,
                               chartType: ChartType.disc,
                               legendOptions: const LegendOptions(
@@ -107,10 +108,9 @@ class ResourceView extends StatelessWidget {
                           ],
                         ),
                       SizedBox(
-                        height:
-                            MediaQuery.sizeOf(context).height * 0.8 > 500
-                                ? 500
-                                : MediaQuery.sizeOf(context).height * 0.8,
+                        height: MediaQuery.sizeOf(context).height * 0.8 > 500
+                            ? 500
+                            : MediaQuery.sizeOf(context).height * 0.8,
                         child: Shimmer.fromColors(
                           baseColor: Colors.green,
                           direction: ShimmerDirection.ttb,
@@ -132,6 +132,7 @@ class ResourceView extends StatelessWidget {
                                   fontSize: 17,
                                   letterSpacing: 1.1),
                             ),
+
                             PieChart(
                               colorList: [
                                 Colors.red.shade300,
@@ -144,11 +145,9 @@ class ResourceView extends StatelessWidget {
                                 Colors.purple.shade900,
                               ],
                               chartRadius:
-                                  MediaQuery.sizeOf(context).height * 0.3 >
-                                          200
+                                  MediaQuery.sizeOf(context).height * 0.3 > 200
                                       ? 200
-                                      : MediaQuery.sizeOf(context).height *
-                                          0.3,
+                                      : MediaQuery.sizeOf(context).height * 0.3,
                               dataMap: consumptionData,
                               chartType: ChartType.disc,
                               legendOptions: const LegendOptions(

@@ -36,180 +36,190 @@ class ShopView extends StatelessWidget {
               Expanded(
                 child: BlocBuilder<ShopBloc, ShopState>(
                   builder: (context, shopState) {
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                            constraints: const BoxConstraints(maxHeight: 45),
-                            height: MediaQuery.sizeOf(context).height * 0.11,
-                            child: BlocBuilder<ShopBloc, ShopState>(
-                              builder: (context, shopState) {
-                                return ListView.builder(
-                                  scrollDirection: Axis.horizontal,
+                    if (gameState.shopOpen) {
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                              constraints: const BoxConstraints(maxHeight: 45),
+                              height: MediaQuery.sizeOf(context).height * 0.11,
+                              child: BlocBuilder<ShopBloc, ShopState>(
+                                builder: (context, shopState) {
+                                  return ListView.builder(
+                                    scrollDirection: Axis.horizontal,
+                                    shrinkWrap: true,
+                                    itemCount: ShopCategory.values.length,
+                                    itemBuilder: (context, index) {
+                                      final current =
+                                          ShopCategory.values[index];
+                                      return GestureDetector(
+                                        onTap: () {
+                                          context.read<ShopBloc>().add(
+                                              ShopEvent.changeCategory(
+                                                  current));
+                                        },
+                                        child: AnimatedOpacity(
+                                          opacity: shopState.category == current
+                                              ? 1
+                                              : 0.5,
+                                          duration:
+                                              const Duration(milliseconds: 300),
+                                          child: Container(
+                                            width: 100,
+                                            decoration: BoxDecoration(
+                                              color: Colors.grey.shade100,
+                                              borderRadius:
+                                                  const BorderRadius.vertical(
+                                                top: Radius.circular(10),
+                                              ),
+                                              border: Border.all(
+                                                  color: shopState.category ==
+                                                          current
+                                                      ? Colors.orange.shade900
+                                                          .withOpacity(.5)
+                                                      : Colors.transparent,
+                                                  width: 3),
+                                            ),
+                                            margin: const EdgeInsets.symmetric(
+                                                horizontal: 1),
+                                            child: Center(
+                                              child: BlocBuilder<SettingsBloc,
+                                                  SettingsState>(
+                                                builder:
+                                                    (context, settingsState) {
+                                                  return Text(
+                                                    current.name.toUpperCase(),
+                                                    style: GoogleFonts.vt323(
+                                                        fontSize: (16 +
+                                                                2 *
+                                                                    settingsState
+                                                                        .textSize)
+                                                            .toDouble()),
+                                                  );
+                                                },
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  );
+                                },
+                              )),
+                          BlocBuilder<ShopBloc, ShopState>(
+                            builder: (context, shopState) {
+                              return Expanded(
+                                child: ListView.builder(
+                                  padding: EdgeInsets.zero,
                                   shrinkWrap: true,
-                                  itemCount: ShopCategory.values.length,
+                                  itemCount:
+                                      shopState.category == ShopCategory.houses
+                                          ? LocalData.houses.length
+                                          : shopState.category ==
+                                                  ShopCategory.generators
+                                              ? LocalData.generators.length
+                                              : LocalData.trees.length,
+                                  scrollDirection: Axis.horizontal,
                                   itemBuilder: (context, index) {
-                                    final current = ShopCategory.values[index];
-                                    return GestureDetector(
-                                      onTap: () {
-                                        context.read<ShopBloc>().add(
-                                            ShopEvent.changeCategory(current));
+                                    List<BuildingModel> shopItems =
+                                        shopState.category ==
+                                                ShopCategory.houses
+                                            ? LocalData.houses
+                                            : shopState.category ==
+                                                    ShopCategory.generators
+                                                ? LocalData.generators
+                                                : LocalData.trees;
+                                    shopItems.sort(
+                                      (a, b) {
+                                        return (a.price ?? 0)
+                                            .compareTo(b.price ?? 0);
                                       },
-                                      child: AnimatedOpacity(
-                                        opacity: shopState.category == current
-                                            ? 1
-                                            : 0.5,
-                                        duration:
-                                            const Duration(milliseconds: 300),
-                                        child: Container(
-                                          width: 100,
-                                          decoration: BoxDecoration(
-                                            color: Colors.grey.shade100,
-                                            borderRadius:
-                                                const BorderRadius.vertical(
-                                              top: Radius.circular(10),
-                                            ),
-                                            border: Border.all(
-                                                color: shopState.category ==
-                                                        current
-                                                    ? Colors.orange.shade900
-                                                        .withOpacity(.5)
-                                                    : Colors.transparent,
-                                                width: 3),
-                                          ),
-                                          margin: const EdgeInsets.symmetric(
-                                              horizontal: 1),
-                                          child: Center(
-                                            child: BlocBuilder<SettingsBloc,
-                                                SettingsState>(
-                                              builder:
-                                                  (context, settingsState) {
-                                                return Text(
-                                                  current.name.toUpperCase(),
-                                                  style: GoogleFonts.vt323(
-                                                      fontSize: (16 +
-                                                              2 *
-                                                                  settingsState
-                                                                      .textSize)
-                                                          .toDouble()),
-                                                );
-                                              },
-                                            ),
-                                          ),
+                                    );
+                                    final current = shopItems[index];
+
+                                    final canBuy =
+                                        (LocalStorage.getMe()?.coins ?? 0) >=
+                                            (current.price ?? 0);
+                                    return Opacity(
+                                      opacity: canBuy ? 1 : .7,
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          context
+                                              .read<ShopBloc>()
+                                              .add(ShopEvent.select(current));
+                                        },
+                                        child: BlocBuilder<ShopBloc, ShopState>(
+                                          builder: (context, shopState) {
+                                            return Container(
+                                              margin: const EdgeInsets.all(3),
+                                              padding: const EdgeInsets.all(5),
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                  color: canBuy
+                                                      ? Colors.grey.shade100
+                                                      : Colors.grey.shade300,
+                                                  border: Border.all(
+                                                      color: shopState.selected
+                                                                  ?.name ==
+                                                              current.name
+                                                          ? Colors
+                                                              .orange.shade900
+                                                              .withOpacity(.5)
+                                                          : Colors.transparent,
+                                                      width: 3)),
+                                              child: Column(
+                                                children: [
+                                                  if (gameState.shopOpen)
+                                                    Expanded(
+                                                        child: Image.asset(
+                                                            current.image ??
+                                                                '')),
+                                                  if (gameState.shopOpen)
+                                                    Row(
+                                                      children: [
+                                                        Icon(
+                                                          Pixel.coin,
+                                                          color: Colors
+                                                              .orangeAccent
+                                                              .shade200,
+                                                        ),
+                                                        BlocBuilder<
+                                                            SettingsBloc,
+                                                            SettingsState>(
+                                                          builder: (context,
+                                                              settingsState) {
+                                                            return Text(
+                                                              current.price
+                                                                      .toString() ??
+                                                                  '',
+                                                              style: GoogleFonts.vt323(
+                                                                  color: Colors
+                                                                      .orange,
+                                                                  fontSize: (19 +
+                                                                          2 * settingsState.textSize)
+                                                                      .toDouble()),
+                                                            );
+                                                          },
+                                                        )
+                                                      ],
+                                                    )
+                                                ],
+                                              ),
+                                            );
+                                          },
                                         ),
                                       ),
                                     );
                                   },
-                                );
-                              },
-                            )),
-                        BlocBuilder<ShopBloc, ShopState>(
-                          builder: (context, shopState) {
-                            return Expanded(
-                              child: ListView.builder(
-                                padding: EdgeInsets.zero,
-                                shrinkWrap: true,
-                                itemCount:
-                                    shopState.category == ShopCategory.houses
-                                        ? LocalData.houses.length
-                                        : shopState.category ==
-                                                ShopCategory.generators
-                                            ? LocalData.generators.length
-                                            : LocalData.trees.length,
-                                scrollDirection: Axis.horizontal,
-                                itemBuilder: (context, index) {
-                                  List<BuildingModel> shopItems =
-                                      shopState.category == ShopCategory.houses
-                                          ? LocalData.houses
-                                          : shopState.category ==
-                                                  ShopCategory.generators
-                                              ? LocalData.generators
-                                              : LocalData.trees;
-                                  shopItems.sort(
-                                    (a, b) {
-                                      return (a.price ?? 0)
-                                          .compareTo(b.price ?? 0);
-                                    },
-                                  );
-                                  final current = shopItems[index];
-
-                                  final canBuy =
-                                      (LocalStorage.getMe()?.coins ?? 0) >=
-                                          (current.price ?? 0);
-                                  return Opacity(
-                                    opacity: canBuy ? 1 : .7,
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        context
-                                            .read<ShopBloc>()
-                                            .add(ShopEvent.select(current));
-                                      },
-                                      child: BlocBuilder<ShopBloc, ShopState>(
-                                        builder: (context, shopState) {
-                                          return Container(
-                                            margin: const EdgeInsets.all(3),
-                                            padding: const EdgeInsets.all(5),
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                                color: canBuy
-                                                    ? Colors.grey.shade100
-                                                    : Colors.grey.shade300,
-                                                border: Border.all(
-                                                    color: shopState.selected
-                                                                ?.name ==
-                                                            current.name
-                                                        ? Colors.orange.shade900
-                                                            .withOpacity(.5)
-                                                        : Colors.transparent,
-                                                    width: 3)),
-                                            child: Column(
-                                              children: [
-                                                Expanded(
-                                                    child: Image.asset(
-                                                        current.image ?? '')),
-                                                Row(
-                                                  children: [
-                                                    Icon(
-                                                      Pixel.coin,
-                                                      color: Colors.orangeAccent
-                                                          .shade200,
-                                                    ),
-                                                    BlocBuilder<SettingsBloc,
-                                                        SettingsState>(
-                                                      builder: (context,
-                                                          settingsState) {
-                                                        return Text(
-                                                          current.price
-                                                                  .toString() ??
-                                                              '',
-                                                          style: GoogleFonts.vt323(
-                                                              color:
-                                                                  Colors.orange,
-                                                              fontSize: (19 +
-                                                                      2 *
-                                                                          settingsState
-                                                                              .textSize)
-                                                                  .toDouble()),
-                                                        );
-                                                      },
-                                                    )
-                                                  ],
-                                                )
-                                              ],
-                                            ),
-                                          );
-                                        },
-                                      ),
-                                    ),
-                                  );
-                                },
-                              ),
-                            );
-                          },
-                        ),
-                      ],
-                    );
+                                ),
+                              );
+                            },
+                          ),
+                        ],
+                      );
+                    }
+                    return const SizedBox.shrink();
                   },
                 ),
               ),
@@ -232,6 +242,8 @@ class ShopView extends StatelessWidget {
                             value: context.read<BuildingBloc>(),
                             child: AlertDialog(
                               scrollable: true,
+                              actionsPadding: const EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 5),
                               titlePadding: const EdgeInsets.all(5),
                               actions: [
                                 Row(
@@ -241,54 +253,56 @@ class ShopView extends StatelessWidget {
                                           BuildingState>(
                                         builder: (buildingCon, buildingState) {
                                           return ElevatedButton(
-                                              onPressed: (LocalStorage.getMe()
-                                                              ?.coins ??
-                                                          0) <
-                                                      (shopState.selected
-                                                              ?.price ??
-                                                          0)
-                                                  ? null
-                                                  : () {
-                                                      context
-                                                          .read<BuildingBloc>()
-                                                          .add(
-                                                            BuildingEvent
-                                                                .addPendingBuilding(
-                                                              building: shopState.selected?.copyWith(
-                                                                      date: DateTime
-                                                                              .now()
-                                                                          .millisecondsSinceEpoch
-                                                                          .toString(),
-                                                                      positionY: gameState
-                                                                              .currentPos
-                                                                              .dy +
-                                                                          MediaQuery.sizeOf(context).height /
-                                                                              2 -
-                                                                          100,
-                                                                      positionX: gameState
-                                                                              .currentPos
-                                                                              .dx +
-                                                                          MediaQuery.sizeOf(context).width /
-                                                                              2 -
-                                                                          50,) ??
-                                                                  BuildingModel(),
-                                                              onError: (String
-                                                                  error) {},
-                                                              onSuccess: () {
-                                                                Navigator.pop(context);
-                                                              },
-                                                            ),
-                                                          );
-                                                      // context
-                                                      //     .read<ShopBloc>()
-                                                      //     .add(
-                                                      //       ShopEvent.select(
-                                                      //         shopState
-                                                      //                 .selected ??
-                                                      //             BuildingModel(),
-                                                      //       ),
-                                                      //     );
-                                                    },
+                                              onPressed:
+                                                  (LocalStorage.getMe()
+                                                                  ?.coins ??
+                                                              0) <
+                                                          (shopState.selected
+                                                                  ?.price ??
+                                                              0)
+                                                      ? null
+                                                      : () {
+                                                          context
+                                                              .read<
+                                                                  BuildingBloc>()
+                                                              .add(
+                                                                BuildingEvent
+                                                                    .addPendingBuilding(
+                                                                  building: shopState
+                                                                          .selected
+                                                                          ?.copyWith(
+                                                                        date: DateTime.now()
+                                                                            .millisecondsSinceEpoch
+                                                                            .toString(),
+                                                                        positionY: gameState.currentPos.dy +
+                                                                            MediaQuery.sizeOf(context).height /
+                                                                                2 -
+                                                                            100,
+                                                                        positionX: gameState.currentPos.dx +
+                                                                            MediaQuery.sizeOf(context).width /
+                                                                                2 -
+                                                                            50,
+                                                                      ) ??
+                                                                      BuildingModel(),
+                                                                  onError: (String
+                                                                      error) {},
+                                                                  onSuccess:
+                                                                      () {
+                                                                    Navigator.pop(
+                                                                        context);
+                                                                  },
+                                                                ),
+                                                              );
+                                                          // context
+                                                          //     .read<ShopBloc>()
+                                                          //     .add(
+                                                          //       ShopEvent.select(
+                                                          //         shopState
+                                                          //                 .selected ??
+                                                          //             BuildingModel(),
+                                                          //       ),
+                                                          //     );
+                                                        },
                                               style: ElevatedButton.styleFrom(
                                                   shape: RoundedRectangleBorder(
                                                       borderRadius:
@@ -331,6 +345,7 @@ class ShopView extends StatelessWidget {
                                   ],
                                 )
                               ],
+                              contentPadding: const EdgeInsets.all(2),
                               backgroundColor: Colors.grey.shade100,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10)),
@@ -348,173 +363,200 @@ class ShopView extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              actionsPadding: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 5),
-                              content: Row(
-                                children: [
-                                  Container(
+                              content: SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  children: [
+                                    Container(
+                                        width:
+                                            MediaQuery.sizeOf(context).width *
+                                                0.25,
+                                        constraints: const BoxConstraints(
+                                            maxHeight: 200, maxWidth: 150),
+                                        child: Image.asset(
+                                          "${shopState.selected?.image}",
+                                          fit: BoxFit.fitHeight,
+                                        )),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    SizedBox(
                                       width: MediaQuery.sizeOf(context).width *
                                           0.3,
-                                      constraints: const BoxConstraints(
-                                          maxHeight: 200, maxWidth: 150),
-                                      child: Image.asset(
-                                        "${shopState.selected?.image}",
-                                        fit: BoxFit.fitHeight,
-                                      )),
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Shimmer.fromColors(
-                                        baseColor: Colors.cyan,
-                                        highlightColor: Colors.cyan.withOpacity(.5),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                      child: SingleChildScrollView(
+                                        scrollDirection: Axis.horizontal,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
-                                            const Icon(
-                                              Icons.leaderboard_outlined,
+                                            Shimmer.fromColors(
+                                              baseColor: Colors.cyan,
+                                              highlightColor:
+                                                  Colors.cyan.withOpacity(.5),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  const Icon(
+                                                    Icons.leaderboard_outlined,
+                                                  ),
+                                                  BlocBuilder<SettingsBloc,
+                                                      SettingsState>(
+                                                    builder: (context,
+                                                        settingsState) {
+                                                      return Text(
+                                                        " +${shopState.selected?.points} points",
+                                                        style: GoogleFonts.vt323(
+                                                            fontSize: (19 +
+                                                                    2 *
+                                                                        settingsState
+                                                                            .textSize)
+                                                                .toDouble()),
+                                                      );
+                                                    },
+                                                  )
+                                                ],
+                                              ),
                                             ),
-                                            BlocBuilder<SettingsBloc,
-                                                SettingsState>(
-                                              builder: (context, settingsState) {
-                                                return Text(
-                                                  " +${shopState.selected?.points} points",
-                                                  style: GoogleFonts.vt323(
-                                                      fontSize: (19 +
-                                                          2 *
-                                                              settingsState
-                                                                  .textSize)
-                                                          .toDouble()),
-                                                );
-                                              },
-                                            )
+                                            if (shopState.selected?.income !=
+                                                null)
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Icon(
+                                                    Pixel.coin,
+                                                    color:
+                                                        Colors.yellow.shade800,
+                                                  ),
+                                                  BlocBuilder<SettingsBloc,
+                                                      SettingsState>(
+                                                    builder: (context,
+                                                        settingsState) {
+                                                      return Text(
+                                                        " +${shopState.selected?.income} c/h",
+                                                        style:
+                                                            GoogleFonts.vt323(
+                                                          color: Colors
+                                                              .yellow.shade800,
+                                                          fontSize: (19 +
+                                                                  2 *
+                                                                      settingsState
+                                                                          .textSize)
+                                                              .toDouble(),
+                                                        ),
+                                                      );
+                                                    },
+                                                  ),
+                                                ],
+                                              ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Icon(
+                                                  Pixel.batterycharging,
+                                                  color: isGenerator
+                                                      ? Colors.green
+                                                      : Colors.red,
+                                                ),
+                                                BlocBuilder<SettingsBloc,
+                                                    SettingsState>(
+                                                  builder:
+                                                      (context, settingsState) {
+                                                    return Text(
+                                                      " ${isGenerator ? "+" : ""}${shopState.selected?.energy} W/h",
+                                                      style: GoogleFonts.vt323(
+                                                          color: isGenerator
+                                                              ? Colors.green
+                                                              : Colors.red,
+                                                          fontSize: (19 +
+                                                                  2 *
+                                                                      settingsState
+                                                                          .textSize)
+                                                              .toDouble()),
+                                                    );
+                                                  },
+                                                ),
+                                              ],
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                const Icon(
+                                                  Pixel.clock,
+                                                  color: Colors.brown,
+                                                ),
+                                                BlocBuilder<SettingsBloc,
+                                                    SettingsState>(
+                                                  builder:
+                                                      (context, settingsState) {
+                                                    return Text(
+                                                      " ${shopState.selected?.duration} h",
+                                                      style: GoogleFonts.vt323(
+                                                          color: Colors.brown,
+                                                          fontSize: (19 +
+                                                                  2 *
+                                                                      settingsState
+                                                                          .textSize)
+                                                              .toDouble()),
+                                                    );
+                                                  },
+                                                )
+                                              ],
+                                            ),
+                                            const SizedBox(
+                                              height: 3,
+                                            ),
+                                            Container(
+                                              height: MediaQuery.sizeOf(context)
+                                                      .height *
+                                                  0.3,
+                                              width: MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.4,
+                                              constraints: const BoxConstraints(
+                                                  maxHeight: 200,
+                                                  maxWidth: 300),
+                                              child: InteractiveViewer(
+                                                scaleEnabled: false,
+                                                child: Row(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    const Icon(
+                                                      Pixel.infobox,
+                                                      color: Colors.blue,
+                                                    ),
+                                                    const SizedBox(
+                                                      width: 4,
+                                                    ),
+                                                    Expanded(
+                                                      child: Text(
+                                                        "${shopState.selected?.description}",
+                                                        style:
+                                                            GoogleFonts.vt323(
+                                                                fontSize: 23,
+                                                                color:
+                                                                    Colors.blue,
+                                                                height: 0.9),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
                                           ],
                                         ),
                                       ),
-                                      if(shopState.selected?.income!=null)Row(
-                                        mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Icon(
-                                            Pixel.coin,
-                                            color: Colors.yellow.shade800,
-                                          ),
-                                          BlocBuilder<SettingsBloc,
-                                              SettingsState>(
-                                            builder: (context, settingsState) {
-                                              return Text(
-                                                " +${shopState.selected?.income} c/h",
-                                                style: GoogleFonts.vt323(
-                                                  color:Colors.yellow.shade800,
-                                                  fontSize: (19 +
-                                                      2 *
-                                                          settingsState
-                                                              .textSize)
-                                                      .toDouble(),),
-                                              );
-                                            },
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Icon(
-                                            Pixel.batterycharging,
-                                            color: isGenerator
-                                                ? Colors.green
-                                                : Colors.red,
-                                          ),
-                                          BlocBuilder<SettingsBloc,
-                                              SettingsState>(
-                                            builder: (context, settingsState) {
-                                              return Text(
-                                                " ${isGenerator ? "+" : ""}${shopState.selected?.energy} W/h",
-                                                style: GoogleFonts.vt323(
-                                                    color: isGenerator
-                                                        ? Colors.green
-                                                        : Colors.red,
-                                                    fontSize: (19 +
-                                                            2 *
-                                                                settingsState
-                                                                    .textSize)
-                                                        .toDouble()),
-                                              );
-                                            },
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          const Icon(
-                                            Pixel.clock,
-                                            color: Colors.brown,
-                                          ),
-                                          BlocBuilder<SettingsBloc,
-                                              SettingsState>(
-                                            builder: (context, settingsState) {
-                                              return Text(
-                                                " ${shopState.selected?.duration} h",
-                                                style: GoogleFonts.vt323(
-                                                    color: Colors.brown,
-                                                    fontSize: (19 +
-                                                            2 *
-                                                                settingsState
-                                                                    .textSize)
-                                                        .toDouble()),
-                                              );
-                                            },
-                                          )
-                                        ],
-                                      ),
-                                      const SizedBox(
-                                        height: 3,
-                                      ),
-                                      Container(
-                                        height:
-                                            MediaQuery.sizeOf(context).height *
-                                                0.3,
-                                        width:
-                                            MediaQuery.sizeOf(context).width *
-                                                0.4,
-                                        constraints: const BoxConstraints(
-                                            maxHeight: 200, maxWidth: 300),
-                                        child: InteractiveViewer(
-                                          scaleEnabled: false,
-                                          child: Row(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              const Icon(
-                                                Pixel.infobox,
-                                                color: Colors.blue,
-                                              ),
-                                              const SizedBox(
-                                                width: 4,
-                                              ),
-                                              Expanded(
-                                                child: Text(
-                                                  "${shopState.selected?.description}",
-                                                  style: GoogleFonts.vt323(
-                                                      fontSize: 23,
-                                                      color: Colors.blue,
-                                                      height: 0.9),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  )
-                                ],
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
                           ),

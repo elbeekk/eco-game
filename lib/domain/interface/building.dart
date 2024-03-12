@@ -7,6 +7,11 @@ abstract class BuildingInterface {
   Future<Either<bool, dynamic>> addPendingBuilding({
     required BuildingModel building,
   });
+  Future<Either<bool, dynamic>> updatePendingBuilding({
+    required BuildingModel building,
+  });
+
+
 
   Future<Either<bool, dynamic>> removePendingBuilding({
     required BuildingModel building,

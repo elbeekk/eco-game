@@ -1,6 +1,7 @@
 import 'package:eco_game/domain/di/dependancy_manager.dart';
 import 'package:eco_game/infrastructure/data/local_data.dart';
 import 'package:eco_game/infrastructure/models/class/building.dart';
+import 'package:eco_game/infrastructure/services/local_storage/local_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:eco_game/application/building/building_bloc.dart';
 import 'package:eco_game/application/settings/settings_bloc.dart';
@@ -48,6 +49,45 @@ class ExistingInfo extends StatelessWidget {
           ),
           actionsPadding:
               const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          actions: [
+            Row(
+              children: [
+                Expanded(child: BlocBuilder<BuildingBloc, BuildingState>(
+                  builder: (context, state) {
+                    return ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.red.shade300,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8)),
+                        ),
+                        onPressed: () {
+                          context.read<BuildingBloc>().add(
+                              BuildingEvent.removeExistingBuilding(
+                                  building: building.copyWith(
+                                      price: (((building.isLed ?? false)
+                                                  ? (building.price ?? 0) * 0.15
+                                                  : 0) +
+                                              ((building.isRoof ?? false)
+                                                  ? (building.price ?? 0) * 0.5
+                                                  : 0))
+                                          .toInt()),
+                                  onError: (e) {},
+                                  onSuccess: () {
+                                    context
+                                        .read<BuildingBloc>()
+                                        .add(const BuildingEvent.getAll());
+                                    Navigator.pop(context);
+                                  }));
+                        },
+                        child: Text(
+                          'Sell ${(building.price ?? 0) + ((building.isLed ?? false) ? (building.price ?? 0) * 0.15 : 0) + ((building.isRoof ?? false) ? (building.price ?? 0) * 0.5 : 0)}\$',
+                          style: const TextStyle(color: Colors.white),
+                        ));
+                  },
+                )),
+              ],
+            )
+          ],
           content: Row(
             children: [
               // Container(
@@ -130,9 +170,14 @@ class ExistingInfo extends StatelessWidget {
                                                         builder:
                                                             (context, state) {
                                                           return ElevatedButton(
-                                                            onPressed: (building
-                                                                        .isLed ??
-                                                                    false)
+                                                            onPressed: ((building
+                                                                            .isLed ??
+                                                                        false) &&
+                                                                    (LocalStorage.getMe()?.coins ??
+                                                                            0) >=
+                                                                        (building.price ??
+                                                                                0) *
+                                                                            0.2)
                                                                 ? null
                                                                 : () {
                                                                     context
@@ -147,25 +192,27 @@ class ExistingInfo extends StatelessWidget {
                                                                               Navigator.pop(context);
                                                                             }));
                                                                   },
-                                                            style:
-                                                                ElevatedButton
-                                                                    .styleFrom(
-                                                              shape:
-                                                                  RoundedRectangleBorder(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            10),
-
-                                                              ),
-                                                                    backgroundColor: Colors.green.shade300
-
+                                                            style: ElevatedButton
+                                                                .styleFrom(
+                                                                    shape:
+                                                                        RoundedRectangleBorder(
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              10),
+                                                                    ),
+                                                                    backgroundColor:
+                                                                        Colors
+                                                                            .green
+                                                                            .shade300),
+                                                            child: Text(
+                                                              (building.isLed ??
+                                                                      false)
+                                                                  ? "Upgraded"
+                                                                  : "Upgrade ${((building.price ?? 0) * 0.2).toInt()}\$",
+                                                              style: const TextStyle(
+                                                                  color: Colors
+                                                                      .white),
                                                             ),
-                                                            child: Text((building
-                                                                        .isLed ??
-                                                                    false)
-                                                                ? "Upgraded"
-                                                                : "Upgrade ${((building.price ?? 0) * 0.2).toInt()}\$",style: TextStyle(color: Colors.white),),
                                                           );
                                                         },
                                                       ),
@@ -327,15 +374,18 @@ class ExistingInfo extends StatelessWidget {
                                       );
                                     },
                                     style: ElevatedButton.styleFrom(
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(7),
-                                      ),
-                                        backgroundColor: Colors.green.shade300
-
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(7),
+                                        ),
+                                        backgroundColor: Colors.green.shade300),
+                                    child: Text(
+                                      (building.isLed ?? false)
+                                          ? "Upgraded"
+                                          : 'Upgrade ${((building.price ?? 0) * 0.2).toInt()}\$',
+                                      style:
+                                          const TextStyle(color: Colors.white),
                                     ),
-                                    child: Text((building.isLed ?? false)
-                                        ? "Upgraded"
-                                        : 'Upgrade ${((building.price ?? 0) * 0.2).toInt()}\$',style: TextStyle(color: Colors.white),),
                                   ),
                                 )
                               ],
@@ -414,12 +464,19 @@ class ExistingInfo extends StatelessWidget {
                                                           builder:
                                                               (context, state) {
                                                             return ElevatedButton(
-                                                              onPressed:
-                                                                  (building.isRoof ??
-                                                                          false)
-                                                                      ? null
-                                                                      : () {
-                                                                          context.read<BuildingBloc>().add(BuildingEvent.upgradeRoof(
+                                                              onPressed: (building
+                                                                              .isRoof ??
+                                                                          false) &&
+                                                                      (LocalStorage.getMe()?.coins ??
+                                                                              0) >=
+                                                                          (building.price ?? 0) *
+                                                                              0.7
+                                                                  ? null
+                                                                  : () {
+                                                                      context
+                                                                          .read<
+                                                                              BuildingBloc>()
+                                                                          .add(BuildingEvent.upgradeRoof(
                                                                               building: building,
                                                                               onSuccess: () {
                                                                                 context.read<BuildingBloc>().add(
@@ -427,7 +484,7 @@ class ExistingInfo extends StatelessWidget {
                                                                                     );
                                                                                 Navigator.pop(context);
                                                                               }));
-                                                                        },
+                                                                    },
                                                               style: ElevatedButton
                                                                   .styleFrom(
                                                                       shape:
@@ -438,11 +495,15 @@ class ExistingInfo extends StatelessWidget {
                                                                       backgroundColor: Colors
                                                                           .green
                                                                           .shade100),
-                                                              child: Text((building
-                                                                          .isRoof ??
-                                                                      false)
-                                                                  ? "Upgraded"
-                                                                  : "Upgrade ${((building.price ?? 0) * 0.7).toInt()}\$",style: TextStyle(color: Colors.white),),
+                                                              child: Text(
+                                                                (building.isRoof ??
+                                                                        false)
+                                                                    ? "Upgraded"
+                                                                    : "Upgrade ${((building.price ?? 0) * 0.7).toInt()}\$",
+                                                                style: const TextStyle(
+                                                                    color: Colors
+                                                                        .white),
+                                                              ),
                                                             );
                                                           },
                                                         ),
@@ -615,9 +676,13 @@ class ExistingInfo extends StatelessWidget {
                                           ),
                                           backgroundColor:
                                               Colors.green.shade300),
-                                      child: Text((building.isRoof ?? false)
-                                          ? "Upgraded"
-                                          : 'Upgrade ${((building.price ?? 0) * 0.7).toInt()}\$',style: TextStyle(color: Colors.white),),
+                                      child: Text(
+                                        (building.isRoof ?? false)
+                                            ? "Upgraded"
+                                            : 'Upgrade ${((building.price ?? 0) * 0.7).toInt()}\$',
+                                        style: const TextStyle(
+                                            color: Colors.white),
+                                      ),
                                     ),
                                   )
                                 ],

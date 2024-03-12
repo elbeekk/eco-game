@@ -11,9 +11,9 @@ class ResourceButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<BuildingBloc, BuildingState>(
       builder: (context, state) {
-        context.read<BuildingBloc>().add(const BuildingEvent.getAll());
         return IconButton(
           onPressed: () {
+        context.read<BuildingBloc>().add(const BuildingEvent.getAll());
             showDialog(
               context: context,
               builder: (context1) {

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:eco_game/domain/di/dependancy_manager.dart';
 import 'package:eco_game/infrastructure/models/class/building.dart';
@@ -123,27 +125,31 @@ class BuildingBloc extends Bloc<BuildingEvent, BuildingState> {
     });
 
     on<RemoveExistingBuilding>((event, emit) async {
+      final userRes =
+          await userRepository.addMoney(money: event.building.price ?? 0);
       final res = await buildingRepository.removeExistingBuilding(
           building: event.building);
-      res.fold((l) {
-        List<BuildingModel> tempList = state.existingBuildings.toList();
-        tempList.removeWhere((element) {
-          if (element.id == event.building.id) {
-            return true;
-          }
-          return false;
-        });
-        emit(
-          state.copyWith(existingBuildings: tempList),
-        );
+      userRes.fold((l) {
+        res.fold((l) {
+          List<BuildingModel> tempList = state.existingBuildings.toList();
+          tempList.removeWhere((element) {
+            if (element.id == event.building.id) {
+              return true;
+            }
+            return false;
+          });
+          emit(
+            state.copyWith(existingBuildings: tempList),
+          );
+          event.onSuccess.call();
+        }, (r) {});
       }, (r) {});
     });
 
-    on<UpdatePendingBuilding>((event, emit) {
+    on<UpdatePendingBuilding>((event, emit) async {
       List<BuildingModel> tempList = state.pendingBuildings.toList();
       tempList = tempList.map((element) {
-        if (element.name == event.building.name &&
-            element.date == event.building.date) {
+        if (element.id == event.building.id) {
           return element.copyWith(
               positionX: event.building.positionX,
               positionY: event.building.positionY);
@@ -151,9 +157,11 @@ class BuildingBloc extends Bloc<BuildingEvent, BuildingState> {
         return element;
       }).toList();
       emit(state.copyWith(pendingBuildings: tempList));
+      event.onSuccess.call();
     });
 
     on<GetAll>((event, emit) async {
+      log('getting all');
       final pending = await buildingRepository.getBuildings(
           type: BuildingType.pending, docId: LocalStorage.getMe()?.id ?? '');
 
@@ -167,7 +175,6 @@ class BuildingBloc extends Bloc<BuildingEvent, BuildingState> {
           docId: LocalStorage.getMe()?.id ?? '');
       constructing.fold((l) {
         l.removeWhere((element) => element.id == null);
-
         emit(
           state.copyWith(constructingBuildings: l),
         );

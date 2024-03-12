@@ -108,7 +108,7 @@ class LocalData {
     MessageModel(
         id: '1',
         text:
-            "Welcome, traveler, to the vibrant world of Energy Quest! I am your guide on this epic journey towards sustainability and prosperity. Behold, the humble beginnings of your very own town, where every decision you make will shape its destiny.",
+            "Welcome, traveler, to the vibrant world of Eco Quest! I am your guide on this epic journey towards sustainability and prosperity. Behold, the humble beginnings of your very own town, where every decision you make will shape its destiny.",
         character: "assets/images/png/character.png"),
     MessageModel(
         id: '2',
@@ -129,6 +129,11 @@ class LocalData {
         id: '5',
         text:
             "Open the Store on the right bottom corner of your screen.",
+        character: "assets/images/png/character.png"),
+    MessageModel(
+        id: '6',
+        text:
+            "Now select GENERATORS tab",
         character: "assets/images/png/character.png"),
   ];
 }
