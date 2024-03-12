@@ -46,7 +46,7 @@ class CoinButton extends StatelessWidget {
                               ),
                             );
                           }
-                          return const Text("data");
+                          return const Text("");
                         });
                   }
                   Navigator.pushAndRemoveUntil(
