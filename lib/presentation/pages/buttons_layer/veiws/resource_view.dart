@@ -42,8 +42,8 @@ class ResourceView extends StatelessWidget {
               });
             }
           }
-          log("income => $incomeData");
-          log("consumption => $consumptionData");
+          // log("income => $incomeData");
+          // log("consumption => $consumptionData");
           return AlertDialog(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(7)

@@ -41,7 +41,7 @@ class MessageBloc extends Bloc<MessageEvent, MessageState> {
         List<String> remoteMes = l.map((e) => e.toRawJson()).toList();
         Set<String> remoteSet = remoteMes.toSet();
         Set<String> introSet = introMesses.toSet();
-        List<MessageModel> tempMes = List.from(remoteSet.difference(introSet))
+        List<MessageModel> tempMes = List.from(introSet.difference(remoteSet))
             .map((e) => MessageModel.fromRawJson(e))
             .toList();
         emit(

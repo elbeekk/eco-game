@@ -176,7 +176,7 @@ class _GamePageState extends State<GamePage> {
                                             ),
                                             title: const Text('Not Enough Energy',style: TextStyle(color: Colors.red),),
                                             content:
-                                                Text(LocalData.notEnoughEnergy,style: TextStyle(fontSize: 17),),
+                                                Text(LocalData.notEnoughEnergy,style: const TextStyle(fontSize: 17),),
                                             actions: [
                                               ElevatedButton(onPressed: (){
                                                 Navigator.pop(context);
@@ -224,19 +224,20 @@ class _GamePageState extends State<GamePage> {
                             ]);
                           },
                         ),
-                        BlocBuilder<MessageBloc, MessageState>(
+                      const ButtonsLayer(),
+                      BlocBuilder<MessageBloc, MessageState>(
                           builder: (context, state) {
+                            log('getting mess');
                             context.read<MessageBloc>().add(
                                   MessageEvent.setIntroMessages(
                                       onError: (e) {}, onSuccess: () {}),
                                 );
-                            if (state.currentMessage == null ||
-                                state.messages.isEmpty) {
-                              return const ButtonsLayer();
-                            }
-                            return Message(
+                            if(state.messages.isNotEmpty) {
+                              return Message(
                                 image: state.currentMessage?.character ?? '',
                                 message: state.currentMessage?.text ?? '');
+                            }
+                            return const SizedBox.shrink();
                           },
                         ),
                       ],

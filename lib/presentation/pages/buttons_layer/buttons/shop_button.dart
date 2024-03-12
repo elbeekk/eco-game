@@ -12,21 +12,26 @@ class ShopButton extends StatelessWidget {
       builder: (context, state) {
         return TweenAnimationBuilder(
           tween: IntTween(
-              begin: state.shopOpen ? 70 : 0, end: state.shopOpen ? 0 : 70),
+              begin: state.shopOpen ? 6 : 600, end: state.shopOpen ? 600 : 6),
           duration: const Duration(milliseconds: 200),
           builder: (context, value, child) {
-            return IconButton(
-              onPressed: () {
+            return GestureDetector(
+              onTap: (){
                 context.read<GameBloc>().add(const GameEvent.showShop());
               },
-              icon: Icon(
+              child: Padding(
+                padding: const EdgeInsets.only(right: 15,bottom: 15),
+                child: Material(
+                  color: Colors.transparent,
 
-                Ionicons.ios_construct,
-                color: Colors.white,
-                size: value.toDouble(),
+                  shadowColor: Colors.black,
+                  child: Image.asset(
+                    "assets/images/png/store.png",
+                    scale: value.toDouble(),
+                  ),
+                ),
               ),
-            );
-          },
+            );},
         );
       },
     );

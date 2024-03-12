@@ -3,55 +3,59 @@ import 'package:eco_game/infrastructure/models/class/message.dart';
 
 class LocalData {
   LocalData._();
-  static String notEnoughEnergy = 'Please provide energy by selling energy consuming buildings or building more energy generators.';
+
+  static String notEnoughEnergy =
+      'Please provide energy by selling energy consuming buildings or building more energy generators.';
   static String upgradeLed =
       "Replacing light bulbs with LEDs will give you points and reduce energy consumption in the building";
   static String upgradeRoof =
       "Placing solar panels on the roof of a building gives you points and helps generate energy while saving enough space.";
   static List<BuildingModel> houses = [
     BuildingModel(
-        name: "Residential House",
-        image: "assets/images/game_assets/buildings/consumers/residential.png",
-        description:
-            "Basic housing for residents of the town. Consumes energy for lighting, heating, and appliances.",
-        energy: -10,
-        duration: 1.5,
-        price: 2500,
-        points: 25,
-        width: 50,
-        bottom: 93,
-        left: 25,
-        height: 30,
-        income: 30,
+      name: "Residential House",
+      image: "assets/images/game_assets/buildings/consumers/residential.png",
+      description:
+          "Basic housing for residents of the town. Consumes energy for lighting, heating, and appliances.",
+      energy: -10,
+      duration: 1.5,
+      price: 2500,
+      points: 25,
+      width: 50,
+      bottom: 93,
+      left: 25,
+      height: 30,
+      income: 30,
     ),
     BuildingModel(
-        name: "Commercial Building (Market)",
-        image: "assets/images/game_assets/buildings/consumers/market.png",
-        description:
-            "A market where goods are bought and sold. Requires energy for lighting, refrigeration, and other operations.",
-        energy: -20,
-        duration: .5,
-        price: 3000,
-        income: 100,
-        points: 30,
-    width: 65,
-    height: 30,
-    left: 20,
-    bottom: 75,),
-    BuildingModel(
-        name: "Industrial Factory",
-        image: "assets/images/game_assets/buildings/consumers/factory.png",
-        description:
-            "A factory for manufacturing goods. Requires energy for machinery, lighting, and heating.",
-        energy: -50,
-        duration: 2.5,
-        income: 200,
-        price: 8000,
-        points: 80,
+      name: "Commercial Building (Market)",
+      image: "assets/images/game_assets/buildings/consumers/market.png",
+      description:
+          "A market where goods are bought and sold. Requires energy for lighting, refrigeration, and other operations.",
+      energy: -20,
+      duration: .5,
+      price: 3000,
+      income: 100,
+      points: 30,
       width: 65,
       height: 30,
       left: 20,
-      bottom: 75,),
+      bottom: 75,
+    ),
+    BuildingModel(
+      name: "Industrial Factory",
+      image: "assets/images/game_assets/buildings/consumers/factory.png",
+      description:
+          "A factory for manufacturing goods. Requires energy for machinery, lighting, and heating.",
+      energy: -50,
+      duration: 2.5,
+      income: 200,
+      price: 8000,
+      points: 80,
+      width: 65,
+      height: 30,
+      left: 20,
+      bottom: 75,
+    ),
   ];
 
   static List<BuildingModel> generators = [
@@ -105,25 +109,26 @@ class LocalData {
         id: '1',
         text:
             "Welcome, traveler, to the vibrant world of Energy Quest! I am your guide on this epic journey towards sustainability and prosperity. Behold, the humble beginnings of your very own town, where every decision you make will shape its destiny.",
-        character:
-            "assets/images/game_assets/character/images/portraits/Pixel-Portraits-Free/Feminine_A/Feminine_A_happy.png"),
+        character: "assets/images/png/character.png"),
     MessageModel(
         id: '2',
         text:
             "But fear not, for with determination and ingenuity, we shall transform this modest abode into a thriving beacon of renewable energy and environmental stewardship!",
-        character:
-            "assets/images/game_assets/character/images/portraits/Pixel-Portraits-Free/Feminine_A/Feminine_A_happy.png"),
+        character: "assets/images/png/character.png"),
     MessageModel(
         id: '3',
         text:
             "Together, we will harness the power of the sun, wind, and water to fuel our ambitions. Are you ready to embark on this extraordinary quest?",
-        character:
-            "assets/images/game_assets/character/images/portraits/Pixel-Portraits-Free/Feminine_A/Feminine_A_happy.png"),
+        character: "assets/images/png/character.png"),
     MessageModel(
         id: '4',
         text:
             "Excellent! Let us begin by laying the foundation of our sustainable utopia. Follow my lead, and together, we shall build a brighter future for generations to come.",
-        character:
-            "assets/images/game_assets/character/images/portraits/Pixel-Portraits-Free/Feminine_A/Feminine_A_happy.png"),
+        character: "assets/images/png/character.png"),
+    MessageModel(
+        id: '5',
+        text:
+            "Open the Store on the right bottom corner of your screen.",
+        character: "assets/images/png/character.png"),
   ];
 }
