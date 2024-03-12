@@ -7,6 +7,7 @@ import 'package:eco_game/application/game/game_bloc.dart';
 import 'package:eco_game/application/message/message_bloc.dart';
 import 'package:eco_game/application/settings/settings_bloc.dart';
 import 'package:eco_game/application/shop/shop_bloc.dart';
+import 'package:eco_game/domain/di/dependancy_manager.dart';
 import 'package:eco_game/infrastructure/data/local_data.dart';
 import 'package:eco_game/presentation/pages/buildings_layer/existing_buildings/existing_building.dart';
 import 'package:eco_game/presentation/pages/buttons_layer/buttons_layer.dart';
@@ -99,11 +100,19 @@ class _GamePageState extends State<GamePage> {
                       children: [
                         BlocBuilder<BuildingBloc, BuildingState>(
                           builder: (context, buildingState) {
-                            // if (DateTime.now().minute.isOdd) {
-                            //   context.read<BuildingBloc>().add(
-                            //         const BuildingEvent.getAll(),
-                            //       );
-                            // }
+                            if (buildingState.pendingBuildings.isEmpty &&
+                                buildingState.constructingBuildings.isEmpty &&
+                                buildingState.existingBuildings.isEmpty) {
+                              context.read<BuildingBloc>().add(
+                                    const BuildingEvent.getAll(),
+                                  );
+                            }
+                            if (DateTime.now().minute.isOdd &&
+                                buildingState.existingBuildings.length >= 2) {
+                              for (var element in buildingState.existingBuildings) {
+                                userRepository.addMoney(money: (element.income??0)~/30);
+                              }
+                            }
                             double incomeAll = 0;
                             double consumptionAll = 0;
                             Map<String, double> incomeData = {};

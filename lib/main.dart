@@ -5,6 +5,7 @@ import 'package:eco_game/application/message/message_bloc.dart';
 import 'package:eco_game/application/settings/settings_bloc.dart';
 import 'package:eco_game/domain/di/dependancy_manager.dart';
 import 'package:eco_game/firebase_options.dart';
+import 'package:eco_game/infrastructure/services/audio/audio.dart';
 import 'package:eco_game/infrastructure/services/google_wallet.dart';
 import 'package:eco_game/infrastructure/services/local_storage/local_storage.dart';
 import 'package:eco_game/presentation/pages/auth_page/login_page.dart';
@@ -22,7 +23,7 @@ Future<void> main() async {
 
   LocalStorage.init();
   setUpDependencies();
-
+  AudioService.loadBgm();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.landscapeRight,
     DeviceOrientation.landscapeLeft,

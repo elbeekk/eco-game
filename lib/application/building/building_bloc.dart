@@ -125,6 +125,7 @@ class BuildingBloc extends Bloc<BuildingEvent, BuildingState> {
     });
 
     on<RemoveExistingBuilding>((event, emit) async {
+      log("logi${ event.building.price ?? 0}");
       final userRes =
           await userRepository.addMoney(money: event.building.price ?? 0);
       final res = await buildingRepository.removeExistingBuilding(

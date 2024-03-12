@@ -51,9 +51,9 @@ class _ConstructingBuildingState extends State<ConstructingBuilding> {
                     //   child: Row(
                     //     children: [
                     //       Image.asset(
-                    //           'assets/images/game_assets/village/images/Road Signs/roadblock.png'),
+                    //           'assets/images/game_assets/constructing/roadblock.png'),
                     //       Image.asset(
-                    //           'assets/images/game_assets/village/images/Road Signs/roadblock.png'),
+                    //           'assets/images/game_assets/constructing/roadblock.png'),
                     //     ],
                     //   ),
                     // ),
@@ -63,9 +63,9 @@ class _ConstructingBuildingState extends State<ConstructingBuilding> {
                     //   child: Row(
                     //     children: [
                     //       Image.asset(
-                    //           'assets/images/game_assets/village/images/Road Signs/roadblock.png'),
+                    //           'assets/images/game_assets/constructing/roadblock.png'),
                     //       Image.asset(
-                    //           'assets/images/game_assets/village/images/Road Signs/roadblock.png'),
+                    //           'assets/images/game_assets/constructing/roadblock.png'),
                     //     ],
                     //   ),
                     // ),
@@ -78,7 +78,7 @@ class _ConstructingBuildingState extends State<ConstructingBuilding> {
                           height: 10,
                           width: 10,
                           child: Image.asset(
-                              'assets/images/game_assets/village/images/Road Signs/cone.png'),
+                              'assets/images/game_assets/constructing/cone.png'),
                         ),
                       ),
                     ),
@@ -91,7 +91,7 @@ class _ConstructingBuildingState extends State<ConstructingBuilding> {
                           height: 10,
                           width: 10,
                           child: Image.asset(
-                              'assets/images/game_assets/village/images/Road Signs/cone.png'),
+                              'assets/images/game_assets/constructing/cone.png'),
                         ),
                       ),
                     ),
@@ -104,7 +104,7 @@ class _ConstructingBuildingState extends State<ConstructingBuilding> {
                           height: 10,
                           width: 10,
                           child: Image.asset(
-                              'assets/images/game_assets/village/images/Road Signs/cone.png'),
+                              'assets/images/game_assets/constructing/cone.png'),
                         ),
                       ),
                     ),
@@ -117,7 +117,7 @@ class _ConstructingBuildingState extends State<ConstructingBuilding> {
                           height: 10,
                           width: 10,
                           child: Image.asset(
-                              'assets/images/game_assets/village/images/Road Signs/cone.png'),
+                              'assets/images/game_assets/constructing/cone.png'),
                         ),
                       ),
                     ),
@@ -130,7 +130,7 @@ class _ConstructingBuildingState extends State<ConstructingBuilding> {
                           height: 20,
                           width: 10,
                           child: Image.asset(
-                              'assets/images/game_assets/village/images/Road Signs/Sign Attention.png'),
+                              'assets/images/game_assets/constructing/Sign Attention.png'),
                         ),
                       ),
                     ),

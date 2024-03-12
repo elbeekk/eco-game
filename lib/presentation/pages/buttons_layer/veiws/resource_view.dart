@@ -67,96 +67,113 @@ class ResourceView extends StatelessWidget {
               ),
               child: Center(
                 child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      if (incomeData.isNotEmpty)
-                        Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              'Income +${incomeAll.toInt()}',
-                              style: TextStyle(
-                                  color: Colors.green.shade300,
-                                  fontSize: 17,
-                                  letterSpacing: 1.1),
-                            ),
-                            PieChart(
-                              colorList: [
-                                Colors.green.shade300,
-                                Colors.green.shade500,
-                                Colors.green.shade700,
-                                Colors.green.shade900,
-                                Colors.blue.shade300,
-                                Colors.blue.shade500,
-                                Colors.blue.shade700,
-                                Colors.blue.shade900,
-                              ],
-                              chartRadius:
-                                  MediaQuery.sizeOf(context).height * 0.3 > 200
-                                      ? 200
-                                      : MediaQuery.sizeOf(context).height * 0.3,
-                              dataMap: incomeData,
-                              chartType: ChartType.disc,
-                              legendOptions: const LegendOptions(
-                                legendPosition: LegendPosition.bottom,
+                  scrollDirection: Axis.vertical,
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        if (incomeData.isNotEmpty)
+                          Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                'Income +${incomeAll.toInt()}',
+                                style: TextStyle(
+                                    color: Colors.green.shade300,
+                                    fontSize: 17,
+                                    letterSpacing: 1.1),
                               ),
-                            ),
-                          ],
-                        ),
-                      SizedBox(
-                        height: MediaQuery.sizeOf(context).height * 0.8 > 500
-                            ? 500
-                            : MediaQuery.sizeOf(context).height * 0.8,
-                        child: Shimmer.fromColors(
-                          baseColor: Colors.green,
-                          direction: ShimmerDirection.ttb,
-                          highlightColor: Colors.red,
-                          child: const VerticalDivider(
-                            indent: 50,
-                            endIndent: 50,
+                              PieChart(
+                                colorList: [
+                                  Colors.green.shade300,
+                                  Colors.green.shade500,
+                                  Colors.green.shade700,
+                                  Colors.green.shade900,
+                                  Colors.blue.shade300,
+                                  Colors.blue.shade500,
+                                  Colors.blue.shade700,
+                                  Colors.blue.shade900,
+                                ],
+                                chartRadius: MediaQuery.sizeOf(context).height *
+                                            0.3 >
+                                        200
+                                    ? 200
+                                    : MediaQuery.sizeOf(context).height * 0.25,
+                                dataMap: incomeData,
+                                chartType: ChartType.disc,
+                                legendOptions: const LegendOptions(
+                                  legendPosition: LegendPosition.bottom,
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
-                      ),
-                      if (consumptionData.isNotEmpty)
-                        Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              'Consumption -${consumptionAll.toInt()}',
+                        if (incomeData.isEmpty && consumptionData.isEmpty)
+                          SizedBox(
+                            width: 300,
+                            child: Text(
+                              "Build more buildings to monitor energy usage.",
+                              textAlign: TextAlign.center,
                               style: TextStyle(
-                                  color: Colors.red.shade300,
-                                  fontSize: 17,
-                                  letterSpacing: 1.1),
+                                  fontSize: 20,
+                                  color: Colors.black.withOpacity(.8)),
                             ),
-
-                            PieChart(
-                              colorList: [
-                                Colors.red.shade300,
-                                Colors.red.shade500,
-                                Colors.red.shade700,
-                                Colors.red.shade900,
-                                Colors.purple.shade300,
-                                Colors.purple.shade500,
-                                Colors.purple.shade700,
-                                Colors.purple.shade900,
-                              ],
-                              chartRadius:
-                                  MediaQuery.sizeOf(context).height * 0.3 > 200
-                                      ? 200
-                                      : MediaQuery.sizeOf(context).height * 0.3,
-                              dataMap: consumptionData,
-                              chartType: ChartType.disc,
-                              legendOptions: const LegendOptions(
-                                legendPosition: LegendPosition.bottom,
+                          ),
+                        if (incomeData.isNotEmpty && consumptionData.isNotEmpty)
+                          SizedBox(
+                            height:
+                                MediaQuery.sizeOf(context).height * 0.8 > 500
+                                    ? 500
+                                    : MediaQuery.sizeOf(context).height * 0.8,
+                            child: Shimmer.fromColors(
+                              baseColor: Colors.green,
+                              direction: ShimmerDirection.ttb,
+                              highlightColor: Colors.red,
+                              child: const VerticalDivider(
+                                indent: 50,
+                                endIndent: 50,
                               ),
                             ),
-                          ],
-                        ),
-                    ],
+                          ),
+                        if (consumptionData.isNotEmpty)
+                          Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                'Consumption -${consumptionAll.toInt()}',
+                                style: TextStyle(
+                                    color: Colors.red.shade300,
+                                    fontSize: 17,
+                                    letterSpacing: 1.1),
+                              ),
+                              PieChart(
+                                colorList: [
+                                  Colors.red.shade300,
+                                  Colors.red.shade500,
+                                  Colors.red.shade700,
+                                  Colors.red.shade900,
+                                  Colors.purple.shade300,
+                                  Colors.purple.shade500,
+                                  Colors.purple.shade700,
+                                  Colors.purple.shade900,
+                                ],
+                                chartRadius: MediaQuery.sizeOf(context).height *
+                                            0.3 >
+                                        200
+                                    ? 200
+                                    : MediaQuery.sizeOf(context).height * 0.25,
+                                dataMap: consumptionData,
+                                chartType: ChartType.disc,
+                                legendOptions: const LegendOptions(
+                                  legendPosition: LegendPosition.bottom,
+                                ),
+                              ),
+                            ],
+                          ),
+                      ],
+                    ),
                   ),
                 ),
               ),

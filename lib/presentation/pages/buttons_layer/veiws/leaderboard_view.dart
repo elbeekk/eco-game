@@ -271,6 +271,7 @@ class LeaderboardView extends StatelessWidget {
                                       LeaderboardState>(
                                     builder: (context, state) {
                                       return ListTile(
+                                        tileColor: isMe?Colors.green.withOpacity(.5):Colors.transparent,
                                           onTap: () {
                                             log('tapped');
                                             context.read<LeaderboardBloc>().add(

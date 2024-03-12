@@ -261,7 +261,7 @@ class ShopView extends StatelessWidget {
                                                                   ?.price ??
                                                               0)
                                                       ? null
-                                                      : () {
+                                                      : buildingState.isBuyLoading?(){}: () {
                                                           context
                                                               .read<
                                                                   BuildingBloc>()

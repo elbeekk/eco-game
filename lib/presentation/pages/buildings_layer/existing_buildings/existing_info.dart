@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:eco_game/domain/di/dependancy_manager.dart';
 import 'package:eco_game/infrastructure/data/local_data.dart';
 import 'package:eco_game/infrastructure/models/class/building.dart';
@@ -64,13 +66,17 @@ class ExistingInfo extends StatelessWidget {
                           context.read<BuildingBloc>().add(
                               BuildingEvent.removeExistingBuilding(
                                   building: building.copyWith(
-                                      price: (((building.isLed ?? false)
-                                                  ? (building.price ?? 0) * 0.15
-                                                  : 0) +
-                                              ((building.isRoof ?? false)
-                                                  ? (building.price ?? 0) * 0.5
-                                                  : 0))
-                                          .toInt()),
+                                      price: ((building.price ?? 0) * 0.5)
+                                              .toInt() +
+                                          (((building.isLed ?? false)
+                                                      ? (building.price ?? 0) *
+                                                          0.15
+                                                      : 0) +
+                                                  ((building.isRoof ?? false)
+                                                      ? (building.price ?? 0) *
+                                                          0.5
+                                                      : 0))
+                                              .toInt()),
                                   onError: (e) {},
                                   onSuccess: () {
                                     context
@@ -169,21 +175,24 @@ class ExistingInfo extends StatelessWidget {
                                                           BuildingState>(
                                                         builder:
                                                             (context, state) {
+                                                          log(LocalStorage
+                                                                      .getMe()
+                                                                  ?.coins
+                                                                  .toString() ??
+                                                              '');
                                                           return ElevatedButton(
-                                                            onPressed: ((building
-                                                                            .isLed ??
-                                                                        false) &&
-                                                                    (LocalStorage.getMe()?.coins ??
-                                                                            0) >=
+                                                            onPressed: (building
+                                                                        .isLed ??
+                                                                    false)
+                                                                ? null
+                                                                : (LocalStorage.getMe()?.coins ??
+                                                                            0) <
                                                                         (building.price ??
                                                                                 0) *
-                                                                            0.2)
-                                                                ? null
-                                                                : () {
-                                                                    context
-                                                                        .read<
-                                                                            BuildingBloc>()
-                                                                        .add(BuildingEvent.upgradeLed(
+                                                                            0.2
+                                                                    ? null
+                                                                    : () {
+                                                                        context.read<BuildingBloc>().add(BuildingEvent.upgradeLed(
                                                                             building: building,
                                                                             onSuccess: () {
                                                                               context.read<BuildingBloc>().add(
@@ -191,7 +200,7 @@ class ExistingInfo extends StatelessWidget {
                                                                                   );
                                                                               Navigator.pop(context);
                                                                             }));
-                                                                  },
+                                                                      },
                                                             style: ElevatedButton
                                                                 .styleFrom(
                                                                     shape:
@@ -465,18 +474,16 @@ class ExistingInfo extends StatelessWidget {
                                                               (context, state) {
                                                             return ElevatedButton(
                                                               onPressed: (building
-                                                                              .isRoof ??
-                                                                          false) &&
-                                                                      (LocalStorage.getMe()?.coins ??
-                                                                              0) >=
+                                                                          .isRoof ??
+                                                                      false)
+                                                                  ? null
+                                                                  : (LocalStorage.getMe()?.coins ??
+                                                                              0) <
                                                                           (building.price ?? 0) *
                                                                               0.7
-                                                                  ? null
-                                                                  : () {
-                                                                      context
-                                                                          .read<
-                                                                              BuildingBloc>()
-                                                                          .add(BuildingEvent.upgradeRoof(
+                                                                      ? null
+                                                                      : () {
+                                                                          context.read<BuildingBloc>().add(BuildingEvent.upgradeRoof(
                                                                               building: building,
                                                                               onSuccess: () {
                                                                                 context.read<BuildingBloc>().add(
@@ -484,7 +491,7 @@ class ExistingInfo extends StatelessWidget {
                                                                                     );
                                                                                 Navigator.pop(context);
                                                                               }));
-                                                                    },
+                                                                        },
                                                               style: ElevatedButton
                                                                   .styleFrom(
                                                                       shape:

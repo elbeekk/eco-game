@@ -17,7 +17,7 @@ class LocalData {
       description:
           "Basic housing for residents of the town. Consumes energy for lighting, heating, and appliances.",
       energy: -10,
-      duration: 1.5,
+      duration: .8,
       price: 2500,
       points: 25,
       width: 50,
@@ -32,7 +32,7 @@ class LocalData {
       description:
           "A market where goods are bought and sold. Requires energy for lighting, refrigeration, and other operations.",
       energy: -20,
-      duration: .5,
+      duration: .2,
       price: 3000,
       income: 100,
       points: 30,
@@ -47,7 +47,7 @@ class LocalData {
       description:
           "A factory for manufacturing goods. Requires energy for machinery, lighting, and heating.",
       energy: -50,
-      duration: 2.5,
+      duration: 1,
       income: 200,
       price: 8000,
       points: 80,
@@ -65,7 +65,7 @@ class LocalData {
       energy: 2,
       description:
           "A collection of solar panels installed on rooftops or in open spaces. They harness sunlight to generate clean and renewable energy for the town.",
-      duration: .5,
+      duration: .1,
       price: 200,
       points: 20,
       bottom: 64,
@@ -79,7 +79,7 @@ class LocalData {
       description:
           "A group of wind turbines erected in an area with consistent wind flow. They capture the kinetic energy of the wind and convert it into electricity.",
       energy: 90,
-      duration: 2,
+      duration: .5,
       price: 5000,
       points: 50,
       bottom: 95,
@@ -93,7 +93,7 @@ class LocalData {
       energy: 180000,
       description:
           "A facility that harnesses the energy of flowing water to generate electricity. It typically utilizes a dam or water reservoir to control water flow and drive turbines.",
-      duration: 4,
+      duration: 1,
       price: 15000,
       points: 150,
       bottom: 80,
@@ -128,12 +128,7 @@ class LocalData {
     MessageModel(
         id: '5',
         text:
-            "Open the Store on the right bottom corner of your screen.",
-        character: "assets/images/png/character.png"),
-    MessageModel(
-        id: '6',
-        text:
-            "Now select GENERATORS tab",
+            "Open the Store on the right bottom corner of your screen and build your first energy generator",
         character: "assets/images/png/character.png"),
   ];
 }

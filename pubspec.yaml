@@ -63,19 +63,15 @@ flutter:
   uses-material-design: true
 
   assets:
-    - packages/flutter_google_wallet/assets/svg/button/frFR_add_to_google_wallet_wallet-button.svg
-    - packages/flutter_google_wallet/assets/svg/button/enUS_add_to_google_wallet_wallet-button.svg
     - assets/
     - assets/audio/
     - assets/images/
     - assets/lottie/
     - assets/images/png/
     - assets/images/jpg/
+    - assets/images/game_assets/constructing/
     - assets/images/game_assets/button/images/
-    - assets/images/game_assets/village/images/
-    - assets/images/game_assets/village/images/cars/
     - assets/images/game_assets/buildings/generators/
     - assets/images/game_assets/buildings/consumers/
-    - assets/images/game_assets/village/images/Road Signs/
     - assets/images/game_assets/character/spritesheets/Original/Without Outline/
     - assets/images/game_assets/character/images/portraits/Pixel-Portraits-Free/Feminine_A/
