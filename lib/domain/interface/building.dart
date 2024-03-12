@@ -30,4 +30,7 @@ abstract class BuildingInterface {
 
   Future<Either<List<BuildingModel>, dynamic>> getBuildings(
       {required BuildingType type,required String docId});
+
+  Future<Either<bool, dynamic>> upgradeLed({required BuildingModel building});
+  Future<Either<bool, dynamic>> upgradeRoof({required BuildingModel building});
 }

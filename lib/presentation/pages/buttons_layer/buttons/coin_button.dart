@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:eco_game/application/game/game_bloc.dart';
 import 'package:eco_game/infrastructure/models/class/user.dart';
 import 'package:eco_game/infrastructure/services/local_storage/local_storage.dart';
+import 'package:eco_game/presentation/pages/auth_page/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -48,6 +49,12 @@ class CoinButton extends StatelessWidget {
                           return const Text("data");
                         });
                   }
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LoginPage(),
+                      ),
+                      (route) => false);
                   return Text(
                       "${LocalStorage.getMe()?.id}\n${LocalStorage.getGuestId()}");
                 },

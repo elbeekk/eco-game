@@ -24,7 +24,8 @@ class ResourceView extends StatelessWidget {
           double consumptionAll = 0;
           Map<String, double> incomeData = {};
           Map<String, double> consumptionData = {};
-          List<BuildingModel> income = state.existingBuildings.where((element) {
+          for (var element in state.existingBuildings) {
+            log("cur ${element.energy}");
             if ((element.energy ?? 0) >= 0) {
               incomeAll += element.energy?.abs().toDouble() ?? 0;
               incomeData.update(element.name ?? '',
@@ -32,27 +33,16 @@ class ResourceView extends StatelessWidget {
                   ifAbsent: () {
                 return element.energy?.abs().toDouble() ?? 0;
               });
-              return true;
-            }
-            return false;
-          }).toList();
-          List<BuildingModel> consumption =
-              state.existingBuildings.where((element) {
-            if ((element.energy ?? 0) <= 0) {
+            }else{
               consumptionAll += element.energy?.abs().toDouble() ?? 0;
-              log(consumptionData.toString());
               consumptionData.update(element.name ?? '',
-                  (value) => value + (element.energy ?? 0).abs().toDouble(),
+                      (value) => value + (element.energy ?? 0).abs().toDouble(),
                   ifAbsent: () {
-                log((element.energy?.abs().toDouble() ?? 0).toString());
-                return element.energy?.abs().toDouble() ?? 0;
-              });
-              log(consumptionData.toString());
-
-              return true;
+                    log((element.energy?.abs().toDouble() ?? 0).toString());
+                    return element.energy?.abs().toDouble() ?? 0;
+                  });
             }
-            return false;
-          }).toList();
+          }
           log("income => $incomeData");
           log("consumption => $consumptionData");
           return AlertDialog(

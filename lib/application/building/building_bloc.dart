@@ -22,6 +22,8 @@ class BuildingBloc extends Bloc<BuildingEvent, BuildingState> {
       final building = event.building.copyWith(
         id: id,
         date: DateTime.now().millisecondsSinceEpoch.toString(),
+        isLed: false,
+        isRoof: false,
       );
       final res = await buildingRepository.addPendingBuilding(
         building: building,
@@ -178,6 +180,42 @@ class BuildingBloc extends Bloc<BuildingEvent, BuildingState> {
 
         emit(state.copyWith(existingBuildings: l));
       }, (r) => null);
+    });
+
+    on<UpgradeLed>((event, emit) async {
+      final building = event.building.copyWith(
+        isLed: true,
+        energy: (event.building.energy ?? 0) +
+            ((event.building.energy ?? 0) * 0.2).abs().toInt(),
+        income: (event.building.income ?? 0) +
+            ((event.building.income ?? 0) * 0.1).abs().toInt(),
+      );
+      await userRepository.addMoney(
+          money: ((building.price ?? 0) * 0.2).toInt() * -1);
+      await userRepository.addPoints(points: 20);
+      final buildRes = await buildingRepository.upgradeLed(building: building);
+      buildRes.fold((l) {
+        event.onSuccess?.call();
+      }, (r) {
+        event.onError?.call(r);
+      });
+    });
+    on<UpgradeRoof>((event, emit) async {
+      final building = event.building.copyWith(
+        isRoof: true,
+        energy: (event.building.energy ?? 0) + 50,
+        income: (event.building.income ?? 0) +
+            ((event.building.income ?? 0) * 0.3).abs().toInt(),
+      );
+      await userRepository.addMoney(
+          money: ((building.price ?? 0) * 0.7).toInt() * -1);
+      await userRepository.addPoints(points: 40);
+      final buildRes = await buildingRepository.upgradeRoof(building: building);
+      buildRes.fold((l) {
+        event.onSuccess?.call();
+      }, (r) {
+        event.onError?.call(r);
+      });
     });
   }
 }

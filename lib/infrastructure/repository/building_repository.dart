@@ -104,7 +104,9 @@ class BuildingRepository implements BuildingInterface {
           .doc(LocalStorage.getMe()?.id)
           .collection('constructingBuildings')
           .doc(building.id)
-          .set(building.copyWith(date: DateTime.now().millisecondsSinceEpoch.toString()).toJson());
+          .set(building
+              .copyWith(date: DateTime.now().millisecondsSinceEpoch.toString())
+              .toJson());
       return const Left(true);
     } on FirebaseException catch (e) {
       return Right(e.message);
@@ -135,22 +137,51 @@ class BuildingRepository implements BuildingInterface {
 
   @override
   Future<Either<List<BuildingModel>, dynamic>> getBuildings(
-      {required BuildingType type,required String docId}) async {
+      {required BuildingType type, required String docId}) async {
     try {
       final res = await FirebaseFirestore.instance
           .collection('users')
           .doc(docId)
           .collection('${type.name.toLowerCase()}Buildings')
           .get();
-      return Left(res.docs
-          .map(
-            (e) {
-              return BuildingModel.fromJson(
-                e.data(),
-            );
-            },
-          )
-          .toList());
+      return Left(res.docs.map(
+        (e) {
+          return BuildingModel.fromJson(
+            e.data(),
+          );
+        },
+      ).toList());
+    } on FirebaseException catch (e) {
+      return Right(e.message);
+    }
+  }
+
+  @override
+  Future<Either<bool, dynamic>> upgradeLed(
+      {required BuildingModel building}) async {
+    try {
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(LocalStorage.getMe()?.id ?? '')
+          .collection('existingBuildings')
+          .doc(building.id)
+          .update(building.toJson());
+      return const Left(true);
+    } on FirebaseException catch (e) {
+      return Right(e.message);
+    }
+  }
+  @override
+  Future<Either<bool, dynamic>> upgradeRoof(
+      {required BuildingModel building}) async {
+    try {
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(LocalStorage.getMe()?.id ?? '')
+          .collection('existingBuildings')
+          .doc(building.id)
+          .update(building.toJson());
+      return const Left(true);
     } on FirebaseException catch (e) {
       return Right(e.message);
     }

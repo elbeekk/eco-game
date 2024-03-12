@@ -7,6 +7,7 @@ class BuildingModel {
   double? positionX;
   double? positionY;
   int? bottom;
+  int? left;
   int? width;
   int? height;
   int? price;
@@ -16,6 +17,8 @@ class BuildingModel {
   double? duration;
   String? description;
   int? income;
+  bool? isLed;
+  bool? isRoof;
 
   BuildingModel({
     this.id,
@@ -24,6 +27,7 @@ class BuildingModel {
     this.positionX,
     this.positionY,
     this.bottom,
+    this.left,
     this.width,
     this.height,
     this.price,
@@ -33,6 +37,8 @@ class BuildingModel {
     this.duration,
     this.description,
     this.income,
+    this.isLed,
+    this.isRoof,
   });
 
   BuildingModel copyWith({
@@ -42,6 +48,7 @@ class BuildingModel {
     double? positionX,
     double? positionY,
     int? bottom,
+    int? left,
     int? width,
     int? height,
     int? price,
@@ -51,6 +58,8 @@ class BuildingModel {
     double? duration,
     String? description,
     int? income,
+    bool? isLed,
+    bool? isRoof,
   }) =>
       BuildingModel(
         id: id ?? this.id,
@@ -59,6 +68,7 @@ class BuildingModel {
         positionX: positionX ?? this.positionX,
         positionY: positionY ?? this.positionY,
         bottom: bottom ?? this.bottom,
+        left: left ?? this.left,
         width: width ?? this.width,
         height: height ?? this.height,
         price: price ?? this.price,
@@ -68,6 +78,8 @@ class BuildingModel {
         duration: duration ?? this.duration,
         description: description ?? this.description,
         income: income ?? this.income,
+        isLed: isLed ?? this.isLed,
+        isRoof: isRoof ?? this.isRoof,
       );
 
   factory BuildingModel.fromRawJson(String str) => BuildingModel.fromJson(json.decode(str));
@@ -81,6 +93,7 @@ class BuildingModel {
     positionX: json["positionX"]?.toDouble(),
     positionY: json["positionY"]?.toDouble(),
     bottom: json["bottom"],
+    left: json["left"],
     width: json["width"],
     height: json["height"],
     price: json["price"],
@@ -90,6 +103,8 @@ class BuildingModel {
     duration: json["duration"]?.toDouble(),
     description: json["description"],
     income: json["income"],
+    isLed: json["isLed"],
+    isRoof: json["isRoof"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -99,6 +114,7 @@ class BuildingModel {
     "positionX": positionX,
     "positionY": positionY,
     "bottom": bottom,
+    "left": left,
     "width": width,
     "height": height,
     "price": price,
@@ -108,5 +124,7 @@ class BuildingModel {
     "duration": duration,
     "description": description,
     "income": income,
+    "isLed": isLed,
+    "isRoof": isRoof,
   };
 }

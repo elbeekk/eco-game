@@ -169,7 +169,7 @@ class _GamePageState extends State<GamePage> {
                                       .toList()[index];
                                   return Positioned(
                                     top: (current.positionY ?? 0) - 35,
-                                    left: (current.positionX ?? 0) + 37,
+                                    left: (current.positionX ?? 0)+((current.width??35)*0.4),
                                     child: Shimmer.fromColors(
                                       highlightColor: Colors.orange.shade400,
                                       baseColor: Colors.grey.shade700,

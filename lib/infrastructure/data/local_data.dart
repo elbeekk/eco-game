@@ -4,6 +4,10 @@ import 'package:eco_game/infrastructure/models/class/message.dart';
 class LocalData {
   LocalData._();
 
+  static String upgradeLed =
+      "Replacing light bulbs with LEDs will give you points and reduce energy consumption in the building";
+  static String upgradeRoof =
+      "Placing solar panels on the roof of a building gives you points and helps generate energy while saving enough space.";
   static List<BuildingModel> houses = [
     BuildingModel(
         name: "Residential House",
@@ -11,40 +15,57 @@ class LocalData {
         description:
             "Basic housing for residents of the town. Consumes energy for lighting, heating, and appliances.",
         energy: -10,
-        duration: 0.5,
+        duration: 1.5,
         price: 2500,
-        points: 25),
+        points: 25,
+        width: 50,
+        bottom: 93,
+        left: 25,
+        height: 30,
+        income: 30,
+    ),
     BuildingModel(
         name: "Commercial Building (Market)",
         image: "assets/images/game_assets/buildings/consumers/market.png",
         description:
             "A market where goods are bought and sold. Requires energy for lighting, refrigeration, and other operations.",
         energy: -20,
-        duration: 2,
+        duration: .5,
         price: 3000,
-        points: 30),
+        income: 100,
+        points: 30,
+    width: 65,
+    height: 30,
+    left: 20,
+    bottom: 75,),
     BuildingModel(
         name: "Industrial Factory",
         image: "assets/images/game_assets/buildings/consumers/factory.png",
         description:
             "A factory for manufacturing goods. Requires energy for machinery, lighting, and heating.",
         energy: -50,
-        duration: 3,
+        duration: 2.5,
+        income: 200,
         price: 8000,
-        points: 80),
+        points: 80,
+      width: 65,
+      height: 30,
+      left: 20,
+      bottom: 75,),
   ];
 
   static List<BuildingModel> generators = [
     BuildingModel(
       name: "Solar Panel Array",
       image: "assets/images/game_assets/buildings/generators/solar_panel.png",
-      energy: 50,
+      energy: 2,
       description:
           "A collection of solar panels installed on rooftops or in open spaces. They harness sunlight to generate clean and renewable energy for the town.",
-      duration: 1,
-      price: 2000,
+      duration: .5,
+      price: 200,
       points: 20,
-      bottom: 10,
+      bottom: 64,
+      left: 32,
       height: 30,
       width: 40,
     ),
@@ -53,26 +74,28 @@ class LocalData {
       image: "assets/images/game_assets/buildings/generators/wind.png",
       description:
           "A group of wind turbines erected in an area with consistent wind flow. They capture the kinetic energy of the wind and convert it into electricity.",
-      energy: 100,
+      energy: 90,
       duration: 2,
       price: 5000,
       points: 50,
-      bottom: 5,
+      bottom: 95,
+      left: 30,
       height: 30,
       width: 40,
     ),
     BuildingModel(
       name: "Hydroelectric Power Plant",
       image: "assets/images/game_assets/buildings/generators/water.png",
-      energy: 200,
+      energy: 180000,
       description:
           "A facility that harnesses the energy of flowing water to generate electricity. It typically utilizes a dam or water reservoir to control water flow and drive turbines.",
       duration: 4,
-      price: 10000,
-      points: 100,
-      bottom: 10,
-      height: 80,
-      width: 85,
+      price: 15000,
+      points: 150,
+      bottom: 80,
+      left: 0,
+      height: 45,
+      width: 80,
     ),
   ];
   static List<BuildingModel> trees = [];

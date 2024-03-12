@@ -7,6 +7,16 @@ class BuildingEvent with _$BuildingEvent {
     required Function(String error) onError,
     required Function onSuccess,
   }) = AddPendingBuilding;
+  const factory BuildingEvent.upgradeLed({
+    required BuildingModel building,
+    Function(String error)? onError,
+    Function? onSuccess,
+  }) = UpgradeLed;
+  const factory BuildingEvent.upgradeRoof({
+    required BuildingModel building,
+    Function(String error)? onError,
+    Function? onSuccess,
+  }) = UpgradeRoof;
 
   const factory BuildingEvent.removePendingBuilding({
     required BuildingModel building,

@@ -22,6 +22,12 @@ mixin _$BuildingEvent {
             dynamic Function(String) onError, Function onSuccess)
         addPendingBuilding,
     required TResult Function(BuildingModel building,
+            dynamic Function(String)? onError, Function? onSuccess)
+        upgradeLed,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String)? onError, Function? onSuccess)
+        upgradeRoof,
+    required TResult Function(BuildingModel building,
             dynamic Function(String) onError, Function onSuccess)
         removePendingBuilding,
     required TResult Function(BuildingModel building,
@@ -47,6 +53,12 @@ mixin _$BuildingEvent {
     TResult? Function(BuildingModel building, dynamic Function(String) onError,
             Function onSuccess)?
         addPendingBuilding,
+    TResult? Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeLed,
+    TResult? Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeRoof,
     TResult? Function(BuildingModel building, dynamic Function(String) onError,
             Function onSuccess)?
         removePendingBuilding,
@@ -73,6 +85,12 @@ mixin _$BuildingEvent {
     TResult Function(BuildingModel building, dynamic Function(String) onError,
             Function onSuccess)?
         addPendingBuilding,
+    TResult Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeLed,
+    TResult Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeRoof,
     TResult Function(BuildingModel building, dynamic Function(String) onError,
             Function onSuccess)?
         removePendingBuilding,
@@ -98,6 +116,8 @@ mixin _$BuildingEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AddPendingBuilding value) addPendingBuilding,
+    required TResult Function(UpgradeLed value) upgradeLed,
+    required TResult Function(UpgradeRoof value) upgradeRoof,
     required TResult Function(RemovePendingBuilding value)
         removePendingBuilding,
     required TResult Function(RemoveConstructingBuilding value)
@@ -115,6 +135,8 @@ mixin _$BuildingEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AddPendingBuilding value)? addPendingBuilding,
+    TResult? Function(UpgradeLed value)? upgradeLed,
+    TResult? Function(UpgradeRoof value)? upgradeRoof,
     TResult? Function(RemovePendingBuilding value)? removePendingBuilding,
     TResult? Function(RemoveConstructingBuilding value)?
         removeConstructingBuilding,
@@ -128,6 +150,8 @@ mixin _$BuildingEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddPendingBuilding value)? addPendingBuilding,
+    TResult Function(UpgradeLed value)? upgradeLed,
+    TResult Function(UpgradeRoof value)? upgradeRoof,
     TResult Function(RemovePendingBuilding value)? removePendingBuilding,
     TResult Function(RemoveConstructingBuilding value)?
         removeConstructingBuilding,
@@ -250,6 +274,12 @@ class _$AddPendingBuildingImpl implements AddPendingBuilding {
             dynamic Function(String) onError, Function onSuccess)
         addPendingBuilding,
     required TResult Function(BuildingModel building,
+            dynamic Function(String)? onError, Function? onSuccess)
+        upgradeLed,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String)? onError, Function? onSuccess)
+        upgradeRoof,
+    required TResult Function(BuildingModel building,
             dynamic Function(String) onError, Function onSuccess)
         removePendingBuilding,
     required TResult Function(BuildingModel building,
@@ -278,6 +308,12 @@ class _$AddPendingBuildingImpl implements AddPendingBuilding {
     TResult? Function(BuildingModel building, dynamic Function(String) onError,
             Function onSuccess)?
         addPendingBuilding,
+    TResult? Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeLed,
+    TResult? Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeRoof,
     TResult? Function(BuildingModel building, dynamic Function(String) onError,
             Function onSuccess)?
         removePendingBuilding,
@@ -307,6 +343,12 @@ class _$AddPendingBuildingImpl implements AddPendingBuilding {
     TResult Function(BuildingModel building, dynamic Function(String) onError,
             Function onSuccess)?
         addPendingBuilding,
+    TResult Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeLed,
+    TResult Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeRoof,
     TResult Function(BuildingModel building, dynamic Function(String) onError,
             Function onSuccess)?
         removePendingBuilding,
@@ -338,6 +380,8 @@ class _$AddPendingBuildingImpl implements AddPendingBuilding {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AddPendingBuilding value) addPendingBuilding,
+    required TResult Function(UpgradeLed value) upgradeLed,
+    required TResult Function(UpgradeRoof value) upgradeRoof,
     required TResult Function(RemovePendingBuilding value)
         removePendingBuilding,
     required TResult Function(RemoveConstructingBuilding value)
@@ -358,6 +402,8 @@ class _$AddPendingBuildingImpl implements AddPendingBuilding {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AddPendingBuilding value)? addPendingBuilding,
+    TResult? Function(UpgradeLed value)? upgradeLed,
+    TResult? Function(UpgradeRoof value)? upgradeRoof,
     TResult? Function(RemovePendingBuilding value)? removePendingBuilding,
     TResult? Function(RemoveConstructingBuilding value)?
         removeConstructingBuilding,
@@ -374,6 +420,8 @@ class _$AddPendingBuildingImpl implements AddPendingBuilding {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddPendingBuilding value)? addPendingBuilding,
+    TResult Function(UpgradeLed value)? upgradeLed,
+    TResult Function(UpgradeRoof value)? upgradeRoof,
     TResult Function(RemovePendingBuilding value)? removePendingBuilding,
     TResult Function(RemoveConstructingBuilding value)?
         removeConstructingBuilding,
@@ -402,6 +450,544 @@ abstract class AddPendingBuilding implements BuildingEvent {
   Function get onSuccess;
   @JsonKey(ignore: true)
   _$$AddPendingBuildingImplCopyWith<_$AddPendingBuildingImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpgradeLedImplCopyWith<$Res> {
+  factory _$$UpgradeLedImplCopyWith(
+          _$UpgradeLedImpl value, $Res Function(_$UpgradeLedImpl) then) =
+      __$$UpgradeLedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {BuildingModel building,
+      dynamic Function(String)? onError,
+      Function? onSuccess});
+}
+
+/// @nodoc
+class __$$UpgradeLedImplCopyWithImpl<$Res>
+    extends _$BuildingEventCopyWithImpl<$Res, _$UpgradeLedImpl>
+    implements _$$UpgradeLedImplCopyWith<$Res> {
+  __$$UpgradeLedImplCopyWithImpl(
+      _$UpgradeLedImpl _value, $Res Function(_$UpgradeLedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? building = null,
+    Object? onError = freezed,
+    Object? onSuccess = freezed,
+  }) {
+    return _then(_$UpgradeLedImpl(
+      building: null == building
+          ? _value.building
+          : building // ignore: cast_nullable_to_non_nullable
+              as BuildingModel,
+      onError: freezed == onError
+          ? _value.onError
+          : onError // ignore: cast_nullable_to_non_nullable
+              as dynamic Function(String)?,
+      onSuccess: freezed == onSuccess
+          ? _value.onSuccess
+          : onSuccess // ignore: cast_nullable_to_non_nullable
+              as Function?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpgradeLedImpl implements UpgradeLed {
+  const _$UpgradeLedImpl(
+      {required this.building, this.onError, this.onSuccess});
+
+  @override
+  final BuildingModel building;
+  @override
+  final dynamic Function(String)? onError;
+  @override
+  final Function? onSuccess;
+
+  @override
+  String toString() {
+    return 'BuildingEvent.upgradeLed(building: $building, onError: $onError, onSuccess: $onSuccess)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpgradeLedImpl &&
+            (identical(other.building, building) ||
+                other.building == building) &&
+            (identical(other.onError, onError) || other.onError == onError) &&
+            (identical(other.onSuccess, onSuccess) ||
+                other.onSuccess == onSuccess));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, building, onError, onSuccess);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpgradeLedImplCopyWith<_$UpgradeLedImpl> get copyWith =>
+      __$$UpgradeLedImplCopyWithImpl<_$UpgradeLedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(BuildingModel building,
+            dynamic Function(String) onError, Function onSuccess)
+        addPendingBuilding,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String)? onError, Function? onSuccess)
+        upgradeLed,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String)? onError, Function? onSuccess)
+        upgradeRoof,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String) onError, Function onSuccess)
+        removePendingBuilding,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String) onError, Function onSuccess)
+        removeConstructingBuilding,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String) onError, Function onSuccess)
+        addConstructingBuilding,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String) onError, Function onSuccess)
+        addExistingBuilding,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String) onError, Function onSuccess)
+        removeExistingBuilding,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String) onError, Function onSuccess)
+        updatePendingBuilding,
+    required TResult Function() getAll,
+  }) {
+    return upgradeLed(building, onError, onSuccess);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        addPendingBuilding,
+    TResult? Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeLed,
+    TResult? Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeRoof,
+    TResult? Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        removePendingBuilding,
+    TResult? Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        removeConstructingBuilding,
+    TResult? Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        addConstructingBuilding,
+    TResult? Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        addExistingBuilding,
+    TResult? Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        removeExistingBuilding,
+    TResult? Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        updatePendingBuilding,
+    TResult? Function()? getAll,
+  }) {
+    return upgradeLed?.call(building, onError, onSuccess);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        addPendingBuilding,
+    TResult Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeLed,
+    TResult Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeRoof,
+    TResult Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        removePendingBuilding,
+    TResult Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        removeConstructingBuilding,
+    TResult Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        addConstructingBuilding,
+    TResult Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        addExistingBuilding,
+    TResult Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        removeExistingBuilding,
+    TResult Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        updatePendingBuilding,
+    TResult Function()? getAll,
+    required TResult orElse(),
+  }) {
+    if (upgradeLed != null) {
+      return upgradeLed(building, onError, onSuccess);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AddPendingBuilding value) addPendingBuilding,
+    required TResult Function(UpgradeLed value) upgradeLed,
+    required TResult Function(UpgradeRoof value) upgradeRoof,
+    required TResult Function(RemovePendingBuilding value)
+        removePendingBuilding,
+    required TResult Function(RemoveConstructingBuilding value)
+        removeConstructingBuilding,
+    required TResult Function(AddConstructingBuilding value)
+        addConstructingBuilding,
+    required TResult Function(AddExistingBuilding value) addExistingBuilding,
+    required TResult Function(RemoveExistingBuilding value)
+        removeExistingBuilding,
+    required TResult Function(UpdatePendingBuilding value)
+        updatePendingBuilding,
+    required TResult Function(GetAll value) getAll,
+  }) {
+    return upgradeLed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AddPendingBuilding value)? addPendingBuilding,
+    TResult? Function(UpgradeLed value)? upgradeLed,
+    TResult? Function(UpgradeRoof value)? upgradeRoof,
+    TResult? Function(RemovePendingBuilding value)? removePendingBuilding,
+    TResult? Function(RemoveConstructingBuilding value)?
+        removeConstructingBuilding,
+    TResult? Function(AddConstructingBuilding value)? addConstructingBuilding,
+    TResult? Function(AddExistingBuilding value)? addExistingBuilding,
+    TResult? Function(RemoveExistingBuilding value)? removeExistingBuilding,
+    TResult? Function(UpdatePendingBuilding value)? updatePendingBuilding,
+    TResult? Function(GetAll value)? getAll,
+  }) {
+    return upgradeLed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AddPendingBuilding value)? addPendingBuilding,
+    TResult Function(UpgradeLed value)? upgradeLed,
+    TResult Function(UpgradeRoof value)? upgradeRoof,
+    TResult Function(RemovePendingBuilding value)? removePendingBuilding,
+    TResult Function(RemoveConstructingBuilding value)?
+        removeConstructingBuilding,
+    TResult Function(AddConstructingBuilding value)? addConstructingBuilding,
+    TResult Function(AddExistingBuilding value)? addExistingBuilding,
+    TResult Function(RemoveExistingBuilding value)? removeExistingBuilding,
+    TResult Function(UpdatePendingBuilding value)? updatePendingBuilding,
+    TResult Function(GetAll value)? getAll,
+    required TResult orElse(),
+  }) {
+    if (upgradeLed != null) {
+      return upgradeLed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpgradeLed implements BuildingEvent {
+  const factory UpgradeLed(
+      {required final BuildingModel building,
+      final dynamic Function(String)? onError,
+      final Function? onSuccess}) = _$UpgradeLedImpl;
+
+  BuildingModel get building;
+  dynamic Function(String)? get onError;
+  Function? get onSuccess;
+  @JsonKey(ignore: true)
+  _$$UpgradeLedImplCopyWith<_$UpgradeLedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpgradeRoofImplCopyWith<$Res> {
+  factory _$$UpgradeRoofImplCopyWith(
+          _$UpgradeRoofImpl value, $Res Function(_$UpgradeRoofImpl) then) =
+      __$$UpgradeRoofImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {BuildingModel building,
+      dynamic Function(String)? onError,
+      Function? onSuccess});
+}
+
+/// @nodoc
+class __$$UpgradeRoofImplCopyWithImpl<$Res>
+    extends _$BuildingEventCopyWithImpl<$Res, _$UpgradeRoofImpl>
+    implements _$$UpgradeRoofImplCopyWith<$Res> {
+  __$$UpgradeRoofImplCopyWithImpl(
+      _$UpgradeRoofImpl _value, $Res Function(_$UpgradeRoofImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? building = null,
+    Object? onError = freezed,
+    Object? onSuccess = freezed,
+  }) {
+    return _then(_$UpgradeRoofImpl(
+      building: null == building
+          ? _value.building
+          : building // ignore: cast_nullable_to_non_nullable
+              as BuildingModel,
+      onError: freezed == onError
+          ? _value.onError
+          : onError // ignore: cast_nullable_to_non_nullable
+              as dynamic Function(String)?,
+      onSuccess: freezed == onSuccess
+          ? _value.onSuccess
+          : onSuccess // ignore: cast_nullable_to_non_nullable
+              as Function?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpgradeRoofImpl implements UpgradeRoof {
+  const _$UpgradeRoofImpl(
+      {required this.building, this.onError, this.onSuccess});
+
+  @override
+  final BuildingModel building;
+  @override
+  final dynamic Function(String)? onError;
+  @override
+  final Function? onSuccess;
+
+  @override
+  String toString() {
+    return 'BuildingEvent.upgradeRoof(building: $building, onError: $onError, onSuccess: $onSuccess)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpgradeRoofImpl &&
+            (identical(other.building, building) ||
+                other.building == building) &&
+            (identical(other.onError, onError) || other.onError == onError) &&
+            (identical(other.onSuccess, onSuccess) ||
+                other.onSuccess == onSuccess));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, building, onError, onSuccess);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpgradeRoofImplCopyWith<_$UpgradeRoofImpl> get copyWith =>
+      __$$UpgradeRoofImplCopyWithImpl<_$UpgradeRoofImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(BuildingModel building,
+            dynamic Function(String) onError, Function onSuccess)
+        addPendingBuilding,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String)? onError, Function? onSuccess)
+        upgradeLed,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String)? onError, Function? onSuccess)
+        upgradeRoof,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String) onError, Function onSuccess)
+        removePendingBuilding,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String) onError, Function onSuccess)
+        removeConstructingBuilding,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String) onError, Function onSuccess)
+        addConstructingBuilding,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String) onError, Function onSuccess)
+        addExistingBuilding,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String) onError, Function onSuccess)
+        removeExistingBuilding,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String) onError, Function onSuccess)
+        updatePendingBuilding,
+    required TResult Function() getAll,
+  }) {
+    return upgradeRoof(building, onError, onSuccess);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        addPendingBuilding,
+    TResult? Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeLed,
+    TResult? Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeRoof,
+    TResult? Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        removePendingBuilding,
+    TResult? Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        removeConstructingBuilding,
+    TResult? Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        addConstructingBuilding,
+    TResult? Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        addExistingBuilding,
+    TResult? Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        removeExistingBuilding,
+    TResult? Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        updatePendingBuilding,
+    TResult? Function()? getAll,
+  }) {
+    return upgradeRoof?.call(building, onError, onSuccess);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        addPendingBuilding,
+    TResult Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeLed,
+    TResult Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeRoof,
+    TResult Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        removePendingBuilding,
+    TResult Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        removeConstructingBuilding,
+    TResult Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        addConstructingBuilding,
+    TResult Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        addExistingBuilding,
+    TResult Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        removeExistingBuilding,
+    TResult Function(BuildingModel building, dynamic Function(String) onError,
+            Function onSuccess)?
+        updatePendingBuilding,
+    TResult Function()? getAll,
+    required TResult orElse(),
+  }) {
+    if (upgradeRoof != null) {
+      return upgradeRoof(building, onError, onSuccess);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AddPendingBuilding value) addPendingBuilding,
+    required TResult Function(UpgradeLed value) upgradeLed,
+    required TResult Function(UpgradeRoof value) upgradeRoof,
+    required TResult Function(RemovePendingBuilding value)
+        removePendingBuilding,
+    required TResult Function(RemoveConstructingBuilding value)
+        removeConstructingBuilding,
+    required TResult Function(AddConstructingBuilding value)
+        addConstructingBuilding,
+    required TResult Function(AddExistingBuilding value) addExistingBuilding,
+    required TResult Function(RemoveExistingBuilding value)
+        removeExistingBuilding,
+    required TResult Function(UpdatePendingBuilding value)
+        updatePendingBuilding,
+    required TResult Function(GetAll value) getAll,
+  }) {
+    return upgradeRoof(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AddPendingBuilding value)? addPendingBuilding,
+    TResult? Function(UpgradeLed value)? upgradeLed,
+    TResult? Function(UpgradeRoof value)? upgradeRoof,
+    TResult? Function(RemovePendingBuilding value)? removePendingBuilding,
+    TResult? Function(RemoveConstructingBuilding value)?
+        removeConstructingBuilding,
+    TResult? Function(AddConstructingBuilding value)? addConstructingBuilding,
+    TResult? Function(AddExistingBuilding value)? addExistingBuilding,
+    TResult? Function(RemoveExistingBuilding value)? removeExistingBuilding,
+    TResult? Function(UpdatePendingBuilding value)? updatePendingBuilding,
+    TResult? Function(GetAll value)? getAll,
+  }) {
+    return upgradeRoof?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AddPendingBuilding value)? addPendingBuilding,
+    TResult Function(UpgradeLed value)? upgradeLed,
+    TResult Function(UpgradeRoof value)? upgradeRoof,
+    TResult Function(RemovePendingBuilding value)? removePendingBuilding,
+    TResult Function(RemoveConstructingBuilding value)?
+        removeConstructingBuilding,
+    TResult Function(AddConstructingBuilding value)? addConstructingBuilding,
+    TResult Function(AddExistingBuilding value)? addExistingBuilding,
+    TResult Function(RemoveExistingBuilding value)? removeExistingBuilding,
+    TResult Function(UpdatePendingBuilding value)? updatePendingBuilding,
+    TResult Function(GetAll value)? getAll,
+    required TResult orElse(),
+  }) {
+    if (upgradeRoof != null) {
+      return upgradeRoof(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpgradeRoof implements BuildingEvent {
+  const factory UpgradeRoof(
+      {required final BuildingModel building,
+      final dynamic Function(String)? onError,
+      final Function? onSuccess}) = _$UpgradeRoofImpl;
+
+  BuildingModel get building;
+  dynamic Function(String)? get onError;
+  Function? get onSuccess;
+  @JsonKey(ignore: true)
+  _$$UpgradeRoofImplCopyWith<_$UpgradeRoofImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -497,6 +1083,12 @@ class _$RemovePendingBuildingImpl implements RemovePendingBuilding {
             dynamic Function(String) onError, Function onSuccess)
         addPendingBuilding,
     required TResult Function(BuildingModel building,
+            dynamic Function(String)? onError, Function? onSuccess)
+        upgradeLed,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String)? onError, Function? onSuccess)
+        upgradeRoof,
+    required TResult Function(BuildingModel building,
             dynamic Function(String) onError, Function onSuccess)
         removePendingBuilding,
     required TResult Function(BuildingModel building,
@@ -525,6 +1117,12 @@ class _$RemovePendingBuildingImpl implements RemovePendingBuilding {
     TResult? Function(BuildingModel building, dynamic Function(String) onError,
             Function onSuccess)?
         addPendingBuilding,
+    TResult? Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeLed,
+    TResult? Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeRoof,
     TResult? Function(BuildingModel building, dynamic Function(String) onError,
             Function onSuccess)?
         removePendingBuilding,
@@ -554,6 +1152,12 @@ class _$RemovePendingBuildingImpl implements RemovePendingBuilding {
     TResult Function(BuildingModel building, dynamic Function(String) onError,
             Function onSuccess)?
         addPendingBuilding,
+    TResult Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeLed,
+    TResult Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeRoof,
     TResult Function(BuildingModel building, dynamic Function(String) onError,
             Function onSuccess)?
         removePendingBuilding,
@@ -585,6 +1189,8 @@ class _$RemovePendingBuildingImpl implements RemovePendingBuilding {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AddPendingBuilding value) addPendingBuilding,
+    required TResult Function(UpgradeLed value) upgradeLed,
+    required TResult Function(UpgradeRoof value) upgradeRoof,
     required TResult Function(RemovePendingBuilding value)
         removePendingBuilding,
     required TResult Function(RemoveConstructingBuilding value)
@@ -605,6 +1211,8 @@ class _$RemovePendingBuildingImpl implements RemovePendingBuilding {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AddPendingBuilding value)? addPendingBuilding,
+    TResult? Function(UpgradeLed value)? upgradeLed,
+    TResult? Function(UpgradeRoof value)? upgradeRoof,
     TResult? Function(RemovePendingBuilding value)? removePendingBuilding,
     TResult? Function(RemoveConstructingBuilding value)?
         removeConstructingBuilding,
@@ -621,6 +1229,8 @@ class _$RemovePendingBuildingImpl implements RemovePendingBuilding {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddPendingBuilding value)? addPendingBuilding,
+    TResult Function(UpgradeLed value)? upgradeLed,
+    TResult Function(UpgradeRoof value)? upgradeRoof,
     TResult Function(RemovePendingBuilding value)? removePendingBuilding,
     TResult Function(RemoveConstructingBuilding value)?
         removeConstructingBuilding,
@@ -745,6 +1355,12 @@ class _$RemoveConstructingBuildingImpl implements RemoveConstructingBuilding {
             dynamic Function(String) onError, Function onSuccess)
         addPendingBuilding,
     required TResult Function(BuildingModel building,
+            dynamic Function(String)? onError, Function? onSuccess)
+        upgradeLed,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String)? onError, Function? onSuccess)
+        upgradeRoof,
+    required TResult Function(BuildingModel building,
             dynamic Function(String) onError, Function onSuccess)
         removePendingBuilding,
     required TResult Function(BuildingModel building,
@@ -773,6 +1389,12 @@ class _$RemoveConstructingBuildingImpl implements RemoveConstructingBuilding {
     TResult? Function(BuildingModel building, dynamic Function(String) onError,
             Function onSuccess)?
         addPendingBuilding,
+    TResult? Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeLed,
+    TResult? Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeRoof,
     TResult? Function(BuildingModel building, dynamic Function(String) onError,
             Function onSuccess)?
         removePendingBuilding,
@@ -802,6 +1424,12 @@ class _$RemoveConstructingBuildingImpl implements RemoveConstructingBuilding {
     TResult Function(BuildingModel building, dynamic Function(String) onError,
             Function onSuccess)?
         addPendingBuilding,
+    TResult Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeLed,
+    TResult Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeRoof,
     TResult Function(BuildingModel building, dynamic Function(String) onError,
             Function onSuccess)?
         removePendingBuilding,
@@ -833,6 +1461,8 @@ class _$RemoveConstructingBuildingImpl implements RemoveConstructingBuilding {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AddPendingBuilding value) addPendingBuilding,
+    required TResult Function(UpgradeLed value) upgradeLed,
+    required TResult Function(UpgradeRoof value) upgradeRoof,
     required TResult Function(RemovePendingBuilding value)
         removePendingBuilding,
     required TResult Function(RemoveConstructingBuilding value)
@@ -853,6 +1483,8 @@ class _$RemoveConstructingBuildingImpl implements RemoveConstructingBuilding {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AddPendingBuilding value)? addPendingBuilding,
+    TResult? Function(UpgradeLed value)? upgradeLed,
+    TResult? Function(UpgradeRoof value)? upgradeRoof,
     TResult? Function(RemovePendingBuilding value)? removePendingBuilding,
     TResult? Function(RemoveConstructingBuilding value)?
         removeConstructingBuilding,
@@ -869,6 +1501,8 @@ class _$RemoveConstructingBuildingImpl implements RemoveConstructingBuilding {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddPendingBuilding value)? addPendingBuilding,
+    TResult Function(UpgradeLed value)? upgradeLed,
+    TResult Function(UpgradeRoof value)? upgradeRoof,
     TResult Function(RemovePendingBuilding value)? removePendingBuilding,
     TResult Function(RemoveConstructingBuilding value)?
         removeConstructingBuilding,
@@ -993,6 +1627,12 @@ class _$AddConstructingBuildingImpl implements AddConstructingBuilding {
             dynamic Function(String) onError, Function onSuccess)
         addPendingBuilding,
     required TResult Function(BuildingModel building,
+            dynamic Function(String)? onError, Function? onSuccess)
+        upgradeLed,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String)? onError, Function? onSuccess)
+        upgradeRoof,
+    required TResult Function(BuildingModel building,
             dynamic Function(String) onError, Function onSuccess)
         removePendingBuilding,
     required TResult Function(BuildingModel building,
@@ -1021,6 +1661,12 @@ class _$AddConstructingBuildingImpl implements AddConstructingBuilding {
     TResult? Function(BuildingModel building, dynamic Function(String) onError,
             Function onSuccess)?
         addPendingBuilding,
+    TResult? Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeLed,
+    TResult? Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeRoof,
     TResult? Function(BuildingModel building, dynamic Function(String) onError,
             Function onSuccess)?
         removePendingBuilding,
@@ -1050,6 +1696,12 @@ class _$AddConstructingBuildingImpl implements AddConstructingBuilding {
     TResult Function(BuildingModel building, dynamic Function(String) onError,
             Function onSuccess)?
         addPendingBuilding,
+    TResult Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeLed,
+    TResult Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeRoof,
     TResult Function(BuildingModel building, dynamic Function(String) onError,
             Function onSuccess)?
         removePendingBuilding,
@@ -1081,6 +1733,8 @@ class _$AddConstructingBuildingImpl implements AddConstructingBuilding {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AddPendingBuilding value) addPendingBuilding,
+    required TResult Function(UpgradeLed value) upgradeLed,
+    required TResult Function(UpgradeRoof value) upgradeRoof,
     required TResult Function(RemovePendingBuilding value)
         removePendingBuilding,
     required TResult Function(RemoveConstructingBuilding value)
@@ -1101,6 +1755,8 @@ class _$AddConstructingBuildingImpl implements AddConstructingBuilding {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AddPendingBuilding value)? addPendingBuilding,
+    TResult? Function(UpgradeLed value)? upgradeLed,
+    TResult? Function(UpgradeRoof value)? upgradeRoof,
     TResult? Function(RemovePendingBuilding value)? removePendingBuilding,
     TResult? Function(RemoveConstructingBuilding value)?
         removeConstructingBuilding,
@@ -1117,6 +1773,8 @@ class _$AddConstructingBuildingImpl implements AddConstructingBuilding {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddPendingBuilding value)? addPendingBuilding,
+    TResult Function(UpgradeLed value)? upgradeLed,
+    TResult Function(UpgradeRoof value)? upgradeRoof,
     TResult Function(RemovePendingBuilding value)? removePendingBuilding,
     TResult Function(RemoveConstructingBuilding value)?
         removeConstructingBuilding,
@@ -1239,6 +1897,12 @@ class _$AddExistingBuildingImpl implements AddExistingBuilding {
             dynamic Function(String) onError, Function onSuccess)
         addPendingBuilding,
     required TResult Function(BuildingModel building,
+            dynamic Function(String)? onError, Function? onSuccess)
+        upgradeLed,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String)? onError, Function? onSuccess)
+        upgradeRoof,
+    required TResult Function(BuildingModel building,
             dynamic Function(String) onError, Function onSuccess)
         removePendingBuilding,
     required TResult Function(BuildingModel building,
@@ -1267,6 +1931,12 @@ class _$AddExistingBuildingImpl implements AddExistingBuilding {
     TResult? Function(BuildingModel building, dynamic Function(String) onError,
             Function onSuccess)?
         addPendingBuilding,
+    TResult? Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeLed,
+    TResult? Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeRoof,
     TResult? Function(BuildingModel building, dynamic Function(String) onError,
             Function onSuccess)?
         removePendingBuilding,
@@ -1296,6 +1966,12 @@ class _$AddExistingBuildingImpl implements AddExistingBuilding {
     TResult Function(BuildingModel building, dynamic Function(String) onError,
             Function onSuccess)?
         addPendingBuilding,
+    TResult Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeLed,
+    TResult Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeRoof,
     TResult Function(BuildingModel building, dynamic Function(String) onError,
             Function onSuccess)?
         removePendingBuilding,
@@ -1327,6 +2003,8 @@ class _$AddExistingBuildingImpl implements AddExistingBuilding {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AddPendingBuilding value) addPendingBuilding,
+    required TResult Function(UpgradeLed value) upgradeLed,
+    required TResult Function(UpgradeRoof value) upgradeRoof,
     required TResult Function(RemovePendingBuilding value)
         removePendingBuilding,
     required TResult Function(RemoveConstructingBuilding value)
@@ -1347,6 +2025,8 @@ class _$AddExistingBuildingImpl implements AddExistingBuilding {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AddPendingBuilding value)? addPendingBuilding,
+    TResult? Function(UpgradeLed value)? upgradeLed,
+    TResult? Function(UpgradeRoof value)? upgradeRoof,
     TResult? Function(RemovePendingBuilding value)? removePendingBuilding,
     TResult? Function(RemoveConstructingBuilding value)?
         removeConstructingBuilding,
@@ -1363,6 +2043,8 @@ class _$AddExistingBuildingImpl implements AddExistingBuilding {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddPendingBuilding value)? addPendingBuilding,
+    TResult Function(UpgradeLed value)? upgradeLed,
+    TResult Function(UpgradeRoof value)? upgradeRoof,
     TResult Function(RemovePendingBuilding value)? removePendingBuilding,
     TResult Function(RemoveConstructingBuilding value)?
         removeConstructingBuilding,
@@ -1487,6 +2169,12 @@ class _$RemoveExistingBuildingImpl implements RemoveExistingBuilding {
             dynamic Function(String) onError, Function onSuccess)
         addPendingBuilding,
     required TResult Function(BuildingModel building,
+            dynamic Function(String)? onError, Function? onSuccess)
+        upgradeLed,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String)? onError, Function? onSuccess)
+        upgradeRoof,
+    required TResult Function(BuildingModel building,
             dynamic Function(String) onError, Function onSuccess)
         removePendingBuilding,
     required TResult Function(BuildingModel building,
@@ -1515,6 +2203,12 @@ class _$RemoveExistingBuildingImpl implements RemoveExistingBuilding {
     TResult? Function(BuildingModel building, dynamic Function(String) onError,
             Function onSuccess)?
         addPendingBuilding,
+    TResult? Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeLed,
+    TResult? Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeRoof,
     TResult? Function(BuildingModel building, dynamic Function(String) onError,
             Function onSuccess)?
         removePendingBuilding,
@@ -1544,6 +2238,12 @@ class _$RemoveExistingBuildingImpl implements RemoveExistingBuilding {
     TResult Function(BuildingModel building, dynamic Function(String) onError,
             Function onSuccess)?
         addPendingBuilding,
+    TResult Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeLed,
+    TResult Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeRoof,
     TResult Function(BuildingModel building, dynamic Function(String) onError,
             Function onSuccess)?
         removePendingBuilding,
@@ -1575,6 +2275,8 @@ class _$RemoveExistingBuildingImpl implements RemoveExistingBuilding {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AddPendingBuilding value) addPendingBuilding,
+    required TResult Function(UpgradeLed value) upgradeLed,
+    required TResult Function(UpgradeRoof value) upgradeRoof,
     required TResult Function(RemovePendingBuilding value)
         removePendingBuilding,
     required TResult Function(RemoveConstructingBuilding value)
@@ -1595,6 +2297,8 @@ class _$RemoveExistingBuildingImpl implements RemoveExistingBuilding {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AddPendingBuilding value)? addPendingBuilding,
+    TResult? Function(UpgradeLed value)? upgradeLed,
+    TResult? Function(UpgradeRoof value)? upgradeRoof,
     TResult? Function(RemovePendingBuilding value)? removePendingBuilding,
     TResult? Function(RemoveConstructingBuilding value)?
         removeConstructingBuilding,
@@ -1611,6 +2315,8 @@ class _$RemoveExistingBuildingImpl implements RemoveExistingBuilding {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddPendingBuilding value)? addPendingBuilding,
+    TResult Function(UpgradeLed value)? upgradeLed,
+    TResult Function(UpgradeRoof value)? upgradeRoof,
     TResult Function(RemovePendingBuilding value)? removePendingBuilding,
     TResult Function(RemoveConstructingBuilding value)?
         removeConstructingBuilding,
@@ -1734,6 +2440,12 @@ class _$UpdatePendingBuildingImpl implements UpdatePendingBuilding {
             dynamic Function(String) onError, Function onSuccess)
         addPendingBuilding,
     required TResult Function(BuildingModel building,
+            dynamic Function(String)? onError, Function? onSuccess)
+        upgradeLed,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String)? onError, Function? onSuccess)
+        upgradeRoof,
+    required TResult Function(BuildingModel building,
             dynamic Function(String) onError, Function onSuccess)
         removePendingBuilding,
     required TResult Function(BuildingModel building,
@@ -1762,6 +2474,12 @@ class _$UpdatePendingBuildingImpl implements UpdatePendingBuilding {
     TResult? Function(BuildingModel building, dynamic Function(String) onError,
             Function onSuccess)?
         addPendingBuilding,
+    TResult? Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeLed,
+    TResult? Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeRoof,
     TResult? Function(BuildingModel building, dynamic Function(String) onError,
             Function onSuccess)?
         removePendingBuilding,
@@ -1791,6 +2509,12 @@ class _$UpdatePendingBuildingImpl implements UpdatePendingBuilding {
     TResult Function(BuildingModel building, dynamic Function(String) onError,
             Function onSuccess)?
         addPendingBuilding,
+    TResult Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeLed,
+    TResult Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeRoof,
     TResult Function(BuildingModel building, dynamic Function(String) onError,
             Function onSuccess)?
         removePendingBuilding,
@@ -1822,6 +2546,8 @@ class _$UpdatePendingBuildingImpl implements UpdatePendingBuilding {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AddPendingBuilding value) addPendingBuilding,
+    required TResult Function(UpgradeLed value) upgradeLed,
+    required TResult Function(UpgradeRoof value) upgradeRoof,
     required TResult Function(RemovePendingBuilding value)
         removePendingBuilding,
     required TResult Function(RemoveConstructingBuilding value)
@@ -1842,6 +2568,8 @@ class _$UpdatePendingBuildingImpl implements UpdatePendingBuilding {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AddPendingBuilding value)? addPendingBuilding,
+    TResult? Function(UpgradeLed value)? upgradeLed,
+    TResult? Function(UpgradeRoof value)? upgradeRoof,
     TResult? Function(RemovePendingBuilding value)? removePendingBuilding,
     TResult? Function(RemoveConstructingBuilding value)?
         removeConstructingBuilding,
@@ -1858,6 +2586,8 @@ class _$UpdatePendingBuildingImpl implements UpdatePendingBuilding {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddPendingBuilding value)? addPendingBuilding,
+    TResult Function(UpgradeLed value)? upgradeLed,
+    TResult Function(UpgradeRoof value)? upgradeRoof,
     TResult Function(RemovePendingBuilding value)? removePendingBuilding,
     TResult Function(RemoveConstructingBuilding value)?
         removeConstructingBuilding,
@@ -1931,6 +2661,12 @@ class _$GetAllImpl implements GetAll {
             dynamic Function(String) onError, Function onSuccess)
         addPendingBuilding,
     required TResult Function(BuildingModel building,
+            dynamic Function(String)? onError, Function? onSuccess)
+        upgradeLed,
+    required TResult Function(BuildingModel building,
+            dynamic Function(String)? onError, Function? onSuccess)
+        upgradeRoof,
+    required TResult Function(BuildingModel building,
             dynamic Function(String) onError, Function onSuccess)
         removePendingBuilding,
     required TResult Function(BuildingModel building,
@@ -1959,6 +2695,12 @@ class _$GetAllImpl implements GetAll {
     TResult? Function(BuildingModel building, dynamic Function(String) onError,
             Function onSuccess)?
         addPendingBuilding,
+    TResult? Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeLed,
+    TResult? Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeRoof,
     TResult? Function(BuildingModel building, dynamic Function(String) onError,
             Function onSuccess)?
         removePendingBuilding,
@@ -1988,6 +2730,12 @@ class _$GetAllImpl implements GetAll {
     TResult Function(BuildingModel building, dynamic Function(String) onError,
             Function onSuccess)?
         addPendingBuilding,
+    TResult Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeLed,
+    TResult Function(BuildingModel building, dynamic Function(String)? onError,
+            Function? onSuccess)?
+        upgradeRoof,
     TResult Function(BuildingModel building, dynamic Function(String) onError,
             Function onSuccess)?
         removePendingBuilding,
@@ -2019,6 +2767,8 @@ class _$GetAllImpl implements GetAll {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AddPendingBuilding value) addPendingBuilding,
+    required TResult Function(UpgradeLed value) upgradeLed,
+    required TResult Function(UpgradeRoof value) upgradeRoof,
     required TResult Function(RemovePendingBuilding value)
         removePendingBuilding,
     required TResult Function(RemoveConstructingBuilding value)
@@ -2039,6 +2789,8 @@ class _$GetAllImpl implements GetAll {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AddPendingBuilding value)? addPendingBuilding,
+    TResult? Function(UpgradeLed value)? upgradeLed,
+    TResult? Function(UpgradeRoof value)? upgradeRoof,
     TResult? Function(RemovePendingBuilding value)? removePendingBuilding,
     TResult? Function(RemoveConstructingBuilding value)?
         removeConstructingBuilding,
@@ -2055,6 +2807,8 @@ class _$GetAllImpl implements GetAll {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddPendingBuilding value)? addPendingBuilding,
+    TResult Function(UpgradeLed value)? upgradeLed,
+    TResult Function(UpgradeRoof value)? upgradeRoof,
     TResult Function(RemovePendingBuilding value)? removePendingBuilding,
     TResult Function(RemoveConstructingBuilding value)?
         removeConstructingBuilding,

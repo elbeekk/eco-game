@@ -2,6 +2,8 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:eco_game/application/const_building/const_building_bloc.dart';
+import 'package:eco_game/infrastructure/services/local_storage/local_storage.dart';
+import 'package:eco_game/presentation/pages/auth_page/login_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -26,11 +28,12 @@ class _ConstructingBuildingState extends State<ConstructingBuilding> {
   Widget build(BuildContext context) {
     final width = widget.building.width?.toDouble() ?? 100;
     final height = widget.building.height?.toDouble() ?? 100;
+    final bottom = widget.building.bottom?.toDouble() ?? 100;
     return BlocProvider(
       create: (context) => ConstBuildingBloc(),
       child: Positioned(
-          top: (widget.building.positionY ?? 0) + 100,
-          left: widget.building.positionX ?? 0 + 20,
+          top: (widget.building.positionY ?? 0) + (widget.building.bottom ?? 0),
+          left: (widget.building.positionX ?? 0) + (widget.building.left ?? 0),
           child: Stack(
             clipBehavior: Clip.none,
             children: [
@@ -67,48 +70,68 @@ class _ConstructingBuildingState extends State<ConstructingBuilding> {
                     //   ),
                     // ),
                     ...List.generate(
-                      height ~/ 16,
+                      height ~/ 8,
                       (index) => Positioned(
-                        right: 5,
-                        top: index * 14 + 5,
-                        child: Image.asset(
-                            'assets/images/game_assets/village/images/Road Signs/cone.png'),
+                        right: 1,
+                        top: index * 7 + 4,
+                        child: SizedBox(
+                          height: 10,
+                          width: 10,
+                          child: Image.asset(
+                              'assets/images/game_assets/village/images/Road Signs/cone.png'),
+                        ),
                       ),
                     ),
                     ...List.generate(
-                      height ~/ 16,
+                      height ~/ 8,
                       (index) => Positioned(
-                        left: 5,
-                        top: index * 14 + 5,
-                        child: Image.asset(
-                            'assets/images/game_assets/village/images/Road Signs/cone.png'),
+                        left: 1,
+                        top: index * 7 + 4,
+                        child: SizedBox(
+                          height: 10,
+                          width: 10,
+                          child: Image.asset(
+                              'assets/images/game_assets/village/images/Road Signs/cone.png'),
+                        ),
                       ),
                     ),
                     ...List.generate(
-                      width ~/ 16,
+                      width ~/ 13,
                       (index) => Positioned(
-                        top: 5,
-                        left: index * 14 + 5,
-                        child: Image.asset(
-                            'assets/images/game_assets/village/images/Road Signs/cone.png'),
+                        top: 1,
+                        left: index * 10 + 7,
+                        child: SizedBox(
+                          height: 10,
+                          width: 10,
+                          child: Image.asset(
+                              'assets/images/game_assets/village/images/Road Signs/cone.png'),
+                        ),
                       ),
                     ),
                     ...List.generate(
-                      width ~/ 16,
+                      width ~/ 13,
                       (index) => Positioned(
-                        bottom: 5,
-                        right: index * 14 + 5,
-                        child: Image.asset(
-                            'assets/images/game_assets/village/images/Road Signs/cone.png'),
+                        bottom: 1,
+                        left: index * 10 + 7,
+                        child: SizedBox(
+                          height: 10,
+                          width: 10,
+                          child: Image.asset(
+                              'assets/images/game_assets/village/images/Road Signs/cone.png'),
+                        ),
                       ),
                     ),
                     ...List.generate(
-                      width ~/ 33,
+                      width ~/ 21 ,
                       (index) => Positioned(
-                        top: height * 0.3,
-                        left: index * 30 + 15,
-                        child: Image.asset(
-                            'assets/images/game_assets/village/images/Road Signs/Sign Attention.png'),
+                        top: height*0.05,
+                        left: index * 18 + 10,
+                        child: SizedBox(
+                          height: 20,
+                          width: 10,
+                          child: Image.asset(
+                              'assets/images/game_assets/village/images/Road Signs/Sign Attention.png'),
+                        ),
                       ),
                     ),
                   ],
@@ -154,11 +177,20 @@ class _ConstructingBuildingState extends State<ConstructingBuilding> {
                           percent = 1.0;
                         }
                         if (endTime <= now) {
-                          context.read<BuildingBloc>().add(
-                              BuildingEvent.addExistingBuilding(
-                                  building: widget.building,
-                                  onError: (e) {},
-                                  onSuccess: () {}));
+                          if (LocalStorage.getMe()?.id != null) {
+                            context.read<BuildingBloc>().add(
+                                BuildingEvent.addExistingBuilding(
+                                    building: widget.building,
+                                    onError: (e) {},
+                                    onSuccess: () {}));
+                          } else {
+                            Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const LoginPage(),
+                                ),
+                                (route) => false);
+                          }
                         }
 
                         return AnimatedOpacity(

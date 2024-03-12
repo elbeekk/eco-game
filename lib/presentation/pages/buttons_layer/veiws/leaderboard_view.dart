@@ -68,34 +68,34 @@ class LeaderboardView extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          // Container(
-                          //   padding: const EdgeInsets.symmetric(
-                          //       horizontal: 20, vertical: 10),
-                          //   child: Shimmer.fromColors(
-                          //     baseColor: Colors.orange.shade400,
-                          //     highlightColor: Colors.orange.shade400
-                          //         .withOpacity(.5),
-                          //     child: const Text(
-                          //       'Leaderboard',
-                          //       style: TextStyle(
-                          //           fontWeight: FontWeight.w500,
-                          //           fontSize: 18),
-                          //     ),
-                          //   ),
-                          // ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SizedBox(
-                                  height: 50,
-                                  width: 50,
-                                  child: Image.asset(
-                                      "assets/images/png/crown.png")),
-                            ],
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 10),
+                            child: Shimmer.fromColors(
+                              baseColor: Colors.orange.shade400,
+                              highlightColor: Colors.orange.shade400
+                                  .withOpacity(.5),
+                              child: const Text(
+                                'Leaderboard',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 18),
+                              ),
+                            ),
                           ),
+                          // Row(
+                          //   mainAxisAlignment: MainAxisAlignment.center,
+                          //   children: [
+                          //     SizedBox(
+                          //         height: 50,
+                          //         width: 50,
+                          //         child: Image.asset(
+                          //             "assets/images/png/crown.png")),
+                          //   ],
+                          // ),
                           SizedBox(
                             height: MediaQuery.sizeOf(context).height > 500
-                                ? MediaQuery.sizeOf(context).height * 0.12
+                                ? MediaQuery.sizeOf(context).height * 0.18
                                 : MediaQuery.sizeOf(context).height * 0.25,
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.end,
