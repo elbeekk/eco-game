@@ -59,7 +59,8 @@ class ExistingInfo extends StatelessWidget {
               //     fit: BoxFit.fitHeight,
               //   ),
               // ),
-              if (!isGenerator||((building.isRoof??false)||(building.isRoof??false)))
+              if (!isGenerator ||
+                  ((building.isRoof ?? false) || (building.isRoof ?? false)))
                 Column(
                   children: [
                     SizedBox(
@@ -155,13 +156,16 @@ class ExistingInfo extends StatelessWidget {
                                                                     BorderRadius
                                                                         .circular(
                                                                             10),
+
                                                               ),
+                                                                    backgroundColor: Colors.green.shade300
+
                                                             ),
                                                             child: Text((building
                                                                         .isLed ??
                                                                     false)
                                                                 ? "Upgraded"
-                                                                : "Upgrade ${((building.price ?? 0) * 0.2).toInt()}\$"),
+                                                                : "Upgrade ${((building.price ?? 0) * 0.2).toInt()}\$",style: TextStyle(color: Colors.white),),
                                                           );
                                                         },
                                                       ),
@@ -265,7 +269,7 @@ class ExistingInfo extends StatelessWidget {
                                                           builder: (context,
                                                               settingsState) {
                                                             return Text(
-                                                              "+${((building.energy ?? 0) * 0.2).abs().toInt()} W/h",
+                                                              "+2 W/h",
                                                               style: GoogleFonts.vt323(
                                                                   color: Colors
                                                                       .green,
@@ -326,10 +330,12 @@ class ExistingInfo extends StatelessWidget {
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(7),
                                       ),
+                                        backgroundColor: Colors.green.shade300
+
                                     ),
                                     child: Text((building.isLed ?? false)
-                                        ? "upgraded"
-                                        : 'upgrade ${((building.price ?? 0) * 0.2).toInt()}\$'),
+                                        ? "Upgraded"
+                                        : 'Upgrade ${((building.price ?? 0) * 0.2).toInt()}\$',style: TextStyle(color: Colors.white),),
                                   ),
                                 )
                               ],
@@ -422,22 +428,21 @@ class ExistingInfo extends StatelessWidget {
                                                                                 Navigator.pop(context);
                                                                               }));
                                                                         },
-                                                              style:
-                                                                  ElevatedButton
-                                                                      .styleFrom(
-                                                                shape:
-                                                                    RoundedRectangleBorder(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              10),
-                                                                ),
-                                                              ),
+                                                              style: ElevatedButton
+                                                                  .styleFrom(
+                                                                      shape:
+                                                                          RoundedRectangleBorder(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(10),
+                                                                      ),
+                                                                      backgroundColor: Colors
+                                                                          .green
+                                                                          .shade100),
                                                               child: Text((building
                                                                           .isRoof ??
                                                                       false)
                                                                   ? "Upgraded"
-                                                                  : "Upgrade ${((building.price ?? 0) * 0.7).toInt()}\$"),
+                                                                  : "Upgrade ${((building.price ?? 0) * 0.7).toInt()}\$",style: TextStyle(color: Colors.white),),
                                                             );
                                                           },
                                                         ),
@@ -545,7 +550,7 @@ class ExistingInfo extends StatelessWidget {
                                                             builder: (context,
                                                                 settingsState) {
                                                               return Text(
-                                                                "+50 W/h",
+                                                                "+10 W/h",
                                                                 style: GoogleFonts.vt323(
                                                                     color: Colors
                                                                         .green,
@@ -604,14 +609,15 @@ class ExistingInfo extends StatelessWidget {
                                         );
                                       },
                                       style: ElevatedButton.styleFrom(
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(7),
-                                        ),
-                                      ),
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(7),
+                                          ),
+                                          backgroundColor:
+                                              Colors.green.shade300),
                                       child: Text((building.isRoof ?? false)
-                                          ? "upgraded"
-                                          : 'upgrade ${((building.price ?? 0) * 0.7).toInt()}\$'),
+                                          ? "Upgraded"
+                                          : 'Upgrade ${((building.price ?? 0) * 0.7).toInt()}\$',style: TextStyle(color: Colors.white),),
                                     ),
                                   )
                                 ],

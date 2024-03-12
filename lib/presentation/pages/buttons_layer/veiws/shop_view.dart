@@ -395,6 +395,31 @@ class ShopView extends StatelessWidget {
                                           ],
                                         ),
                                       ),
+                                      if(shopState.selected?.income!=null)Row(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Icon(
+                                            Pixel.coin,
+                                            color: Colors.yellow.shade800,
+                                          ),
+                                          BlocBuilder<SettingsBloc,
+                                              SettingsState>(
+                                            builder: (context, settingsState) {
+                                              return Text(
+                                                " +${shopState.selected?.income} c/h",
+                                                style: GoogleFonts.vt323(
+                                                  color:Colors.yellow.shade800,
+                                                  fontSize: (19 +
+                                                      2 *
+                                                          settingsState
+                                                              .textSize)
+                                                      .toDouble(),),
+                                              );
+                                            },
+                                          ),
+                                        ],
+                                      ),
                                       Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
@@ -430,7 +455,7 @@ class ShopView extends StatelessWidget {
                                         children: [
                                           const Icon(
                                             Pixel.clock,
-                                            color: Colors.orange,
+                                            color: Colors.brown,
                                           ),
                                           BlocBuilder<SettingsBloc,
                                               SettingsState>(
@@ -438,7 +463,7 @@ class ShopView extends StatelessWidget {
                                               return Text(
                                                 " ${shopState.selected?.duration} h",
                                                 style: GoogleFonts.vt323(
-                                                    color: Colors.orange,
+                                                    color: Colors.brown,
                                                     fontSize: (19 +
                                                             2 *
                                                                 settingsState

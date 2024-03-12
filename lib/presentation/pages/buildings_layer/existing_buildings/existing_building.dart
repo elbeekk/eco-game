@@ -1,15 +1,8 @@
-import 'package:eco_game/application/building/building_bloc.dart';
-import 'package:eco_game/application/settings/settings_bloc.dart';
 import 'package:eco_game/infrastructure/models/class/building.dart';
 import 'package:eco_game/presentation/pages/buildings_layer/existing_buildings/existing_info.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:jiffy/jiffy.dart';
-import 'package:pixelarticons/pixel.dart';
-import 'package:shimmer/shimmer.dart';
 
 class ExistingBuilding extends StatelessWidget {
   final bool isView;
@@ -27,8 +20,8 @@ class ExistingBuilding extends StatelessWidget {
     bool isGenerator = (building.energy ?? 0) >= 0;
 
     return Positioned(
-      top: building.positionY,
-      left: building.positionX,
+      top: (building.positionY??0)+(building.bottom??0),
+      left: (building.positionX??0)+(building.left??0),
       child: GestureDetector(
         onTap: isView
             ? null

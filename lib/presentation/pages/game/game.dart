@@ -7,6 +7,7 @@ import 'package:eco_game/application/game/game_bloc.dart';
 import 'package:eco_game/application/message/message_bloc.dart';
 import 'package:eco_game/application/settings/settings_bloc.dart';
 import 'package:eco_game/application/shop/shop_bloc.dart';
+import 'package:eco_game/infrastructure/data/local_data.dart';
 import 'package:eco_game/presentation/pages/buildings_layer/existing_buildings/existing_building.dart';
 import 'package:eco_game/presentation/pages/buttons_layer/buttons_layer.dart';
 import 'package:eco_game/presentation/pages/image_layer/image_layer.dart';
@@ -109,11 +110,11 @@ class _GamePageState extends State<GamePage> {
                             double consumptionAll = 0;
                             Map<String, double> incomeData = {};
                             Map<String, double> consumptionData = {};
-                            List<BuildingModel> income = buildingState
-                                .existingBuildings
-                                .where((element) {
+                            for (var element
+                                in buildingState.existingBuildings) {
                               if ((element.energy ?? 0) >= 0) {
-                                incomeAll += element.energy?.abs().toDouble() ?? 0;
+                                incomeAll +=
+                                    element.energy?.abs().toDouble() ?? 0;
                                 incomeData.update(
                                     element.name ?? '',
                                     (value) =>
@@ -122,14 +123,7 @@ class _GamePageState extends State<GamePage> {
                                     ifAbsent: () {
                                   return element.energy?.abs().toDouble() ?? 0;
                                 });
-                                return true;
-                              }
-                              return false;
-                            }).toList();
-                            List<BuildingModel> consumption = buildingState
-                                .existingBuildings
-                                .where((element) {
-                              if ((element.energy ?? 0) <= 0) {
+                              } else {
                                 consumptionAll +=
                                     element.energy?.abs().toDouble() ?? 0;
                                 consumptionData.update(
@@ -138,18 +132,15 @@ class _GamePageState extends State<GamePage> {
                                         value +
                                         (element.energy ?? 0).abs().toDouble(),
                                     ifAbsent: () {
+                                  log((element.energy?.abs().toDouble() ?? 0)
+                                      .toString());
                                   return element.energy?.abs().toDouble() ?? 0;
                                 });
-                                return true;
                               }
-                              return false;
-                            }).toList();
+                            }
                             log("income => $incomeData");
                             log("consumption => $consumptionData");
-                            log("incomeALL => $incomeAll");
-                            log("consumptionALL => $consumptionAll");
                             return ImageLayer(children: [
-
                               ...List.generate(
                                   buildingState.existingBuildings.length,
                                   (index) {
@@ -157,7 +148,8 @@ class _GamePageState extends State<GamePage> {
                                     .existingBuildings.reversed
                                     .toList()[index];
                                 return ExistingBuilding(
-                                  building: current, contekst: context,
+                                  building: current,
+                                  contekst: context,
                                 );
                               }),
                               if (incomeAll < consumptionAll)
@@ -168,22 +160,51 @@ class _GamePageState extends State<GamePage> {
                                       .existingBuildings.reversed
                                       .toList()[index];
                                   return Positioned(
-                                    top: (current.positionY ?? 0) - 35,
-                                    left: (current.positionX ?? 0)+((current.width??35)*0.4),
-                                    child: Shimmer.fromColors(
-                                      highlightColor: Colors.orange.shade400,
-                                      baseColor: Colors.grey.shade700,
-                                      child: const Icon(
-                                        MaterialCommunityIcons.lightning_bolt,
-                                        size: 30,
+                                    top: (current.positionY ?? 0) +
+                                        (current.bottom ?? 0) -
+                                        (current.height ?? 0) * 0.9,
+                                    left: (current.positionX ?? 0) +
+                                        (current.left ?? 0) +
+                                        (current.width ?? 0) * 0.2,
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        showDialog(
+                                          context: context,
+                                          builder: (context) => AlertDialog(
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.circular(7),
+                                            ),
+                                            title: const Text('Not Enough Energy',style: TextStyle(color: Colors.red),),
+                                            content:
+                                                Text(LocalData.notEnoughEnergy,style: TextStyle(fontSize: 17),),
+                                            actions: [
+                                              ElevatedButton(onPressed: (){
+                                                Navigator.pop(context);
+                                              }, 
+                                                  style: ElevatedButton.styleFrom(
+                                                    shape: RoundedRectangleBorder(
+                                                      borderRadius: BorderRadius.circular(7)
+                                                    )
+                                                  ),
+                                                  child: const Text('Ok',style: TextStyle(color: Colors.red),))
+                                            ],
+                                          ),
+                                        );
+                                      },
+                                      child: Shimmer.fromColors(
+                                        highlightColor: Colors.orange.shade400,
+                                        baseColor: Colors.grey.shade700,
+                                        child: const Icon(
+                                          MaterialCommunityIcons.lightning_bolt,
+                                          size: 30,
+                                        ),
                                       ),
                                     ),
                                   );
                                 }),
-
                               ...List.generate(
                                 buildingState.constructingBuildings.length,
-                                    (index) {
+                                (index) {
                                   final current = buildingState
                                       .constructingBuildings[index];
                                   return ConstructingBuilding(
@@ -193,13 +214,13 @@ class _GamePageState extends State<GamePage> {
                               ),
                               ...List.generate(
                                   buildingState.pendingBuildings.length,
-                                      (index) {
-                                    final current =
+                                  (index) {
+                                final current =
                                     buildingState.pendingBuildings[index];
-                                    return PendingBuilding(
-                                      building: current,
-                                    );
-                                  }),
+                                return PendingBuilding(
+                                  building: current,
+                                );
+                              }),
                             ]);
                           },
                         ),

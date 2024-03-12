@@ -185,17 +185,18 @@ class BuildingBloc extends Bloc<BuildingEvent, BuildingState> {
     on<UpgradeLed>((event, emit) async {
       final building = event.building.copyWith(
         isLed: true,
-        energy: (event.building.energy ?? 0) +
-            ((event.building.energy ?? 0) * 0.2).abs().toInt(),
-        income: (event.building.income ?? 0) +
-            ((event.building.income ?? 0) * 0.1).abs().toInt(),
+        energy: (event.building.energy ?? 0) + 2,
       );
-      await userRepository.addMoney(
+      final moneyRes = await userRepository.addMoney(
           money: ((building.price ?? 0) * 0.2).toInt() * -1);
       await userRepository.addPoints(points: 20);
       final buildRes = await buildingRepository.upgradeLed(building: building);
-      buildRes.fold((l) {
-        event.onSuccess?.call();
+      moneyRes.fold((l) {
+        buildRes.fold((l) {
+          event.onSuccess?.call();
+        }, (r) {
+          event.onError?.call(r);
+        });
       }, (r) {
         event.onError?.call(r);
       });
@@ -203,9 +204,7 @@ class BuildingBloc extends Bloc<BuildingEvent, BuildingState> {
     on<UpgradeRoof>((event, emit) async {
       final building = event.building.copyWith(
         isRoof: true,
-        energy: (event.building.energy ?? 0) + 50,
-        income: (event.building.income ?? 0) +
-            ((event.building.income ?? 0) * 0.3).abs().toInt(),
+        energy: (event.building.energy ?? 0) + 10,
       );
       await userRepository.addMoney(
           money: ((building.price ?? 0) * 0.7).toInt() * -1);

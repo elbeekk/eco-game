@@ -3,7 +3,7 @@ import 'package:eco_game/infrastructure/models/class/message.dart';
 
 class LocalData {
   LocalData._();
-
+  static String notEnoughEnergy = 'Please provide energy by selling energy consuming buildings or building more energy generators.';
   static String upgradeLed =
       "Replacing light bulbs with LEDs will give you points and reduce energy consumption in the building";
   static String upgradeRoof =

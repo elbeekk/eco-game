@@ -57,7 +57,7 @@ class LeaderboardView extends StatelessWidget {
                   }
                 }),
                 builder: (context, snapshot) {
-                  if (snapshot.hasData) {
+                  if (snapshot.hasData&&(snapshot.data?.length??0)>=3) {
                     final list = snapshot.data;
                     final first = (list?.length ?? 0) >= 1 ? (list?[0]) : null;
                     final second = (list?.length ?? 0) >= 2 ? (list?[1]) : null;
